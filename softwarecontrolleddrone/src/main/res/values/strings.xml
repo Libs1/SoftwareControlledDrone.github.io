@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">SoftwareControlledDrone</string>
+
+    <string name="loginText">Login</string>
+    <string name="logoutText">Logout</string>
+    <string name="controllerButtonText">Controller</string>
+    <string name="databseButtonText">Database</string>
+
+    <string name="hint1">Username</string>
+    <string name="hint2">Password</string>
+
+    <string name="errorName">Invalid Username</string>
+    <string name="errorPassword">Invalid Password</string>
+
+    <string name="logoutToast">Logged out</string>
+</resources>
