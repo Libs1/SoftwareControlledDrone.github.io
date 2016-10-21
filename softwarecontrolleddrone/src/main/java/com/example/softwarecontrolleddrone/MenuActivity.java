@@ -21,7 +21,7 @@ import android.widget.Toast;
 
 public class MenuActivity extends AppCompatActivity {
 
-    TextView logout;
+
     Button controllerButton;
 
     final Context context = this;
@@ -30,44 +30,6 @@ public class MenuActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
-
-        logout = (TextView)findViewById(R.id.logoutButton);
-        logout.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-
-                AlertDialog.Builder builder = new AlertDialog.Builder(context);
-                builder.setTitle("MenuActivity");
-                builder.setMessage(R.string.dialogMsg1);
-                builder.setCancelable(false);
-
-                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener(){
-                    public void onClick(DialogInterface dialog, int id)
-                    {
-                        //If the user clicks yes, bring them back to the LoginActivity
-                        Intent intent = new Intent(MenuActivity.this, LoginActivity.class);
-                        Toast.makeText(MenuActivity.this, R.string.logoutToast, Toast.LENGTH_SHORT)
-                                .show();
-                        startActivity(intent);
-                    }
-                });
-
-                builder.setNegativeButton("No", new DialogInterface.OnClickListener(){
-                   public void onClick(DialogInterface dialog, int id)
-                   {
-                       //If the user clicks no, just close the dialog box and do nothing
-                       dialog.cancel();
-                   }
-                });
-
-                //Creates the alert dialog
-                AlertDialog alertDialog = builder.create();
-                //Show the alert dialog
-                alertDialog.show();
-            }
-        });
-
 
         controllerButton = (Button)findViewById(R.id.controllerButton);
         controllerButton.setOnClickListener(new View.OnClickListener(){
@@ -111,5 +73,23 @@ public class MenuActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        new AlertDialog.Builder(this)
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .setTitle(R.string.dialogMsg)
+                .setMessage(R.string.dialogMsg1)
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener()
+                {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        finish();
+                    }
+
+                })
+                .setNegativeButton("No", null)
+                .show();
     }
 }
