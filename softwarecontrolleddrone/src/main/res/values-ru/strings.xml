@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--To make spaces before editBox use -> &#x2009;-->
+    <string name="app_name">Управляемый Дрон</string>
+
+    <string name="loginText">Вход</string>
+    <string name="logoutText">Выход</string>
+    <string name="exitText">Выход</string>
+    <string name="controllerButtonText">Управление</string>
+    <string name="databseButtonText">Полёты</string>
+    <string name="help">Пмощь</string>
+    <string name="scd">SCD</string>
+    <string name="drone"></string>
+    <string name="dialogMsg1">Вы точно хотите выйти</string>
+    <string name="dialogMsg2">Вы точно хотите выйти</string>
+    <string name="dialogMsg">Выход</string>
+
+    <string name="hint1">Имя ползователя</string>
+    <string name="hint2">Пароль</string>
+
+    <string name="errorName">Неверное Имя Пользователя</string>
+    <string name="errorPassword">Неверный Пароль</string>
+
+    <string name="usernameField1"></string>
+    <string name="passwordField1"></string>
+
+    <string name="exitToast">Добро Пожаловать в Меню</string>
+    <string name="logoutToast">Выход был успешно произведен</string>
+
+    <string name="switch1">Включить/Выключить</string>
+    <string name="saveText">Сохранить</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="radio_1">Красный</string>
+    <string name="radio_2">Зеленый</string>
+    <string name="radio_3">Синий</string>
+    <string name="no_choice">Цвет не был выбран</string>
+
+
+
+</resources>

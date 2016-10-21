@@ -7,9 +7,7 @@ package com.example.softwarecontrolleddrone;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.net.Uri;
-import android.preference.PreferenceManager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -32,68 +30,16 @@ public class ControllerActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_controller);
-        final SharedPreferences sharedPreferences = PreferenceManager
-                .getDefaultSharedPreferences(ControllerActivity.this);
-        SharedPreferences.Editor editor =sharedPreferences.edit();
 
         b = (Button) findViewById(R.id.button);
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), PopActivity.class));
-                onRestart();
-                Boolean x = sharedPreferences.getBoolean("Switch", false);
-                String flag = "Unchecked";
-                if(x == true)
-                    flag = "checked";
-
-                b.setText(flag);
-                }
-        });
-
-
-        TextView exit = (TextView)findViewById(R.id.exitButton);
-        exit.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v)
-            {
-                AlertDialog.Builder builder = new AlertDialog.Builder(ControllerActivity.this);
-                builder.setTitle("Controller");
-                builder.setMessage(R.string.dialogMsg2);
-                builder.setCancelable(false);
-                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener(){
-
-                    public void onClick(DialogInterface dialog, int id)
-                    {
-                        //If the user clicks yes, bring them back to the LoginActivity
-                        Intent intent = new Intent(ControllerActivity.this, MenuActivity.class);
-                        Toast.makeText(ControllerActivity.this, R.string.exitToast, Toast.LENGTH_SHORT)
-                                .show();
-                        startActivity(intent);
-                    }
-                });
-
-                builder.setNegativeButton("No", new DialogInterface.OnClickListener(){
-
-                    public void onClick(DialogInterface dialog, int id)
-                    {
-                        //If the user clicks no, just close the dialog box and do nothing
-                        dialog.cancel();
-                    }
-
-                });
-
-                //Creates the alert dialog
-                AlertDialog alertDialog = builder.create();
-                //Show the alert dialog
-                alertDialog.show();
+                startActivityForResult(new Intent(getApplicationContext(), PopActivity.class), 999);
             }
         });
 
 
-/*
-Button does not work: starts here
- */
         ImageView upButton = (ImageView)findViewById(R.id.upArrow);
         upButton.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -168,6 +114,15 @@ Button does not work: starts here
         });
     }
 
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(requestCode == 999 & resultCode == RESULT_OK){
+            b.setText(data.getStringExtra("switch"));
+        }
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main, menu);
@@ -196,4 +151,21 @@ Button does not work: starts here
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onBackPressed() {
+        new AlertDialog.Builder(this)
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .setTitle(R.string.dialogMsg)
+                .setMessage(R.string.dialogMsg2)
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener()
+                {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        finish();
+                    }
+
+                })
+                .setNegativeButton("No", null)
+                .show();
+    }
 }
