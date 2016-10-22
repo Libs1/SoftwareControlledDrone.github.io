@@ -7,7 +7,9 @@ package com.example.softwarecontrolleddrone;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -18,12 +20,15 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class ControllerActivity extends AppCompatActivity {
-
+    public static final String PREFS = "sharedPreferences";
+    public static final String BRIGHTNESS = "brightness";
     Button b;
+    Boolean switch1;
 
 
     @Override
@@ -33,9 +38,20 @@ public class ControllerActivity extends AppCompatActivity {
 
         b = (Button) findViewById(R.id.button);
         b.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
                 startActivityForResult(new Intent(getApplicationContext(), PopActivity.class), 999);
+
+                //This should be on click in another acitivty
+                SharedPreferences sharedPreferences = getSharedPreferences(PREFS, 0);
+                Boolean switch1 = sharedPreferences.getBoolean("Switch", false);
+                if(switch1) {
+                    b.setBackgroundResource(R.color.white);
+                    b.setText(R.string.led_on);
+                } else {
+                    b.setText(R.string.led_off);
+                }
             }
         });
 
@@ -115,13 +131,6 @@ public class ControllerActivity extends AppCompatActivity {
     }
 
 
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if(requestCode == 999 & resultCode == RESULT_OK){
-            b.setText(data.getStringExtra("switch"));
-        }
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

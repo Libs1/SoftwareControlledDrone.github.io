@@ -36,6 +36,6 @@
     <string name="radio_3">Blue</string>
     <string name="no_choice">LED color was not chosen</string>
 
-
-
+    <string name="led_on">ON</string>
+    <string name="led_off">OFF</string>
 </resources>
