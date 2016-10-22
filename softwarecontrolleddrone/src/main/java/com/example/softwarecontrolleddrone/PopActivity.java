@@ -91,6 +91,11 @@ public class PopActivity extends Activity {
         switch1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(switch1.isChecked()){
+                    switch1.equals("1");
+                }else{
+                    switch1.equals("0");
+                }
                 editor.putBoolean("Switch", isChecked);
                 editor.commit();
 
