@@ -20,80 +20,42 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class ControllerActivity extends AppCompatActivity {
-
+    public static final String PREFS = "sharedPreferences";
+    public static final String BRIGHTNESS = "brightness";
     Button b;
+    Boolean switch1;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_controller);
-        final SharedPreferences sharedPreferences = PreferenceManager
-                .getDefaultSharedPreferences(ControllerActivity.this);
-        SharedPreferences.Editor editor =sharedPreferences.edit();
 
         b = (Button) findViewById(R.id.button);
         b.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), PopActivity.class));
-                onRestart();
-                Boolean x = sharedPreferences.getBoolean("Switch", false);
-                String flag = "Unchecked";
-                if(x == true)
-                    flag = "checked";
+                startActivityForResult(new Intent(getApplicationContext(), PopActivity.class), 999);
 
-                b.setText(flag);
+                //This should be on click in another acitivty
+                SharedPreferences sharedPreferences = getSharedPreferences(PREFS, 0);
+                Boolean switch1 = sharedPreferences.getBoolean("Switch", false);
+                if(switch1) {
+                    b.setBackgroundResource(R.color.white);
+                    b.setText(R.string.led_on);
+                } else {
+                    b.setText(R.string.led_off);
                 }
-        });
-
-
-        TextView exit = (TextView)findViewById(R.id.exitButton);
-        exit.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v)
-            {
-                AlertDialog.Builder builder = new AlertDialog.Builder(ControllerActivity.this);
-                builder.setTitle("Controller");
-                builder.setMessage(R.string.dialogMsg2);
-                builder.setCancelable(false);
-                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener(){
-
-                    public void onClick(DialogInterface dialog, int id)
-                    {
-                        //If the user clicks yes, bring them back to the LoginActivity
-                        Intent intent = new Intent(ControllerActivity.this, MenuActivity.class);
-                        Toast.makeText(ControllerActivity.this, R.string.exitToast, Toast.LENGTH_SHORT)
-                                .show();
-                        startActivity(intent);
-                    }
-                });
-
-                builder.setNegativeButton("No", new DialogInterface.OnClickListener(){
-
-                    public void onClick(DialogInterface dialog, int id)
-                    {
-                        //If the user clicks no, just close the dialog box and do nothing
-                        dialog.cancel();
-                    }
-
-                });
-
-                //Creates the alert dialog
-                AlertDialog alertDialog = builder.create();
-                //Show the alert dialog
-                alertDialog.show();
             }
         });
 
 
-/*
-Button does not work: starts here
- */
         ImageView upButton = (ImageView)findViewById(R.id.upArrow);
         upButton.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -168,6 +130,8 @@ Button does not work: starts here
         });
     }
 
+
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main, menu);
@@ -196,4 +160,21 @@ Button does not work: starts here
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onBackPressed() {
+        new AlertDialog.Builder(this)
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .setTitle(R.string.dialogMsg)
+                .setMessage(R.string.dialogMsg2)
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener()
+                {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        finish();
+                    }
+
+                })
+                .setNegativeButton("No", null)
+                .show();
+    }
 }

@@ -13,19 +13,6 @@
     tools:context="com.example.softwarecontrolleddrone.ControllerActivity">
 
 
-    <TextView
-        android:id="@+id/exitButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@drawable/select_text_head"
-        android:textSize="30sp"
-        android:layout_alignParentEnd="true"
-        android:shadowColor="@color/white"
-        android:shadowDx="2"
-        android:shadowDy="2"
-        android:shadowRadius="25"
-        android:text="@string/exitText"/>
-
     <ImageView
         android:id="@+id/upArrow"
         android:layout_width="80dp"
