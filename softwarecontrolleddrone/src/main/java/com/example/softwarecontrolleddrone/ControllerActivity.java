@@ -5,12 +5,15 @@ Team name: Skynet
 
 package com.example.softwarecontrolleddrone;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.sqlite.SQLiteDatabase;
+import android.icu.util.Calendar;
 import android.net.Uri;
+import android.os.SystemClock;
 import android.preference.PreferenceManager;
-import android.support.annotation.BoolRes;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -20,15 +23,33 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.Chronometer;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
+import android.widget.RadioGroup;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class ControllerActivity extends AppCompatActivity {
-    public static final String PREFS = "sharedPreferences";
-    public static Button b;
 
+    MySQLiteHelper mySQLiteHelper;
+    SQLiteDatabase sqLiteDatabase;
+    Context context = this;
+
+    public static final String PREFS = "sharedPreferences";
+    public static final String BRIGHTNESS = "brightness";
+
+    Button b;
+    boolean switch1;
+
+    Chronometer chronometer;
+    Switch timeSwitch;
+    TextView timeText, dateText;
+    String formattedDate;
+    private long timeWhenStopped = 0;
 
 
     @Override
@@ -36,15 +57,30 @@ public class ControllerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_controller);
 
+        java.util.Calendar c = java.util.Calendar.getInstance();
+        SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy");
+        formattedDate = df.format(c.getTime());
+
+
+
         b = (Button) findViewById(R.id.button);
         b.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(ControllerActivity.this, PopActivity.class));
+                startActivityForResult(new Intent(getApplicationContext(), PopActivity.class), 999);
+
+                //This should be on click in another acitivty
+                SharedPreferences sharedPreferences = getSharedPreferences(PREFS, 0);
+                switch1 = sharedPreferences.getBoolean("switch", false);
+                if(switch1) {
+                    b.setBackgroundResource(R.color.white);
+                    b.setText(sharedPreferences.getString("status", "On"));
+                } else {
+                    b.setText(R.string.led_off);
+                }
             }
         });
-
 
         ImageView upButton = (ImageView)findViewById(R.id.upArrow);
         upButton.setOnClickListener(new View.OnClickListener(){
@@ -118,9 +154,41 @@ public class ControllerActivity extends AppCompatActivity {
                 bluedrone1.startAnimation(jumpAnimation);
             }
         });
+
+        chronometer = (Chronometer)findViewById(R.id.chronometer);
+        timeText = (TextView)findViewById(R.id.timeDisplayed);
+
+        timeSwitch = (Switch)findViewById(R.id.timeSwitch);
+        timeSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){
+                    chronometer.setBase(SystemClock.elapsedRealtime());
+                    timeText.setVisibility(View.INVISIBLE);
+                    timeText.setText(R.string.zeroseconds);
+                    chronometer.start();
+                }
+                else{
+                    timeWhenStopped = chronometer.getBase() - SystemClock.elapsedRealtime();
+                    int seconds = (int) timeWhenStopped / 1000;
+                    timeText.setVisibility(View.VISIBLE);
+                    timeText.setText(Math.abs(seconds) + " Second(s)");
+
+                    chronometer.stop();
+
+                    String putFlightDuration = timeText.getText().toString();
+
+                    mySQLiteHelper = new MySQLiteHelper(context);
+                    sqLiteDatabase = mySQLiteHelper.getWritableDatabase();
+                    mySQLiteHelper.putInformation(sqLiteDatabase, formattedDate, putFlightDuration);
+                    mySQLiteHelper.close();
+
+
+                }
+
+            }
+        });
     }
-
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

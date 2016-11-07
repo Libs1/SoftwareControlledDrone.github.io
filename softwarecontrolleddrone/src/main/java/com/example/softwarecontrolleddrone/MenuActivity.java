@@ -22,7 +22,7 @@ import android.widget.Toast;
 public class MenuActivity extends AppCompatActivity {
 
 
-    Button controllerButton;
+    Button controllerButton, databaseButton;
 
     final Context context = this;
 
@@ -42,6 +42,18 @@ public class MenuActivity extends AppCompatActivity {
 
             }
         });
+
+        databaseButton = (Button)findViewById(R.id.databaseButton);
+        databaseButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(MenuActivity.this, FlightsActivity.class);
+                startActivity(intent);
+
+            }
+        });
+
 
 
 

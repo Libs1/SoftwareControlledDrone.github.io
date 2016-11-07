@@ -47,7 +47,7 @@
         android:textColor="@color/white"
         android:buttonTint="@color/white"
         android:layout_below="@+id/passwordField"
-        android:layout_alignStart="@+id/passwordField" />
+        android:layout_alignStart="@+id/passwordField"/>
 
     <Button
         android:id="@+id/loginButton"

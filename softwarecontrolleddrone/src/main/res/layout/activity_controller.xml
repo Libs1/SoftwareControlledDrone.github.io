@@ -74,11 +74,47 @@
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/led"
-        android:textColor="@color/white"
+        android:text="led"
         android:id="@+id/button"
-        android:background="@drawable/buttonshape_led"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true" />
+
+    <Chronometer
+        android:id="@+id/chronometer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="00:00:00"
+        android:textSize="30dp"
+        android:textColor="@color/bright"
+        android:layout_below="@+id/timeSwitch"
+        android:layout_alignParentStart="true"
+        android:layout_toStartOf="@+id/dronePicture2" />
+
+
+    <Switch
+        android:id="@+id/timeSwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:showText="true"
+        android:textOn="Start"
+        android:textOff="Stop"
+        android:textColor="@color/bright"
+        android:layout_below="@+id/upArrow"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:id="@+id/timeDisplayed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="time"
+        android:textColor="@color/bright"
+        android:visibility="gone"
+        android:layout_below="@+id/chronometer"
+        android:layout_alignParentStart="true" />
+
+
+
+
+
 
 </RelativeLayout>
