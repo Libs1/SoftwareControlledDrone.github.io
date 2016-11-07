@@ -74,8 +74,10 @@
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="led"
+        android:text="@string/led"
+        android:textColor="@color/white"
         android:id="@+id/button"
+        android:background="@drawable/buttonshape_led"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true" />
 

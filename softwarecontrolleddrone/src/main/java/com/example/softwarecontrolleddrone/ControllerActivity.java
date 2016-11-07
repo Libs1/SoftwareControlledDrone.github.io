@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.preference.PreferenceManager;
+import android.support.annotation.BoolRes;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -26,9 +27,8 @@ import android.widget.Toast;
 
 public class ControllerActivity extends AppCompatActivity {
     public static final String PREFS = "sharedPreferences";
-    public static final String BRIGHTNESS = "brightness";
-    Button b;
-    Boolean switch1;
+    public static Button b;
+
 
 
     @Override
@@ -41,17 +41,7 @@ public class ControllerActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                startActivityForResult(new Intent(getApplicationContext(), PopActivity.class), 999);
-
-                //This should be on click in another acitivty
-                SharedPreferences sharedPreferences = getSharedPreferences(PREFS, 0);
-                Boolean switch1 = sharedPreferences.getBoolean("Switch", false);
-                if(switch1) {
-                    b.setBackgroundResource(R.color.white);
-                    b.setText(R.string.led_on);
-                } else {
-                    b.setText(R.string.led_off);
-                }
+                startActivity(new Intent(ControllerActivity.this, PopActivity.class));
             }
         });
 

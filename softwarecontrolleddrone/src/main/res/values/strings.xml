@@ -21,11 +21,13 @@
     <string name="errorName">Invalid Username</string>
     <string name="errorPassword">Invalid Password</string>
 
-    <string name="usernameField1"></string>
+    <string name="usernameField1">root</string>
     <string name="passwordField1"></string>
 
     <string name="exitToast">Welcome To The Menu</string>
     <string name="logoutToast">Logged out</string>
+
+    <string name="checkBoxText">Remember Me</string>
 
     <string name="switch1">Power Switch</string>
     <string name="pop">This is pop</string>
@@ -36,6 +38,7 @@
     <string name="radio_3">Blue</string>
     <string name="no_choice">LED color was not chosen</string>
 
+    <string name="led">LED</string>
     <string name="led_on">ON</string>
     <string name="led_off">OFF</string>
 </resources>

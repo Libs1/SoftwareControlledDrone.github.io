@@ -5,5 +5,5 @@
         android:color="#00CFFF" />
     <item
         android:state_pressed="false"
-        android:color="#ffffff" />
+        android:color="@color/white" />
 </selector>
