@@ -74,8 +74,10 @@
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="led"
+        android:text="@string/led"
+        android:textColor="@color/white"
         android:id="@+id/button"
+        android:background="@drawable/buttonshape_led"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true" />
 
@@ -86,21 +88,20 @@
         android:text="00:00:00"
         android:textSize="30dp"
         android:textColor="@color/bright"
-        android:layout_below="@+id/timeSwitch"
-        android:layout_alignParentStart="true"
-        android:layout_toStartOf="@+id/dronePicture2" />
+        android:layout_below="@+id/textStart"
+        android:layout_alignEnd="@+id/textStart"/>
 
 
     <Switch
-        android:id="@+id/timeSwitch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:showText="true"
-        android:textOn="Start"
-        android:textOff="Stop"
-        android:textColor="@color/bright"
-        android:layout_below="@+id/upArrow"
-        android:layout_alignParentStart="true" />
+        android:switchMinWidth="80dp"
+        android:id="@+id/timeSwitch"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true" />
+        <!--android:textOn="Start"
+        android:textOff="Stop"-->
+
 
     <TextView
         android:id="@+id/timeDisplayed"
@@ -110,9 +111,26 @@
         android:textColor="@color/bright"
         android:visibility="gone"
         android:layout_below="@+id/chronometer"
-        android:layout_alignParentStart="true" />
+        android:layout_alignStart="@+id/chronometer"/>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textStop"
+        android:layout_toLeftOf="@+id/textStart"
+        android:layout_marginRight="10dp"
+        android:layout_below="@+id/timeSwitch"
+        android:textColor="@color/white"
+        android:text="@string/textStop"/>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textStart"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/timeSwitch"
+        android:textColor="@color/white"
+        android:text="@string/textStart"/>
 
 
 

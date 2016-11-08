@@ -27,20 +27,25 @@ import java.util.prefs.Preferences;
 
 
 public class PopActivity extends Activity {
-
     public static final String PREFS = "sharedPreferences";
-    public static final String BRIGHTNESS = "brightness";
     private Button save_button;
-    private Switch switch1;
-    private SeekBar bar;
+    public Switch switch1;
     private RadioGroup radioGroup;
     private RadioButton rb1;
     private RadioButton rb2;
     private RadioButton rb3;
+    private static final String KEY_TEXT_VALUE = "button";
+    String background;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        if (savedInstanceState != null) {
+            CharSequence savedText = savedInstanceState.getCharSequence(KEY_TEXT_VALUE);
+            //ControllerActivity.b.
+        }
+
         //window layout management
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
@@ -48,12 +53,11 @@ public class PopActivity extends Activity {
         int width = dm.widthPixels;
         int height = dm.heightPixels;
 
-        getWindow().setLayout((int) (width * .8), (int) (height * .6));
+        getWindow().setLayout((int) (width * .7), (int) (height * .4));
 
         //initializers
         setContentView(R.layout.activity_pop);
         switch1 = (Switch) findViewById(R.id.switch1);
-        bar = (SeekBar) findViewById((R.id.seekBar));
         radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
         rb1 = (RadioButton) findViewById(R.id.radio1);
         rb2 = (RadioButton) findViewById(R.id.radio2);
@@ -61,8 +65,6 @@ public class PopActivity extends Activity {
 
         //Final values decalred above to simplify the code
         final SharedPreferences sharedPreferences = getSharedPreferences(PREFS,0);
-        final SharedPreferences settings = getSharedPreferences("answers", MODE_PRIVATE);
-        Log.d("BRIGHTNESS", "" + sharedPreferences.getInt(BRIGHTNESS, 0));
         final SharedPreferences.Editor editor = sharedPreferences.edit();
 
 
@@ -71,48 +73,48 @@ public class PopActivity extends Activity {
         rb1.setChecked(sharedPreferences.getBoolean("rb1",false));
         rb2.setChecked(sharedPreferences.getBoolean("rb2",false));
         rb3.setChecked(sharedPreferences.getBoolean("rb3",false));
-        bar.setProgress(sharedPreferences.getInt(BRIGHTNESS, 0));
+
 
         save_button = (Button) findViewById(R.id.save);
         save_button.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
-                //Intent i = new Intent();
-                //put switch in
-                editor.putInt(BRIGHTNESS, bar.getProgress());
+                editor.putBoolean("Switch", switch1.isChecked());
                 editor.putBoolean("rb1", rb1.isChecked());
                 editor.putBoolean("rb2", rb2.isChecked());
                 editor.putBoolean("rb3", rb3.isChecked());
-
-
-                if(switch1.isChecked()){
-                    editor.putBoolean("switch1", switch1.isChecked());
-                }
-                else{
-                    switch1.equals("0");
-                }
-
-
                 editor.commit();
+
+
+                SharedPreferences sharedPreferences = getSharedPreferences(PREFS, 0);
+                Boolean switch1 = sharedPreferences.getBoolean("Switch", false);
+                Boolean rb1 = sharedPreferences.getBoolean("rb1", false);
+                Boolean rb2 = sharedPreferences.getBoolean("rb2", false);
+                Boolean rb3 = sharedPreferences.getBoolean("rb3", false);
+
+                if(switch1) {
+                    if(rb1){
+                        ControllerActivity.b.setBackgroundResource(R.drawable.buttonshape_led_red);
+                    }else if(rb2){
+                        ControllerActivity.b.setBackgroundResource(R.drawable.buttonshape_led_green);
+                    }else if(rb3){
+                        ControllerActivity.b.setBackgroundResource(R.drawable.buttonshape_led_blue);
+                    }else{
+                        ControllerActivity.b.setBackgroundResource(R.color.white);
+                        Toast.makeText(PopActivity.this, R.string.no_choice, Toast.LENGTH_SHORT)
+                                .show();
+                    }
+                    ControllerActivity.b.setText(R.string.led_on);
+                } else {
+                    ControllerActivity.b.setText(R.string.led_off);
+                    ControllerActivity.b.setBackgroundResource(R.drawable.buttonshape_led);
+                }
+
+
                 finish();
             }
         });
-
-        switch1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-
-                if(switch1.isChecked()){
-                    switch1.equals("1");
-                    editor.putString("status", "On");
-                }else{
-                    switch1.equals("0");
-                }
-                editor.putBoolean("switch", isChecked);
-                editor.commit();
-            }
-        });
-
     }
 
 }

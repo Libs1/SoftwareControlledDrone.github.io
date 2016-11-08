@@ -13,57 +13,45 @@
         android:layout_marginTop="50dp" />
 
 
-    <SeekBar
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/seekBar"
-        android:layout_below="@+id/switch1"
-        android:max="100"
-        android:progress="50"
-        android:layout_marginTop="40dp"
-        android:indeterminate="false"
-        android:layout_alignEnd="@+id/switch1"
-        android:layout_alignStart="@+id/switch1" />
-
     <RadioGroup
         android:id="@+id/radioGroup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/seekBar"
+        android:layout_below="@+id/switch1"
         android:orientation="horizontal"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
         android:gravity="center_horizontal"
-         >
+        >
 
         <RadioButton
             android:id="@+id/radio3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/radio_3"
-         />
+            />
 
         <RadioButton
-        android:id="@+id/radio2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/radio_2"
-        />
+            android:id="@+id/radio2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/radio_2"
+            />
 
         <RadioButton
-        android:id="@+id/radio1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/radio_1"
-        />
+            android:id="@+id/radio1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/radio_1"
+            />
 
-        </RadioGroup>
+    </RadioGroup>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/saveText"
         android:id="@+id/save"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="10dp"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/radioGroup"
         />

@@ -38,11 +38,12 @@ public class ControllerActivity extends AppCompatActivity {
     MySQLiteHelper mySQLiteHelper;
     SQLiteDatabase sqLiteDatabase;
     Context context = this;
+    TextView textStart,textStop;
 
     public static final String PREFS = "sharedPreferences";
     public static final String BRIGHTNESS = "brightness";
 
-    Button b;
+    public static Button b;
     boolean switch1;
 
     Chronometer chronometer;
@@ -61,6 +62,9 @@ public class ControllerActivity extends AppCompatActivity {
         SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy");
         formattedDate = df.format(c.getTime());
 
+        textStart = (TextView)findViewById(R.id.textStart);
+        textStop = (TextView) findViewById(R.id.textStop);
+        textStart.setVisibility(View.INVISIBLE);
 
 
         b = (Button) findViewById(R.id.button);
@@ -68,19 +72,10 @@ public class ControllerActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                startActivityForResult(new Intent(getApplicationContext(), PopActivity.class), 999);
-
-                //This should be on click in another acitivty
-                SharedPreferences sharedPreferences = getSharedPreferences(PREFS, 0);
-                switch1 = sharedPreferences.getBoolean("switch", false);
-                if(switch1) {
-                    b.setBackgroundResource(R.color.white);
-                    b.setText(sharedPreferences.getString("status", "On"));
-                } else {
-                    b.setText(R.string.led_off);
-                }
+                startActivity(new Intent(ControllerActivity.this, PopActivity.class));
             }
         });
+
 
         ImageView upButton = (ImageView)findViewById(R.id.upArrow);
         upButton.setOnClickListener(new View.OnClickListener(){
@@ -167,6 +162,8 @@ public class ControllerActivity extends AppCompatActivity {
                     timeText.setVisibility(View.INVISIBLE);
                     timeText.setText(R.string.zeroseconds);
                     chronometer.start();
+                    textStart.setVisibility(View.VISIBLE);
+                    textStop.setVisibility(View.INVISIBLE);
                 }
                 else{
                     timeWhenStopped = chronometer.getBase() - SystemClock.elapsedRealtime();
@@ -183,6 +180,8 @@ public class ControllerActivity extends AppCompatActivity {
                     mySQLiteHelper.putInformation(sqLiteDatabase, formattedDate, putFlightDuration);
                     mySQLiteHelper.close();
 
+                    textStart.setVisibility(View.INVISIBLE);
+                    textStop.setVisibility(View.VISIBLE);
 
                 }
 
