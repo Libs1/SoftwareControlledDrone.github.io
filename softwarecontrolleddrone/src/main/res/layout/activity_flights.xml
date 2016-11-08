@@ -8,12 +8,15 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:orientation="vertical"
+    android:background="@color/dark"
     tools:context="com.example.softwarecontrolleddrone.FlightsActivity">
 
     <ListView
         android:id="@+id/FlightInformationList"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/deleteInfoButton"
+        android:layout_marginBottom="15dp">
     </ListView>
 
     <Button
@@ -21,8 +24,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/deleteInformation"
+        android:textSize="16sp"
+        android:padding="15dp"
+        android:textColor="@color/white"
+        android:background="@drawable/buttonshape"
         android:layout_alignParentBottom="true"
-        android:layout_toEndOf="@+id/getFlightDuration" />
+        android:layout_centerHorizontal="true" />
 
 
 </RelativeLayout>

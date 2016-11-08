@@ -23,6 +23,7 @@
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:layout_marginTop="40dp"
+        android:interpolator="@android:anim/linear_interpolator"
         android:layout_centerHorizontal="true"
         android:src="@drawable/drone"/>
 
