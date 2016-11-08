@@ -49,10 +49,4 @@
     <string name="getDateText">Date:</string>
     <string name="displayDate">Date</string>
     <string name="infoDeletedToast">Information Deleted</string>
-<<<<<<< HEAD
-=======
-
-    <string name="textStop">Stop</string>
-    <string name="textStart">Start</string>
->>>>>>> refs/remotes/origin/denis-scd
 </resources>
