@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--To make spaces before editBox use -> &#x2009;-->
+    <string name="app_name">SCD App</string>
+
+    <string name="loginText">Login</string>
+    <string name="logoutText">Logout</string>
+    <string name="exitText">Exit</string>
+    <string name="controllerButtonText">Controller</string>
+    <string name="databseButtonText">Flights</string>
+    <string name="help">Help</string>
+    <string name="scd">SCD</string>
+    <string name="drone"></string>
+    <string name="dialogMsg1">Are You Sure You Want To Logout?</string>
+    <string name="dialogMsg2">Are You Sure You Want To Exit?</string>
+    <string name="dialogMsg">Exit</string>
+
+    <string name="hint1">Username</string>
+    <string name="hint2">Password</string>
+
+    <string name="errorName">Invalid Username</string>
+    <string name="errorPassword">Invalid Password</string>
+
+    <string name="usernameField1">root</string>
+    <string name="passwordField1"></string>
+
+    <string name="exitToast">Welcome To The Menu</string>
+    <string name="logoutToast">Logged out</string>
+
+    <string name="checkBoxText">Remember Me</string>
+
+    <string name="switch1">Power Switch</string>
+    <string name="pop">This is pop</string>
+    <string name="saveText">Save</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="radio_1">Red</string>
+    <string name="radio_2">Green</string>
+    <string name="radio_3">Blue</string>
+    <string name="no_choice">LED color was not chosen</string>
+
+    <string name="led">LED</string>
+    <string name="led_on">ON</string>
+    <string name="led_off">OFF</string>
+
+    <string name="deleteInformation">Delete Information</string>
+    <string name="zeroseconds">0 seconds</string>
+    <string name="seconds">seconds</string>
+    <string name="getFlightDurationText">Flight Duration:</string>
+    <string name="displayFlightDurationText">Flight Duration</string>
+    <string name="getDateText">Date:</string>
+    <string name="displayDate">Date</string>
+    <string name="infoDeletedToast">Information Deleted</string>
+
+    <string name="textStop">Stop</string>
+    <string name="textStart">Start</string>
+</resources>
