@@ -86,34 +86,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             startActivity(intent);
         }
     }
-/*
-    public void changeToMenuActivity(View view)
-    {
-        //editText1 = (EditText) findViewById(R.id.usernameField);
-        //editText2 = (EditText) findViewById(R.id.passwordField);
-
-        boolean usernameTest = checkUsername(editText1.getText().toString());
-        if(usernameTest == false){
-            Toast.makeText(LoginActivity.this, R.string.errorName, Toast.LENGTH_SHORT)
-                    .show();
-        }
-
-        boolean passwordTest = checkPassword(editText2.getText().toString());
-        if(passwordTest == false)
-        {
-            Toast.makeText(LoginActivity.this, R.string.errorPassword, Toast.LENGTH_SHORT)
-                    .show();
-        }
-
-        Intent intent = new Intent(LoginActivity.this, MenuActivity.class);
-
-        if((usernameTest == true && passwordTest == true))
-        {
-            startActivity(intent);
-        }
-    }
-
-*/
 
     public boolean checkUsername(String name) {
         if (!name.equals(getString(R.string.usernameField1)))
