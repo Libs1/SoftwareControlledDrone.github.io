@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/getFlightDuration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/getFlightDurationText"
+        android:textColor="@color/bright"/>
+
+    <TextView
+        android:id="@+id/displayFlightDuration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/displayFlightDurationText"
+        android:textColor="@color/bright"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/getFlightDuration" />
+
+    <TextView
+        android:id="@+id/getDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/getDateText"
+        android:textColor="@color/bright"
+        android:layout_below="@+id/getFlightDuration"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:id="@+id/displayDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/displayDate"
+        android:textColor="@color/bright"
+        android:layout_below="@+id/getFlightDuration"
+        android:layout_toEndOf="@+id/getDate" />
+
+</RelativeLayout>
