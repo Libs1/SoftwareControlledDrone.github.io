@@ -37,10 +37,18 @@ public class PopActivity extends Activity {
     private RadioButton rb1;
     private RadioButton rb2;
     private RadioButton rb3;
+    private static final String KEY_TEXT_VALUE = "button";
+    String background;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        if (savedInstanceState != null) {
+            CharSequence savedText = savedInstanceState.getCharSequence(KEY_TEXT_VALUE);
+            //ControllerActivity.b.
+        }
+
         //window layout management
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
@@ -93,7 +101,11 @@ public class PopActivity extends Activity {
                 }
 
 
+<<<<<<< HEAD
                 editor.commit();
+=======
+
+>>>>>>> refs/remotes/origin/denis-scd
                 finish();
             }
         });

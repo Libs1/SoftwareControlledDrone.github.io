@@ -38,11 +38,19 @@ public class ControllerActivity extends AppCompatActivity {
     MySQLiteHelper mySQLiteHelper;
     SQLiteDatabase sqLiteDatabase;
     Context context = this;
+<<<<<<< HEAD
+=======
+    TextView textStart,textStop;
+>>>>>>> refs/remotes/origin/denis-scd
 
     public static final String PREFS = "sharedPreferences";
     public static final String BRIGHTNESS = "brightness";
 
+<<<<<<< HEAD
     Button b;
+=======
+    public static Button b;
+>>>>>>> refs/remotes/origin/denis-scd
     boolean switch1;
 
     Chronometer chronometer;
@@ -61,6 +69,12 @@ public class ControllerActivity extends AppCompatActivity {
         SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy");
         formattedDate = df.format(c.getTime());
 
+<<<<<<< HEAD
+=======
+        textStart = (TextView)findViewById(R.id.textStart);
+        textStop = (TextView) findViewById(R.id.textStop);
+        textStart.setVisibility(View.INVISIBLE);
+>>>>>>> refs/remotes/origin/denis-scd
 
 
         b = (Button) findViewById(R.id.button);
@@ -154,6 +168,7 @@ public class ControllerActivity extends AppCompatActivity {
                 bluedrone1.startAnimation(jumpAnimation);
             }
         });
+<<<<<<< HEAD
 
         chronometer = (Chronometer)findViewById(R.id.chronometer);
         timeText = (TextView)findViewById(R.id.timeDisplayed);
@@ -182,10 +197,49 @@ public class ControllerActivity extends AppCompatActivity {
                     sqLiteDatabase = mySQLiteHelper.getWritableDatabase();
                     mySQLiteHelper.putInformation(sqLiteDatabase, formattedDate, putFlightDuration);
                     mySQLiteHelper.close();
+=======
+>>>>>>> refs/remotes/origin/denis-scd
 
+        chronometer = (Chronometer)findViewById(R.id.chronometer);
+        timeText = (TextView)findViewById(R.id.timeDisplayed);
+
+        timeSwitch = (Switch)findViewById(R.id.timeSwitch);
+        timeSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){
+                    chronometer.setBase(SystemClock.elapsedRealtime());
+                    timeText.setVisibility(View.INVISIBLE);
+                    timeText.setText(R.string.zeroseconds);
+                    chronometer.start();
+                    textStart.setVisibility(View.VISIBLE);
+                    textStop.setVisibility(View.INVISIBLE);
+                }
+                else{
+                    timeWhenStopped = chronometer.getBase() - SystemClock.elapsedRealtime();
+                    int seconds = (int) timeWhenStopped / 1000;
+                    timeText.setVisibility(View.VISIBLE);
+                    timeText.setText(Math.abs(seconds) + " Second(s)");
+
+                    chronometer.stop();
+
+                    String putFlightDuration = timeText.getText().toString();
+
+                    mySQLiteHelper = new MySQLiteHelper(context);
+                    sqLiteDatabase = mySQLiteHelper.getWritableDatabase();
+                    mySQLiteHelper.putInformation(sqLiteDatabase, formattedDate, putFlightDuration);
+                    mySQLiteHelper.close();
+
+                    textStart.setVisibility(View.INVISIBLE);
+                    textStop.setVisibility(View.VISIBLE);
 
                 }
 
+<<<<<<< HEAD
+                }
+
+=======
+>>>>>>> refs/remotes/origin/denis-scd
             }
         });
     }
