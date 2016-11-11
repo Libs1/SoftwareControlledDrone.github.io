@@ -18,11 +18,11 @@
     <string name="hint1">Username</string>
     <string name="hint2">Password</string>
 
-    <string name="errorName">Invalid Username</string>
-    <string name="errorPassword">Invalid Password</string>
+    <string name="errorName">Invalid Username(Must be more than 3 characters long)</string>
+    <string name="errorPassword">Invalid Password(Must be more than 4 characters long)</string>
 
-    <string name="usernameField1">root</string>
-    <string name="passwordField1"></string>
+  <!--<string name="usernameField1">root</string>
+    <string name="passwordField1"></string>-->
 
     <string name="exitToast">Welcome To The Menu</string>
     <string name="logoutToast">Logged out</string>
@@ -50,6 +50,16 @@
     <string name="getDateText">Date:</string>
     <string name="displayDate">Date</string>
     <string name="infoDeletedToast">Information Deleted</string>
+    <string name="registerUserTVText">Username:</string>
+    <string name="registerPassTVText">Password:</string>
+    <string name="registerText1">Register</string>
+    <string name="registerText2">Register Account</string>
+    <string name="dialogMsg3">Registration Status</string>
+    <string name="dialogMsg4">Registration Successful</string>
+    <string name="dialogMsg5">Login Status</string>
+    <string name="dialogMsg6">Login Successful</string>
+
+    <string name="RegistrationSuccessful">Registration Successful</string>
 
     <string name="textStop">Stop</string>
     <string name="textStart">Start</string>

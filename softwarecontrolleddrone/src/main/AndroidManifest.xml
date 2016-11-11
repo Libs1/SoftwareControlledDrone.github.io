@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.softwarecontrolleddrone">
 
+    
+    <uses-permission android:name="android.permission.INTERNET"/>
+    
     <application
         android:allowBackup="true"
         android:icon="@mipmap/droneicon"
@@ -20,7 +23,8 @@
         <activity
             android:name=".PopActivity"
             android:theme="@style/AppTheme.CustomTheme" />
-        <activity android:name=".FlightsActivity"></activity>
+        <activity android:name=".FlightsActivity" />
+        <activity android:name=".RegisterActivity"></activity>
     </application>
 
 </manifest>
