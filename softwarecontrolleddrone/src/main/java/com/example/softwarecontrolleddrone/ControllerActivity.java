@@ -75,11 +75,9 @@ public class ControllerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_controller);
 
-<<<<<<< HEAD
 
-=======
         drone_pic = (ImageView) findViewById(R.id.dronePicture2);
->>>>>>> refs/remotes/origin/denis-scd
+
 
         java.util.Calendar c = java.util.Calendar.getInstance();
         SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy");
