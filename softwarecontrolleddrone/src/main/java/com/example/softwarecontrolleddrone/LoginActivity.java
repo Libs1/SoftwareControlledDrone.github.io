@@ -6,12 +6,18 @@ Team name: Skynet
 package com.example.softwarecontrolleddrone;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
+import android.os.AsyncTask;
+import android.os.Debug;
 import android.preference.PreferenceManager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.Display;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -21,11 +27,30 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLEncoder;
+
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
 
-    private EditText editText1;
-    private EditText editText2;
-    private Button loginButton;
+    AlertDialog alertDialog;
+    Context context = this;
+
+
+    EditText editText1;
+    EditText editText2;
+    Button loginButton;
+    Button registerButton;
+
+    String username, password;
 
     private SharedPreferences loginPreferences;
     SharedPreferences.Editor editor;
@@ -40,10 +65,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         editText1 = (EditText) findViewById(R.id.usernameField);
         editText2 = (EditText) findViewById(R.id.passwordField);
-        loginButton = (Button) findViewById(R.id.loginButton);
         checkBox = (CheckBox)findViewById(R.id.rememberMeCheckBox);
 
+        loginButton = (Button) findViewById(R.id.loginButton);
         loginButton.setOnClickListener(LoginActivity.this);
+
+        registerButton = (Button)findViewById(R.id.registerButton);
+
 
         loginPreferences = getSharedPreferences("loginPrefs", MODE_PRIVATE);
         editor = loginPreferences.edit();
@@ -57,6 +85,14 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
     public void onClick(View view)
     {
+        username = editText1.getText().toString();
+        password = editText2.getText().toString();
+
+        BackgroundTask backgroundTask = new BackgroundTask();
+        backgroundTask.execute(username, password);
+/*
+        Intent intent = new Intent(LoginActivity.this, MenuActivity.class);
+
         if (checkBox.isChecked()) {
             editor.putBoolean("saveLogin", true);
             editor.putString("username", editText1.getText().toString());
@@ -66,39 +102,132 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             editor.commit();
         }
 
-        boolean usernameTest = checkUsername(editText1.getText().toString());
-        if(usernameTest == false){
-            Toast.makeText(LoginActivity.this, R.string.errorName, Toast.LENGTH_SHORT)
-                    .show();
+
+
+        startActivity(intent);
+*/
+    }
+
+    class BackgroundTask extends AsyncTask<String, Void, String>
+    {
+        String login_url;
+        boolean loginVerified = false;
+
+        @Override
+        protected void onPreExecute()
+        {
+            //login_url = "http://softwarecontrolleddrone.esy.es/Login.php";
+
+
+            //alertDialog =  new AlertDialog.Builder(context).create();
+            //alertDialog.setIcon(android.R.drawable.ic_dialog_alert);
+            //alertDialog.setTitle(R.string.dialogMsg5);
+
         }
 
-        boolean passwordTest = checkPassword(editText2.getText().toString());
-        if(passwordTest == false)
+        @Override
+        protected String doInBackground(String... args)
         {
-            Toast.makeText(LoginActivity.this, R.string.errorPassword, Toast.LENGTH_SHORT)
-                    .show();
+            String username, password;
+            login_url = "http://softwarecontrolleddrone.esy.es/Login.php";
+
+            username = args[0];
+            password = args[1];
+
+            try
+            {
+                URL url = new URL(login_url);
+
+                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+                httpURLConnection.setRequestMethod("POST");
+                httpURLConnection.setDoOutput(true);
+                httpURLConnection.setDoInput(true);
+
+                OutputStream outputStream = httpURLConnection.getOutputStream();
+                BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
+
+                String data_info = URLEncoder.encode("username", "UTF-8") + "=" + URLEncoder.encode(username, "UTF-8") + "&" +
+                        URLEncoder.encode("password", "UTF-8") + "=" + URLEncoder.encode(password, "UTF-8");
+
+                bufferedWriter.write(data_info);
+                bufferedWriter.flush();
+                bufferedWriter.close();
+
+                outputStream.close();
+
+                InputStream inputStream = httpURLConnection.getInputStream();
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"));
+
+                String response = "";
+                String line = "";
+
+                while((line = bufferedReader.readLine()) != null)
+                {
+                    response += line;
+                }
+
+                bufferedReader.close();
+                inputStream.close();
+                httpURLConnection.disconnect();
+                loginVerified = true;
+                return response;
+
+            }
+            catch(MalformedURLException e)
+            {
+                e.printStackTrace();
+            }
+            catch(IOException e)
+            {
+                e.printStackTrace();
+            }
+
+            return null;
         }
 
-        Intent intent = new Intent(LoginActivity.this, MenuActivity.class);
-
-        if((usernameTest == true && passwordTest == true))
+        @Override
+        protected void onPostExecute(String result)
         {
-            startActivity(intent);
+            if(result!=null && result.equalsIgnoreCase("Login Successful"))
+            {
+                Intent intent = new Intent(context, MenuActivity.class);
+
+                if (checkBox.isChecked()) {
+                    editor.putBoolean("saveLogin", true);
+                    editor.putString("username", editText1.getText().toString());
+                    editor.commit();
+                } else {
+                    editor.clear();
+                    editor.commit();
+                }
+                startActivity(intent);
+                //finish();
+            }
+            else{
+                new AlertDialog.Builder(context)
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .setTitle(R.string.dialogMsg5)
+                        .setMessage(result)
+                        .setPositiveButton("Continue", new DialogInterface.OnClickListener()
+                        {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                               dialog.dismiss();
+                            }
+                        })
+                        .show();
+                //alertDialog.setMessage(result);
+                //alertDialog.show();
+            }
         }
     }
 
-    public boolean checkUsername(String name) {
-        if (!name.equals(getString(R.string.usernameField1)))
-            return false;
-        else
-            return true;
-    }
 
-    public boolean checkPassword(String password) {
-        if (password.equals(getString(R.string.passwordField1)))
-            return true;
-        else
-            return false;
+    public void RegisterAccount(View view)
+    {
+        Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+        startActivity(intent);
+
     }
 
     @Override

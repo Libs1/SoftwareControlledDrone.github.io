@@ -62,4 +62,17 @@
         android:background="@drawable/buttonshape"
         android:layout_below="@id/passwordField"/>
 
+    <Button
+        android:id="@+id/registerButton"
+        android:text="@string/registerText1"
+        android:textColor="@drawable/select_text_button"
+        android:textSize="30sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/loginButton"
+        android:layout_marginTop="24dp"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/buttonshape"
+        android:onClick="RegisterAccount"/>
+
 </RelativeLayout>
