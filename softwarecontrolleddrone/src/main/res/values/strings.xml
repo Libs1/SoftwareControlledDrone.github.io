@@ -69,4 +69,8 @@
 
     <string name="textStop">Stop</string>
     <string name="textStart">Start</string>
+
+    <!--Labels-->
+    <string name="Menu">Menu</string>
+    <string name="Controller">Controller</string>
 </resources>

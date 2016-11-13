@@ -20,13 +20,27 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MenuActivity" />
-        <activity android:name=".ControllerActivity" />
+        <activity
+            android:name=".MenuActivity"
+            android:label="@string/Menu"/>
+        <activity
+            android:name=".ControllerActivity"
+            android:screenOrientation="landscape"
+            android:label="@string/Controller"
+            />
         <activity
             android:name=".PopActivity"
             android:theme="@style/AppTheme.CustomTheme" />
+<<<<<<< HEAD
         <activity android:name=".FlightsActivity" />
         <activity android:name=".RegisterActivity"></activity>
+=======
+        <activity android:name=".FlightsActivity"></activity><!-- ATTENTION: This was auto-generated to add Google Play services to your project for
+     App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information. -->
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+>>>>>>> refs/remotes/origin/denis-scd
     </application>
 
 </manifest>

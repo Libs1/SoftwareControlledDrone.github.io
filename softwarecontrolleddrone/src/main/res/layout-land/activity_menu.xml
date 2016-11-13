@@ -23,7 +23,7 @@
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:src="@drawable/drone"
-        android:layout_alignParentTop="true"
+        android:layout_centerVertical="true"
         android:layout_alignParentEnd="true" />
 
     <Button
