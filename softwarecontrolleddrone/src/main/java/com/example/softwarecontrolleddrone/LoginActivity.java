@@ -51,7 +51,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     Button registerButton;
 
     String username, password;
-    String res;
 
     private SharedPreferences loginPreferences;
     SharedPreferences.Editor editor;
@@ -120,9 +119,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             //login_url = "http://softwarecontrolleddrone.esy.es/Login.php";
 
 
-            alertDialog =  new AlertDialog.Builder(context).create();
-            alertDialog.setIcon(android.R.drawable.ic_dialog_alert);
-            alertDialog.setTitle(R.string.dialogMsg5);
+            //alertDialog =  new AlertDialog.Builder(context).create();
+            //alertDialog.setIcon(android.R.drawable.ic_dialog_alert);
+            //alertDialog.setTitle(R.string.dialogMsg5);
 
         }
 
@@ -187,8 +186,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }
 
         @Override
-        protected void onPostExecute(String result) {
-
+        protected void onPostExecute(String result)
+        {
             if(result!=null && result.equalsIgnoreCase("Login Successful"))
             {
                 Intent intent = new Intent(context, MenuActivity.class);
@@ -205,14 +204,22 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 //finish();
             }
             else{
-                alertDialog.setMessage(result);
-                alertDialog.show();
+                new AlertDialog.Builder(context)
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .setTitle(R.string.dialogMsg5)
+                        .setMessage(result)
+                        .setPositiveButton("Continue", new DialogInterface.OnClickListener()
+                        {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                               dialog.dismiss();
+                            }
+                        })
+                        .show();
+                //alertDialog.setMessage(result);
+                //alertDialog.show();
             }
-
-
         }
-
-
     }
 
 
