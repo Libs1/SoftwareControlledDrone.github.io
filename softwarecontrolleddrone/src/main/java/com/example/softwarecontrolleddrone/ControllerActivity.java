@@ -49,12 +49,14 @@ public class ControllerActivity extends AppCompatActivity {
     Context context = this;
     TextView textStart, textStop;
     ImageView drone_pic;
+    Boolean running;
 
     public static final String PREFS = "sharedPreferences";
     public static final String BRIGHTNESS = "brightness";
 
     public static Button b;
     boolean switch1;
+
 
     Chronometer chronometer;
     Switch timeSwitch;
@@ -170,6 +172,7 @@ public class ControllerActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
+                    running = true;
                     chronometer.setVisibility(View.VISIBLE);
                     chronometer.setBase(SystemClock.elapsedRealtime());
                     timeText.setVisibility(View.INVISIBLE);
@@ -189,16 +192,20 @@ public class ControllerActivity extends AppCompatActivity {
                         int i = 0;
 
                         public void run() {
-                            drone_pic.setImageResource(imageArray[i]);
-                            i++;
-                            if (i > imageArray.length - 1) {
-                                i = 0;
+                            if (running) {
+                                drone_pic.setImageResource(imageArray[i]);
+                                i++;
+                                if (i > imageArray.length - 1) {
+                                    i = 0;
+                                }
+                                handler.postDelayed(this, 50);
                             }
-                            handler.postDelayed(this, 50);
                         }
                     };
                     handler.postDelayed(runnable, 50);
                 } else {
+                    running = false;
+                    drone_pic.setImageResource(R.drawable.drone);
                     timeWhenStopped = chronometer.getBase() - SystemClock.elapsedRealtime();
                     int seconds = (int) timeWhenStopped / 1000;
                     timeText.setVisibility(View.VISIBLE);
