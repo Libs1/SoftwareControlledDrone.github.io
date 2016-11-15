@@ -9,6 +9,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
 import android.database.sqlite.SQLiteDatabase;
 import android.icu.util.Calendar;
 import android.location.Address;
@@ -75,7 +76,13 @@ public class ControllerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_controller);
 
+        if(getResources().getBoolean(R.bool.portrait_only)){
+            setContentView(R.layout.activity_controller);
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        }
+
         drone_pic = (ImageView) findViewById(R.id.dronePicture2);
+
 
         java.util.Calendar c = java.util.Calendar.getInstance();
         SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy");

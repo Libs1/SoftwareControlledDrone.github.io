@@ -27,11 +27,13 @@
         <!-- active thumb & track color (30% transparency) -->
         <item name="colorControlActivated">@color/green</item>
 
+
         <!-- inactive thumb color -->
-        <item name="colorSwitchThumbNormal">@color/blue
+        <item name="colorControlHighlight">@color/colorAccent
         </item>
 
-        <!-- inactive track color (30% transparency) -->
+
+        <!-- inactive track color (30% transparency)-->
         <item name="android:colorForeground">@color/red
         </item>
     </style>

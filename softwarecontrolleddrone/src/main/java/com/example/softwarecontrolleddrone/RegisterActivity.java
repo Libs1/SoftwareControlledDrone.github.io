@@ -9,6 +9,7 @@ import android.renderscript.ScriptGroup;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,9 +17,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
@@ -184,8 +187,21 @@ public class RegisterActivity extends AppCompatActivity {
                 outputStream.close();
 
                 InputStream inputStream = httpURLConnection.getInputStream();
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"));
+
+                String response = "";
+                String line = "";
+
+                while((line = bufferedReader.readLine()) != null)
+                {
+                    response += line;
+                }
+
+
+                bufferedReader.close();
                 inputStream.close();
                 httpURLConnection.disconnect();
+                return response;
 
             }
             catch(MalformedURLException e){
@@ -201,19 +217,43 @@ public class RegisterActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result)
         {
-            new AlertDialog.Builder(context)
-                    .setIcon(android.R.drawable.ic_dialog_alert)
-                    .setTitle(R.string.dialogMsg3)
-                    .setMessage(R.string.dialogMsg4)
-                    .setPositiveButton("Continue", new DialogInterface.OnClickListener()
-                    {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
-                            startActivity(intent);
-                        }
-                    })
-                    .show();
+           if(result!=null && result.equalsIgnoreCase("Registration Success"))
+            {
+                Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+
+                Toast.makeText(RegisterActivity.this, R.string.RegistrationSuccessful, Toast.LENGTH_SHORT)
+                        .show();
+                startActivity(intent);
+                /*
+                new AlertDialog.Builder(context)
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .setTitle(R.string.dialogMsg3)
+                        .setMessage(result)
+                        .setPositiveButton("Continue", new DialogInterface.OnClickListener()
+                        {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                                startActivity(intent);
+                            }
+                        })
+                        .show();
+                        */
+            }
+            else{
+               new AlertDialog.Builder(context)
+                       .setIcon(android.R.drawable.ic_dialog_alert)
+                       .setTitle(R.string.dialogMsg3)
+                       .setMessage(result)
+                       .setPositiveButton("Continue", new DialogInterface.OnClickListener()
+                       {
+                           @Override
+                           public void onClick(DialogInterface dialog, int which) {
+                               dialog.dismiss();
+                           }
+                       })
+                       .show();
+           }
 
         }
     }
@@ -253,7 +293,7 @@ public class RegisterActivity extends AppCompatActivity {
     public void onBackPressed() {
         new AlertDialog.Builder(this)
                 .setIcon(android.R.drawable.ic_dialog_alert)
-                .setTitle(R.string.dialogMsg2)
+                .setTitle(R.string.dialogMsg)
                 .setMessage(R.string.dialogMsg2)
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener()
                 {

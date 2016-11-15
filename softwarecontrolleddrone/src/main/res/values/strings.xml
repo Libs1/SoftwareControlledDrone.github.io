@@ -64,6 +64,7 @@
     <string name="dialogMsg4">Registration Successful</string>
     <string name="dialogMsg5">Login Status</string>
     <string name="dialogMsg6">Login Successful</string>
+    <string name="RegisterToast">Registration Successful</string>
 
     <string name="RegistrationSuccessful">Registration Successful</string>
 
