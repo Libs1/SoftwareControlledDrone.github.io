@@ -12,7 +12,10 @@
     tools:context="com.example.softwarecontrolleddrone.FlightsActivity">
 
     <ListView
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
         android:id="@+id/FlightInformationList"
+        android:listSelector="@color/colorAccent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/deleteInfoButton"

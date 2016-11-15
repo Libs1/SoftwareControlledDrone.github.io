@@ -15,29 +15,36 @@
 
     <EditText
         android:id="@+id/usernameField"
-        android:layout_width="250dp"
-        android:layout_height="40dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="80dp"
+        android:paddingRight="80dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
         android:textColor="@color/bright"
         android:gravity="center"
-        android:layout_marginTop="39dp"
         android:hint="@string/hint1"
         android:inputType="text"
         android:imeOptions="actionNext"
         android:background="@drawable/edit_text_box"
         android:layout_alignParentTop="true"
-        android:layout_alignStart="@+id/passwordField" />
+        android:layout_alignParentStart="true" />
 
     <EditText
         android:id="@+id/passwordField"
-        android:layout_width="250dp"
-        android:layout_height="40dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/usernameField"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:layout_marginTop="20dp"
         android:textColor="@color/bright"
         android:gravity="center"
         android:hint="@string/hint2"
         android:inputType="textPassword"
         android:background="@drawable/edit_text_box"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_below="@+id/usernameField"
+        android:layout_alignParentStart="true" />
 
     <CheckBox
         android:id="@+id/rememberMeCheckBox"
@@ -52,13 +59,31 @@
     <Button
         android:id="@+id/loginButton"
         android:text="@string/loginText"
-        android:layout_width="400dip"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
         android:textColor="@drawable/select_text_button"
         android:textSize="30sp"
+        android:layout_toRightOf="@+id/usernameField"
+        android:layout_alignBottom="@+id/usernameField"
+        android:layout_marginStart="60dp"
         android:background="@drawable/buttonshape"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        />
+
+    <Button
+        android:id="@+id/registerButton"
+        android:text="@string/registerText1"
+        android:textColor="@drawable/select_text_button"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:layout_toRightOf="@+id/passwordField"
+        android:layout_alignBottom="@+id/passwordField"
+        android:layout_alignTop="@+id/passwordField"
+        android:layout_marginStart="60dp"
+        android:layout_below="@+id/loginButton"
+
+
+        android:background="@drawable/buttonshape"
+        android:onClick="RegisterAccount"/>
 
 </RelativeLayout>

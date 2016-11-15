@@ -119,7 +119,7 @@ public class MenuActivity extends AppCompatActivity {
     public void onBackPressed() {
         new AlertDialog.Builder(this)
                 .setIcon(android.R.drawable.ic_dialog_alert)
-                .setTitle(R.string.dialogMsg2)
+                .setTitle(R.string.dialogMsg)
                 .setMessage(R.string.dialogMsg1)
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener()
                 {

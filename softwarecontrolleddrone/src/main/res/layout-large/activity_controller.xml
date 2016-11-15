@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--Emulator tablets (7" and 10")  do not use created layouts (xlarge, large, sw600dp, sw700dp) for
+    unknown reason. All emulators take phone landscape layouts (layout-land).-->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,7 +10,8 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:orientation="vertical"
+    android:orientation="horizontal"
+
     android:background="@color/dark"
     tools:context="com.example.softwarecontrolleddrone.ControllerActivity">
 
@@ -26,7 +29,7 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:src="@drawable/drone"
-        android:layout_below="@+id/chronometer"
+        android:layout_centerVertical="true"
         android:layout_toEndOf="@+id/rotateLeft" />
 
 
@@ -79,8 +82,8 @@
         android:textColor="@color/white"
         android:id="@+id/button"
         android:background="@drawable/buttonshape_led"
-        android:layout_alignParentTop="true"
-        android:layout_alignEnd="@+id/rightArrow" />
+        android:layout_alignTop="@+id/timeSwitch"
+        android:layout_alignParentStart="true" />
 
     <Chronometer
         android:id="@+id/chronometer"
@@ -133,7 +136,6 @@
         android:text="@string/textStart"
         android:layout_below="@+id/timeSwitch"
         android:layout_alignEnd="@+id/timeSwitch" />
-
 
 
 

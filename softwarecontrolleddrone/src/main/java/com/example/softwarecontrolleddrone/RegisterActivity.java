@@ -224,6 +224,24 @@ public class RegisterActivity extends AppCompatActivity {
                 Toast.makeText(RegisterActivity.this, R.string.RegistrationSuccessful, Toast.LENGTH_SHORT)
                         .show();
                 startActivity(intent);
+<<<<<<< HEAD
+=======
+                /*
+                new AlertDialog.Builder(context)
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .setTitle(R.string.dialogMsg3)
+                        .setMessage(result)
+                        .setPositiveButton("Continue", new DialogInterface.OnClickListener()
+                        {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                                startActivity(intent);
+                            }
+                        })
+                        .show();
+                        */
+>>>>>>> refs/remotes/origin/denis-scd
             }
             else{
                new AlertDialog.Builder(context)
@@ -276,7 +294,7 @@ public class RegisterActivity extends AppCompatActivity {
     public void onBackPressed() {
         new AlertDialog.Builder(this)
                 .setIcon(android.R.drawable.ic_dialog_alert)
-                .setTitle(R.string.dialogMsg2)
+                .setTitle(R.string.dialogMsg)
                 .setMessage(R.string.dialogMsg2)
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener()
                 {
