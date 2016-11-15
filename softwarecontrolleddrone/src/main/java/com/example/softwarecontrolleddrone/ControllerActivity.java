@@ -5,165 +5,236 @@ Team name: Skynet
 
 package com.example.softwarecontrolleddrone;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
+import android.database.sqlite.SQLiteDatabase;
+import android.icu.util.Calendar;
+import android.location.Address;
 import android.net.Uri;
+import android.os.Handler;
+import android.os.SystemClock;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.Chronometer;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
+import android.widget.RadioGroup;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.appindexing.Action;
+import com.google.android.gms.appindexing.AppIndex;
+import com.google.android.gms.common.api.GoogleApiClient;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 public class ControllerActivity extends AppCompatActivity {
 
-    Button b;
+    /*TODO add location and runtime permission to use the location of the device[API Higher than 23]*/
+
+    MySQLiteHelper mySQLiteHelper;
+    SQLiteDatabase sqLiteDatabase;
+    Context context = this;
+    TextView textStart, textStop;
+    ImageView drone_pic;
+    Boolean running;
+
+    public static final String PREFS = "sharedPreferences";
+    public static final String BRIGHTNESS = "brightness";
+
+    public static Button b;
+    boolean switch1;
+
+
+    Chronometer chronometer;
+    Switch timeSwitch;
+    TextView timeText, dateText;
+    String formattedDate;
+    private long timeWhenStopped = 0;
+    /**
+     * ATTENTION: This was auto-generated to implement the App Indexing API.
+     * See https://g.co/AppIndexing/AndroidStudio for more information.
+     */
+    private GoogleApiClient client;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_controller);
-        final SharedPreferences sharedPreferences = PreferenceManager
-                .getDefaultSharedPreferences(ControllerActivity.this);
-        SharedPreferences.Editor editor =sharedPreferences.edit();
+
+        if(getResources().getBoolean(R.bool.portrait_only)){
+            setContentView(R.layout.activity_controller);
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        }
+
+        drone_pic = (ImageView) findViewById(R.id.dronePicture2);
+
+
+        java.util.Calendar c = java.util.Calendar.getInstance();
+        SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy");
+        formattedDate = df.format(c.getTime());
+
+        textStart = (TextView) findViewById(R.id.textStart);
+        textStop = (TextView) findViewById(R.id.textStop);
+        textStart.setVisibility(View.INVISIBLE);
+
 
         b = (Button) findViewById(R.id.button);
         b.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), PopActivity.class));
-                onRestart();
-                Boolean x = sharedPreferences.getBoolean("Switch", false);
-                String flag = "Unchecked";
-                if(x == true)
-                    flag = "checked";
-
-                b.setText(flag);
-                }
-        });
-
-
-        TextView exit = (TextView)findViewById(R.id.exitButton);
-        exit.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v)
-            {
-                AlertDialog.Builder builder = new AlertDialog.Builder(ControllerActivity.this);
-                builder.setTitle("Controller");
-                builder.setMessage(R.string.dialogMsg2);
-                builder.setCancelable(false);
-                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener(){
-
-                    public void onClick(DialogInterface dialog, int id)
-                    {
-                        //If the user clicks yes, bring them back to the LoginActivity
-                        Intent intent = new Intent(ControllerActivity.this, MenuActivity.class);
-                        Toast.makeText(ControllerActivity.this, R.string.exitToast, Toast.LENGTH_SHORT)
-                                .show();
-                        startActivity(intent);
-                    }
-                });
-
-                builder.setNegativeButton("No", new DialogInterface.OnClickListener(){
-
-                    public void onClick(DialogInterface dialog, int id)
-                    {
-                        //If the user clicks no, just close the dialog box and do nothing
-                        dialog.cancel();
-                    }
-
-                });
-
-                //Creates the alert dialog
-                AlertDialog alertDialog = builder.create();
-                //Show the alert dialog
-                alertDialog.show();
+                startActivity(new Intent(ControllerActivity.this, PopActivity.class));
             }
         });
 
 
-/*
-Button does not work: starts here
- */
-        ImageView upButton = (ImageView)findViewById(R.id.upArrow);
-        upButton.setOnClickListener(new View.OnClickListener(){
+        ImageView upButton = (ImageView) findViewById(R.id.upArrow);
+        upButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
-                ImageView bluedrone1 = (ImageView)findViewById(R.id.dronePicture2);
+            public void onClick(View v) {
+                ImageView bluedrone1 = (ImageView) findViewById(R.id.dronePicture2);
 
                 Animation jumpAnimation = AnimationUtils.loadAnimation(ControllerActivity.this, R.anim.drone_anim_up);
                 bluedrone1.startAnimation(jumpAnimation);
             }
         });
 
-        ImageView downButton = (ImageView)findViewById(R.id.downArrow);
-        downButton.setOnClickListener(new View.OnClickListener(){
+        ImageView downButton = (ImageView) findViewById(R.id.downArrow);
+        downButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
+            public void onClick(View v) {
 
-                ImageView bluedrone1 = (ImageView)findViewById(R.id.dronePicture2);
+                ImageView bluedrone1 = (ImageView) findViewById(R.id.dronePicture2);
 
                 Animation jumpAnimation = AnimationUtils.loadAnimation(ControllerActivity.this, R.anim.drone_anim_down);
                 bluedrone1.startAnimation(jumpAnimation);
             }
         });
 
-        ImageView leftButton = (ImageView)findViewById(R.id.leftArrow);
-        leftButton.setOnClickListener(new View.OnClickListener(){
+        ImageView leftButton = (ImageView) findViewById(R.id.leftArrow);
+        leftButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
-                ImageView bluedrone1 = (ImageView)findViewById(R.id.dronePicture2);
+            public void onClick(View v) {
+                ImageView bluedrone1 = (ImageView) findViewById(R.id.dronePicture2);
 
                 Animation jumpAnimation = AnimationUtils.loadAnimation(ControllerActivity.this, R.anim.drone_anim_left);
                 bluedrone1.startAnimation(jumpAnimation);
             }
         });
 
-        ImageView rightButton = (ImageView)findViewById(R.id.rightArrow);
-        rightButton.setOnClickListener(new View.OnClickListener(){
+        ImageView rightButton = (ImageView) findViewById(R.id.rightArrow);
+        rightButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
-                ImageView bluedrone1 = (ImageView)findViewById(R.id.dronePicture2);
+            public void onClick(View v) {
+                ImageView bluedrone1 = (ImageView) findViewById(R.id.dronePicture2);
 
                 Animation jumpAnimation = AnimationUtils.loadAnimation(ControllerActivity.this, R.anim.drone_anim_right);
                 bluedrone1.startAnimation(jumpAnimation);
             }
         });
 
-        ImageView leftRotate = (ImageView)findViewById(R.id.rotateLeft);
-        leftRotate.setOnClickListener(new View.OnClickListener(){
+        ImageView leftRotate = (ImageView) findViewById(R.id.rotateLeft);
+        leftRotate.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
-                ImageView bluedrone1 = (ImageView)findViewById(R.id.dronePicture2);
+            public void onClick(View v) {
+                ImageView bluedrone1 = (ImageView) findViewById(R.id.dronePicture2);
 
                 Animation jumpAnimation = AnimationUtils.loadAnimation(ControllerActivity.this, R.anim.drone_rotate_left);
                 bluedrone1.startAnimation(jumpAnimation);
             }
         });
 
-        ImageView rightRotate = (ImageView)findViewById(R.id.rotateRight);
-        rightRotate.setOnClickListener(new View.OnClickListener(){
+        ImageView rightRotate = (ImageView) findViewById(R.id.rotateRight);
+        rightRotate.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
-                ImageView bluedrone1 = (ImageView)findViewById(R.id.dronePicture2);
+            public void onClick(View v) {
+                ImageView bluedrone1 = (ImageView) findViewById(R.id.dronePicture2);
 
                 Animation jumpAnimation = AnimationUtils.loadAnimation(ControllerActivity.this, R.anim.drone_rotate_right);
                 bluedrone1.startAnimation(jumpAnimation);
+            }
+        });
+
+        chronometer = (Chronometer) findViewById(R.id.chronometer);
+        timeText = (TextView) findViewById(R.id.timeDisplayed);
+        chronometer.setVisibility(View.INVISIBLE);
+
+        timeSwitch = (Switch) findViewById(R.id.timeSwitch);
+        timeSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    running = true;
+                    chronometer.setVisibility(View.VISIBLE);
+                    chronometer.setBase(SystemClock.elapsedRealtime());
+                    timeText.setVisibility(View.INVISIBLE);
+                    timeText.setText(R.string.zeroseconds);
+                    chronometer.start();
+                    textStart.setVisibility(View.VISIBLE);
+                    textStop.setVisibility(View.INVISIBLE);
+
+
+                    //Animation setup with handler
+                    final int[] imageArray = {R.drawable.drone, R.drawable.drone_90,
+                            R.drawable.drone_180, R.drawable.drone_270,
+                    };
+
+                    final Handler handler = new Handler();
+                    Runnable runnable = new Runnable() {
+                        int i = 0;
+
+                        public void run() {
+                            if (running) {
+                                drone_pic.setImageResource(imageArray[i]);
+                                i++;
+                                if (i > imageArray.length - 1) {
+                                    i = 0;
+                                }
+                                handler.postDelayed(this, 50);
+                            }
+                        }
+                    };
+                    handler.postDelayed(runnable, 50);
+                } else {
+                    running = false;
+                    drone_pic.setImageResource(R.drawable.drone);
+                    timeWhenStopped = chronometer.getBase() - SystemClock.elapsedRealtime();
+                    int seconds = (int) timeWhenStopped / 1000;
+                    timeText.setVisibility(View.VISIBLE);
+                    chronometer.setVisibility(View.INVISIBLE);
+                    timeText.setText(Math.abs(seconds) + " Second(s)");
+
+                    chronometer.stop();
+
+                    String putFlightDuration = timeText.getText().toString();
+
+                    mySQLiteHelper = new MySQLiteHelper(context);
+                    sqLiteDatabase = mySQLiteHelper.getWritableDatabase();
+                    mySQLiteHelper.putInformation(sqLiteDatabase, formattedDate, putFlightDuration);
+                    mySQLiteHelper.close();
+
+                    textStart.setVisibility(View.INVISIBLE);
+                    textStop.setVisibility(View.VISIBLE);
+
+                }
+
             }
         });
     }
@@ -196,4 +267,20 @@ Button does not work: starts here
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onBackPressed() {
+        new AlertDialog.Builder(this)
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .setTitle(R.string.dialogMsg)
+                .setMessage(R.string.dialogMsg2)
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        finish();
+                    }
+
+                })
+                .setNegativeButton("No", null)
+                .show();
+    }
 }

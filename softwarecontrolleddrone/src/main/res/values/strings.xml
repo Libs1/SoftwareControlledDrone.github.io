@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--To make spaces before editBox use -> &#x2009;-->
     <string name="app_name">SCD App</string>
@@ -12,27 +13,67 @@
     <string name="drone"></string>
     <string name="dialogMsg1">Are You Sure You Want To Logout?</string>
     <string name="dialogMsg2">Are You Sure You Want To Exit?</string>
+    <string name="dialogMsg">Exit</string>
 
-    <string name="hint1">Username</string>
-    <string name="hint2">Password</string>
+    <string name="hint1">Username &#160;&#160; (Ex. drone)</string>
+    <string name="hint2">Password &#160;&#160; (Ex. a1b2c3)</string>
+    <string name="hint3">First Name &#160;&#160; (Ex. John)</string>
+    <string name="hint4">Last Name &#160;&#160; (Ex. Smith)</string>
+    <string name="hint5">Username</string>
+    <string name="hint6">Password</string>
 
-    <string name="errorName">Invalid Username</string>
-    <string name="errorPassword">Invalid Password</string>
 
-    <string name="usernameField1"></string>
-    <string name="passwordField1"></string>
+    <string name="errorInput">Invalid Input(Must be more than 2 characters long and contain only letters) </string>
+    <string name="errorName">Invalid Username(Must be more than 4 characters long and contain only letters or numbers)</string>
+    <string name="errorPassword">Invalid Password(Must be more than 6 characters long and contain only letters or numbers)</string>
+
+  <!--<string name="usernameField1">root</string>
+    <string name="passwordField1"></string>-->
 
     <string name="exitToast">Welcome To The Menu</string>
     <string name="logoutToast">Logged out</string>
+
+    <string name="checkBoxText">Remember Me</string>
 
     <string name="switch1">Power Switch</string>
     <string name="pop">This is pop</string>
     <string name="saveText">Save</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="rb1">Red</string>
-    <string name="rb2">Blue</string>
-    <string name="rb3">Green</string>
+    <string name="radio_1">Red</string>
+    <string name="radio_2">Green</string>
+    <string name="radio_3">Blue</string>
+    <string name="no_choice">LED color was not chosen</string>
 
+    <string name="led">LED</string>
+    <string name="led_on">ON</string>
+    <string name="led_off">OFF</string>
 
+    <string name="deleteInformation">Delete Information</string>
+    <string name="zeroseconds">0 seconds</string>
+    <string name="seconds">seconds</string>
+    <string name="getFlightDurationText">Flight Duration:</string>
+    <string name="displayFlightDurationText">Flight Duration</string>
+    <string name="getDateText">Date:</string>
+    <string name="displayDate">Date</string>
+    <string name="infoDeletedToast">Information Deleted</string>
+    <string name="registerUserTVText">Username:</string>
+    <string name="registerPassTVText">Password:</string>
+    <string name="registerFnameTVText">First Name:</string>
+    <string name="registerLnameTVText">Last Name:</string>
+    <string name="registerText1">Register</string>
+    <string name="registerText2">Register Account</string>
+    <string name="dialogMsg3">Registration Status</string>
+    <string name="dialogMsg4">Registration Successful</string>
+    <string name="dialogMsg5">Login Status</string>
+    <string name="dialogMsg6">Login Successful</string>
+    <string name="RegisterToast">Registration Successful</string>
 
+    <string name="RegistrationSuccessful">Registration Successful</string>
+
+    <string name="textStop">Stop</string>
+    <string name="textStart">Start</string>
+
+    <!--Labels-->
+    <string name="Menu">Menu</string>
+    <string name="Controller">Controller</string>
 </resources>
