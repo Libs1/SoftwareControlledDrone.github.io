@@ -32,7 +32,7 @@
         android:textColor="@color/bright"
         android:hint="@string/hint2"
         android:imeOptions="actionNext"
-        android:inputType="textPassword"
+        android:inputType="text"
         android:layout_marginTop="20dp"
         android:layout_below="@+id/registerUsername"
         android:layout_alignStart="@+id/registerUsername" />

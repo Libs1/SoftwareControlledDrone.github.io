@@ -9,6 +9,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
 import android.database.sqlite.SQLiteDatabase;
 import android.icu.util.Calendar;
 import android.location.Address;
@@ -44,6 +45,8 @@ import java.util.Locale;
 
 public class ControllerActivity extends AppCompatActivity {
 
+    /*TODO add location and runtime permission to use the location of the device[API Higher than 23]*/
+
     MySQLiteHelper mySQLiteHelper;
     SQLiteDatabase sqLiteDatabase;
     Context context = this;
@@ -63,12 +66,22 @@ public class ControllerActivity extends AppCompatActivity {
     TextView timeText, dateText;
     String formattedDate;
     private long timeWhenStopped = 0;
+    /**
+     * ATTENTION: This was auto-generated to implement the App Indexing API.
+     * See https://g.co/AppIndexing/AndroidStudio for more information.
+     */
+    private GoogleApiClient client;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_controller);
 
+        if(getResources().getBoolean(R.bool.portrait_only)){
+            setContentView(R.layout.activity_controller);
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        }
 
         drone_pic = (ImageView) findViewById(R.id.dronePicture2);
 

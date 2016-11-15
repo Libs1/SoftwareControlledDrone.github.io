@@ -1,3 +1,9 @@
+/*
+Team Members: Denis Stepanov, Kevin Libdan, Pramit Roy
+Team name: Skynet
+*/
+
+
 package com.example.softwarecontrolleddrone;
 
 import android.content.ContentValues;

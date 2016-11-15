@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <!--To make spaces before editBox use -> &#x2009;-->
     <string name="app_name">SCD Solicitud</string>
 
@@ -69,7 +70,5 @@
     <!--Labels-->
     <string name="Menu">Menú</string>
     <string name="Controller">Controlador</string>
-
-
 
 </resources>

@@ -8,6 +8,7 @@ package com.example.softwarecontrolleddrone;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.net.Uri;
 import android.os.Handler;
 import android.support.v7.app.AlertDialog;
@@ -34,6 +35,11 @@ public class MenuActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
+
+        if(getResources().getBoolean(R.bool.portrait_only)){
+            setContentView(R.layout.activity_controller);
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        }
 
         image = (ImageView) findViewById(R.id.dronePicture1);
 
@@ -119,7 +125,7 @@ public class MenuActivity extends AppCompatActivity {
     public void onBackPressed() {
         new AlertDialog.Builder(this)
                 .setIcon(android.R.drawable.ic_dialog_alert)
-                .setTitle(R.string.dialogMsg2)
+                .setTitle(R.string.dialogMsg)
                 .setMessage(R.string.dialogMsg1)
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener()
                 {

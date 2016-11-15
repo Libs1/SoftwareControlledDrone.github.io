@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--Emulator tablets (7" and 10")  do not use created layouts (xlarge, large, sw600dp, sw700dp) for
+    unknown reason. All emulators take phone landscape layouts (layout-land).-->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"

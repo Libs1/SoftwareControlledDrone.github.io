@@ -8,6 +8,7 @@ package com.example.softwarecontrolleddrone;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
@@ -41,9 +42,14 @@ public class FlightsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_flights);
 
+        if(getResources().getBoolean(R.bool.portrait_only)){
+            setContentView(R.layout.activity_controller);
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        }
 
         listDataAdapter = new ListDataAdapter(context, R.layout.list_view_layout);
         listView = (ListView)findViewById(R.id.FlightInformationList);
+        //set the listView to the adapter(listDataAdapter)
         listView.setAdapter(listDataAdapter);
 
         mySQLiteHelper = new MySQLiteHelper(context);

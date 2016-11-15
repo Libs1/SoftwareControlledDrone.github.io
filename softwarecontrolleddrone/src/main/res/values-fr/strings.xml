@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <!--To make spaces before editBox use -> &#x2009;-->
     <string name="app_name">Demande drone</string>
 
@@ -23,11 +24,6 @@
     <string name="errorInput">Entrée non valide (doit comporter plus de 3 caractères)</string>
     <string name="errorName">Nom d\'utilisateur invalide</string>
     <string name="errorPassword">Mot de passe incorrect</string>
-
-    <!--
-    <string name="usernameField1"></string>
-    <string name="passwordField1"></string>
-    -->
 
     <string name="exitToast">Bienvenue dans le menu</string>
     <string name="logoutToast">Déconnecté</string>
@@ -74,6 +70,5 @@
     <!--Labels-->
     <string name="Menu">le menu</string>
     <string name="Controller">Manette</string>
-
 
 </resources>
