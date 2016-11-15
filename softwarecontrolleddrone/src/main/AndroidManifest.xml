@@ -31,7 +31,6 @@
         <activity
             android:name=".PopActivity"
             android:theme="@style/AppTheme.CustomTheme" />
-<<<<<<< HEAD
 
         <activity android:name=".FlightsActivity" />
         <activity android:name=".RegisterActivity"></activity>
@@ -40,18 +39,6 @@
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 
-=======
-<<<<<<< HEAD
-        <activity android:name=".FlightsActivity"></activity><!-- ATTENTION: This was auto-generated to add Google Play services to your project for
-     App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information. -->
-        <meta-data
-            android:name="com.google.android.gms.version"
-            android:value="@integer/google_play_services_version" />
-=======
-        <activity android:name=".FlightsActivity" />
-        <activity android:name=".RegisterActivity"></activity>
->>>>>>> refs/remotes/origin/kevin-scd
->>>>>>> refs/remotes/origin/denis-scd
     </application>
 
 </manifest>

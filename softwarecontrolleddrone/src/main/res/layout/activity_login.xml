@@ -52,7 +52,7 @@
     <Button
         android:id="@+id/loginButton"
         android:text="@string/loginText"
-        android:layout_width="fill_parent"
+        android:layout_width="400dip"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:textColor="@drawable/select_text_button"
@@ -67,7 +67,7 @@
         android:text="@string/registerText1"
         android:textColor="@drawable/select_text_button"
         android:textSize="30sp"
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/loginButton"
         android:layout_marginTop="24dp"
