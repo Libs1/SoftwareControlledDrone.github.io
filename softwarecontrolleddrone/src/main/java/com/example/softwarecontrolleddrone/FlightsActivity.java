@@ -41,6 +41,7 @@ public class FlightsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_flights);
 
+
         listDataAdapter = new ListDataAdapter(context, R.layout.list_view_layout);
         listView = (ListView)findViewById(R.id.FlightInformationList);
         listView.setAdapter(listDataAdapter);

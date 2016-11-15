@@ -108,6 +108,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 */
     }
 
+    /*AsyncTask allows us to perform background operations*/
     class BackgroundTask extends AsyncTask<String, Void, String>
     {
         String login_url;
