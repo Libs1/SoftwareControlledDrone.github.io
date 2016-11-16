@@ -72,6 +72,13 @@
 
     <string name="textStop">Stop</string>
     <string name="textStart">Start</string>
+    
+    <string name="fl_1">Flight 1</string>
+    <string name="fl_2">Flight 2</string>
+    <string name="fl_3">Flight 3</string>
+    <string name="page_inst">Choose a flight</string>
+    <string name="start">Start</string>
+    <string name="stop">Stop</string>
 
     <!--Labels-->
     <string name="Menu">Menu</string>
