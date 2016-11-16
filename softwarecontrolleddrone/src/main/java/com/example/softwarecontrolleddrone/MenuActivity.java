@@ -26,7 +26,7 @@ import android.widget.Toast;
 public class MenuActivity extends AppCompatActivity {
 
 
-    Button controllerButton, databaseButton;
+    Button controllerButton, databaseButton, flightPathButton;
     ImageView image;
 
     final Context context = this;
@@ -83,6 +83,17 @@ public class MenuActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 Intent intent = new Intent(MenuActivity.this, FlightsActivity.class);
+                startActivity(intent);
+
+            }
+        });
+        
+        flightPathButton = (Button)findViewById(R.id.databaseButton);
+        databaseButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(MenuActivity.this, FlightActivity.class);
                 startActivity(intent);
 
             }
