@@ -62,7 +62,7 @@
         <activity android:name=".RegisterActivity"
             android:windowSoftInputMode="adjustPan">
         </activity>
-        
+        <activity android:name=".FlightActivity" />
         <activity android:name=".FlightPatActivity1">
             <intent-filter>
             <action android:name="android.intent.action.MAIN" />
