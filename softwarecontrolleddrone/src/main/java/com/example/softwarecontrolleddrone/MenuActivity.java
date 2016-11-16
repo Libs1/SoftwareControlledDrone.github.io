@@ -88,7 +88,7 @@ public class MenuActivity extends AppCompatActivity {
             }
         });
         
-        flightPathButton = (Button)findViewById(R.id.databaseButton);
+        flightPathButton = (Button)findViewById(R.id.flightPatternButton);
         databaseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
