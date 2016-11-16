@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:id = "@+id/container"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
+    android:background="@color/dark"
+    tools:context="com.example.softwarecontrolleddrone.ControllerActivity">
+
+
+    <TextView
+        android:id="@+id/exitButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@drawable/select_text_head"
+        android:textSize="30sp"
+        android:layout_alignParentEnd="true"
+        android:shadowColor="@color/white"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        android:shadowRadius="25"
+        android:text="@string/exitText"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/page_inst"
+        android:id="@+id/textView"
+        android:textColor="@drawable/select_text_button"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="32dp" />
+
+    <Button
+        android:id="@+id/flight_1"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/fl_1"
+        android:layout_marginTop="54dp"
+        android:textColor="@drawable/select_text_button"
+        android:background="@drawable/buttonshape"
+        android:onClick="changeToController"
+        android:layout_below="@+id/exitButton"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:id="@+id/flight_2"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/fl_2"
+        android:layout_marginTop="50dp"
+        android:textColor="@drawable/select_text_button"
+        android:background="@drawable/buttonshape"
+        android:onClick="changeToController"
+        android:layout_below="@+id/flight_1"
+        android:layout_alignStart="@+id/flight_1" />
+
+    <Button
+        android:id="@+id/flight_3"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Recall"
+        android:layout_marginTop="48dp"
+        android:textColor="@drawable/select_text_button"
+        android:background="@drawable/buttonshape"
+        android:onClick="changeToController"
+        android:layout_below="@+id/flight_2"
+        android:layout_alignStart="@+id/flight_2" />
+
+
+</RelativeLayout>
