@@ -51,6 +51,18 @@
         android:layout_below="@id/controllerButton"
         android:layout_centerHorizontal="true"
         android:background="@drawable/buttonshape"/>
+    
+    <Button
+        android:id="@+id/flightPatternButton"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="@drawable/select_text_button"
+        android:text="Flight Path"
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/controllerButton"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/buttonshape"/>
 
 
 </RelativeLayout>
