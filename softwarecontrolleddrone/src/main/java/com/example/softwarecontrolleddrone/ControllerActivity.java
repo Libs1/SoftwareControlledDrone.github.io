@@ -215,10 +215,12 @@ public class ControllerActivity extends AppCompatActivity {
                 } else {
                     running = false;
                     drone_pic.setImageResource(R.drawable.drone);
+                    //getbase returns the base time
                     timeWhenStopped = chronometer.getBase() - SystemClock.elapsedRealtime();
                     int seconds = (int) timeWhenStopped / 1000;
                     timeText.setVisibility(View.VISIBLE);
                     chronometer.setVisibility(View.INVISIBLE);
+                    //math.abs returns the absolute value of seconds
                     timeText.setText(Math.abs(seconds) + " Second(s)");
 
                     chronometer.stop();
@@ -265,22 +267,5 @@ public class ControllerActivity extends AppCompatActivity {
                 break;
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public void onBackPressed() {
-        new AlertDialog.Builder(this)
-                .setIcon(android.R.drawable.ic_dialog_alert)
-                .setTitle(R.string.dialogMsg)
-                .setMessage(R.string.dialogMsg2)
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        finish();
-                    }
-
-                })
-                .setNegativeButton("No", null)
-                .show();
     }
 }
