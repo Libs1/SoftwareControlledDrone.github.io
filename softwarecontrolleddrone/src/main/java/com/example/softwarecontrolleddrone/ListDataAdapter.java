@@ -27,7 +27,7 @@ public class ListDataAdapter extends ArrayAdapter {
 
     static class LayoutHandler
     {
-        TextView DATE, FLIGHTDURATION;
+        TextView DATE, FLIGHTDURATION, LOCATION;
     }
 
     @Override

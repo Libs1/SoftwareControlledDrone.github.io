@@ -73,6 +73,10 @@
     <string name="textStop">Stop</string>
     <string name="textStart">Start</string>
 
+    <string name="getLocationText">Location:</string>
+    <string name="getLatitudeText">Latitude:</string>
+    <string name="getLongitudeText">Longitude:</string>
+
     <!--Labels-->
     <string name="Menu">Menu</string>
     <string name="Controller">Controller</string>

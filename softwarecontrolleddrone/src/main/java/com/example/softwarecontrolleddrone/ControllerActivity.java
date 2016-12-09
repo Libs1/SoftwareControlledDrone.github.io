@@ -12,8 +12,10 @@ import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.database.sqlite.SQLiteDatabase;
 import android.icu.util.Calendar;
+import android.icu.util.Output;
 import android.location.Address;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Handler;
 import android.os.SystemClock;
 import android.preference.PreferenceManager;
@@ -39,6 +41,17 @@ import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.api.GoogleApiClient;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
@@ -64,12 +77,9 @@ public class ControllerActivity extends AppCompatActivity {
     Chronometer chronometer;
     Switch timeSwitch;
     TextView timeText, dateText;
+    String putFlightDuration;
     String formattedDate;
     private long timeWhenStopped = 0;
-    /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more information.
-     */
     private GoogleApiClient client;
 
 
@@ -190,7 +200,6 @@ public class ControllerActivity extends AppCompatActivity {
                     textStart.setVisibility(View.VISIBLE);
                     textStop.setVisibility(View.INVISIBLE);
 
-
                     //Animation setup with handler
                     final int[] imageArray = {R.drawable.drone, R.drawable.drone_90,
                             R.drawable.drone_180, R.drawable.drone_270,
@@ -225,7 +234,7 @@ public class ControllerActivity extends AppCompatActivity {
 
                     chronometer.stop();
 
-                    String putFlightDuration = timeText.getText().toString();
+                    putFlightDuration = timeText.getText().toString();
 
                     mySQLiteHelper = new MySQLiteHelper(context);
                     sqLiteDatabase = mySQLiteHelper.getWritableDatabase();
@@ -235,10 +244,86 @@ public class ControllerActivity extends AppCompatActivity {
                     textStart.setVisibility(View.INVISIBLE);
                     textStop.setVisibility(View.VISIBLE);
 
+                    BackgroundTask backgroundTask = new BackgroundTask();
+                    backgroundTask.execute(formattedDate, putFlightDuration);
+
                 }
 
             }
         });
+    }
+
+    class BackgroundTask extends AsyncTask<String, Void, String>
+    {
+        String link;
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected String doInBackground(String... args)
+        {
+            link = "http://softwarecontrolleddrone.esy.es/FlightInfo.php";
+
+            String date, flightduration;
+
+            date = args[0];
+            flightduration = args[1];
+
+            try{
+
+                URL url = new URL(link);
+
+                //Opens connection to url
+                HttpURLConnection httpURLConnection = (HttpURLConnection)url.openConnection();
+                httpURLConnection.setRequestMethod("POST");
+                httpURLConnection.setDoOutput(true);
+
+                OutputStream outputStream = httpURLConnection.getOutputStream();
+                BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
+
+                //Encoded data to be written to the URL
+                String data_string = URLEncoder.encode("date", "UTF-8") + "=" + URLEncoder.encode(date, "UTF-8") + "&" +
+                        URLEncoder.encode("flightduration", "UTF-8") + "=" + URLEncoder.encode(flightduration, "UTF-8");
+
+                bufferedWriter.write(data_string);
+                bufferedWriter.flush();
+                bufferedWriter.close();
+                outputStream.close();
+
+                InputStream inputStream = httpURLConnection.getInputStream();
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"));
+
+                String response = "";
+                String line = "";
+
+                while((line = bufferedReader.readLine()) != null)
+                {
+                    response += line;
+                }
+
+                bufferedReader.close();
+                inputStream.close();
+                httpURLConnection.disconnect();
+                return response;
+            }
+            catch(MalformedURLException e)
+            {
+                e.printStackTrace();
+            }
+            catch(IOException e)
+            {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+        }
     }
 
     @Override
