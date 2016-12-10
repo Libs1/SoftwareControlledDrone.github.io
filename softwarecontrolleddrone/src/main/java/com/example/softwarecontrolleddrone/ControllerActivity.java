@@ -5,20 +5,29 @@ Team name: Skynet
 
 package com.example.softwarecontrolleddrone;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
+import android.content.pm.PackageManager;
 import android.database.sqlite.SQLiteDatabase;
 import android.icu.util.Calendar;
 import android.icu.util.Output;
 import android.location.Address;
+import android.location.Geocoder;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Handler;
 import android.os.SystemClock;
 import android.preference.PreferenceManager;
+import android.provider.Settings;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -54,11 +63,10 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 public class ControllerActivity extends AppCompatActivity {
-
-    /*TODO add location and runtime permission to use the location of the device[API Higher than 23]*/
 
     MySQLiteHelper mySQLiteHelper;
     SQLiteDatabase sqLiteDatabase;
@@ -66,21 +74,18 @@ public class ControllerActivity extends AppCompatActivity {
     TextView textStart, textStop;
     ImageView drone_pic;
     Boolean running;
-
     public static final String PREFS = "sharedPreferences";
     public static final String BRIGHTNESS = "brightness";
-
     public static Button b;
     boolean switch1;
-
-
     Chronometer chronometer;
     Switch timeSwitch;
-    TextView timeText, dateText;
+    TextView timeText;
     String putFlightDuration;
-    String formattedDate;
+    String formattedDate, loc;
     private long timeWhenStopped = 0;
-    private GoogleApiClient client;
+    LocationManager locationManager;
+    LocationListener locationListener;
 
 
     @Override
@@ -107,7 +112,6 @@ public class ControllerActivity extends AppCompatActivity {
 
         b = (Button) findViewById(R.id.button);
         b.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(ControllerActivity.this, PopActivity.class));
@@ -182,6 +186,81 @@ public class ControllerActivity extends AppCompatActivity {
             }
         });
 
+        locationManager = (LocationManager)getSystemService(LOCATION_SERVICE);
+        locationListener = new LocationListener() {
+            @Override
+            public void onLocationChanged(Location location) {
+
+                Geocoder geocoder;
+                List<Address> addresses;
+                geocoder = new Geocoder(context, Locale.getDefault());
+
+                Double latitude, longitude;
+
+                latitude = location.getLatitude();
+                longitude = location.getLongitude();
+
+                try{
+                    addresses = geocoder.getFromLocation(latitude, longitude, 1);
+
+                    if(addresses != null && addresses.size() > 0)
+                    {
+                        String address = addresses.get(0).getAddressLine(0);
+                        String city = addresses.get(0).getLocality();
+                        String country = addresses.get(0).getCountryName();
+
+                        loc = address + ", " + city + ", " + country;
+                    }
+
+                }
+                catch(IOException e)
+                {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onStatusChanged(String provider, int status, Bundle extras)
+            {}
+
+            @Override
+            public void onProviderEnabled(String provider)
+            {}
+
+            @Override
+            public void onProviderDisabled(String provider)
+            {
+                new AlertDialog.Builder(context)
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .setTitle(R.string.EnableLocation)
+                        .setMessage(R.string.LocationTextMsg)
+                        .setPositiveButton("Allow", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+                                Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+                                startActivity(intent);
+                            }
+                        })
+                        .setNegativeButton("Dont Allow", null)
+                        .show();
+            }
+        };
+
+        if(Build.VERSION.SDK_INT >= 23)
+        {
+            if(ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
+                    && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED){
+
+                requestPermissions(new String[] {Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION,
+                        Manifest.permission.INTERNET}, 1);
+            }
+        }
+        else
+        {
+            locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 5000, 0, locationListener);
+        }
+
         chronometer = (Chronometer) findViewById(R.id.chronometer);
         timeText = (TextView) findViewById(R.id.timeDisplayed);
         chronometer.setVisibility(View.INVISIBLE);
@@ -238,17 +317,16 @@ public class ControllerActivity extends AppCompatActivity {
 
                     mySQLiteHelper = new MySQLiteHelper(context);
                     sqLiteDatabase = mySQLiteHelper.getWritableDatabase();
-                    mySQLiteHelper.putInformation(sqLiteDatabase, formattedDate, putFlightDuration);
+                    mySQLiteHelper.putInformation(sqLiteDatabase, formattedDate, putFlightDuration, loc);
                     mySQLiteHelper.close();
 
                     textStart.setVisibility(View.INVISIBLE);
                     textStop.setVisibility(View.VISIBLE);
 
                     BackgroundTask backgroundTask = new BackgroundTask();
-                    backgroundTask.execute(formattedDate, putFlightDuration);
+                    backgroundTask.execute(formattedDate, putFlightDuration, loc);
 
                 }
-
             }
         });
     }
@@ -267,10 +345,11 @@ public class ControllerActivity extends AppCompatActivity {
         {
             link = "http://softwarecontrolleddrone.esy.es/FlightInfo.php";
 
-            String date, flightduration;
+            String date, flightduration, loc;
 
             date = args[0];
             flightduration = args[1];
+            loc = args[2];
 
             try{
 
@@ -286,7 +365,8 @@ public class ControllerActivity extends AppCompatActivity {
 
                 //Encoded data to be written to the URL
                 String data_string = URLEncoder.encode("date", "UTF-8") + "=" + URLEncoder.encode(date, "UTF-8") + "&" +
-                        URLEncoder.encode("flightduration", "UTF-8") + "=" + URLEncoder.encode(flightduration, "UTF-8");
+                        URLEncoder.encode("flightduration", "UTF-8") + "=" + URLEncoder.encode(flightduration, "UTF-8") + "&" +
+                        URLEncoder.encode("loc", "UTF-8") + "=" + URLEncoder.encode(loc, "UTF-8");
 
                 bufferedWriter.write(data_string);
                 bufferedWriter.flush();
@@ -325,6 +405,11 @@ public class ControllerActivity extends AppCompatActivity {
             super.onPostExecute(s);
         }
     }
+
+
+
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

@@ -33,7 +33,7 @@ public class FlightsActivity extends AppCompatActivity {
     ListDataAdapter listDataAdapter;
     ListView listView;
     Button deleteInformationButton;
-    String date, flightduration;
+    String date, flightduration, curLocation;
 
     Cursor cursor;
 
@@ -62,8 +62,9 @@ public class FlightsActivity extends AppCompatActivity {
             do{
                 date = cursor.getString(0);
                 flightduration = cursor.getString(1);
+                curLocation = cursor.getString(2);
 
-                DataProvider dataProvider = new DataProvider(date, flightduration);
+                DataProvider dataProvider = new DataProvider(date, flightduration, curLocation);
 
                 listDataAdapter.add(dataProvider);
 
