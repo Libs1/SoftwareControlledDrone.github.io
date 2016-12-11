@@ -67,12 +67,6 @@
     <string name="textStop">Detener</string>
     <string name="textStart">Comienzo</string>
 
-    <string name="getLocationText">Ubicación:</string>
-    <string name="getLatitudeText">Latitud:</string>
-    <string name="getLongitudeText">Longitud:</string>
-    <string name="EnableLocation">Habilitar ubicación</string>
-    <string name="LocationTextMsg">Esta aplicación debe tener acceso a su ubicación</string>
-
     <!--Labels-->
     <string name="Menu">Menú</string>
     <string name="Controller">Controlador</string>

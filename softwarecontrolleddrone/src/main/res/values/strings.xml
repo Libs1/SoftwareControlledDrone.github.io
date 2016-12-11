@@ -77,7 +77,7 @@
     <string name="getLatitudeText">Latitude:</string>
     <string name="getLongitudeText">Longitude:</string>
     <string name="EnableLocation">Enable Location</string>
-    <string name="LocationTextMsg">This App Needs To Access Your Location</string>
+    <string name="LocationTextMsg">Do you want to enable your location?</string>
 
     <!--Labels-->
     <string name="Menu">Menu</string>
