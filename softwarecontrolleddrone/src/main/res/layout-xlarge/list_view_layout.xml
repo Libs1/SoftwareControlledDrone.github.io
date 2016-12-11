@@ -41,4 +41,19 @@
         android:layout_below="@+id/getDate"
         android:layout_toEndOf="@+id/displayFlightDuration" />
 
+    <TextView
+        android:id="@+id/getLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/displayFlightDuration"
+        android:text="@string/getLocationText"
+        android:textColor="@color/bright"/>
+
+    <TextView
+        android:id="@+id/displayLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/getLocation"
+        android:textColor="@color/white"/>
+
 </RelativeLayout>

@@ -55,28 +55,5 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/getLocation"
         android:textColor="@color/white"/>
-<!--
-    <TextView
-        android:id="@+id/displayLatitude"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/getLatitude"
-        android:textColor="@color/white"/>
-
-    <TextView
-        android:id="@+id/getLongitude"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/displayLatitude"
-        android:text="@string/getLongitudeText"
-        android:textColor="@color/bright"/>
-
-    <TextView
-        android:id="@+id/displayLongitude"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/getLongitude"
-        android:textColor="@color/white"/>
-        -->
 
 </RelativeLayout>
