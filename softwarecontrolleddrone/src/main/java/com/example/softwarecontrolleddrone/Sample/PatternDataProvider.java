@@ -13,11 +13,11 @@ import java.util.Map;
 
 public class PatternDataProvider {
 
-    public static List<PatternItem> dataItemList;
+    public static List<PatternItem> patternItemList;
     public static Map<String, PatternItem> dataItemMap;
 
     static {
-        dataItemList = new ArrayList<>();
+        patternItemList = new ArrayList<>();
         dataItemMap = new HashMap<>();
 
         addItem(new PatternItem("a", "Pattern A"));
@@ -28,7 +28,7 @@ public class PatternDataProvider {
     }
 
     private static void addItem(PatternItem item) {
-        dataItemList.add(item);
+        patternItemList.add(item);
         dataItemMap.put(item.getItemId(), item);
     }
 }

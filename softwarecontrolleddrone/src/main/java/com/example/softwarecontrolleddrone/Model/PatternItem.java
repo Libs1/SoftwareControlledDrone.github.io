@@ -97,7 +97,7 @@ public class PatternItem implements Parcelable {
 //    }
 
     public ContentValues toValues() {
-        ContentValues values = new ContentValues(7);
+        ContentValues values = new ContentValues(2);
 
         values.put(ItemsTable.COLUMN_ID, itemId);
         values.put(ItemsTable.COLUMN_NAME, itemName);

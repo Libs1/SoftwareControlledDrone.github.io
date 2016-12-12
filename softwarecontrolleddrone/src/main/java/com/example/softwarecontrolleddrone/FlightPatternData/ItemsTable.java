@@ -18,7 +18,7 @@ public class ItemsTable {
     public static final String SQL_CREATE =
             "CREATE TABLE " + TABLE_ITEMS_FPattern + "(" +
                     COLUMN_ID + " TEXT PRIMARY KEY," +
-                    COLUMN_NAME + " TEXT," +
+                    COLUMN_NAME + " TEXT" +
                     /*COLUMN_DESCRIPTION + " TEXT," +
                     COLUMN_CATEGORY + " TEXT," +
                     COLUMN_POSITION + " INTEGER," +
