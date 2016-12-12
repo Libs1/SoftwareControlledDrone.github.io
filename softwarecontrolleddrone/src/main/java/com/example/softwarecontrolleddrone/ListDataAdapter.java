@@ -27,7 +27,7 @@ public class ListDataAdapter extends ArrayAdapter {
 
     static class LayoutHandler
     {
-        TextView DATE, FLIGHTDURATION, CURLOCATION;
+        TextView DATE, FLIGHTDURATION;
     }
 
     @Override
@@ -64,7 +64,6 @@ public class ListDataAdapter extends ArrayAdapter {
             layoutHandler = new LayoutHandler();
             layoutHandler.DATE = (TextView) row.findViewById(R.id.displayDate);
             layoutHandler.FLIGHTDURATION = (TextView) row.findViewById(R.id.displayFlightDuration);
-            layoutHandler.CURLOCATION = (TextView)row.findViewById(R.id.displayLocation);
             row.setTag(layoutHandler);
         }
         else
@@ -74,7 +73,6 @@ public class ListDataAdapter extends ArrayAdapter {
         DataProvider dataProvider = (DataProvider)this.getItem(position);
         layoutHandler.DATE.setText(dataProvider.getDate());
         layoutHandler.FLIGHTDURATION.setText(dataProvider.getFlightDuration());
-        layoutHandler.CURLOCATION.setText(dataProvider.getCurLocation());
 
         return row;
     }

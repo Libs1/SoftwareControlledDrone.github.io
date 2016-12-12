@@ -85,7 +85,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         registerButton = (Button)findViewById(R.id.registerButton);
 
-
         loginPreferences = getSharedPreferences("loginPrefs", MODE_PRIVATE);
         editor = loginPreferences.edit();
 

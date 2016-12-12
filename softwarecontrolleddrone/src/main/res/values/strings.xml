@@ -78,6 +78,7 @@
     <string name="getLongitudeText">Longitude:</string>
     <string name="EnableLocation">Enable Location</string>
     <string name="LocationTextMsg">This App Needs To Access Your Location</string>
+    <string name="emptyFlightActivity">No Flight Information To Be Displayed</string>
 
     <!--Labels-->
     <string name="Menu">Menu</string>
