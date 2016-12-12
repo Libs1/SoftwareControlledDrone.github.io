@@ -8,6 +8,7 @@ package com.example.softwarecontrolleddrone;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -33,7 +34,11 @@ public class FlightsActivity extends AppCompatActivity {
     ListDataAdapter listDataAdapter;
     ListView listView;
     Button deleteInformationButton;
-    String date, flightduration, curLocation;
+    String date, flightduration;
+
+    SharedPreferences accessPreference;
+    SharedPreferences.Editor editor;
+
 
     Cursor cursor;
 
@@ -41,6 +46,10 @@ public class FlightsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_flights);
+
+        accessPreference = getSharedPreferences("accessPrefs", MODE_PRIVATE);
+        editor = accessPreference.edit();
+
 
         if(getResources().getBoolean(R.bool.portrait_only)){
             setContentView(R.layout.activity_controller);
@@ -62,9 +71,8 @@ public class FlightsActivity extends AppCompatActivity {
             do{
                 date = cursor.getString(0);
                 flightduration = cursor.getString(1);
-                curLocation = cursor.getString(2);
 
-                DataProvider dataProvider = new DataProvider(date, flightduration, curLocation);
+                DataProvider dataProvider = new DataProvider(date, flightduration);
 
                 listDataAdapter.add(dataProvider);
 
@@ -83,8 +91,13 @@ public class FlightsActivity extends AppCompatActivity {
 
                 mySQLiteHelper.deleteInformation(sqLiteDatabase);
                 mySQLiteHelper.close();
+
                 Toast.makeText(FlightsActivity.this, R.string.infoDeletedToast, Toast.LENGTH_SHORT)
                         .show();
+
+                editor.putBoolean("check", false);
+                editor.commit();
+
                 startActivity(intent);
 
             }

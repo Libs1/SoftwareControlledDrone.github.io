@@ -7,7 +7,7 @@ package com.example.softwarecontrolleddrone;
 
 public class DataProvider {
 
-    private String date, flightDuration, curLocation;
+    private String date, flightDuration;
 
     public String getFlightDuration() {
         return flightDuration;
@@ -26,18 +26,9 @@ public class DataProvider {
         this.date = date;
     }
 
-    public String getCurLocation() {
-        return curLocation;
-    }
-
-    public void setCurLocation(String curLocation) {
-        this.curLocation = curLocation;
-    }
-
-    public DataProvider(String date, String flightDuration, String curLocation)
+    public DataProvider(String date, String flightDuration)
     {
         this.date = date;
         this.flightDuration = flightDuration;
-        this.curLocation = curLocation;
     }
 }
