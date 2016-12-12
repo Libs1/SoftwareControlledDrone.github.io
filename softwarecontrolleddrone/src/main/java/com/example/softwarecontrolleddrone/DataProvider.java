@@ -22,6 +22,7 @@ public class DataProvider {
     }
 
     public void setDate(String date) {
+
         this.date = date;
     }
 

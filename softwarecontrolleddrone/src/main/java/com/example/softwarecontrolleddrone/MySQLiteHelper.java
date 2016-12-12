@@ -24,8 +24,8 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 1;
 
     public static final String DATABASE_CREATE =
-            "CREATE TABLE " + TableData.DroneInfo.TABLE_NAME + "(" + TableData.DroneInfo.CURRENT_DATE +
-                    " TEXT," + TableData.DroneInfo.FLIGHT_DURATION + " TEXT);";
+            "CREATE TABLE " + TableData.DroneInfo.TABLE_NAME + "(" + TableData.DroneInfo.CURRENT_DATE
+                    + " TEXT," + TableData.DroneInfo.FLIGHT_DURATION + " TEXT);";
 
 
     public MySQLiteHelper(Context context) {
@@ -52,7 +52,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
         contentValues.put(TableData.DroneInfo.FLIGHT_DURATION, flightDuration);
 
         db.insert(TableData.DroneInfo.TABLE_NAME, null, contentValues);
-        Log.d("MySQLiteHelper", "one raw inserted");
+        Log.d("MySQLiteHelper", "one row inserted");
 
     }
 

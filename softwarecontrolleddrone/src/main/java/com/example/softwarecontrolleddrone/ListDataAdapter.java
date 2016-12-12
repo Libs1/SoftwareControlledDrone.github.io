@@ -76,7 +76,4 @@ public class ListDataAdapter extends ArrayAdapter {
 
         return row;
     }
-
-
-
 }
