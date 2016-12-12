@@ -11,6 +11,15 @@
     android:background="@color/dark"
     tools:context="com.example.softwarecontrolleddrone.FlightPatternActivity">
 
+    <TextView
+        android:id="@+id/patternmsg"
+        android:layout_width="250dp"
+        android:layout_height="100dp"
+        android:gravity="center"
+        android:background="@color/white"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"/>
+
     <Button
         android:id="@+id/patternButton"
         android:layout_width="150dp"
@@ -18,7 +27,7 @@
         android:gravity="center"
         android:textColor="@drawable/select_text_button"
         android:text="@string/flightpatternButtonText"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="300dp"
         android:layout_centerHorizontal="true"
         android:background="@drawable/buttonshape"/>
 
