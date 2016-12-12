@@ -87,6 +87,7 @@ public class MenuActivity extends AppCompatActivity {
 
             }
         });
+<<<<<<< HEAD
         
         flightPathButton = (Button)findViewById(R.id.flightPatternButton);
         databaseButton.setOnClickListener(new View.OnClickListener() {
@@ -102,6 +103,8 @@ public class MenuActivity extends AppCompatActivity {
 
 
 
+=======
+>>>>>>> refs/remotes/origin/kevin-scd
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -130,23 +133,5 @@ public class MenuActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public void onBackPressed() {
-        new AlertDialog.Builder(this)
-                .setIcon(android.R.drawable.ic_dialog_alert)
-                .setTitle(R.string.dialogMsg)
-                .setMessage(R.string.dialogMsg1)
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener()
-                {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        finish();
-                    }
-
-                })
-                .setNegativeButton("No", null)
-                .show();
     }
 }

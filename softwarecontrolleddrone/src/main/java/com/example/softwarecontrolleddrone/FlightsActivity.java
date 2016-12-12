@@ -33,7 +33,7 @@ public class FlightsActivity extends AppCompatActivity {
     ListDataAdapter listDataAdapter;
     ListView listView;
     Button deleteInformationButton;
-    String date, flightduration;
+    String date, flightduration, curLocation;
 
     Cursor cursor;
 
@@ -62,8 +62,9 @@ public class FlightsActivity extends AppCompatActivity {
             do{
                 date = cursor.getString(0);
                 flightduration = cursor.getString(1);
+                curLocation = cursor.getString(2);
 
-                DataProvider dataProvider = new DataProvider(date, flightduration);
+                DataProvider dataProvider = new DataProvider(date, flightduration, curLocation);
 
                 listDataAdapter.add(dataProvider);
 
@@ -88,24 +89,6 @@ public class FlightsActivity extends AppCompatActivity {
 
             }
         });
-    }
-
-    @Override
-    public void onBackPressed() {
-        new AlertDialog.Builder(this)
-                .setIcon(android.R.drawable.ic_dialog_alert)
-                .setTitle(R.string.dialogMsg)
-                .setMessage(R.string.dialogMsg2)
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener()
-                {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        finish();
-                    }
-
-                })
-                .setNegativeButton("No", null)
-                .show();
     }
 
     @Override

@@ -80,6 +80,12 @@
     <string name="start">Start</string>
     <string name="stop">Stop</string>
 
+    <string name="getLocationText">Location:</string>
+    <string name="getLatitudeText">Latitude:</string>
+    <string name="getLongitudeText">Longitude:</string>
+    <string name="EnableLocation">Enable Location</string>
+    <string name="LocationTextMsg">This App Needs To Access Your Location</string>
+
     <!--Labels-->
     <string name="Menu">Menu</string>
     <string name="Controller">Controller</string>

@@ -24,8 +24,8 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 1;
 
     public static final String DATABASE_CREATE =
-            "CREATE TABLE " + TableData.DroneInfo.TABLE_NAME + "(" + TableData.DroneInfo.CURRENT_DATE +
-                    " TEXT," + TableData.DroneInfo.FLIGHT_DURATION + " TEXT);";
+            "CREATE TABLE " + TableData.DroneInfo.TABLE_NAME + "(" + TableData.DroneInfo.CURRENT_DATE
+                    + " TEXT," + TableData.DroneInfo.FLIGHT_DURATION + " TEXT," + TableData.DroneInfo.CURRENT_LOCATION + " TEXT);";
 
 
     public MySQLiteHelper(Context context) {
@@ -44,15 +44,16 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
 
     }
 
-    public void putInformation(SQLiteDatabase db, String date, String flightDuration){
+    public void putInformation(SQLiteDatabase db, String date, String flightDuration, String curLocation){
 
         ContentValues contentValues = new ContentValues();
 
         contentValues.put(TableData.DroneInfo.CURRENT_DATE, date);
         contentValues.put(TableData.DroneInfo.FLIGHT_DURATION, flightDuration);
+        contentValues.put(TableData.DroneInfo.CURRENT_LOCATION, curLocation);
 
         db.insert(TableData.DroneInfo.TABLE_NAME, null, contentValues);
-        Log.d("MySQLiteHelper", "one raw inserted");
+        Log.d("MySQLiteHelper", "one row inserted");
 
     }
 
@@ -60,7 +61,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
     {
         Cursor cursor;
 
-        String[] columnNames = {TableData.DroneInfo.CURRENT_DATE, TableData.DroneInfo.FLIGHT_DURATION};
+        String[] columnNames = {TableData.DroneInfo.CURRENT_DATE, TableData.DroneInfo.FLIGHT_DURATION, TableData.DroneInfo.CURRENT_LOCATION};
 
         cursor = db.query(TableData.DroneInfo.TABLE_NAME, columnNames, null, null, null, null, null);
 
