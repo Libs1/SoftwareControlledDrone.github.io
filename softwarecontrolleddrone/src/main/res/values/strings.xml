@@ -8,6 +8,8 @@
     <string name="exitText">Exit</string>
     <string name="controllerButtonText">Controller</string>
     <string name="databseButtonText">Flights</string>
+    <string name="flightpatternButtonText">Flight Pattern</string>
+    <string name="recallpatternButtonText">Recall</string>
     <string name="help">Help</string>
     <string name="scd">SCD</string>
     <string name="drone"></string>
@@ -27,7 +29,7 @@
     <string name="errorName">Invalid Username(Must be more than 4 characters long and contain only letters or numbers)</string>
     <string name="errorPassword">Invalid Password(Must be more than 6 characters long and contain only letters or numbers)</string>
 
-  <!--<string name="usernameField1">root</string>
+    <!--<string name="usernameField1">root</string>
     <string name="passwordField1"></string>-->
 
     <string name="exitToast">Welcome To The Menu</string>

@@ -10,22 +10,19 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.net.Uri;
+import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
 
 public class MenuActivity extends AppCompatActivity {
 
 
-    Button controllerButton, databaseButton;
+    Button controllerButton, databaseButton, flightpatternButton;
     ImageView image;
     SharedPreferences accessPreference;
     SharedPreferences.Editor editor;
@@ -99,6 +96,17 @@ public class MenuActivity extends AppCompatActivity {
                     Intent intent = new Intent(MenuActivity.this, FlightsActivity.class);
                     startActivity(intent);
                 }
+
+            }
+        });
+
+        flightpatternButton = (Button)findViewById(R.id.flightpatternButton);
+        flightpatternButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(MenuActivity.this, FlightPatternActivity.class);
+                startActivity(intent);
 
             }
         });
