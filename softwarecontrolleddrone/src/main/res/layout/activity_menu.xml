@@ -22,7 +22,7 @@
         android:id="@+id/dronePicture1"
         android:layout_width="200dp"
         android:layout_height="200dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
         android:interpolator="@android:anim/linear_interpolator"
         android:layout_centerHorizontal="true"
         android:src="@drawable/drone"/>
@@ -51,16 +51,16 @@
         android:layout_below="@id/controllerButton"
         android:layout_centerHorizontal="true"
         android:background="@drawable/buttonshape"/>
-    
+
     <Button
-        android:id="@+id/flightPatternButton"
+        android:id="@+id/flightpatternButton"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:textColor="@drawable/select_text_button"
-        android:text="Flight Path"
+        android:text="@string/flightpatternButtonText"
         android:layout_marginTop="20dp"
-        android:layout_below="@id/controllerButton"
+        android:layout_below="@id/databaseButton"
         android:layout_centerHorizontal="true"
         android:background="@drawable/buttonshape"/>
 
