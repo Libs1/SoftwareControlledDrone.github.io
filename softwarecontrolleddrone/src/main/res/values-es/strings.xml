@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--To make spaces before editBox use -> &#x2009;-->
+    <string name="app_name">SCD Solicitud</string>
+
+    <string name="loginText">Iniciar sesión</string>
+    <string name="logoutText">Cerrar sesión</string>
+    <string name="exitText">Salida</string>
+    <string name="controllerButtonText">Controller</string>
+    <string name="databseButtonText">Vuelos</string>
+    <string name="help">Ayuda</string>
+    <string name="scd">SCD</string>
+    <string name="drone"></string>
+    <string name="dialogMsg1">Seguro que quieres salir?</string>
+    <string name="dialogMsg2">Seguro que quieres salir</string>
+    <string name="dialogMsg">Salida</string>
+
+    <string name="hint1">Nombre de usuario</string>
+    <string name="hint2">Contraseña</string>
+    <string name="hint3">Nombre de pila</string>
+    <string name="hint4">Apellido</string>
+
+    <string name="errorInput">Invalid Input (Debe tener más de 3 caracteres)</string>
+    <string name="errorName">Nombre de usuario no válido</string>
+    <string name="errorPassword">Contraseña invalida</string>
+
+    <string name="exitToast">La bienvenida al menú</string>
+    <string name="logoutToast">Desconectado</string>
+
+    <string name="checkBoxText">Recuérdame</string>
+
+    <string name="switch1">interruptor de alimentación</string>
+    <string name="saveText">Salvar</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="radio_1">Rojo</string>
+    <string name="radio_2">Verde</string>
+    <string name="radio_3">Azul</string>
+    <string name="no_choice">Color no fue elegido</string>
+
+    <string name="led">LED</string>
+    <string name="led_on">EN</string>
+    <string name="led_off">APAGADO</string>
+
+    <string name="deleteInformation">Eliminar información</string>
+    <string name="zeroseconds">0 Segundos</string>
+    <string name="seconds">Segundos</string>
+    <string name="getFlightDurationText">Duracion del vuelo:</string>
+    <string name="displayFlightDurationText">Duracion del vuelo</string>
+    <string name="getDateText">Fecha:</string>
+    <string name="displayDate">Fecha</string>
+    <string name="infoDeletedToast">Información eliminada</string>
+    <string name="registerUserTVText">Nombre de usuario:</string>
+    <string name="registerPassTVText">Contraseña:</string>
+    <string name="registerFnameTVText">Nombre de pila:</string>
+    <string name="registerLnameTVText">Apellido:</string>
+    <string name="registerText1">Registro</string>
+    <string name="registerText2">Registrar Cuenta</string>
+    <string name="dialogMsg3">estado de registro</string>
+    <string name="dialogMsg4">Registro exitoso</string>
+    <string name="dialogMsg5">Estado de inicio de sesión</string>
+    <string name="dialogMsg6">Inicio de sesión correcto</string>
+    <string name="RegisterToast">Registro exitoso</string>
+
+    <string name="RegistrationSuccessful">Registro exitoso</string>
+
+    <string name="textStop">Detener</string>
+    <string name="textStart">Comienzo</string>
+
+    <string name="getLocationText">Ubicación:</string>
+    <string name="getLatitudeText">Latitud:</string>
+    <string name="getLongitudeText">Longitud:</string>
+    <string name="EnableLocation">Habilitar ubicación</string>
+    <string name="LocationTextMsg">Esta aplicación debe tener acceso a su ubicación</string>
+
+    <!--Labels-->
+    <string name="Menu">Menú</string>
+    <string name="Controller">Controlador</string>
+
+</resources>
