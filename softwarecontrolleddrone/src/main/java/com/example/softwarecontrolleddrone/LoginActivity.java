@@ -9,6 +9,8 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
+import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Debug;
@@ -41,6 +43,8 @@ import java.net.URLEncoder;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
 
+    /*TODO Check if the user's password is invalid*/
+
     AlertDialog alertDialog;
     Context context = this;
 
@@ -61,6 +65,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        Log.d("ADebugTag", "Value: " + getResources().getBoolean(R.bool.portrait_only));
+
+        if(getResources().getBoolean(R.bool.portrait_only)){
+           // setContentView(R.layout.activity_controller);
+            Log.d("ADebugTag", "Value: " + getResources().getBoolean(R.bool.portrait_only));
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        }
+
+
 
 
         editText1 = (EditText) findViewById(R.id.usernameField);
@@ -71,7 +84,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         loginButton.setOnClickListener(LoginActivity.this);
 
         registerButton = (Button)findViewById(R.id.registerButton);
-
 
         loginPreferences = getSharedPreferences("loginPrefs", MODE_PRIVATE);
         editor = loginPreferences.edit();
@@ -90,22 +102,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         BackgroundTask backgroundTask = new BackgroundTask();
         backgroundTask.execute(username, password);
-/*
-        Intent intent = new Intent(LoginActivity.this, MenuActivity.class);
-
-        if (checkBox.isChecked()) {
-            editor.putBoolean("saveLogin", true);
-            editor.putString("username", editText1.getText().toString());
-            editor.commit();
-        } else {
-            editor.clear();
-            editor.commit();
-        }
-
-
-
-        startActivity(intent);
-*/
     }
 
     class BackgroundTask extends AsyncTask<String, Void, String>
@@ -116,13 +112,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         @Override
         protected void onPreExecute()
         {
-            //login_url = "http://softwarecontrolleddrone.esy.es/Login.php";
-
-
-            //alertDialog =  new AlertDialog.Builder(context).create();
-            //alertDialog.setIcon(android.R.drawable.ic_dialog_alert);
-            //alertDialog.setTitle(R.string.dialogMsg5);
-
         }
 
         @Override
@@ -138,6 +127,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             {
                 URL url = new URL(login_url);
 
+                //Make a request to the url
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                 httpURLConnection.setRequestMethod("POST");
                 httpURLConnection.setDoOutput(true);
@@ -201,7 +191,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     editor.commit();
                 }
                 startActivity(intent);
-                //finish();
             }
             else{
                 new AlertDialog.Builder(context)
@@ -216,18 +205,20 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                             }
                         })
                         .show();
-                //alertDialog.setMessage(result);
-                //alertDialog.show();
             }
         }
     }
-
 
     public void RegisterAccount(View view)
     {
         Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
         startActivity(intent);
+    }
 
+    public static boolean isTablet(Context context) {
+        return (context.getResources().getConfiguration().screenLayout
+                & Configuration.SCREENLAYOUT_SIZE_MASK)
+                >= Configuration.SCREENLAYOUT_SIZE_LARGE;
     }
 
     @Override
@@ -253,9 +244,25 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.dronestoronto.com/"));
                 startActivity(intent);
                 break;
-
         }
-
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        new AlertDialog.Builder(this)
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .setTitle(R.string.dialogMsg)
+                .setMessage(R.string.dialogMsg2)
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener()
+                {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        finish();
+                    }
+
+                })
+                .setNegativeButton("No", null)
+                .show();
     }
 }

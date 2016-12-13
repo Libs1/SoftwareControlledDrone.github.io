@@ -8,6 +8,8 @@ package com.example.softwarecontrolleddrone;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
@@ -34,6 +36,10 @@ public class FlightsActivity extends AppCompatActivity {
     Button deleteInformationButton;
     String date, flightduration;
 
+    SharedPreferences accessPreference;
+    SharedPreferences.Editor editor;
+
+
     Cursor cursor;
 
     @Override
@@ -41,8 +47,18 @@ public class FlightsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_flights);
 
+        accessPreference = getSharedPreferences("accessPrefs", MODE_PRIVATE);
+        editor = accessPreference.edit();
+
+
+        if(getResources().getBoolean(R.bool.portrait_only)){
+            setContentView(R.layout.activity_controller);
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        }
+
         listDataAdapter = new ListDataAdapter(context, R.layout.list_view_layout);
         listView = (ListView)findViewById(R.id.FlightInformationList);
+        //set the listView to the adapter(listDataAdapter)
         listView.setAdapter(listDataAdapter);
 
         mySQLiteHelper = new MySQLiteHelper(context);
@@ -75,30 +91,17 @@ public class FlightsActivity extends AppCompatActivity {
 
                 mySQLiteHelper.deleteInformation(sqLiteDatabase);
                 mySQLiteHelper.close();
+
                 Toast.makeText(FlightsActivity.this, R.string.infoDeletedToast, Toast.LENGTH_SHORT)
                         .show();
+
+                editor.putBoolean("check", false);
+                editor.commit();
+
                 startActivity(intent);
 
             }
         });
-    }
-
-    @Override
-    public void onBackPressed() {
-        new AlertDialog.Builder(this)
-                .setIcon(android.R.drawable.ic_dialog_alert)
-                .setTitle(R.string.dialogMsg)
-                .setMessage(R.string.dialogMsg2)
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener()
-                {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        finish();
-                    }
-
-                })
-                .setNegativeButton("No", null)
-                .show();
     }
 
     @Override

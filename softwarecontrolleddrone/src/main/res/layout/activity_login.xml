@@ -20,7 +20,7 @@
         android:textColor="@color/bright"
         android:gravity="center"
         android:layout_marginTop="40dp"
-        android:hint="@string/hint1"
+        android:hint="@string/hint5"
         android:inputType="text"
         android:imeOptions="actionNext"
         android:layout_centerHorizontal="true"
@@ -32,10 +32,10 @@
         android:layout_height="40dp"
         android:textColor="@color/bright"
         android:gravity="center"
-        android:hint="@string/hint2"
+        android:hint="@string/hint6"
         android:inputType="textPassword"
         android:layout_marginTop="20dp"
-        android:layout_below="@id/usernameField"
+        android:layout_below="@+id/usernameField"
         android:layout_centerHorizontal="true"
         android:background="@drawable/edit_text_box"/>
 

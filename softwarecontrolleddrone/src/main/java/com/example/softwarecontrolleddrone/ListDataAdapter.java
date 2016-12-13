@@ -1,3 +1,9 @@
+/*
+Team Members: Denis Stepanov, Kevin Libdan, Pramit Roy
+Team name: Skynet
+*/
+
+
 package com.example.softwarecontrolleddrone;
 
 import android.content.Context;
@@ -70,7 +76,4 @@ public class ListDataAdapter extends ArrayAdapter {
 
         return row;
     }
-
-
-
 }

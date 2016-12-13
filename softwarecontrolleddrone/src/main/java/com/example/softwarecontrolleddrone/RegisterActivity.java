@@ -1,3 +1,9 @@
+/*
+Team Members: Denis Stepanov, Kevin Libdan, Pramit Roy
+Team name: Skynet
+*/
+
+
 package com.example.softwarecontrolleddrone;
 
 import android.content.Context;
@@ -94,7 +100,6 @@ public class RegisterActivity extends AppCompatActivity {
                 if(firstnameTest && lastnameTest && usernameTest && passwordTest)
                 {
                     backgroundTask.execute(firstName, lastName, username, password);
-                    //finish();
                 }
 
 
@@ -105,7 +110,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     public boolean checkFirstNameRegister(String registeredFirstName)
     {
-        if(registeredFirstName.length() >= 3 && registeredFirstName.matches("[a-zA-Z]+(\\\\-[a-zA-Z]+)?"))
+        if(registeredFirstName.length() >= 2 && registeredFirstName.matches("[a-zA-Z]+(\\\\-[a-zA-Z]+)?"))
             return true;
         else
             return false;
@@ -113,21 +118,21 @@ public class RegisterActivity extends AppCompatActivity {
 
     public boolean checkLastNameRegister(String registeredLastName)
     {
-        if(registeredLastName.length() >= 3 && registeredLastName.matches("[a-zA-Z]+(\\\\-[a-zA-Z]+)?"))
+        if(registeredLastName.length() >= 2 && registeredLastName.matches("[a-zA-Z]+(\\\\-[a-zA-Z]+)?"))
             return true;
         else
             return false;
     }
 
     public boolean checkUsernameRegister(String registeredUsername) {
-        if (registeredUsername.length() >= 3 && registeredUsername.matches("[a-zA-Z0-9]+(\\\\-[a-zA-Z0-9]+)?"))
+        if (registeredUsername.length() >= 4 && registeredUsername.matches("[a-zA-Z0-9]+(\\\\-[a-zA-Z0-9]+)?"))
             return true;
         else
             return false;
     }
 
     public boolean checkPasswordRegister(String registeredPassword) {
-        if (registeredPassword.length() >= 4 && registeredPassword.matches("[a-zA-Z0-9]+(\\-[a-zA-Z0-9]+)?"))
+        if (registeredPassword.length() >= 6 && registeredPassword.matches("[a-zA-Z0-9]+(\\-[a-zA-Z0-9]+)?"))
             return true;
         else
             return false;
@@ -143,13 +148,6 @@ public class RegisterActivity extends AppCompatActivity {
         @Override
         protected void onPreExecute()
         {
-            //link = "http://softwarecontrolleddrone.esy.es/AddMember.php";
-/*
-            alertDialog =  new AlertDialog.Builder(context).create();
-            alertDialog.setIcon(android.R.drawable.ic_dialog_alert);
-            alertDialog.setTitle(R.string.dialogMsg3);
-            alertDialog.setMessage(getResources().getString(R.string.dialogMsg4));
-            alertDialog.show();*/
         }
 
         @Override
@@ -168,6 +166,7 @@ public class RegisterActivity extends AppCompatActivity {
             {
                 URL url = new URL(link);
 
+                //Opens connection to url
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                 httpURLConnection.setRequestMethod("POST");
                 httpURLConnection.setDoOutput(true);
@@ -175,7 +174,7 @@ public class RegisterActivity extends AppCompatActivity {
                 OutputStream outputStream = httpURLConnection.getOutputStream();
                 BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
 
-                //Encoded data
+                //Encoded data to be written to the url
                 String data_string = URLEncoder.encode("firstName", "UTF-8") + "=" + URLEncoder.encode(firstName, "UTF-8") + "&" +
                         URLEncoder.encode("lastName", "UTF-8") + "=" + URLEncoder.encode(lastName, "UTF-8") + "&" +
                         URLEncoder.encode("username", "UTF-8") + "=" + URLEncoder.encode(username, "UTF-8") + "&" +
@@ -196,7 +195,6 @@ public class RegisterActivity extends AppCompatActivity {
                 {
                     response += line;
                 }
-
 
                 bufferedReader.close();
                 inputStream.close();
@@ -224,21 +222,6 @@ public class RegisterActivity extends AppCompatActivity {
                 Toast.makeText(RegisterActivity.this, R.string.RegistrationSuccessful, Toast.LENGTH_SHORT)
                         .show();
                 startActivity(intent);
-                /*
-                new AlertDialog.Builder(context)
-                        .setIcon(android.R.drawable.ic_dialog_alert)
-                        .setTitle(R.string.dialogMsg3)
-                        .setMessage(result)
-                        .setPositiveButton("Continue", new DialogInterface.OnClickListener()
-                        {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
-                                startActivity(intent);
-                            }
-                        })
-                        .show();
-                        */
             }
             else{
                new AlertDialog.Builder(context)
@@ -285,26 +268,6 @@ public class RegisterActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-
-
-    @Override
-    public void onBackPressed() {
-        new AlertDialog.Builder(this)
-                .setIcon(android.R.drawable.ic_dialog_alert)
-                .setTitle(R.string.dialogMsg)
-                .setMessage(R.string.dialogMsg2)
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener()
-                {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        finish();
-                    }
-
-                })
-                .setNegativeButton("No", null)
-                .show();
     }
 
 }

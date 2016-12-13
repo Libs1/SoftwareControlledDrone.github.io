@@ -8,6 +8,8 @@
     <string name="exitText">Exit</string>
     <string name="controllerButtonText">Controller</string>
     <string name="databseButtonText">Flights</string>
+    <string name="flightpatternButtonText">Flight Pattern</string>
+    <string name="recallpatternButtonText">Recall</string>
     <string name="help">Help</string>
     <string name="scd">SCD</string>
     <string name="drone"></string>
@@ -15,17 +17,19 @@
     <string name="dialogMsg2">Are You Sure You Want To Exit?</string>
     <string name="dialogMsg">Exit</string>
 
-    <string name="hint1">Username</string>
-    <string name="hint2">Password</string>
-    <string name="hint3">First Name</string>
-    <string name="hint4">Last Name</string>
+    <string name="hint1">Username &#160;&#160; (Ex. drone)</string>
+    <string name="hint2">Password &#160;&#160; (Ex. a1b2c3)</string>
+    <string name="hint3">First Name &#160;&#160; (Ex. John)</string>
+    <string name="hint4">Last Name &#160;&#160; (Ex. Smith)</string>
+    <string name="hint5">Username</string>
+    <string name="hint6">Password</string>
 
 
-    <string name="errorInput">Invalid Input(Must be more than 3 characters long) </string>
-    <string name="errorName">Invalid Username(Must be more than 3 characters long)</string>
-    <string name="errorPassword">Invalid Password(Must be more than 4 characters long)</string>
+    <string name="errorInput">Invalid Input(Must be more than 2 characters long and contain only letters) </string>
+    <string name="errorName">Invalid Username(Must be more than 4 characters long and contain only letters or numbers)</string>
+    <string name="errorPassword">Invalid Password(Must be more than 6 characters long and contain only letters or numbers)</string>
 
-  <!--<string name="usernameField1">root</string>
+    <!--<string name="usernameField1">root</string>
     <string name="passwordField1"></string>-->
 
     <string name="exitToast">Welcome To The Menu</string>
@@ -70,6 +74,13 @@
 
     <string name="textStop">Stop</string>
     <string name="textStart">Start</string>
+
+    <string name="getLocationText">Location:</string>
+    <string name="getLatitudeText">Latitude:</string>
+    <string name="getLongitudeText">Longitude:</string>
+    <string name="EnableLocation">Enable Location</string>
+    <string name="LocationTextMsg">This App Needs To Access Your Location</string>
+    <string name="emptyFlightActivity">No Flight Information To Be Displayed</string>
 
     <!--Labels-->
     <string name="Menu">Menu</string>
