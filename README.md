@@ -11,9 +11,9 @@ Projects website: https://github.com/Libs1/SoftwareControlledDrone.github.io
 Table of Contents
 =================
 
-1.  [Proposal](#Proposal)
+1.  [Proposal](#proposal)
 
-2.  [References](#References)
+2.  [References](#references)
 
 Proposal
 --------
