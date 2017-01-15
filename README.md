@@ -1,6 +1,6 @@
 ---
-bibliography: "C:/Users/Kevin/Desktop/SoftwareControlledDrone.github.io-master/SoftwareControlledDrone.github.io-master/SCDCitations.bib"
 csl: "C:/Users/Kevin/Desktop/SoftwareControlledDrone.github.io-master/SoftwareControlledDrone.github.io-master/apa.csl"
+bibliography: "C:/Users/Kevin/Desktop/SoftwareControlledDrone.github.io-master/SoftwareControlledDrone.github.io-master/SCDCitations.bib"
 ---
 
 SoftwareControlledDrone Project
@@ -11,9 +11,9 @@ Projects website: https://github.com/Libs1/SoftwareControlledDrone.github.io
 Table of Contents
 =================
 
-1.  [Proposal](https://github.com/Libs1/SoftwareControlledDrone.github.io#Proposal)
+1.  [Proposal](#Proposal)
 
-2.  [References](https://github.com/Libs1/SoftwareControlledDrone.github.io#References)
+2.  [References](#References)
 
 Proposal
 --------
