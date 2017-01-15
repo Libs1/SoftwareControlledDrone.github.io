@@ -1,6 +1,6 @@
 ---
-csl: "C:/Users/Kevin/Desktop/SoftwareControlledDrone.github.io-master/SoftwareControlledDrone.github.io-master/apa.csl"
-bibliography: "C:/Users/Kevin/Desktop/SoftwareControlledDrone.github.io-master/SoftwareControlledDrone.github.io-master/SCDCitations.bib"
+csl: apa.csl
+bibliography: SCDCitations.bib
 ---
 
 SoftwareControlledDrone Project
