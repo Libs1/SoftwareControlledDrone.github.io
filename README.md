@@ -11,9 +11,9 @@ Projects website: https://github.com/Libs1/SoftwareControlledDrone.github.io
 Table of Contents
 =================
 
-1.  [Proposal](#this-file#humber-sense-hat#humber-raspberry-pi-image-creation#enterprise-wi-fi)
+1.  [Proposal](https://github.com/Libs1/SoftwareControlledDrone.github.io#Proposal)
 
-2.  [References](#References)
+2.  [References](https://github.com/Libs1/SoftwareControlledDrone.github.io#References)
 
 Proposal
 --------
