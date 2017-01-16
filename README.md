@@ -1,6 +1,6 @@
 ---
-csl: apa.csl
 bibliography: SCDCitations.bib
+csl: apa.csl
 ---
 
 SoftwareControlledDrone Project
@@ -63,6 +63,16 @@ drones has very high potential to make drones more popular and user friendly.
 I have searched for prior art via Humber’s IEEE subscription selecting “My
 Subscribed Content”[1] and have found and read [2] which provides insight into
 similar efforts.
+
+The first article discusses how UAVS have been getting a lot of attention due to
+its low cost of implementation and how an AR drone is being controlled by a
+motion capture system to follow a moving target. [@7786340]
+
+The second article discusses how to collect input information for the controller
+used for the AR drone. [@6852167]
+
+The third article discusses estimating UAV systems total ownership cost
+including hardware components, software design, and operations. [@6496852]
 
 In the Computer Engineering Technology program we have learned about the
 following topics from the respective relevant courses:
