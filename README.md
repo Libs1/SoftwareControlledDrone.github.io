@@ -1,6 +1,6 @@
 ---
-bibliography: SCDCitations.bib
 csl: apa.csl
+bibliography: SCDCitations.bib
 ---
 
 SoftwareControlledDrone Project
@@ -8,12 +8,15 @@ SoftwareControlledDrone Project
 
 Projects website: https://github.com/Libs1/SoftwareControlledDrone.github.io
 
-Table of Contents
+Declaration of Authorship
+=========================
+
+ 
+
+Approved Proposal
 =================
 
-1.  [Proposal](#proposal)
-
-2.  [References](#references)
+ 
 
 Proposal
 --------
@@ -191,5 +194,51 @@ developed in our program to create a collaborative IoT capstone project
 demonstrating my ability to learn how to support projects such as the initiative
 described by [3]. I request approval of this project.
 
-References
-----------
+ 
+
+Table of Contents
+=================
+
+1.  [Proposal](#approved_proposal#reference)
+
+2.  [Illustrations or Diagrams](#illustrations_or_diagrams)
+
+3.  [Introduction](#introduction)
+
+4.  [Body](#body)
+
+5.  [Conclusion](#conclusion)
+
+6.  [Recommendations](#recommendations)
+
+7.  [Bibliography](#bibliography)
+
+ 
+
+**Illustrations or Diagrams**
+-----------------------------
+
+ 
+
+**Introduction**
+----------------
+
+ 
+
+**Body**
+--------
+
+ 
+
+**Conclusion**
+--------------
+
+ 
+
+**Recommendations**
+-------------------
+
+ 
+
+**Bibliography**
+----------------
