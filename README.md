@@ -18,9 +18,6 @@ Approved Proposal
 
  
 
-Proposal
---------
-
 *Proposal for the Software Controlled Drone Project*
 
 Prepared by Denis Stepanov and Kevin Libdan  
