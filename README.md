@@ -207,7 +207,7 @@ Table of Contents
 
 2.  [Software Requirements Specifications](#body)
 
-    2.1 [Overall Description](#overall_description)
+    [2.1 Overall Description](#2.1_overall_description)
 
     2.1.1 [Database](#database)
 
