@@ -209,7 +209,7 @@ Table of Contents
 
     [2.1 Overall Description](#2.1_overall_description)
 
-    2.1.1 [Database](#database)
+    [2.1.1 Database](#2.1.1_database)
 
     2.1.2 [Web Interface](#web_interface)
 
@@ -236,13 +236,12 @@ Table of Contents
  
 
 **2. Software Requirements Specifications**
--------------------------------------------
+===========================================
 
 **2.1 Overall Description**
 ---------------------------
 
-2.1.1 Database
---------------
+### 2.1.1 Database
 
 The MYSQL database is responsible for storing the users account information and
 as well as the drone’s activity information. The database uses PHP in order for
