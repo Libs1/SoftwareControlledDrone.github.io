@@ -199,19 +199,29 @@ described by [3]. I request approval of this project.
 Table of Contents
 =================
 
-1.  [Proposal](#approved_proposal#reference)
+[Proposal](#approved_proposal#reference)
 
-2.  [Illustrations or Diagrams](#illustrations_or_diagrams)
+[Illustrations or Diagrams](#illustrations_or_diagrams)
 
-3.  [Introduction](#introduction)
+1.  [Introduction](#introduction)
 
-4.  [Body](#body)
+2.  [Software Requirements Specifications](#body)
 
-5.  [Conclusion](#conclusion)
+    2.1 [Overall Description](#overall_description)
 
-6.  [Recommendations](#recommendations)
+    2.1.1 [Database](#database)
 
-7.  [Bibliography](#bibliography)
+    2.1.2 [Web Interface](#web_interface)
+
+    2.1.3 [Hardware](#hardware)
+
+    2.1.4 [Application](#application)
+
+3.  [Conclusion](#conclusion)
+
+4.  [Recommendations](#recommendations)
+
+5.  [Bibliography](#bibliography)
 
  
 
@@ -220,25 +230,109 @@ Table of Contents
 
  
 
-**Introduction**
-----------------
-
- 
-
-**Body**
---------
-
- 
-
-**Conclusion**
---------------
-
- 
-
-**Recommendations**
+**1. Introduction**
 -------------------
 
  
 
-**Bibliography**
-----------------
+**2. Software Requirements Specifications**
+-------------------------------------------
+
+**2.1 Overall Description**
+---------------------------
+
+2.1.1 Database
+--------------
+
+The MYSQL database is responsible for storing the users account information and
+as well as the drone’s activity information. The database uses PHP in order for
+it to connect with the android application and as well, the database will be
+running on hostinger which is a free hosting website. There are two tables
+within the database; the first table is the DroneMembers table which contains
+the user’s information and the second table which is the DroneInfo table which
+contains information of the drone’s activity. The DroneMembers table contains
+four fields which are first name, last name, username and password. The first
+name and last name fields contain the user’s first name and last name. The
+username field contains the user’s username which is used for logging in. The
+password field contains the user’s password which is used when logging in. The
+DroneInfo field contains two fields which are date and flight duration. The date
+field is contains the date of when the drone has been flown and the flight
+duration field contains the user’s total flight time. (Developed by Kevin
+Libdan)
+
+ 
+
+2.1.2 Web Interface
+-------------------
+
+Depending the how long the binding process takes we will develop the web
+interface. The web interface will be developed to allow users to register an
+account. The website will also be capable of allowing the users to view their
+drone’s information such the date of when the drone has been flown and as well
+as the flight duration. The website will handle basic functionality such as
+viewing the user’s drone runtime information. (Developed by Denis Stepanov and
+Kevin Libdan)
+
+ 
+
+2.1.3 Hardware
+--------------
+
+The hardware built is used to control the Syma X12s drone. The hardware to
+control the Syma X12s is an Arduino, a NRF24L01+ transceiver and two analog
+joysticks. As for now, we are still having trouble trying to bind the Syma X12s
+drone with our hardware. One of the main resources to helping us find a solution
+to this problem is Goebish. Goebish is responsible for creating source code for
+multiple protocols that support the NRF24L01+ After contacting Goebish, we have
+tried to bind our drone with his source code by modifying it to force select the
+Syma X12s protocol and as well as modifying the code to bind the drone with the
+two analog sticks. With multiple attempts to bind the drone with our transceiver
+and back and forth communication with Goebish, we have concluded that there was
+not anything wrong with the code itself but the hardware. The protocol we were
+trying to bind our drone with was the Syma X12 protocol (compatible with X5C-1,
+X11, X11C) when we had a Syma X12s drone. We were informed that Syma X12s may be
+using a different protocol than the Syma X12 protocol while the source code does
+not support the Syma X12s. We were suggested to get a different drone, Eachine
+H8 mini which is compatible with the code as it has the supported protocol. 
+(This Hardware Section is due to change as soon as we have the drone binding
+successfully). (Developed by Denis Stepanov and Kevin Libdan) 
+
+ 
+
+2.1.4 Application
+-----------------
+
+Software Drone Android Application is the software used to bind with the
+quadcopter, maneuver it and save data in MYSQL database using the readings from
+the drone's flight, implemented in one of the classes. Android Application
+consists of 10 different java classes which support multiple functionalities.
+Main classes, which would be visible to users, such as
+'ControllerActivity','FlightsActivity','LoginActivity','MenuActivity',
+'RegisterActivity' and 'PopActivity' use specific layouts assigned to them. Each
+one of those activities' layouts support phone, tablet, and large tablet (\>10")
+size of the screen. All of visible activities have the function to adjust to
+both portrait and landscape mode (except 'ControllerActivity', which is always
+set on landscape to create more user-friendly interface). All of the main
+classes use custom 'drawables' to make the application more presentable. There
+are also 5 other classes which are used for better functionality of the
+application. All of those 5 classes have communication in some sort with
+database. For example, 'TableData' class is consists of the information about
+the drone flight (date and flight duration).Moreover, the application adjusts to
+different resolutions of images and icons for different devices automatically
+using Android Asset. There is also a support for 4 different languages (English,
+French, Spanish, and Russian). (Developed by Denis Stepanov)
+
+ 
+
+**3. Conclusion**
+-----------------
+
+ 
+
+**4. Recommendations**
+----------------------
+
+ 
+
+**5. Bibliography**
+-------------------
