@@ -237,7 +237,7 @@ Table of Contents
  
 
 **2. Software Requirements Specifications**
-===========================================
+-------------------------------------------
 
 **2.1 Overall Description**
 ---------------------------
