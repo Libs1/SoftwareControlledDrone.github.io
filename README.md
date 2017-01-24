@@ -262,8 +262,7 @@ Libdan)
 
  
 
-2.1.2 Web Interface
--------------------
+### 2.1.2 Web Interface
 
 Depending the how long the binding process takes we will develop the web
 interface. The web interface will be developed to allow users to register an
@@ -275,8 +274,7 @@ Kevin Libdan)
 
  
 
-2.1.3 Hardware
---------------
+### 2.1.3 Hardware
 
 The hardware built is used to control the Syma X12s drone. The hardware to
 control the Syma X12s is an Arduino, a NRF24L01+ transceiver and two analog
@@ -299,8 +297,7 @@ successfully). (Developed by Denis Stepanov and Kevin Libdan) 
 
  
 
-2.1.4 Application
------------------
+### 2.1.4 Application
 
 Software Drone Android Application is the software used to bind with the
 quadcopter, maneuver it and save data in MYSQL database using the readings from
