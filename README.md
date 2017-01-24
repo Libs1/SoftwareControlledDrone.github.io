@@ -199,29 +199,30 @@ described by [3]. I request approval of this project.
 Table of Contents
 =================
 
-[Proposal](#approved_proposal#reference)
+[Proposal](#approved-proposal)
 
-[Illustrations or Diagrams](#illustrations_or_diagrams)
+[Illustrations or Diagrams](#illustrations-or-diagrams)
 
-1.  [Introduction](#introduction)
+1.  [Introduction](#1-introduction)
 
-2.  [Software Requirements Specifications](#body)
+2.  [Software Requirements
+    Specifications](#2-software-requirements-specifications)
 
-    [2.1 Overall Description](#2.1_overall_description)
+    [2.1 Overall Description](#21-overall-description)
 
-    [2.1.1 Database](#2.1.1_database)
+    [2.1.1 Database](#211-database)
 
-    2.1.2 [Web Interface](#web_interface)
+    [2.1.2 Web Interface](#212-web-interface)
 
-    2.1.3 [Hardware](#hardware)
+    [2.1.3 Hardware](#213-hardware)
 
-    2.1.4 [Application](#application)
+    [2.1.4 Application](#214-application)
 
-3.  [Conclusion](#conclusion)
+3.  [Conclusion](#3-conclusion)
 
-4.  [Recommendations](#recommendations)
+4.  [Recommendations](#4-recommendations)
 
-5.  [Bibliography](#bibliography)
+5.  [Bibliography](#5-bibliography)
 
  
 
