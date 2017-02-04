@@ -35,6 +35,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -43,6 +44,7 @@ import android.widget.Chronometer;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -84,6 +86,16 @@ public class ControllerActivity extends AppCompatActivity {
     SharedPreferences.Editor editor;
     boolean check2;
 
+    /*Variables for the Joysticks*/
+    RelativeLayout layout_joystick1, layout_joystick2;
+    TextView xValueLeft, yValueLeft, xValueRight, yValueRight;
+    JoyStickClass leftJoystick, rightJoystick;
+    int xleftDefault = 0;
+    int yleftDefault = 0;
+    int xrightDefault = 0;
+    int yrightDefault = 0;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -92,14 +104,12 @@ public class ControllerActivity extends AppCompatActivity {
         accessPreference = getSharedPreferences("accessPrefs", MODE_PRIVATE);
         editor = accessPreference.edit();
 
-
         if(getResources().getBoolean(R.bool.portrait_only)){
             setContentView(R.layout.activity_controller);
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         }
 
-        drone_pic = (ImageView) findViewById(R.id.dronePicture2);
-
+        //drone_pic = (ImageView) findViewById(R.id.dronePicture2);
 
         java.util.Calendar c = java.util.Calendar.getInstance();
         SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy");
@@ -110,6 +120,7 @@ public class ControllerActivity extends AppCompatActivity {
         textStart.setVisibility(View.INVISIBLE);
 
 
+        //LED Button
         b = (Button) findViewById(R.id.button);
         b.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -119,6 +130,73 @@ public class ControllerActivity extends AppCompatActivity {
         });
 
 
+        /*TextViews for the X and Y values for both joysticks*/
+        xValueLeft = (TextView)findViewById(R.id.xValueLeft);
+        yValueLeft = (TextView)findViewById(R.id.yValueLeft);
+        xValueRight = (TextView)findViewById(R.id.xValueRight);
+        yValueRight = (TextView)findViewById(R.id.yValueRight);
+
+        layout_joystick1 = (RelativeLayout)findViewById(R.id.layout_joystick1);
+        layout_joystick2 = (RelativeLayout)findViewById(R.id.layout_joystick2);
+
+        leftJoystick = new JoyStickClass(getApplicationContext(), layout_joystick1, R.drawable.image_button);
+        leftJoystick.setStickSize(80, 80);
+        leftJoystick.setLayoutAlpha(150);
+        leftJoystick.setStickAlpha(100);
+        leftJoystick.setOffset(90);
+        leftJoystick.setMinimumDistance(50);
+
+        layout_joystick1.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View arg0, MotionEvent arg1)
+            {
+                leftJoystick.drawStick(arg1);
+                if(arg1.getAction() == MotionEvent.ACTION_DOWN || arg1.getAction() == MotionEvent.ACTION_MOVE)
+                {
+                    xValueLeft.setText("X: " + String.valueOf(leftJoystick.getX()));
+                    yValueLeft.setText("Y: " + String.valueOf(leftJoystick.getY()));
+                }
+                else if(arg1.getAction() == MotionEvent.ACTION_UP)
+                {
+                    xValueLeft.setText("X: " + 0);
+                    yValueLeft.setText("Y: " + 0);
+                }
+                return true;
+            }
+        });
+
+
+        rightJoystick = new JoyStickClass(getApplicationContext(), layout_joystick2, R.drawable.image_button);
+        rightJoystick.setStickSize(80, 80);
+        rightJoystick.setLayoutAlpha(150);
+        rightJoystick.setStickAlpha(100);
+        rightJoystick.setOffset(90);
+        rightJoystick.setMinimumDistance(50);
+
+        layout_joystick2.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View arg0, MotionEvent arg1)
+            {
+                rightJoystick.drawStick(arg1);
+                if(arg1.getAction() == MotionEvent.ACTION_DOWN || arg1.getAction() == MotionEvent.ACTION_MOVE)
+                {
+                    xValueRight.setText("X:" + String.valueOf(rightJoystick.getX()));
+                    yValueRight.setText("Y:" + String.valueOf(rightJoystick.getY()));
+                }
+                else if(arg1.getAction() == MotionEvent.ACTION_UP)
+                {
+                    xValueRight.setText("X:" + 0);
+                    yValueLeft.setText("Y:" + 0);
+                }
+
+                return true;
+            }
+        });
+
+
+
+
+/*
         ImageView upButton = (ImageView) findViewById(R.id.upArrow);
         upButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -185,6 +263,7 @@ public class ControllerActivity extends AppCompatActivity {
                 bluedrone1.startAnimation(jumpAnimation);
             }
         });
+     */
 
         chronometer = (Chronometer) findViewById(R.id.chronometer);
         timeText = (TextView) findViewById(R.id.timeDisplayed);
@@ -214,7 +293,7 @@ public class ControllerActivity extends AppCompatActivity {
                     };
 
                     final Handler handler = new Handler();
-                    Runnable runnable = new Runnable() {
+                    /*Runnable runnable = new Runnable() {
                         int i = 0;
 
                         public void run() {
@@ -227,13 +306,13 @@ public class ControllerActivity extends AppCompatActivity {
                                 handler.postDelayed(this, 50);
                             }
                         }
-                    };
-                    handler.postDelayed(runnable, 50);
+                    };*/
+                    //handler.postDelayed(runnable, 50);
                 }
                 else
                 {
                     running = false;
-                    drone_pic.setImageResource(R.drawable.drone);
+                    //drone_pic.setImageResource(R.drawable.drone);
                     //getbase returns the base time
                     timeWhenStopped = chronometer.getBase() - SystemClock.elapsedRealtime();
                     int seconds = (int) timeWhenStopped / 1000;
@@ -328,8 +407,6 @@ public class ControllerActivity extends AppCompatActivity {
             }
             return null;
         }
-
-
 
         @Override
         protected void onPostExecute(String s) {

@@ -12,7 +12,84 @@
     android:background="@color/dark"
     tools:context="com.example.softwarecontrolleddrone.ControllerActivity">
 
+    <!--Joystick Layout -->
+    <RelativeLayout
+        android:id="@+id/layout_joystick1"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginRight="36dp"
+        android:background="@drawable/image_button_bg"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="50dp"/>
 
+    <RelativeLayout
+        android:id="@+id/layout_joystick2"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginRight="36dp"
+        android:background="@drawable/image_button_bg"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="51dp"/>
+
+    <TextView
+        android:id="@+id/leftAnalogLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Left Stick"
+        android:textColor="@color/white"
+        android:layout_alignTop="@+id/layout_joystick1"
+        android:layout_toEndOf="@+id/layout_joystick1"
+        android:layout_marginTop="52dp" />
+
+    <TextView
+        android:id="@+id/xValueLeft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="X:"
+        android:textColor="@color/white"
+        android:layout_below="@id/leftAnalogLabel"
+        android:layout_toEndOf="@+id/layout_joystick1"/>
+
+    <TextView
+        android:id="@+id/yValueLeft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Y:"
+        android:textColor="@color/white"
+        android:layout_below="@id/xValueLeft"
+        android:layout_toEndOf="@+id/layout_joystick1"/>
+
+    <TextView
+        android:id="@+id/rightAnalogLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Right Stick"
+        android:textColor="@color/white"
+        android:layout_alignTop="@+id/layout_joystick2"
+        android:layout_toStartOf="@+id/layout_joystick2"
+        android:layout_marginTop="52dp"/>
+
+    <TextView
+        android:id="@+id/xValueRight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="X:"
+        android:textColor="@color/white"
+        android:layout_below="@+id/rightAnalogLabel"
+        android:layout_alignStart="@+id/rightAnalogLabel"/>
+
+    <TextView
+        android:id="@+id/yValueRight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Y:"
+        android:textColor="@color/white"
+        android:layout_below="@id/xValueRight"
+        android:layout_alignStart="@+id/rightAnalogLabel"/>
+
+    <!--
     <ImageView
         android:id="@+id/upArrow"
         android:layout_width="80dp"
@@ -70,6 +147,7 @@
         android:background="@drawable/rotate_right_clicked_function"
         android:layout_alignParentBottom="true"
         android:layout_toEndOf="@+id/dronePicture2" />
+    -->
 
     <Button
         style="?android:attr/buttonStyleSmall"

@@ -266,7 +266,6 @@ public class RegisterActivity extends AppCompatActivity {
                 break;
 
         }
-
         return super.onOptionsItemSelected(item);
     }
 

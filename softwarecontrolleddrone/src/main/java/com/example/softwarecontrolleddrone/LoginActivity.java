@@ -43,8 +43,6 @@ import java.net.URLEncoder;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
 
-    /*TODO Check if the user's password is invalid*/
-
     AlertDialog alertDialog;
     Context context = this;
 
