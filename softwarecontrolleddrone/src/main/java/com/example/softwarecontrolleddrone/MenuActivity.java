@@ -81,6 +81,11 @@ public class MenuActivity extends AppCompatActivity {
             public void onClick(View v){
 
                 Intent intent = new Intent(MenuActivity.this, ControllerActivity.class);
+
+                //Passing username to ControllerActivity
+                String recvUsername = getIntent().getStringExtra("usernamePassed");
+                intent.putExtra("usernamePassed2", recvUsername);
+
                 startActivity(intent);
 
             }

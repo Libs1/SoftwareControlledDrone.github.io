@@ -188,6 +188,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     editor.clear();
                     editor.commit();
                 }
+
+                //Passing the username to the MenuActivity
+                String passUsername = editText1.getText().toString();
+                intent.putExtra("usernamePassed", passUsername);
+
                 startActivity(intent);
             }
             else{

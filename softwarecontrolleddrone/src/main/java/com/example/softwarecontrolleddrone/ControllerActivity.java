@@ -95,11 +95,16 @@ public class ControllerActivity extends AppCompatActivity {
     int xrightDefault = 0;
     int yrightDefault = 0;
 
+    String recvUsername;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_controller);
+
+        //
+        recvUsername = getIntent().getStringExtra("usernamePassed2");
 
         accessPreference = getSharedPreferences("accessPrefs", MODE_PRIVATE);
         editor = accessPreference.edit();
@@ -334,7 +339,7 @@ public class ControllerActivity extends AppCompatActivity {
                     textStop.setVisibility(View.VISIBLE);
 
                     BackgroundTask backgroundTask = new BackgroundTask();
-                    backgroundTask.execute(formattedDate, putFlightDuration);
+                    backgroundTask.execute(formattedDate, putFlightDuration, recvUsername);
 
                 }
             }
@@ -353,12 +358,13 @@ public class ControllerActivity extends AppCompatActivity {
         @Override
         protected String doInBackground(String... args)
         {
-            link = "http://softwarecontrolleddrone.esy.es/FlightInfo.php";
+            link = "http://softwarecontrolleddrone.esy.es/FlightInfo2.php";
 
-            String date, flightduration;
+            String date, flightduration, username;
 
             date = args[0];
             flightduration = args[1];
+            username = args[2];
 
             try{
 
@@ -374,7 +380,8 @@ public class ControllerActivity extends AppCompatActivity {
 
                 //Encoded data to be written to the URL
                 String data_string = URLEncoder.encode("date", "UTF-8") + "=" + URLEncoder.encode(date, "UTF-8") + "&" +
-                        URLEncoder.encode("flightduration", "UTF-8") + "=" + URLEncoder.encode(flightduration, "UTF-8");
+                        URLEncoder.encode("flightduration", "UTF-8") + "=" + URLEncoder.encode(flightduration, "UTF-8") + "&" +
+                        URLEncoder.encode("username", "UTF-8") + "=" + URLEncoder.encode(username, "UTF-8");
 
                 bufferedWriter.write(data_string);
                 bufferedWriter.flush();
