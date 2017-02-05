@@ -269,11 +269,11 @@ Table of Contents
 
     [2.4 Progress Reports](#24-progress-reports)
 
-3.  [Conclusion](#4-conclusion)
+3.  [Conclusion](#3-conclusion)
 
-4.  [Recommendations](#5-recommendations)
+4.  [Recommendations](#4-recommendations)
 
-5.  [Bibliography](#6-bibliography)
+5.  [Bibliography](#5-bibliography)
 
  
 
@@ -440,15 +440,15 @@ French, Spanish, and Russian). (Developed by Denis Stepanov)
 
  
 
-**4. Conclusion**
+**3. Conclusion**
 -----------------
 
  
 
-**5. Recommendations**
+**4. Recommendations**
 ----------------------
 
  
 
-**6. Bibliography**
+**5. Bibliography**
 -------------------
