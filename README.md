@@ -11,6 +11,20 @@ Project’s website: https://github.com/Libs1/SoftwareControlledDrone.github.io
 Declaration of Authorship
 =========================
 
+The authorship of this project is evenly divided between Denis Stepanov and
+Kevin Libdan. Denis Stepanov was responsible for handling the android
+application which will be used to control the drone from an android device. He
+is also responsible for creating the design aspect of the android application.
+Kevin Libdan is responsible for creating the database which will be used to
+communicate with the android application and store information such as user
+information and drone information. Denis Stepanov and Kevin Libdan will both be
+responsible for the hardware aspect. The hardware will allow the Eachine H8
+drone be controlled by both two analog joysticks and the android application.
+Denis Stepanov and Kevin Libdan will also be responsible for the web interface.
+The web interface will mimic the same functionalities as the android application
+which will allow the users to register, login and view their drone’s flight
+information.
+
  
 
 Approved Proposal
@@ -191,33 +205,75 @@ this project.
 
  
 
+Abstract
+========
+
+This project was aimed to manipulate the same binding signal that the drone used
+with the stock controller and then being able to control the drone remotely with
+an application built for android devices. The android application would also
+allow users to register if they do not have an account, sign in and view their
+drone’s flight information. We started this project by building a piece of
+hardware that would allow us to communicate with the drone and also being able
+to fly it. The major components of our hardware are an Arduino Uno R3, an
+nrf24l01 wireless transceiver, and two analog joysticks. Creating the
+application, database, and web interface were created to utilize with our
+hardware.
+
+ 
+
 Table of Contents
 =================
 
+[Declaration of Authorship](#declaration-of-authorship)
+
 [Proposal](#approved-proposal)
+
+[Abstract](#abstract)
 
 [Illustrations or Diagrams](#illustrations-or-diagrams)
 
 1.  [Introduction](#1-introduction)
 
+    [1.1 Purpose](#11-purpose)
+
+    [1.2 Scope](#12-scope)
+
 2.  [Software Requirements
     Specifications](#2-software-requirements-specifications)
 
-    [2.1 Overall Description](#21-overall-description)
+    [2.1 Project Description](#21-project-description)
 
-    [2.1.1 Database](#211-database)
+    [2.1.1 Product Perspective](#211-product-perspective)
 
-    [2.1.2 Web Interface](#212-web-interface)
+    [2.1.2 System Interfaces](#212-system-interfaces)
 
-    [2.1.3 Hardware](#213-hardware)
+    [2.1.3 User Interfaces](#213-user-interfaces)
 
-    [2.1.4 Application](#214-application)
+    [2.1.4 Hardware Interfaces](#214-hardware-interfaces)
 
-3.  [Conclusion](#3-conclusion)
+    [2.1.5 Software Interfaces](#215-software-interfaces)
 
-4.  [Recommendations](#4-recommendations)
+    [2.1.6 Communication Interfaces](#216-communication-interfaces)
 
-5.  [Bibliography](#5-bibliography)
+    [2.2 Build Instructions](#22-build-instructions)
+
+    [2.3 Specific Requirements](#23-specific-requirements)
+
+    [2.3.1 Database](#231-database)
+
+    [2.3.2 Web Interface](#232-web-interface)
+
+    [2.3.3 Hardware](#233-hardware)
+
+    [2.3.4 Application](#234-application)
+
+    [2.4 Progress Reports](#24-progress-reports)
+
+3.  [Conclusion](#4-conclusion)
+
+4.  [Recommendations](#5-recommendations)
+
+5.  [Bibliography](#6-bibliography)
 
  
 
@@ -229,15 +285,72 @@ Table of Contents
 **1. Introduction**
 -------------------
 
+### 1.1 Purpose
+
+The Software Controlled Drone project was designed to manipulate the binding
+sequence and as well as controlling the Eachine H8 mini quadcopter drone. This
+project is focused on creating hardware and an android application that will be
+capable of controlling the drone. This Software Controlled Drone (SCD) project
+will have a hardware component, an android application, a database and a web
+interface.
+
+ 
+
+### 1.2 Scope
+
+The Software Controlled Drone project will be capable of controlling the Eachine
+H8 mini quadcopter drone. The android application will have the capability of
+controlling drone, and allowing the users to view their drone’s flight
+information such as the duration of the flight and as well as the date of which
+the drone has been flown. The database will contain the user’s information such
+as their first and last name, username and password. The database will also
+store information of the drone’s flight information that will be displayed to
+the user. The web interface will allow users to review their drone’s flight
+information.
+
+ 
+
  
 
 **2. Software Requirements Specifications**
 -------------------------------------------
 
-**2.1 Overall Description**
+**2.1 Project Description**
 ---------------------------
 
-### 2.1.1 Database
+### 2.1.1 Product Perspective
+
+ 
+
+### 2.1.2 System Interfaces
+
+ 
+
+### 2.1.3 User Interfaces
+
+ 
+
+### 2.1.4 Hardware Interfaces
+
+ 
+
+### 2.1.5 Software Interfaces
+
+ 
+
+### 2.1.6 Communication Interfaces
+
+ 
+
+**2.2 Build Instructions**
+--------------------------
+
+ 
+
+**2.3 Specific Requirements **
+------------------------------
+
+### 2.3.1 Database
 
 The MYSQL database is responsible for storing the users account information and
 as well as the drone’s activity information. The database uses PHP in order for
@@ -257,7 +370,7 @@ Libdan)
 
  
 
-### 2.1.2 Web Interface
+### 2.3.2 Web Interface
 
 Depending the how long the binding process takes we will develop the web
 interface. The web interface will be developed to allow users to register an
@@ -272,7 +385,7 @@ information. (Developed by Denis Stepanov and Kevin Libdan)
 
  
 
-### 2.1.3 Hardware
+### 2.3.3 Hardware
 
 The hardware built is used to control the Syma X12s drone. The hardware to
 control the Syma X12s is an Arduino, a NRF24L01+ transceiver and two analog
@@ -298,7 +411,7 @@ Section is due to change as soon as we have the drone binding successfully).
 
  
 
-### 2.1.4 Application
+### 2.3.4 Application
 
 Software Drone Android Application is the software used to bind with the
 quadcopter, maneuver it and save data in MYSQL database using the readings from
@@ -322,15 +435,20 @@ French, Spanish, and Russian). (Developed by Denis Stepanov)
 
  
 
-**3. Conclusion**
+**2.4 Progress Reports**
+------------------------
+
+ 
+
+**4. Conclusion**
 -----------------
 
  
 
-**4. Recommendations**
+**5. Recommendations**
 ----------------------
 
  
 
-**5. Bibliography**
+**6. Bibliography**
 -------------------
