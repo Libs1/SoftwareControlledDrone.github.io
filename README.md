@@ -8,20 +8,22 @@ SoftwareControlledDrone Project
 
 Project’s website: https://github.com/Libs1/SoftwareControlledDrone.github.io
 
-Declaration of Authorship
-=========================
+Declaration of Joint Authorship
+===============================
 
 The authorship of this project is evenly divided between Denis Stepanov and
-Kevin Libdan. Denis Stepanov was responsible for handling the android
-application which will be used to control the drone from an android device. He
-is also responsible for creating the design aspect of the android application.
-Kevin Libdan is responsible for creating the database which will be used to
-communicate with the android application and store information such as user
-information and drone information. Denis Stepanov and Kevin Libdan will both be
-responsible for the hardware aspect. The hardware will allow the Eachine H8
-drone be controlled by both two analog joysticks and the android application.
-Denis Stepanov and Kevin Libdan will also be responsible for the web interface.
-The web interface will mimic the same functionalities as the android application
+Kevin Libdan. Denis Stepanov is responsible for handling the android application
+which will be used to control the drone from an android device. He is also
+responsible for creating the design aspect of the android application (this
+includes all the layouts, animations, languages e.t.c). Kevin Libdan is
+responsible for creating the database which will be used to communicate with the
+android application and store information such as user information and drone
+information (flight duration, date and location). Denis Stepanov and Kevin
+Libdan will both be responsible for the hardware aspect. The hardware will allow
+the Eachine H8 drone be controlled by two analog joysticks connected to an
+Arduino and an android application which will have two virtual joysticks. Denis
+Stepanov and Kevin Libdan will also be responsible for the web interface. The
+web interface will mimic the same functionalities as the android application
 which will allow the users to register, login and view their drone’s flight
 information.
 
@@ -208,15 +210,15 @@ this project.
 Abstract
 ========
 
-This project was aimed to manipulate the same binding signal that the drone used
+This project is aimed to manipulate the same binding signal that the drone used
 with the stock controller and then being able to control the drone remotely with
 an application built for android devices. The android application would also
 allow users to register if they do not have an account, sign in and view their
 drone’s flight information. We started this project by building a piece of
 hardware that would allow us to communicate with the drone and also being able
 to fly it. The major components of our hardware are an Arduino Uno R3, an
-nrf24l01 wireless transceiver, and two analog joysticks. Creating the
-application, database, and web interface were created to utilize with our
+NRF24l01 wireless transceiver, and two analog joysticks. Developing the
+application, database, and web interface allowed us to utilize with our
 hardware.
 
  
@@ -224,7 +226,7 @@ hardware.
 Table of Contents
 =================
 
-[Declaration of Authorship](#declaration-of-authorship)
+[Declaration of Joint Authorship](#declaration-of-joint-authorship)
 
 [Proposal](#approved-proposal)
 
@@ -298,15 +300,15 @@ interface.
 
 ### 1.2 Scope
 
-The Software Controlled Drone project will be capable of controlling the Eachine
-H8 mini quadcopter drone. The android application will have the capability of
-controlling drone, and allowing the users to view their drone’s flight
-information such as the duration of the flight and as well as the date of which
-the drone has been flown. The database will contain the user’s information such
-as their first and last name, username and password. The database will also
-store information of the drone’s flight information that will be displayed to
-the user. The web interface will allow users to review their drone’s flight
-information.
+The Software Controlled Drone project will be able to control the Eachine H8
+mini quadcopter drone. The android application will have the capability of
+controlling drone remotely by using two virtual analog sticks in the controller
+activity and allowing the users to view their drone’s flight information such as
+the duration of the flight and as well as the date of which the drone has been
+flown. The database will contain the user’s information such as their first and
+last name, username and password. The database will also store information of
+the drone’s flight information that will be displayed to the user. The web
+interface will allow users to review their drone’s flight information.
 
  
 
