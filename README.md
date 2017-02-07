@@ -289,12 +289,19 @@ Table of Contents
 
 ### 1.1 Purpose
 
-The Software Controlled Drone project was designed to manipulate the binding
-sequence and as well as controlling the Eachine H8 mini quadcopter drone. This
-project is focused on creating hardware and an android application that will be
-capable of controlling the drone. This Software Controlled Drone (SCD) project
-will have a hardware component, an android application, a database and a web
-interface.
+Drone technology is fairly new and it’s becoming popular day by day. It has
+become popular enough that organizations like Amazon are testing product
+delivery by drones, but controlling manual or automated flight path of drones is
+difficult and requires dedicated controllers. Controllers can sometimes be more
+expensive or non-intuitive to use. Android applications are easily obtainable
+and can have very intuitive user interface and in addition android devices are
+ubiquitous. For this reason, having a proper android application that would be
+able to control drones would increase the popularity for drones. The Software
+Controlled Drone project is designed to manipulate the binding sequence and as
+well as controlling the Eachine H8 mini quadcopter drone. This project is
+focused on creating hardware and an android application that will be capable of
+controlling the drone. This Software Controlled Drone (SCD) project will have a
+hardware component, an android application, a database and a web interface.
 
  
 
