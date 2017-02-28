@@ -331,8 +331,6 @@ interface will allow users to review their drone’s flight information.
 
  
 
- 
-
 **2. Project Description**
 --------------------------
 
