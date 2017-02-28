@@ -421,8 +421,6 @@ for individuals who are unexperienced in soldering.
 
 Figure 1.1
 
-![](nrf24l01 solder.png)
-
 ![nrf24l01
 solder.png](https://github.com/Libs1/SoftwareControlledDrone.github.io/blob/master/Images/nrf24l01%20solder.png)
 
@@ -452,7 +450,8 @@ CSN -\> A1
 
 Figure 2.1
 
-![](nrf24l01 hookup.png)
+![nrf24l01
+hookup.png](https://github.com/Libs1/SoftwareControlledDrone.github.io/blob/master/Images/nrf24l01%20hookup.png)
 
 **Step 4: Hooking up the joysticks to the Arduino**
 
@@ -487,7 +486,8 @@ GND -\> GND
 
 Figure 3.1
 
-![](joystick hookup.png)
+![joystick
+hookup.png](https://github.com/Libs1/SoftwareControlledDrone.github.io/blob/master/Images/joystick%20hookup.png)
 
 ### 2.2.5 Power Up
 
