@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 csl: apa.csl
 bibliography: SCDCitations.bib
@@ -624,3 +625,6 @@ French, Spanish, and Russian). (Developed by Denis Stepanov)
 
 **5. Bibliography**
 -------------------
+=======
+# SoftwareControlledDrone.github.io
+>>>>>>> 145caf25ac99f1fd31d0f3566abda5414a1975b3
