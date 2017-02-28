@@ -261,7 +261,7 @@ Table of Contents
 
     [2.2.1 Introduction](#221-introduction)
 
-    [2.2.2 Bill of Materials/Budget](#222-bill-of-materialsbudget)
+    [2.2.2 Build of Materials/Budget](#222-build-of-materialsbudget)
 
     [2.2.3 Time Commitment](#223-time-commitment)
 
