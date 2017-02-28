@@ -259,6 +259,18 @@ Table of Contents
 
     [2.2 Build Instructions](#22-build-instructions)
 
+    [2.2.1 Introduction](#221-introduction)
+
+    [2.2.2 Bill of Materials/Budget](#222-bill-of-materials/budget)
+
+    [2.2.3 Time Commitment](#223-time-commitment)
+
+    [2.2.4 Mechanical Assembly](#224-mechanical-assembly)
+
+    [2.2.5 Power Up](#225-power-up)
+
+    [2.2.6 Unit Testing](#226-unit-testing)
+
     [2.3 Specific Requirements](#23-specific-requirements)
 
     [2.3.1 Database](#231-database)
@@ -353,6 +365,162 @@ interface will allow users to review their drone’s flight information.
 
 **2.2 Build Instructions**
 --------------------------
+
+### 2.2.1 Introduction
+
+In this section of the technical report, there will be information on how to
+recreate the hardware to control the Eachine H8 Mini Quadcopter with an Arduino
+and an Android device, which will use an NRF24L01 transceiver to communicate
+with the drone.
+
+ 
+
+### 2.2.2 Build of Materials/Budget
+
+| **Item**                                 | **Quantity**                   | **Total Price(With Tax + Shipping)** |
+|------------------------------------------|--------------------------------|--------------------------------------|
+| Arduino Uno R3                           | 1                              | \$30.95                              |
+| SparkFun Transceiver Breakout - nRF24L01 | 1                              | \$29.37                              |
+| Eachine H8 Mini Quadcopter               | 1                              | \$28.99                              |
+| AA Batteries                             | 1 pack(containing 4 batteries) | \$5.64                               |
+| BreadBoard                               | 1                              | \$12.99                              |
+| Pin Header (8-pin) Male                  | 1                              | \$0.50                               |
+| Jumper Wires                             | 40 pack                        | \$9.03                               |
+| Analog Joysticks                         | 2                              | \$36.02                              |
+| HC-05 Bluetooth Module                   | 1                              | \$18.65                              |
+
+ 
+
+### 2.2.3 Time Commitment
+
+| **Task**                                                | **Time To Complete The Task**                 |
+|---------------------------------------------------------|-----------------------------------------------|
+| Ordering Parts                                          | 3 Days(Shipping)                              |
+| Soldering the pin header to the NRF24L01 Transceiver    | 20 minutes                                    |
+| Wiring the NRF24L01 transceiver to the Arduino          | 5 minutes                                     |
+| Wiring the joysticks to the Arduino                     | 5 minutes                                     |
+| Downloading the Arduino IDE                             | 10 minutes(Depending on computer Performance) |
+| Importing the NRF24L01\_Multipro library to the Arduino | 2 minutes                                     |
+| Running the code                                        | 5 minutes                                     |
+
+ 
+
+### 2.2.4 Mechanical Assembly
+
+**Step 1: Purchase the required parts**
+
+ 
+
+**Step 2: Preparing the NRF24L01**
+
+Solder the pin header (8-pin) into the pins indicated with a green dot as shown
+on Figure 1.1. The pin headers will act as legs for the transceiver when you
+place the transceiver on the breadboard. Soldering the pin headers to the pins
+of the transceiver may be challenging due to the size of the pins and as well
+for individuals who are unexperienced in soldering.
+
+Figure 1.1
+
+![](file:///C:\Users\Kevin\AppData\Local\Temp\msohtmlclip1\01\clip_image001.png)
+
+ 
+
+**Step 3: Hooking up the NRF24L01 to the Arduino**
+
+**           ** Before we make any wiring connections between the Arduino and
+the NRF24L01 transceiver, make sure the transceiver is sitting on the breadboard
+properly. When the transceiver is in place, make the following connections
+between the Arduino and the NRF24L01 transceiver. Figure 2.1 shows how the
+connections should look when all connections are made.
+
+This is the pin set up for the Arduino to the NRF24L01 Transceiver:
+
+5v -\> VCC
+
+GND -\> GND
+
+MOSI -\> 3
+
+SCK -\> 4
+
+CE -\> 5
+
+MISO -\> A0
+
+CSN -\> A1
+
+ 
+
+Figure 2.1
+
+![](file:///C:\Users\Kevin\AppData\Local\Temp\msohtmlclip1\01\clip_image002.jpg)
+
+**Step 4: Hooking up the joysticks to the Arduino**
+
+Make the following connections to hook up both analog sticks to the Arduino.
+Figure 3.1 shows the connections made between the two analog joysticks and the
+Arduino. Whichever joystick you set up to A2 and A3 on the Arduino will be your
+left joystick as it will control the throttle (up and down movement of the
+drone) and rudder (left rotate and right rotate of the drone). The other
+joystick, which will be your right joystick, will control the Aileron (leftward
+and rightward movement of the drone) and elevator (forward and backward movement
+of the drone).
+
+**Left Joystick to Arduino:**
+
+X -\> A2
+
+Y-\> A3
+
+VCC -\> 5v
+
+GND -\> GND
+
+ 
+
+**Right Joystick to Arduino:**
+
+X -\> A4
+
+Y -\> A5
+
+VCC -\> 5v
+
+GND -\> GND
+
+ 
+
+Figure 3.1
+
+![](file:///C:\Users\Kevin\AppData\Local\Temp\msohtmlclip1\01\clip_image002.jpg)
+
+### 2.2.5 Power Up
+
+Make sure that all connections are in the appropriate pins and that there are
+not any loose connections. Once the circuit has been built, plug in the Arduino
+into the PC and open the Arduino IDE. Plug in the power to the Eachine H8 drone
+and the LED lights should be blinking in a steady pace. Go back to your Arduino
+IDE and open up the “nrf24l01\_multipro.ino” file and then upload the sketch to
+the Arduino. Once the code is uploaded, the drone’s LEDs should be blinking
+rapidly, this indicates that the drone is ready to bind. At this point, moving
+your left joystick down should bind the drone and the drone’s LEDs should be
+steady.
+
+ 
+
+### 2.2.6 Unit Testing
+
+Ensure that the drone’s LEDs would be steady as it would indicate a successful
+binding sequence when the left joystick is moved. If the binding sequence was
+not successful, it would most likely be a hardware problem. It is important to
+check that all of the connections made between the NRF24L01, joysticks and the
+Arduino are made properly and secured. Another test is to ensure that the
+joysticks are controlling the drone as it is supposed to. The throttle (vertical
+movement) of the left joystick would move the drone up and down; the rudder
+(horizontal movement) of the left joystick would right and left rotate the
+drone, the elevator (vertical movement) of the right joystick would move the
+drone forward and backwards and the Aileron (horizontal movement) of the right
+joystick would move the drone leftward and rightward.
 
  
 
