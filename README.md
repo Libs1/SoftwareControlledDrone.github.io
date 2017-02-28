@@ -183,8 +183,9 @@ important to start tasks as soon as possible to be able to meet deadlines.
 | **Phase 1**                                                                               |                |                                                                                                                                |
 | Arduino Uno R3                                                                            | \>\$30.95      | (Arduino) Amazon                                                                                                               |
 | SparkFun Transceiver Breakout - nRF24L01                                                  | \>\$29.37      | CanadaRobotix                                                                                                                  |
-| Syma x12 Nano 6-Axis Gyro 4CH RC Quadcopter Drone                                         | \>\$49.37      | (Tenergy Canada) Amazon                                                                                                        |
+| Eachine H8 Mini Quadcopter                                                                | \>\$28.99      | (EachineDirect) Amazon                                                                                                         |
 | Lithium AA Batteries                                                                      | \>\$5.64       | CanadianTire (1 pack comes with 4 AA batteries)                                                                                |
+| Analog Joysticks                                                                          | \>\$32.02      | Brainy-Bits (2 analog sticks)                                                                                                  |
 |                                                                                           |                |                                                                                                                                |
 | **Phase 1 Total**                                                                         | **\>\$115.33** |                                                                                                                                |
 | **Phase 2**                                                                               |                |                                                                                                                                |
@@ -240,46 +241,45 @@ Table of Contents
 
     [1.2 Scope](#12-scope)
 
-2.  [Software Requirements
-    Specifications](#2-software-requirements-specifications)
+2.  [Project Description](#2-project-description)
 
-    [2.1 Project Description](#21-project-description)
+    [2.1 Build Instructions](#21-build-instructions)
 
-    [2.1.1 Product Perspective](#211-product-perspective)
+    [2.1.1 Introduction](#211-introduction)
 
-    [2.1.2 System Interfaces](#212-system-interfaces)
+    [2.1.2 Build of Materials/Budget](#212-build-of-materialsbudget)
 
-    [2.1.3 User Interfaces](#213-user-interfaces)
+    [2.1.3 Time Commitment](#213-time-commitment)
 
-    [2.1.4 Hardware Interfaces](#214-hardware-interfaces)
+    [2.1.4 Mechanical Assembly](#214-mechanical-assembly)
 
-    [2.1.5 Software Interfaces](#215-software-interfaces)
+    [2.1.5 Power Up](#215-power-up)
 
-    [2.1.6 Communication Interfaces](#216-communication-interfaces)
+    [2.1.6 Unit Testing](#216-unit-testing)
 
-    [2.2 Build Instructions](#22-build-instructions)
+    [2.2 External Interface Requirements](#22-external-interface-requirements)
 
-    [2.2.1 Introduction](#221-introduction)
+    [2.2.1 Database](#221-database)
 
-    [2.2.2 Build of Materials/Budget](#222-build-of-materialsbudget)
+    [2.2.2 Web Interface](#222-web-interface)
 
-    [2.2.3 Time Commitment](#223-time-commitment)
+    [2.2.3 Hardware](#223-hardware)
 
-    [2.2.4 Mechanical Assembly](#224-mechanical-assembly)
+    [2.2.4 Application](#224-application)
 
-    [2.2.5 Power Up](#225-power-up)
+    [2.3 Project Specifications](#23-project-specifications)
 
-    [2.2.6 Unit Testing](#226-unit-testing)
+    [2.3.1 Project Perspective](#231-project-perspective)
 
-    [2.3 Specific Requirements](#23-specific-requirements)
+    [2.3.2 System Interface](#232-system-interface)
 
-    [2.3.1 Database](#231-database)
+    [2.3.3 User Interface](#233-user-interface)
 
-    [2.3.2 Web Interface](#232-web-interface)
+    [2.3.4 Hardware Interface](#234-hardware-interface)
 
-    [2.3.3 Hardware](#233-hardware)
+    [2.3.5 Software Interface](#235-software-interface)
 
-    [2.3.4 Application](#234-application)
+    [2.3.6 Communication Interface](#236-communication-interface)
 
     [2.4 Progress Reports](#24-progress-reports)
 
@@ -333,40 +333,13 @@ interface will allow users to review their drone’s flight information.
 
  
 
-**2. Software Requirements Specifications**
--------------------------------------------
-
-**2.1 Project Description**
----------------------------
-
-### 2.1.1 Product Perspective
-
- 
-
-### 2.1.2 System Interfaces
-
- 
-
-### 2.1.3 User Interfaces
-
- 
-
-### 2.1.4 Hardware Interfaces
-
- 
-
-### 2.1.5 Software Interfaces
-
- 
-
-### 2.1.6 Communication Interfaces
-
- 
-
-**2.2 Build Instructions**
+**2. Project Description**
 --------------------------
 
-### 2.2.1 Introduction
+**2.1 Build Instructions**
+--------------------------
+
+### 2.1.1 Introduction
 
 In this section of the technical report, there will be information on how to
 recreate the hardware to control the Eachine H8 Mini Quadcopter with an Arduino
@@ -375,7 +348,7 @@ with the drone.
 
  
 
-### 2.2.2 Build of Materials/Budget
+### 2.1.2 Build of Materials/Budget
 
 | **Item**                                 | **Quantity**                   | **Total Price(With Tax + Shipping)** |
 |------------------------------------------|--------------------------------|--------------------------------------|
@@ -391,7 +364,7 @@ with the drone.
 
  
 
-### 2.2.3 Time Commitment
+### 2.1.3 Time Commitment
 
 | **Task**                                                | **Time To Complete The Task**                 |
 |---------------------------------------------------------|-----------------------------------------------|
@@ -405,7 +378,7 @@ with the drone.
 
  
 
-### 2.2.4 Mechanical Assembly
+### 2.1.4 Mechanical Assembly
 
 **Step 1: Purchase the required parts**
 
@@ -421,8 +394,7 @@ for individuals who are unexperienced in soldering.
 
 Figure 1.1
 
-![nrf24l01
-solder.png](https://github.com/Libs1/SoftwareControlledDrone.github.io/blob/master/Images/nrf24l01%20solder.png)
+![nrf24l01 solder.png](https://github.com/Libs1/SoftwareControlledDrone.github.io/blob/master/Images/nrf24l01%20solder.png)
 
 **Step 3: Hooking up the NRF24L01 to the Arduino**
 
@@ -450,8 +422,7 @@ CSN -\> A1
 
 Figure 2.1
 
-![nrf24l01
-hookup.png](https://github.com/Libs1/SoftwareControlledDrone.github.io/blob/master/Images/nrf24l01%20hookup.png)
+![nrf24l01 hookup.png](https://github.com/Libs1/SoftwareControlledDrone.github.io/blob/master/Images/nrf24l01%20hookup.png)
 
 **Step 4: Hooking up the joysticks to the Arduino**
 
@@ -486,10 +457,9 @@ GND -\> GND
 
 Figure 3.1
 
-![joystick
-hookup.png](https://github.com/Libs1/SoftwareControlledDrone.github.io/blob/master/Images/joystick%20hookup.png)
+![joystick hookup.png](https://github.com/Libs1/SoftwareControlledDrone.github.io/blob/master/Images/joystick%20hookup.png)
 
-### 2.2.5 Power Up
+### 2.1.5 Power Up
 
 Make sure that all connections are in the appropriate pins and that there are
 not any loose connections. Once the circuit has been built, plug in the Arduino
@@ -503,7 +473,7 @@ steady.
 
  
 
-### 2.2.6 Unit Testing
+### 2.1.6 Unit Testing
 
 Ensure that the drone’s LEDs would be steady as it would indicate a successful
 binding sequence when the left joystick is moved. If the binding sequence was
@@ -519,10 +489,10 @@ joystick would move the drone leftward and rightward.
 
  
 
-**2.3 Specific Requirements**
------------------------------
+**2.2 External Interface Requirements**
+---------------------------------------
 
-### 2.3.1 Database
+### 2.2.1 Database
 
 The MYSQL database is responsible for storing the users account information and
 as well as the drone’s activity information. The database uses PHP in order for
@@ -542,7 +512,7 @@ Libdan)
 
  
 
-### 2.3.2 Web Interface
+### 2.2.2 Web Interface
 
 Depending the how long the binding process takes we will develop the web
 interface. The web interface will be developed to allow users to register an
@@ -557,7 +527,7 @@ information. (Developed by Denis Stepanov and Kevin Libdan)
 
  
 
-### 2.3.3 Hardware
+### 2.2.3 Hardware
 
 The hardware built is used to control the Syma X12s drone. The hardware to
 control the Syma X12s is an Arduino, a NRF24L01+ transceiver and two analog
@@ -577,13 +547,12 @@ not support the Syma X12s. We were suggested to get a different drone, Eachine
 H8 mini which is compatible with the code as it has the supported protocol.
 Kevin Libdan is responsible for acquiring the materials and as well as the
 assembly of the materials. Denis Stepanov is responsible for creating the
-Arduino sketch that would be compatible with the hardware. (This Hardware
-Section is due to change as soon as we have the drone binding successfully).
-(Developed by Denis Stepanov and Kevin Libdan) 
+Arduino sketch that would be compatible with the hardware.(Developed by Denis
+Stepanov and Kevin Libdan) 
 
  
 
-### 2.3.4 Application
+### 2.2.4 Application
 
 Software Drone Android Application is the software used to bind with the
 quadcopter, maneuver it and save data in MYSQL database using the readings from
@@ -604,6 +573,33 @@ the drone flight (date and flight duration).Moreover, the application adjusts to
 different resolutions of images and icons for different devices automatically
 using Android Asset. There is also a support for 4 different languages (English,
 French, Spanish, and Russian). (Developed by Denis Stepanov)
+
+ 
+
+**2.3 Project Specifications**
+------------------------------
+
+### 2.3.1 Project Perspective
+
+ 
+
+### 2.3.2 System Interface
+
+ 
+
+### 2.3.3 User Interface
+
+ 
+
+### 2.3.4 Hardware Interface
+
+ 
+
+### 2.3.5 Software Interface
+
+ 
+
+### 2.3.6 Communication Interface
 
  
 
