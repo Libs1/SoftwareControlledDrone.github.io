@@ -261,7 +261,7 @@ Table of Contents
 
     [2.2.1 Introduction](#221-introduction)
 
-    [2.2.2 Bill of Materials/Budget](#222-bill-of-materials/budget)
+    [2.2.2 Bill of Materials/Budget](#222-bill-of-materialsbudget)
 
     [2.2.3 Time Commitment](#223-time-commitment)
 
@@ -421,9 +421,7 @@ for individuals who are unexperienced in soldering.
 
 Figure 1.1
 
-![](file:///C:\Users\Kevin\AppData\Local\Temp\msohtmlclip1\01\clip_image001.png)
-
- 
+![](nrf24l01 solder.png)
 
 **Step 3: Hooking up the NRF24L01 to the Arduino**
 
@@ -449,11 +447,9 @@ MISO -\> A0
 
 CSN -\> A1
 
- 
-
 Figure 2.1
 
-![](file:///C:\Users\Kevin\AppData\Local\Temp\msohtmlclip1\01\clip_image002.jpg)
+![](nrf24l01 hookup.png)
 
 **Step 4: Hooking up the joysticks to the Arduino**
 
@@ -476,8 +472,6 @@ VCC -\> 5v
 
 GND -\> GND
 
- 
-
 **Right Joystick to Arduino:**
 
 X -\> A4
@@ -488,11 +482,9 @@ VCC -\> 5v
 
 GND -\> GND
 
- 
-
 Figure 3.1
 
-![](file:///C:\Users\Kevin\AppData\Local\Temp\msohtmlclip1\01\clip_image002.jpg)
+![](joystick hookup.png)
 
 ### 2.2.5 Power Up
 
