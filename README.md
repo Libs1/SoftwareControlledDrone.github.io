@@ -423,6 +423,8 @@ Figure 1.1
 
 ![](nrf24l01 solder.png)
 
+![nrf24l01 hookup.png](nrf24l01 hookup.png)
+
 **Step 3: Hooking up the NRF24L01 to the Arduino**
 
 **           ** Before we make any wiring connections between the Arduino and
