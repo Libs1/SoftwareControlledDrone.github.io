@@ -158,7 +158,7 @@ void setup()
     pinMode(CS_pin, OUTPUT);
     pinMode(CE_pin, OUTPUT);
     pinMode(MISO_pin, INPUT);
-
+    
     // PPM ISR setup
     //attachInterrupt(digitalPinToInterrupt(PPM_pin), ISR_ppm, CHANGE);
     TCCR1A = 0;  //reset timer1
@@ -178,15 +178,19 @@ void loop()
     // reset / rebind
     if(reset || ppm[AUX8] > PPM_MAX_COMMAND) {
         reset = false;
-        Serial.println("selecting protocol");
+        Serial.println("Selecting protocol");
+        
         selectProtocol();
-        Serial.println("selected protocol.");
+        Serial.println("Selected protocol.");
+        
         NRF24L01_Reset();
-        Serial.println("nrf24l01 reset.");
+        Serial.println("NRF24L01 reset.");
+        
         NRF24L01_Initialize();
-        Serial.println("nrf24l01 init.");
+        Serial.println("NRF24L01 initialized.");
+        
         init_protocol();
-        Serial.println("init protocol complete.");
+        Serial.println("init_protocol complete.");
     }
     // process protocol
     switch(current_protocol) {
@@ -265,8 +269,6 @@ void loop()
         Serial.println("."); // prints "." at end of command
         //ppm[0]=
         
-        
-        
         // clear the string:
         inputString = "";
         stringComplete = false;
@@ -297,28 +299,7 @@ void loop()
       Serial.println(overrun_cnt);
     }
     */
-/*
-  Serial.print("Analog 1:  ");
-  Serial.print("\n");
-  Serial.print("X-axis: ");
-  Serial.print(analogRead(X_pin1));
-  Serial.print("\n");
-  Serial.print("Y-axis: ");
-  Serial.println(analogRead(Y_pin1));
-  Serial.print("\n\n");
 
-  Serial.print("Analog 2: ");
-  Serial.print("\n");
-  Serial.print("X-axis: ");
-  Serial.print(analogRead(X_pin2));
-  Serial.print("\n");
-  Serial.print("Y-axis: ");
-  Serial.print(analogRead(Y_pin2));
-  Serial.print("\n");
-  Serial.print("------------------------------------------");
-  Serial.print("\n\n");
-  delay(5000);
-*/
 }
 
 void set_txid(bool renew)
@@ -467,7 +448,6 @@ void init_protocol()
         case PROTO_SYMAX5C1:
         case PROTO_SYMAXOLD:
             Symax_init();
-            Serial.println("Symax12 initialized and bound");
             break;
         case PROTO_H8_3D:
             H8_3D_init();
@@ -504,7 +484,6 @@ void update_ppm()
   ppm[THROTTLE] = 3000-ppm[THROTTLE];
   ppm[ELEVATOR] = 3000-ppm[ELEVATOR];
 
-  
   /*
     for(uint8_t ch=0; ch<CHANNELS; ch++) {
         ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
