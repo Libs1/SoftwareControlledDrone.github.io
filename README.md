@@ -462,12 +462,17 @@ Figure 3.1
 Make sure that all connections are in the appropriate pins and that there are
 not any loose connections. Once the circuit has been built, plug in the Arduino
 into the PC and open the Arduino IDE. Plug in the power to the Eachine H8 drone
-and the LED lights should be blinking in a steady pace. Go back to your Arduino
-IDE and open up the “nrf24l01\_multipro.ino” file and then upload the sketch to
-the Arduino. Once the code is uploaded, the drone’s LEDs should be blinking
-rapidly, this indicates that the drone is ready to bind. At this point, moving
-your left joystick down should bind the drone and the drone’s LEDs should be
-steady.
+and the LED lights should be blinking in a steady pace. Now that we have the
+drone powered on, you can download the zip file which contains the Arduino code
+that will communicate with the drone. You can download it from
+[here](https://github.com/Libs1/SoftwareControlledDrone.github.io/tree/master/Arduino%20Code).
+The original code can be found on Goebish’s github which is found
+[here](https://github.com/goebish/nrf24_multipro). Our code has been modified to
+be compatible with our two analog joysticks. Go back to your Arduino IDE and
+open up the “nrf24l01\_multipro.ino” file and then upload the sketch to the
+Arduino. Once the code is uploaded, the drone’s LEDs should be blinking rapidly,
+this indicates that the drone is ready to bind. At this point, moving your left
+joystick down should bind the drone and the drone’s LEDs should be steady.
 
  
 
