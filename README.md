@@ -12,7 +12,11 @@ Project’s website: https://github.com/Libs1/SoftwareControlledDrone.github.io
 
 Discipline: Computer Engineering Technology
 
-Date of Submission: TBD
+Date of Submission: March 28, 2017
+
+ 
+
+\\pagebreak
 
 Declaration of Joint Authorship
 ===============================
@@ -32,6 +36,10 @@ Stepanov and Kevin Libdan will also be responsible for the web interface. The
 web interface will mimic the same functionalities as the android application
 which will allow the users to register, login and view their drone’s flight
 information.
+
+ 
+
+\\pagebreak
 
  
 
@@ -214,6 +222,10 @@ this project.
 
  
 
+\\pagebreak
+
+ 
+
 Abstract
 ========
 
@@ -227,6 +239,10 @@ to fly it. The major components of our hardware are an Arduino Uno R3, an
 NRF24l01 wireless transceiver, and two analog joysticks. Developing the
 application, database, and web interface allowed us to utilize with our
 hardware.
+
+ 
+
+\\pagebreak
 
  
 
@@ -300,6 +316,8 @@ Table of Contents
 **Illustrations or Diagrams**
 -----------------------------
 
+\\pagebreak
+
  
 
 **1. Introduction**
@@ -334,6 +352,10 @@ flown. The database will contain the user’s information such as their first an
 last name, username and password. The database will also store information of
 the drone’s flight information that will be displayed to the user. The web
 interface will allow users to review their drone’s flight information.
+
+ 
+
+\\pagebreak
 
  
 
@@ -663,9 +685,9 @@ establish the connection between quadcopter and Android Application.
 
 **Additional Links:**
 
-<https://www.makehardware.com/2016/07/04/how-to-control-your-drone-from-a-computer/><https://www.makehardware.com/2016/07/04/how-to-control-your-drone-from-a-computer/>
+<https://www.makehardware.com/2016/07/04/how-to-control-your-drone-from-a-computer/https://www.makehardware.com/2016/07/04/how-to-control-your-drone-from-a-computer/>
 
-<https://brainy-bits.com/tutorials/arduino-joystick-tutorial/><https://brainy-bits.com/tutorials/arduino-joystick-tutorial/>
+<https://brainy-bits.com/tutorials/arduino-joystick-tutorial/https://brainy-bits.com/tutorials/arduino-joystick-tutorial/>
 
  
 
@@ -728,6 +750,10 @@ HC-05 Bluetooth Module: \$18.65 with shipping + Tax (CanadaRobotix)
 
  
 
+\\pagebreak
+
+ 
+
 **3. Conclusion**
 -----------------
 
@@ -747,10 +773,18 @@ database.
 
  
 
+\\pagebreak
+
+ 
+
 **4. Recommendations**
 ----------------------
+
+\\pagebreak
 
  
 
 **5. Bibliography**
 -------------------
+
+\\pagebreak
