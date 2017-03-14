@@ -3,8 +3,8 @@ csl: apa.csl
 bibliography: SCDCitations.bib
 ---
 
-SoftwareControlledDrone Project
-===============================
+Software Controlled Drone Project
+=================================
 
 Team Members: Kevin Libdan & Denis Stepanov
 
