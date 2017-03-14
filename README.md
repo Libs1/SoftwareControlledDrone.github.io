@@ -6,7 +6,13 @@ bibliography: SCDCitations.bib
 SoftwareControlledDrone Project
 ===============================
 
+Team Members: Kevin Libdan & Denis Stepanov
+
 Project’s website: https://github.com/Libs1/SoftwareControlledDrone.github.io
+
+Discipline: Computer Engineering Technology
+
+Date of Submissions: TBD
 
 Declaration of Joint Authorship
 ===============================
@@ -609,10 +615,135 @@ French, Spanish, and Russian). (Developed by Denis Stepanov)
 **2.4 Progress Reports**
 ------------------------
 
+### **2.4.1 Progress report**
+
+**Recent project activities:**
+
+We have contacted the person who designed the Arduino code for NRF24L01
+communication and realised that Syma x12s may be using a different protocol than
+the Syma x12. It resulted in the Syma x12s’ incompatibility with our Arduino
+sketch. As a group we have decided to purchase a new quadcopter, Eachine H8,
+which was one of the supported drones for the Arduino sketch.
+(<https://www.amazon.ca/Eachine-Quadcopter-Headless-Drone-Black/dp/B00XHOOWA0>).
+
+ 
+
+**Current Objectives:**
+
+As of today, our primary goal would be to establish communication between
+Arduino and Android Application.
+
+ 
+
+**Problems / Opportunities, Solutions:**
+
+For almost a month and a half we had a problem with binding our quadcopter and
+Arduino. After finding out that Syma X12s might not be compatible with latest
+version of NRF24L01 breakout board we came up with a new solution. With some
+help from Goebish (<https://github.com/goebish/nrf24_multipro>), who has a lot
+of experience in deviation, we decided to purchase another quadcopter (Eachine
+H8, as it was stated above). It allowed us to bind the drone with Arduino and
+control it with the joysticks.
+
+ 
+
+**Financial Updates:**
+
+Pair of Joysticks for Arduino: \$18.01
+
+Eachine H8 mini: \$30
+
+ 
+
+All of the prices do not include HST nor Shipping estimates. However, they will
+be included in the final updated version of Budget Report after we would
+establish the connection between quadcopter and Android Application.
+
+ 
+
+**Additional Links:**
+
+<https://www.makehardware.com/2016/07/04/how-to-control-your-drone-from-a-computer/><https://www.makehardware.com/2016/07/04/how-to-control-your-drone-from-a-computer/>
+
+<https://brainy-bits.com/tutorials/arduino-joystick-tutorial/><https://brainy-bits.com/tutorials/arduino-joystick-tutorial/>
+
+ 
+
+### **2.4.2 Progress Report**
+
+**Recent Project Activities:**
+
+As we now have full control over the drone with the two analog joysticks, we are
+now focusing on manipulating the drone by Android Application. We have also
+created a website where anybody is able to sign up, log in and view their
+drone’s flight information. During this process, we had created several PHP
+files in order to display the user’s respective flight information. In the drone
+application, we had modified our controller where it would be more user friendly
+than our initial controller we had designed. We have also added a small feature
+within the app where the user is able to delete their existing flight
+information from the database when the user clicks on the “Delete All” button.
+
+ 
+
+**Current Objectives:**
+
+Our current and main objective is to establish communication between our Arduino
+and Android application in order to control our Eachine H8 drone. We are testing
+2 ways of manipulating the drone, such as using OTG Cable, which has direct
+connection between Arduino and Android device, and Bluetooth Module HC-05. The
+latter has more complications in order to achieve full communication, but it
+will be our prior way of connection. If the connection won’t be established
+between Arduino and Android device by using the Bluetooth Module, we will be
+using an OTG cable since it is an easier way to communicate.
+
+ 
+
+**Problems/Opportunities, Solutions:**
+
+The main problem we are encountering is the communication between the Arduino
+and our Android application. We have two options in which we can establish the
+connection, the first option would be to use an OTG cable and establish a serial
+connection and the second option would be to use Bluetooth by using the HC-05
+Bluetooth Module. As the solution, we are testing basic communication through
+lighting up the LED connected to the Arduino circuit right now.
+
+ 
+
+**Financial Updates:**
+
+OTG Cable Micro USB male to USB Female: \$6.99 with shipping + Tax (Amazon
+Prime)
+
+**OR**
+
+HC-05 Bluetooth Module: \$18.65 with shipping + Tax (CanadaRobotix)
+
+ 
+
+**Additional Links:**
+
+<https://www.allaboutcircuits.com/projects/communicate-with-your-arduino-through-android/>
+
+<http://www.instructables.com/id/Android-Bluetooth-Control-LED-Part-2/>
+
  
 
 **3. Conclusion**
 -----------------
+
+The Software Controlled Drone project will meet all the requirements specified
+in the technical report. We have created hardware that is capable of controlling
+and communicating with the Eachine H8 mini drone. The MYSQL database is able to
+record the user’s flight duration, the date of when the drone has been flown and
+as well as the user’s account information such as first and last name, username
+and password. The android application is capable of allowing users to sign in or
+sign up for an account if they do not have one and allow users to control the
+Eachine H8 drone. The android application is also capable of updating the
+database with the user’s personal runtime information and giving the option to
+users where they will be able to view their flight information within the app.
+The web interface is capable of allowing users to sign up and sign in to their
+account and view their drone’s flight information which is stored in the
+database.
 
  
 
