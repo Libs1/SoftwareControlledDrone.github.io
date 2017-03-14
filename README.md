@@ -12,7 +12,7 @@ Project’s website: https://github.com/Libs1/SoftwareControlledDrone.github.io
 
 Discipline: Computer Engineering Technology
 
-Date of Submissions: TBD
+Date of Submission: TBD
 
 Declaration of Joint Authorship
 ===============================
