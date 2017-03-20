@@ -3,8 +3,6 @@ csl: apa.csl
 bibliography: SCDCitations.bib
 ---
 
-\pagebreak
-
 Software Controlled Drone Project
 =================================
 
@@ -198,7 +196,7 @@ important to start tasks as soon as possible to be able to meet deadlines.
 | **Material Estimates**                                                                    | **Cost**       | **Notes**                                                                                                                      |
 | **Phase 1**                                                                               |                |                                                                                                                                |
 | Arduino Uno R3                                                                            | \>\$30.95      | (Arduino) Amazon                                                                                                               |
- SparkFun Transceiver Breakout - nRF24L01                                                  | \>\$29.37      | CanadaRobotix                                                                                                                  |
+| SparkFun Transceiver Breakout - nRF24L01                                                  | \>\$29.37      | CanadaRobotix                                                                                                                  |
 | Eachine H8 Mini Quadcopter                                                                | \>\$28.99      | (EachineDirect) Amazon                                                                                                         |
 | Lithium AA Batteries                                                                      | \>\$5.64       | CanadianTire (1 pack comes with 4 AA batteries)                                                                                |
 | Analog Joysticks                                                                          | \>\$32.02      | Brainy-Bits (2 analog sticks)                                                                                                  |
@@ -312,6 +310,10 @@ Table of Contents
 4.  [Recommendations](#4-recommendations)
 
 5.  [Bibliography](#5-bibliography)
+
+ 
+
+\pagebreak
 
  
 
@@ -788,5 +790,3 @@ database.
 
 **5. Bibliography**
 -------------------
-
-\pagebreak
