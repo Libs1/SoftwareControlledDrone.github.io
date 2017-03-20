@@ -3,6 +3,8 @@ csl: apa.csl
 bibliography: SCDCitations.bib
 ---
 
+\pagebreak
+
 Software Controlled Drone Project
 =================================
 
@@ -16,7 +18,7 @@ Date of Submission: March 28, 2017
 
  
 
-\\pagebreak
+\pagebreak
 
 Declaration of Joint Authorship
 ===============================
@@ -39,7 +41,7 @@ information.
 
  
 
-\\pagebreak
+\pagebreak
 
  
 
@@ -222,7 +224,7 @@ this project.
 
  
 
-\\pagebreak
+\pagebreak
 
  
 
