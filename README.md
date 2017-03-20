@@ -263,45 +263,44 @@ Table of Contents
 
     [1.2 Scope](#12-scope)
 
+    [1.3 Targeted Audience Group](#13-targeted-audience-group)
+
 2.  [Project Description](#2-project-description)
 
-    [2.1 Build Instructions](#21-build-instructions)
+    [2.1 External Interface Requirements](#21-external-interface-requirements)
 
-    [2.1.1 Introduction](#211-introduction)
+    [2.1.1 Database](#211-database)
 
-    [2.1.2 Build of Materials/Budget](#212-build-of-materialsbudget)
+    [2.1.2 Web Interface](#212-web-interface)
 
-    [2.1.3 Time Commitment](#213-time-commitment)
+    [2.1.3 Hardware](#213-hardware)
 
-    [2.1.4 Mechanical Assembly](#214-mechanical-assembly)
+    [2.1.4 Application](#214-application)
 
-    [2.1.5 Power Up](#215-power-up)
+    [2.2 Build Instructions](#22-build-instructions)
 
-    [2.1.6 Unit Testing](#216-unit-testing)
+    [2.2.1 Introduction](#221-introduction)
 
-    [2.2 External Interface Requirements](#22-external-interface-requirements)
+    [2.2.2 Build of Materials/Budget](#222-build-of-materialsbudget)
 
-    [2.2.1 Database](#221-database)
+    [2.2.3 Time Commitment](#223-time-commitment)
 
-    [2.2.2 Web Interface](#222-web-interface)
+    [2.2.4 Mechanical Assembly](#224-mechanical-assembly)
 
-    [2.2.3 Hardware](#223-hardware)
+    [2.2.5 Power Up](#225-power-up)
 
-    [2.2.4 Application](#224-application)
+    [2.2.6 Unit Testing](#226-unit-testing)
 
-    [2.3 Project Specifications](#23-project-specifications)
+    [2.3 Project
+    Specifications](#23-project-specifications#231-project-perspective)
 
-    [2.3.1 Project Perspective](#231-project-perspective)
+    [2.3.1 System Interface](#231-system-interface)
 
-    [2.3.2 System Interface](#232-system-interface)
+    [2.3.2 User Interface](#232-user-interface)
 
-    [2.3.3 User Interface](#233-user-interface)
+    [2.3.3 Hardware Interface](#233-hardware-interface)
 
-    [2.3.4 Hardware Interface](#234-hardware-interface)
-
-    [2.3.5 Software Interface](#235-software-interface)
-
-    [2.3.6 Communication Interface](#236-communication-interface)
+    [2.3.4 Software Interface](#234-software-interface)
 
     [2.4 Progress Reports](#24-progress-reports)
 
@@ -359,6 +358,16 @@ interface will allow users to review their drone’s flight information.
 
  
 
+### 1.3 Targeted Audience Group
+
+Our targeted audience group would be anyone who is interested on flying drones.
+As drones are increasing in popularity, this project would give users a
+different feel of control, whether they would want to fly the drone with the
+physical or virtual joysticks and allow users to keep track of their runtime
+information.
+
+ 
+
 \pagebreak
 
  
@@ -366,10 +375,88 @@ interface will allow users to review their drone’s flight information.
 **2. Project Description**
 --------------------------
 
-**2.1 Build Instructions**
+**2.1 External Interface Requirements**
+---------------------------------------
+
+### 2.1.1 Database
+
+The MYSQL database is responsible for storing the users account information and
+as well as the drone’s activity information. The database uses PHP in order for
+it to connect with the android application and as well, the database will be
+running on hostinger which is a free hosting website. There are two tables
+within the database; the first table is the DroneMembers table which contains
+the user’s information and the second table which is the DroneInfo table which
+contains information of the drone’s activity. The DroneMembers table contains
+four fields which are first name, last name, username and password. The first
+name and last name fields contain the user’s first name and last name. The
+username field contains the user’s username which is used for logging in. The
+password field contains the user’s password which is used when logging in. The
+DroneInfo field contains two fields which are date and flight duration. The date
+field is contains the date of when the drone has been flown and the flight
+duration field contains the user’s total flight time. (Developed by Kevin
+Libdan)
+
+ 
+
+### 2.1.2 Web Interface
+
+Depending the how long the binding process takes we will develop the web
+interface. The web interface will be developed to allow users to register an
+account. The website will also be capable of allowing the users to view their
+drone’s information such the date of when the drone has been flown and as well
+as the flight duration. The website will handle basic functionality such as
+viewing the user’s drone runtime information. Denis Stepanov is responsible for
+the HTML, CSS and the overall design aspect of the website. Kevin Libdan will be
+responsible for creating the PHP scripts that will be used to connect to the
+database when a user registers an account, sign in and view their drone’s
+information. (Developed by Denis Stepanov and Kevin Libdan)
+
+ 
+
+### 2.1.3 Hardware
+
+The hardware built is used to control the Eachine H8 drone. The hardware to
+control the Eachine H8 drone is an Arduino, a NRF24L01+ transceiver and two
+analog joysticks. The hardware is capable of communicating with the drone and
+being able to control it with the two analog sticks. An OTG cable, micro male
+USB to Female USB, is used between the Arduino and an android application in
+order to establish a serial communication. This will allow the Arduino to
+receive data from the android application which will then be sent to the drone.
+Kevin Libdan is responsible for acquiring the materials and as well as the
+assembly of the materials. Denis Stepanov is responsible for creating the
+Arduino sketch that would be compatible with the hardware.(Developed by Denis
+Stepanov and Kevin Libdan) 
+
+ 
+
+### 2.1.4 Application
+
+Software Drone Android Application is the software used to bind with the
+quadcopter, maneuver it and save data in MYSQL database using the readings from
+the drone's flight, implemented in one of the classes. Android Application
+consists of 10 different java classes which support multiple functionalities.
+Main classes, which would be visible to users, such as
+'ControllerActivity','FlightsActivity','LoginActivity','MenuActivity',
+'RegisterActivity' and 'PopActivity' use specific layouts assigned to them. Each
+one of those activities' layouts support phone, tablet, and large tablet (\>10")
+size of the screen. All of visible activities have the function to adjust to
+both portrait and landscape mode (except 'ControllerActivity', which is always
+set on landscape to create more user-friendly interface). All of the main
+classes use custom 'drawables' to make the application more presentable. There
+are also 5 other classes which are used for better functionality of the
+application. All of those 5 classes have communication in some sort with
+database. For example, 'TableData' class is consists of the information about
+the drone flight (date and flight duration).Moreover, the application adjusts to
+different resolutions of images and icons for different devices automatically
+using Android Asset. There is also a support for 4 different languages (English,
+French, Spanish, and Russian). (Developed by Denis Stepanov)
+
+ 
+
+**2.2 Build Instructions**
 --------------------------
 
-### 2.1.1 Introduction
+### 2.2.1 Introduction
 
 In this section of the technical report, there will be information on how to
 recreate the hardware to control the Eachine H8 Mini Quadcopter with an Arduino
@@ -378,7 +465,7 @@ with the drone.
 
  
 
-### 2.1.2 Build of Materials/Budget
+### 2.2.2 Build of Materials/Budget
 
 | **Item**                                 | **Quantity**                   | **Total Price(With Tax + Shipping)** |
 |------------------------------------------|--------------------------------|--------------------------------------|
@@ -394,7 +481,7 @@ with the drone.
 
  
 
-### 2.1.3 Time Commitment
+### 2.2.3 Time Commitment
 
 | **Task**                                                | **Time To Complete The Task**                 |
 |---------------------------------------------------------|-----------------------------------------------|
@@ -408,7 +495,7 @@ with the drone.
 
  
 
-### 2.1.4 Mechanical Assembly
+### 2.2.4 Mechanical Assembly
 
 **Step 1: Purchase the required parts**
 
@@ -489,7 +576,7 @@ Figure 3.1
 
 ![joystick hookup.png](https://github.com/Libs1/SoftwareControlledDrone.github.io/blob/master/Images/joystick%20hookup.png)
 
-### 2.1.5 Power Up
+### 2.2.5 Power Up
 
 Make sure that all connections are in the appropriate pins and that there are
 not any loose connections. Once the circuit has been built, plug in the Arduino
@@ -508,9 +595,26 @@ joystick down should bind the drone and the drone’s LEDs should be steady.
 
  
 
-### 2.1.6 Unit Testing
+If you are using the **android application**, make sure to follow these steps in
+order:
 
-Ensure that the drone’s LEDs would be steady as it would indicate a successful
+·         Ensure that the “nrf24l01\_multipro.ino” file is uploaded to the
+Arduino as the Arduino will execute the most recent uploaded sketch.
+
+·         Connect the power to the drone. The LEDs should be blinking at a
+steady pace.
+
+·         Connect the OTG cable between the android device and the Arduino. The
+LEDS on the drone should now be blinking rapidly.
+
+·         Open the SCD app, login and proceed to the controller and then click
+on start
+
+ 
+
+### 2.2.6 Unit Testing
+
+Ensure that the drone’s LEDs would be solid as it would indicate a successful
 binding sequence when the left joystick is moved. If the binding sequence was
 not successful, it would most likely be a hardware problem. It is important to
 check that all of the connections made between the NRF24L01, joysticks and the
@@ -524,117 +628,78 @@ joystick would move the drone leftward and rightward.
 
  
 
-**2.2 External Interface Requirements**
----------------------------------------
-
-### 2.2.1 Database
-
-The MYSQL database is responsible for storing the users account information and
-as well as the drone’s activity information. The database uses PHP in order for
-it to connect with the android application and as well, the database will be
-running on hostinger which is a free hosting website. There are two tables
-within the database; the first table is the DroneMembers table which contains
-the user’s information and the second table which is the DroneInfo table which
-contains information of the drone’s activity. The DroneMembers table contains
-four fields which are first name, last name, username and password. The first
-name and last name fields contain the user’s first name and last name. The
-username field contains the user’s username which is used for logging in. The
-password field contains the user’s password which is used when logging in. The
-DroneInfo field contains two fields which are date and flight duration. The date
-field is contains the date of when the drone has been flown and the flight
-duration field contains the user’s total flight time. (Developed by Kevin
-Libdan)
+If you are flying the Eachine H8 drone with the android application, ensure that
+the drone’s LEDS are solid after following the steps in *2.2.5 Power Up.* The
+left virtual joystick would control the throttle and rudder movements, and the
+right virtual joystick would control the aileron and elevator movements.
 
  
 
-### 2.2.2 Web Interface
+### 2.2.7 Production Testing
 
-Depending the how long the binding process takes we will develop the web
-interface. The web interface will be developed to allow users to register an
-account. The website will also be capable of allowing the users to view their
-drone’s information such the date of when the drone has been flown and as well
-as the flight duration. The website will handle basic functionality such as
-viewing the user’s drone runtime information. Denis Stepanov is responsible for
-the HTML, CSS and the overall design aspect of the website. Kevin Libdan will be
-responsible for creating the PHP scripts that will be used to connect to the
-database when a user registers an account, sign in and view their drone’s
-information. (Developed by Denis Stepanov and Kevin Libdan)
+At this final stage of testing, the hardware is capable of controlling the drone
+independently with the two physical joysticks or with the Android application.
+The following tests were performed to ensure that every component of the project
+is functioning as it should be.
 
- 
+1. Ensure that the hardware functionality is working properly independently and
+also with the android application by referring to 2.2.5 Power Up and 2.2.6 Unit
+Testing.
 
-### 2.2.3 Hardware
-
-The hardware built is used to control the Syma X12s drone. The hardware to
-control the Syma X12s is an Arduino, a NRF24L01+ transceiver and two analog
-joysticks. As for now, we are still having trouble trying to bind the Syma X12s
-drone with our hardware. One of the main resources to helping us find a solution
-to this problem is Goebish. Goebish is responsible for creating source code for
-multiple protocols that support the NRF24L01+ After contacting Goebish, we have
-tried to bind our drone with his source code by modifying it to force select the
-Syma X12s protocol and as well as modifying the code to bind the drone with the
-two analog sticks. With multiple attempts to bind the drone with our transceiver
-and back and forth communication with Goebish, we have concluded that there was
-not anything wrong with the code itself but the hardware. The protocol we were
-trying to bind our drone with was the Syma X12 protocol (compatible with X5C-1,
-X11, X11C) when we had a Syma X12s drone. We were informed that Syma X12s may be
-using a different protocol than the Syma X12 protocol while the source code does
-not support the Syma X12s. We were suggested to get a different drone, Eachine
-H8 mini which is compatible with the code as it has the supported protocol.
-Kevin Libdan is responsible for acquiring the materials and as well as the
-assembly of the materials. Denis Stepanov is responsible for creating the
-Arduino sketch that would be compatible with the hardware.(Developed by Denis
-Stepanov and Kevin Libdan) 
-
- 
-
-### 2.2.4 Application
-
-Software Drone Android Application is the software used to bind with the
-quadcopter, maneuver it and save data in MYSQL database using the readings from
-the drone's flight, implemented in one of the classes. Android Application
-consists of 10 different java classes which support multiple functionalities.
-Main classes, which would be visible to users, such as
-'ControllerActivity','FlightsActivity','LoginActivity','MenuActivity',
-'RegisterActivity' and 'PopActivity' use specific layouts assigned to them. Each
-one of those activities' layouts support phone, tablet, and large tablet (\>10")
-size of the screen. All of visible activities have the function to adjust to
-both portrait and landscape mode (except 'ControllerActivity', which is always
-set on landscape to create more user-friendly interface). All of the main
-classes use custom 'drawables' to make the application more presentable. There
-are also 5 other classes which are used for better functionality of the
-application. All of those 5 classes have communication in some sort with
-database. For example, 'TableData' class is consists of the information about
-the drone flight (date and flight duration).Moreover, the application adjusts to
-different resolutions of images and icons for different devices automatically
-using Android Asset. There is also a support for 4 different languages (English,
-French, Spanish, and Russian). (Developed by Denis Stepanov)
+2. The android application functions such as login, and register will work based
+on information in the database. The two virtual joysticks will work as what was
+mentioned in *2.2.6 Unit Testing*.  The drone’s flight information is sent to
+database and displayed on both the “flights” option on the app and on the web
+interface correctly.
 
  
 
 **2.3 Project Specifications**
 ------------------------------
 
-### 2.3.1 Project Perspective
+### 2.3.1 System Interface
+
+The hardware that is built by using the Arduino Uno R3, nRF24L01 transceiver and
+joysticks are capable of functioning independently without the need of the
+android application. Although the hardware does not depend on the application,
+the application would only be used to register, sign in and view the drone’s
+flight information when it is used without the hardware. The web interface can
+also operate without the need of the hardware; however, the purpose of the web
+interface is to register or view the drone’s flight information.
 
  
 
-### 2.3.2 System Interface
+### 2.3.2 User Interface
+
+The user interface of the android application is user friendly. When launching
+the application, the main page will consist of two fields for both username and
+password to be entered and as well as the option to register or login. If the
+user has successfully entered their username and password they will be brought
+to the menu page which will consist of two options, one being the controller and
+the other being the flight activity. When choosing the controller option, the
+user will be confronted with two virtual joysticks which are capable of
+controlling the drone. The flight activity option will allow the user to view
+their drone’s flight information such as flight duration and the current date
+the drone has been flown.
 
  
 
-### 2.3.3 User Interface
+### 2.3.3 Hardware Interface
+
+The project consists of an Arduino Uno R3, an nRF24 transceiver and two
+joysticks. The transceiver is used for communicating with the drone and the two
+analog joysticks are used to control the drone’s throttle, rudder, aileron and
+elevator.
 
  
 
-### 2.3.4 Hardware Interface
+### 2.3.4 Software Interface
 
- 
-
-### 2.3.5 Software Interface
-
- 
-
-### 2.3.6 Communication Interface
+The android application is the software we have designed in order to control the
+Eachine H8 drone. Both the application and the Arduino sketch are used
+hand-in-hand, however, the Arduino sketch is capable of functioning without the
+android application. The web interface was designed to allow users to simply
+register and view their drone’s flight information.
 
  
 
