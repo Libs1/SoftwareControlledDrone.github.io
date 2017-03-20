@@ -198,7 +198,7 @@ important to start tasks as soon as possible to be able to meet deadlines.
 | **Material Estimates**                                                                    | **Cost**       | **Notes**                                                                                                                      |
 | **Phase 1**                                                                               |                |                                                                                                                                |
 | Arduino Uno R3                                                                            | \>\$30.95      | (Arduino) Amazon                                                                                                               |
-| SparkFun Transceiver Breakout - nRF24L01                                                  | \>\$29.37      | CanadaRobotix                                                                                                                  |
+ SparkFun Transceiver Breakout - nRF24L01                                                  | \>\$29.37      | CanadaRobotix                                                                                                                  |
 | Eachine H8 Mini Quadcopter                                                                | \>\$28.99      | (EachineDirect) Amazon                                                                                                         |
 | Lithium AA Batteries                                                                      | \>\$5.64       | CanadianTire (1 pack comes with 4 AA batteries)                                                                                |
 | Analog Joysticks                                                                          | \>\$32.02      | Brainy-Bits (2 analog sticks)                                                                                                  |
@@ -244,7 +244,7 @@ hardware.
 
  
 
-\\pagebreak
+\pagebreak
 
  
 
@@ -318,7 +318,7 @@ Table of Contents
 **Illustrations or Diagrams**
 -----------------------------
 
-\\pagebreak
+\pagebreak
 
  
 
@@ -357,7 +357,7 @@ interface will allow users to review their drone’s flight information.
 
  
 
-\\pagebreak
+\pagebreak
 
  
 
@@ -752,7 +752,7 @@ HC-05 Bluetooth Module: \$18.65 with shipping + Tax (CanadaRobotix)
 
  
 
-\\pagebreak
+\pagebreak
 
  
 
@@ -775,18 +775,18 @@ database.
 
  
 
-\\pagebreak
+\pagebreak
 
  
 
 **4. Recommendations**
 ----------------------
 
-\\pagebreak
+\pagebreak
 
  
 
 **5. Bibliography**
 -------------------
 
-\\pagebreak
+\pagebreak
