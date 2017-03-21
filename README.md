@@ -644,15 +644,15 @@ independently with the two physical joysticks or with the Android application.
 The following tests were performed to ensure that every component of the project
 is functioning as it should be.
 
-1. Ensure that the hardware functionality is working properly independently and
-also with the android application by referring to 2.2.5 Power Up and 2.2.6 Unit
-Testing.
+1.  Ensure that the hardware functionality is working properly independently and
+    also with the android application by referring to 2.2.5 Power Up and 2.2.6
+    Unit Testing.
 
-2. The android application functions such as login, and register will work based
-on information in the database. The two virtual joysticks will work as what was
-mentioned in *2.2.6 Unit Testing*.  The drone’s flight information is sent to
-database and displayed on both the “flights” option on the app and on the web
-interface correctly.
+2.  The android application functions such as login, and register will work
+    based on information in the database. The two virtual joysticks will work as
+    what was mentioned in *2.2.6 Unit Testing*. The drone’s flight information
+    is sent to database and displayed on both the “flights” option on the app
+    and on the web interface correctly.
 
  
 
@@ -820,6 +820,86 @@ HC-05 Bluetooth Module: \$18.65 with shipping + Tax (CanadaRobotix)
 <http://www.instructables.com/id/Android-Bluetooth-Control-LED-Part-2/>
 
  
+
+### **2.4.3 Progress Report**
+
+**Recent Project Activities:**
+
+We have been testing serial communication between our android application and
+microcontroller in order to control our Eachine H8 drone. We have also been
+modifying our controller in our android app to establish a connection with our
+Arduino whenever the two devices are connected with the OTG cable, as well as
+sending data to the microcontroller whenever the joysticks are moved. With some
+help from online resources and past projects
+(https://github.com/rmahenthiran/Micro-Drone-Flight-Control), we were able to
+control our drone with our android application.
+
+ 
+
+**Current Objectives:**
+
+Our current objective is to successfully control the drone with our app without
+the need of holding down the physical joysticks.
+
+ 
+
+**Problems/Opportunities, Solutions:**
+
+Although we were able to control our drone with our android application, it was
+not functioning properly as expected. The main problem we are encountering right
+now is that the android application would only take control of the drone when
+the physical joysticks initiate the binding sequence first. This would mean that
+we would have to hold down the “throttle” joystick while we control the drone
+with the app. The solution for this problem could be removing the spring from
+the physical joystick which would allow us better testing but still stop us from
+achieving desired result of binding the drone without using physical joystick.
+Another solution could be rewriting a binding function in the Android
+Application, therefore only using the virtual joysticks for initiating the
+binding sequence.
+
+Another problem we have encountered is the connection with the smartphone that
+uses USB type C. Since we are using OnePlus Two as one of our testing
+smartphones, we have tried to establish connection with the drone using OTG
+cable. The problem is that USB type C adapters are new on the market and not all
+of them are functioning. We have purchased several adapters/cables but none of
+them worked. Currently, there are no solutions for this problem, but OnePlus
+support team suggested using official OnePlus microUSB adapter (link below) and
+USB-C adapter to establish the connection. When the microUSB adapter arrived it
+could read the data from any USB stick connected to the Samsung phone which uses
+microUSB as the main charging port; however, after connecting it to the USB-C
+adapter and then to OnePlus Two, it would not recognize anything. As of the
+result, we have purchased one more USB-C adapter (link below) and waiting for it
+to arrive.
+
+Moreover, as it was mentioned in the last progress report, we have encountered a
+problem with using Bluetooth module HC-05 and Nordic semiconductor
+simultaneously. Due to their frequency interference, we could not use them at
+the same time so it was suggested that we try a different channel on the
+Bluetooth module. We have researched information about HC-05 and found out that
+it uses SPP (Serial Port Profile) which is made to send bursts of data between
+two devices but there are no supportive links on how to use different channels
+to prevent interference. Therefore, we have eliminated the option of using the
+Bluetooth HC-05 module and stick to the OTG connection.
+
+ 
+
+**Financial Updates:**
+
+We have purchased total of 3 new adapters for OnePlus Two smartphone, but none
+of them would be included in the project except of the last one acquired(only if
+test will be successful). Here are links for the adapters we have purchased:
+
+https://www.newegg.ca/Product/Product.aspx?Item=9SIAA0D4C44428&nm\_mc=KNC-GoogleAdwordsCA&cm\_mmc=KNC-GoogleAdwordsCA-\_-DSA-\_-CategoryPages-\_-NA&gclid=Cj0KEQjw-73GBRCC7KODl9zToJMBEiQAj1JgfxBICDaeKatT\_RlX7lp3FU\_tIiWmOS6Njc37fO9AIzoaAt9k8P8HAQ
+
+https://www.amazon.ca/Type-Adapter-EZOPower-Micro-Female/dp/B013IZMZ3I
+
+https://oneplus.net/ca\_en/oneplus-otg-cable
+
+ 
+
+**Additional Links**
+
+https://www.allaboutcircuits.com/projects/communicate-with-your-arduino-through-android/
 
 \pagebreak
 
