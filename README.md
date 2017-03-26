@@ -304,13 +304,17 @@ Table of Contents
 
     [2.3.4 Software Interface](#234-software-interface)
 
-    [2.4 Progress Reports](#24-progress-reports)
+    [2.4 Project Schedule/Progress Report](#24-project-scheduleprogress-report)
+
+    [2.4.1 Project Schedule](#241-project-schedule)
+
+    [2.4.2.1 Progress Report](#2421-progress-report)
+
+    [2.4.2.2 Progress Report](#2422-progress-report)
 
 3.  [Conclusion](#3-conclusion)
 
-4.  [Recommendations](#4-recommendations)
-
-5.  [Bibliography](#5-bibliography)
+4.  [Bibliography](#4-bibliography)
 
  
 
@@ -705,10 +709,198 @@ register and view their drone’s flight information.
 
  
 
-**2.4 Progress Reports**
-------------------------
+**2.4 Project Schedule/Progress Report**
+----------------------------------------
 
-### **2.4.1 Progress report**
+### **2.4.1 Project Schedule**
+
+**Phase 1**
+
+·         Creating Project Proposal
+
+Wednesday (9/7/16) – Thursday (9/8/16)
+
+ 
+
+·         Creating Budget
+
+Wednesday (9/14/16) – Thursday (9/15/16)
+
+ 
+
+·         Acquiring components, Progress Report
+
+Wednesday (9/21/16) – Thursday (9/22/16)
+
+ 
+
+·         Mechanical Assembly, Second Progress Report
+
+Wednesday (9/28/16) – Thursday (9/29/16)
+
+ 
+
+·         PCB Fabrication
+
+Wednesday (10/5/16) – Thursday (10/6/16)
+
+ 
+
+·         Interface wiring, Placard design
+
+Wednesday (10/12/16) – Thursday (10/13/16)
+
+ 
+
+·         Preparing demonstration
+
+Wednesday (10/19/16) – Thursday (10/20/16)
+
+ 
+
+·         Writing progress report/demo project
+
+Wednesday (10/26/16) – Thursday (10/27/16)
+
+ 
+
+·         Edit build video
+
+Wednesday (11/2/16) – Thursday (11/3/16)
+
+ 
+
+·         Writing progress report/status meeting
+
+Wednesday (11/9/16) – (11/10/16)
+
+ 
+
+·         Practice presentations
+
+Wednesday (11/16/16) – Thursday (11/17/16)
+
+ 
+
+·         Conduct Presentations
+
+Wednesday (11/23/16) – Thursday (11/24/16)
+
+ 
+
+·         Build instructions
+
+Wednesday (11/30/16) – Thursday (12/1/16)
+
+·         Project videos, Status meeting
+
+Wednesday (12/7/16) – Thursday (12/8/16)
+
+ 
+
+**Phase 2**
+
+·         Group meeting
+
+Monday (1/9/17) – Tuesday (1/10/17)
+
+ 
+
+·         Initial integration
+
+Monday (1/16/17) – Tuesday (1/17/17)
+
+ 
+
+·         Software Requirement Specifications(SRS)
+
+Monday (1/23/17) – Tuesday (1/24/17)
+
+ 
+
+·         Progress report
+
+Monday (1/30/17) – Tuesday (1/31/17)
+
+ 
+
+·         Project status
+
+Monday (2/6/17) – Tuesday (2/7/17)
+
+ 
+
+·         Progress report of independent progress
+
+Monday (2/13/17) – Tuesday (2/14/17)
+
+ 
+
+·         Project status
+
+Monday (2/20/17) – Tuesday (2/21/17)
+
+ 
+
+·         Progress report/project integration
+
+Monday (2/27/17) – Tuesday (2/28/17)
+
+ 
+
+·         Testing
+
+Monday (3/6/17) – Tuesday (3/7/17)
+
+ 
+
+·         Project status
+
+Monday (3/13/17) – Tuesday (3/14/17)
+
+ 
+
+·         Prepare for demonstration
+
+Monday (3/20/17) – Tuesday (3/21/17)
+
+ 
+
+ 
+
+·         Complete presentation
+
+Monday (3/27/17) – Tuesday (3/28/17)
+
+ 
+
+·         Complete final report
+
+Monday (4/3/17) – Tuesday (4/4/17)
+
+ 
+
+·         Write video script
+
+Monday (4/10/17) – Tuesday (4/11/17)
+
+ 
+
+·         Project videos
+
+Monday (4/17/17) – Tuesday (4/18/17)
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+### **2.4.2.1 Progress report**
 
 **Recent project activities:**
 
@@ -762,7 +954,7 @@ establish the connection between quadcopter and Android Application.
 
  
 
-### **2.4.2 Progress Report**
+### **2.4.2.2 Progress Report**
 
 **Recent Project Activities:**
 
@@ -821,7 +1013,59 @@ HC-05 Bluetooth Module: \$18.65 with shipping + Tax (CanadaRobotix)
 
  
 
-### **2.4.3 Progress Report**
+### **2.4.2.3 Progress Report**
+
+Dear Kristian,
+
+ 
+
+You can find below our project’s integration status report followed by current
+objectives and goals in merging process:
+
+ 
+
+Software Controlled Drone project includes three main components: main circuit
+(Arduino Uno with transceiver), software (Android Application) and web interface
+(website). The main collaboration between significant pieces is currently in
+progress because we have encountered some obstacles in establishing connection
+between the quadcopter and Arduino. However, we were able to merge some of our
+work progress in one and complete testing of several subjects.
+
+ 
+
+Kevin Libdan was managing database structure and connection to online servers on
+application side, while I developed web interface for users to check their
+information online with option to sign up. In the end, user is able to sign
+up/sign in the Android Application and send some fake data (not connected to the
+drone) to the server’s database, while at the same time user can input their
+credentials to login on website and check flight information, the same ‘fake
+data’ he or she just entered in the application.
+
+ 
+
+Other part of the project is merging our software and hardware together. Kevin
+have worked on communication with OTG cable and Arduino while I tried to
+establish the connection through Bluetooth Module HC-05. After some research and
+testing on modules, we have came up with a conclusion that NRF24L01 and
+Bluetooth Module HC-05 can not work together simultaneously due to frequency
+interference. For yet unknown fact we have not understood why exactly they are
+not working but our simplest guess would be because they both set on 2.4 GHZ
+frequency; therefore, it is not possible establishing a connection without
+interference. Due to this fact, our next step in integration process will be
+basic testing using OTG cable and Arduino, such as sending text or lighting up
+the LED.
+
+ 
+
+Sincerely,
+
+ 
+
+Denis
+
+ 
+
+### **2.4.2.4 Progress Report**
 
 **Recent Project Activities:**
 
@@ -885,7 +1129,7 @@ Bluetooth HC-05 module and stick to the OTG connection.
 
 **Financial Updates:**
 
-We have purchased total of 3 new adapters for OnePlus Two smartphone, but none
+We have purchased a total of 3 new adapters for OnePlus Two smartphone, but none
 of them would be included in the project except of the last one acquired(only if
 test will be successful). Here are links for the adapters we have purchased:
 
@@ -924,16 +1168,19 @@ database.
 
  
 
+Initially, the hardware and software component of the project were going to be
+merged by means of Bluetooth; however, after some research and testing on
+modules, we have come up with a conclusion that the NRF24L01 transceiver and
+Bluetooth Module HC-05 cannot work together simultaneously due to frequency
+interference.
+
+ 
+
+ 
+
 \pagebreak
 
  
 
-**4. Recommendations**
-----------------------
-
-\pagebreak
-
- 
-
-**5. Bibliography**
+**4. Bibliography**
 -------------------
