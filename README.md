@@ -234,13 +234,14 @@ Abstract
 This project is aimed to manipulate the same binding signal that the drone used
 with the stock controller and then being able to control the drone remotely with
 an application built for android devices. The android application would also
-allow users to register if they do not have an account, sign in and view theirdrone’s flight information. We started this project by building a piece of
+allow users to register if they do not have an account, sign in and view their
+drone’s flight information. We started this project by building a piece of
 hardware that would allow us to communicate with the drone and also being able
 to fly it. The major components of our hardware are an Arduino Uno R3, an
 NRF24l01 wireless transceiver, and two analog joysticks. Developing the
 application, database, and web interface allowed us to utilize with our
 hardware.
- 
+
  
 
 \pagebreak
@@ -348,7 +349,9 @@ Assembly](#224-mechanical-assembly)
 
 **NRF24L01 To Arduino Hookup**
 
-![](nrf24l01 hookup.png)
+![](https://github.com/Libs1/SoftwareControlledDrone.github.io/blob/master/Images/nrf24l01%20hookup.png)
+
+ 
 
 This diagram displays the wiring between the Arduino Uno R3 and the NRF24L01
 transceiver.
@@ -360,7 +363,9 @@ Assembly](#224-mechanical-assembly)
 
 **Joysticks To Arduino Hookup**
 
-![](joystick hookup.png)
+![](https://github.com/Libs1/SoftwareControlledDrone.github.io/blob/master/Images/joystick%20hookup.png)
+
+ 
 
 This diagram displays the wiring between the Arduino Uno R3 and the two analog
 joysticks.
