@@ -305,7 +305,6 @@ Table of Contents
     [2.3.3 Hardware Interface](#233-hardware-interface)
 
     [2.3.4 Software Interface](#234-software-interface)
-
     [2.4 Project Schedule/Progress Report](#24-project-scheduleprogress-report)
 
     [2.4.1 Project Schedule](#241-project-schedule)
@@ -330,7 +329,7 @@ Table of Contents
 
  
 
-N**Illustrations or Diagrams**
+**Illustrations or Diagrams**
 -----------------------------
 
 **NRF24L01 Solder Diagram**
