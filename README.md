@@ -405,8 +405,7 @@ Assembly](#224-mechanical-assembly)
 
  
 
-\pagebreak  
- 
+\pagebreak    
 
 **Joysticks To Arduino Hookup**
 
@@ -619,11 +618,11 @@ Figure 1.1
 
 **Step 3: Hooking up the NRF24L01 to the Arduino**
 
-**           ** Before we make any wiring connections between the Arduino and
-the NRF24L01 transceiver, make sure the transceiver is sitting on the breadboard
-properly. When the transceiver is in place, make the following connections
-between the Arduino and the NRF24L01 transceiver. Figure 2.1 shows how the
-connections should look when all connections are made.
+Before we make any wiring connections between the Arduino and the NRF24L01
+transceiver, make sure the transceiver is sitting on the breadboard properly.
+When the transceiver is in place, make the following connections between the
+Arduino and the NRF24L01 transceiver. Figure 2.1 shows how the connections
+should look when all connections are made.
 
 This is the pin set up for the Arduino to the NRF24L01 Transceiver:
 
