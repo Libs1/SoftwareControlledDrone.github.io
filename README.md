@@ -404,7 +404,8 @@ Further instructions to do so can be found at [2.2.4 Mechanical
 Assembly](#224-mechanical-assembly)
 
  
-\pagebreak
+
+\pagebreak  
  
 
 **Joysticks To Arduino Hookup**
@@ -418,8 +419,6 @@ joysticks.
 
 Further instructions to do so can be found at [2.2.4 Mechanical
 Assembly](#224-mechanical-assembly)
-
- 
 
  
 
@@ -2105,8 +2104,8 @@ void update\_ppm2()
 
 ### **4.2.1 LoginActivity.java**
 
-**package** com.example.softwarecontrolleddrone;  
-  
+**package** com.example.softwarecontrolleddrone;
+
 **import** android.content.Context;  
 **import** android.content.DialogInterface;  
 **import** android.content.Intent;  
@@ -2135,148 +2134,148 @@ void update\_ppm2()
 **import** java.net.HttpURLConnection;  
 **import** java.net.MalformedURLException;  
 **import** java.net.URL;  
-**import** java.net.URLEncoder;  
-  
+**import** java.net.URLEncoder;
+
 **public class** LoginActivity **extends** AppCompatActivity **implements**
-View.OnClickListener{  
-  
+View.OnClickListener{
+
     AlertDialog **alertDialog**;  
-    Context **context** = **this**;  
-  
+    Context **context** = **this**;
+
     EditText **editText1**;  
     EditText **editText2**;  
     Button **loginButton**;  
-    Button **registerButton**;  
-  
-    String **username**, **password**;  
-  
+    Button **registerButton**;
+
+    String **username**, **password**;
+
     */\*SharedPreferences for remember me checkbox\*/*  
 *    ***private** SharedPreferences **loginPreferences**;  
     SharedPreferences.Editor **editor**;  
     **private** CheckBox **checkBox**;  
-    **boolean saveLogin**;  
-  
+    **boolean saveLogin**;
+
     */\*SharedPreferences for passing the username\*/*  
 *   * **private** SharedPreferences **uNamePreferences**;  
-    SharedPreferences.Editor **uNameEditor**;  
-  
+    SharedPreferences.Editor **uNameEditor**;
+
     \@Override  
     **protected void** onCreate(Bundle savedInstanceState) {  
         **super**.onCreate(savedInstanceState);  
         setContentView(R.layout.**activity\_login**);  
         Log.*d*(**"ADebugTag"**, **"Value: "** +
-getResources().getBoolean(R.bool.**portrait\_only**));  
-  
+getResources().getBoolean(R.bool.**portrait\_only**));
+
         **if**(getResources().getBoolean(R.bool.**portrait\_only**)){  
            *// setContentView(R.layout.activity\_controller);*  
 *           * Log.*d*(**"ADebugTag"**, **"Value: "** +
 getResources().getBoolean(R.bool.**portrait\_only**));  
            
 setRequestedOrientation(ActivityInfo.**SCREEN\_ORIENTATION\_LANDSCAPE**);  
-        }  
-  
+        }
+
         **editText1** = (EditText) findViewById(R.id.**usernameField**);  
         **editText2** = (EditText) findViewById(R.id.**passwordField**);  
-        **checkBox** = (CheckBox)findViewById(R.id.**rememberMeCheckBox**);  
-  
+        **checkBox** = (CheckBox)findViewById(R.id.**rememberMeCheckBox**);
+
         **loginButton** = (Button) findViewById(R.id.**loginButton**);  
-        **loginButton**.setOnClickListener(LoginActivity.**this**);  
-  
-        **registerButton** = (Button)findViewById(R.id.**registerButton**);  
-  
+        **loginButton**.setOnClickListener(LoginActivity.**this**);
+
+        **registerButton** = (Button)findViewById(R.id.**registerButton**);
+
         */\*Preferences for passing the username\*/*  
 *       * **uNamePreferences** = getSharedPreferences(**"uNamePrefs"**,
 **MODE\_PRIVATE**);  
-        **uNameEditor** = **uNamePreferences**.edit();  
-  
+        **uNameEditor** = **uNamePreferences**.edit();
+
         */\*Preferences for remember me checkbox\*/*  
 *       * **loginPreferences** = getSharedPreferences(**"loginPrefs"**,
 **MODE\_PRIVATE**);  
-        **editor** = **loginPreferences**.edit();  
-  
+        **editor** = **loginPreferences**.edit();
+
         **saveLogin** = **loginPreferences**.getBoolean(**"saveLogin"**,
-**false**);  
-  
+**false**);
+
         **if**(**saveLogin** == **true**)  
         {  
             **editText1**.setText(**loginPreferences**.getString(**"username"**,
 **""**));  
         }  
-    }  
-  
+    }
+
     **public void** onClick(View view)  
     {  
         **username** = **editText1**.getText().toString();  
-        **password** = **editText2**.getText().toString();  
-  
+        **password** = **editText2**.getText().toString();
+
         BackgroundTask backgroundTask = **new** BackgroundTask();  
         backgroundTask.execute(**username**, **password**);  
-    }  
-  
+    }
+
     **class** BackgroundTask **extends** AsyncTask\<String, Void, String\>  
     {  
         String **login\_url**;  
-        **boolean loginVerified** = **false**;  
-  
+        **boolean loginVerified** = **false**;
+
         \@Override  
         **protected void** onPreExecute()  
         {  
-        }  
-  
+        }
+
         \@Override  
         **protected** String doInBackground(String... args)  
         {  
             String username, password;  
             **login\_url** =
-**"http://softwarecontrolleddrone.esy.es/Login.php"**;  
-  
+**"http://softwarecontrolleddrone.esy.es/Login.php"**;
+
             username = args[0];  
-            password = args[1];  
-  
+            password = args[1];
+
             **try**  
 **           ** {  
-                URL url = **new** URL(**login\_url**);  
-  
+                URL url = **new** URL(**login\_url**);
+
                 *//Make a request to the url*  
 *               * HttpURLConnection httpURLConnection = (HttpURLConnection)
 url.openConnection();  
                 httpURLConnection.setRequestMethod(**"POST"**);  
                 httpURLConnection.setDoOutput(**true**);  
-                httpURLConnection.setDoInput(**true**);  
-  
+                httpURLConnection.setDoInput(**true**);
+
                 OutputStream outputStream = httpURLConnection.getOutputStream();  
                 BufferedWriter bufferedWriter = **new** BufferedWriter(**new**
-OutputStreamWriter(outputStream, **"UTF-8"**));  
-  
+OutputStreamWriter(outputStream, **"UTF-8"**));
+
                 String data\_info = URLEncoder.*encode*(**"username"**,
 **"UTF-8"**) + **"="** + URLEncoder.*encode*(username, **"UTF-8"**) + **"&"** +  
                         URLEncoder.*encode*(**"password"**, **"UTF-8"**) +
-**"="** + URLEncoder.*encode*(password, **"UTF-8"**);  
-  
+**"="** + URLEncoder.*encode*(password, **"UTF-8"**);
+
                 bufferedWriter.write(data\_info);  
                 bufferedWriter.flush();  
-                bufferedWriter.close();  
-  
-                outputStream.close();  
-  
+                bufferedWriter.close();
+
+                outputStream.close();
+
                 InputStream inputStream = httpURLConnection.getInputStream();  
                 BufferedReader bufferedReader = **new** BufferedReader(**new**
-InputStreamReader(inputStream, **"UTF-8"**));  
-  
+InputStreamReader(inputStream, **"UTF-8"**));
+
                 String response = **""**;  
-                String line = **""**;  
-  
+                String line = **""**;
+
                 **while**((line = bufferedReader.readLine()) != **null**)  
                 {  
                     response += line;  
-                }  
-  
+                }
+
                 bufferedReader.close();  
                 inputStream.close();  
                 httpURLConnection.disconnect();  
                 **loginVerified** = **true**;  
-                **return** response;  
-  
+                **return** response;
+
             }  
             **catch**(MalformedURLException e)  
             {  
@@ -2285,11 +2284,11 @@ InputStreamReader(inputStream, **"UTF-8"**));
             **catch**(IOException e)  
             {  
                 e.printStackTrace();  
-            }  
-  
+            }
+
             **return null**;  
-        }  
-  
+        }
+
         \@Override  
         **protected void** onPostExecute(String result)  
         {  
@@ -2297,8 +2296,8 @@ InputStreamReader(inputStream, **"UTF-8"**));
 Successful"**))  
             {  
                 Intent intent = **new** Intent(**context**,
-MenuActivity.**class**);  
-  
+MenuActivity.**class**);
+
                 **if** (**checkBox**.isChecked()) {  
                     **editor**.putBoolean(**"saveLogin"**, **true**);  
                     **editor**.putString(**"username"**,
@@ -2307,13 +2306,13 @@ MenuActivity.**class**);
                 } **else** {  
                     **editor**.clear();  
                     **editor**.commit();  
-                }  
-  
+                }
+
                 *//Passing the username to the MenuActivity*  
 *               * String passUsername1 = **editText1**.getText().toString();  
                 **uNameEditor**.putString(**"usernamePassed1"**, passUsername1);  
-                **uNameEditor**.commit();  
-  
+                **uNameEditor**.commit();
+
                 startActivity(intent);  
             }  
             **else**{  
@@ -2333,21 +2332,21 @@ DialogInterface.OnClickListener()
                         .show();  
             }  
         }  
-    }  
-  
+    }
+
     **public void** RegisterAccount(View view)  
     {  
         Intent intent = **new** Intent(LoginActivity.**this**,
 RegisterActivity.**class**);  
         startActivity(intent);  
-    }  
-  
+    }
+
     **public static boolean** isTablet(Context context) {  
         **return** (context.getResources().getConfiguration().**screenLayout**  
 **               ** & Configuration.**SCREENLAYOUT\_SIZE\_MASK**)  
                 \>= Configuration.**SCREENLAYOUT\_SIZE\_LARGE**;  
-    }  
-  
+    }
+
     \@Override  
     **public boolean** onCreateOptionsMenu(Menu menu) {  
         getMenuInflater().inflate(R.menu.**main**, menu);  
@@ -2361,14 +2360,14 @@ RegisterActivity.**class**);
                 intent = **new** Intent(Intent.**ACTION\_VIEW**,
 Uri.*parse*(**"http://www.google.ca/"**));  
                 startActivity(intent);  
-                **break**;  
-  
+                **break**;
+
             **case** R.id.**scd**:  
                 intent = **new** Intent(Intent.**ACTION\_VIEW**,
 Uri.*parse*(**"http://www.litehawk.ca/highroller/"**));  
                 startActivity(intent);  
-                **break**;  
-  
+                **break**;
+
             **case** R.id.**drone**:  
                 intent = **new** Intent(Intent.**ACTION\_VIEW**,
 Uri.*parse*(**"https://www.dronestoronto.com/"**));  
@@ -2376,8 +2375,8 @@ Uri.*parse*(**"https://www.dronestoronto.com/"**));
                 **break**;  
         }  
         **return super**.onOptionsItemSelected(item);  
-    }  
-  
+    }
+
     \@Override  
     **public void** onBackPressed() {  
         **new** AlertDialog.Builder(**this**)  
@@ -2391,8 +2390,8 @@ DialogInterface.OnClickListener()
                     **public void** onClick(DialogInterface dialog, **int**
 which) {  
                         finish();  
-                    }  
-  
+                    }
+
                 })  
                 .setNegativeButton(**"No"**, **null**)  
                 .show();  
@@ -2405,8 +2404,8 @@ which) {
 
  
 
-**package** com.example.softwarecontrolleddrone;  
-  
+**package** com.example.softwarecontrolleddrone;
+
 **import** android.content.Context;  
 **import** android.content.DialogInterface;  
 **import** android.content.Intent;  
@@ -2433,24 +2432,24 @@ which) {
 **import** java.net.HttpURLConnection;  
 **import** java.net.MalformedURLException;  
 **import** java.net.URL;  
-**import** java.net.URLEncoder;  
-  
-**public class** RegisterActivity **extends** AppCompatActivity {  
-  
-    Context **context** = **this**;  
-  
+**import** java.net.URLEncoder;
+
+**public class** RegisterActivity **extends** AppCompatActivity {
+
+    Context **context** = **this**;
+
     EditText **registerFirstName**;  
     EditText **registerLastName**;  
     EditText **registerUsername**;  
     EditText **registerPassword**;  
     Button **registerButton2**;  
-    String **firstName**, **lastName**, **username**, **password**;  
-  
+    String **firstName**, **lastName**, **username**, **password**;
+
     \@Override  
     **protected void** onCreate(Bundle savedInstanceState) {  
         **super**.onCreate(savedInstanceState);  
-        setContentView(R.layout.**activity\_register**);  
-  
+        setContentView(R.layout.**activity\_register**);
+
         **registerFirstName** =
 (EditText)findViewById(R.id.**registerFirstName**);  
         **registerLastName** =
@@ -2458,21 +2457,20 @@ which) {
         **registerUsername** =
 (EditText)findViewById(R.id.**registerUsername**);  
         **registerPassword** =
-(EditText)findViewById(R.id.**registerPassword**);  
-  
+(EditText)findViewById(R.id.**registerPassword**);
+
         **registerButton2** = (Button)findViewById(R.id.**registerButton2**);  
         **registerButton2**.setOnClickListener(**new** View.OnClickListener() {  
             \@Override  
-            **public void** onClick(View v) {  
-  
+            **public void** onClick(View v) {
+
                 **firstName** = **registerFirstName**.getText().toString();  
                 **lastName** = **registerLastName**.getText().toString();  
                 **username** = **registerUsername**.getText().toString();  
-                **password** = **registerPassword**.getText().toString();  
-  
-                BackgroundTask backgroundTask = **new** BackgroundTask();  
-  
-  
+                **password** = **registerPassword**.getText().toString();
+
+                BackgroundTask backgroundTask = **new** BackgroundTask();
+
                 **boolean** firstnameTest =
 checkFirstNameRegister(**firstName**);  
                 **if**(firstnameTest == **false**)  
@@ -2480,45 +2478,43 @@ checkFirstNameRegister(**firstName**);
                     Toast.*makeText*(RegisterActivity.**this**,
 R.string.**errorInput**, Toast.**LENGTH\_SHORT**)  
                             .show();  
-                }  
-  
+                }
+
                 **boolean** lastnameTest = checkLastNameRegister(**lastName**);  
                 **if**(lastnameTest == **false**)  
                 {  
                     Toast.*makeText*(RegisterActivity.**this**,
 R.string.**errorInput**, Toast.**LENGTH\_SHORT**)  
                             .show();  
-                }  
-  
+                }
+
                 **boolean** usernameTest = checkUsernameRegister(**username**);  
                 **if**(usernameTest == **false**)  
                 {  
                     Toast.*makeText*(RegisterActivity.**this**,
 R.string.**errorName**, Toast.**LENGTH\_SHORT**)  
                             .show();  
-                }  
-  
+                }
+
                 **boolean** passwordTest = checkPasswordRegister(**password**);  
                 **if**(passwordTest == **false**)  
                 {  
                     Toast.*makeText*(RegisterActivity.**this**,
 R.string.**errorPassword**, Toast.**LENGTH\_SHORT**)  
                             .show();  
-                }  
-  
+                }
+
                 **if**(firstnameTest && lastnameTest && usernameTest &&
 passwordTest)  
                 {  
                     backgroundTask.execute(**firstName**, **lastName**,
 **username**, **password**);  
-                }  
-  
-  
-  
+                }
+
             }  
         });  
-    }  
-  
+    }
+
     **public boolean** checkFirstNameRegister(String registeredFirstName)  
     {  
         **if**(registeredFirstName.length() \>= 2 &&
@@ -2526,8 +2522,8 @@ registeredFirstName.matches(**"[a-zA-Z]+(\\\\\\\\-[a-zA-Z]+)?"**))
             **return true**;  
         **else**  
 **            return false**;  
-    }  
-  
+    }
+
     **public boolean** checkLastNameRegister(String registeredLastName)  
     {  
         **if**(registeredLastName.length() \>= 2 &&
@@ -2535,63 +2531,63 @@ registeredLastName.matches(**"[a-zA-Z]+(\\\\\\\\-[a-zA-Z]+)?"**))
             **return true**;  
         **else**  
 **            return false**;  
-    }  
-  
+    }
+
     **public boolean** checkUsernameRegister(String registeredUsername) {  
         **if** (registeredUsername.length() \>= 4 &&
 registeredUsername.matches(**"[a-zA-Z0-9]+(\\\\\\\\-[a-zA-Z0-9]+)?"**))  
             **return true**;  
         **else**  
 **            return false**;  
-    }  
-  
+    }
+
     **public boolean** checkPasswordRegister(String registeredPassword) {  
         **if** (registeredPassword.length() \>= 6 &&
 registeredPassword.matches(**"[a-zA-Z0-9]+(\\\\-[a-zA-Z0-9]+)?"**))  
             **return true**;  
         **else**  
 **            return false**;  
-    }  
-  
+    }
+
     **class** BackgroundTask **extends** AsyncTask\<String, Void, String\>  
-    {  
-  
-        AlertDialog **alertDialog**;  
-  
-        String **link**;  
-  
+    {
+
+        AlertDialog **alertDialog**;
+
+        String **link**;
+
         \@Override  
         **protected void** onPreExecute()  
         {  
-        }  
-  
+        }
+
         \@Override  
         **protected** String doInBackground(String... args)  
         {  
             **link** =
-**"http://softwarecontrolleddrone.esy.es/AddMember.php"**;  
-  
-            String firstName, lastName, username, password;  
-  
+**"http://softwarecontrolleddrone.esy.es/AddMember.php"**;
+
+            String firstName, lastName, username, password;
+
             firstName = args[0];  
             lastName = args[1];  
             username = args[2];  
-            password = args[3];  
-  
+            password = args[3];
+
             **try**  
 **           ** {  
-                URL url = **new** URL(**link**);  
-  
+                URL url = **new** URL(**link**);
+
                 *//Opens connection to url*  
 *               * HttpURLConnection httpURLConnection = (HttpURLConnection)
 url.openConnection();  
                 httpURLConnection.setRequestMethod(**"POST"**);  
-                httpURLConnection.setDoOutput(**true**);  
-  
+                httpURLConnection.setDoOutput(**true**);
+
                 OutputStream outputStream = httpURLConnection.getOutputStream();  
                 BufferedWriter bufferedWriter = **new** BufferedWriter(**new**
-OutputStreamWriter(outputStream, **"UTF-8"**));  
-  
+OutputStreamWriter(outputStream, **"UTF-8"**));
+
                 *//Encoded data to be written to the url*  
 *               * String data\_string = URLEncoder.*encode*(**"firstName"**,
 **"UTF-8"**) + **"="** + URLEncoder.*encode*(firstName, **"UTF-8"**) + **"&"** +  
@@ -2600,41 +2596,41 @@ OutputStreamWriter(outputStream, **"UTF-8"**));
                         URLEncoder.*encode*(**"username"**, **"UTF-8"**) +
 **"="** + URLEncoder.*encode*(username, **"UTF-8"**) + **"&"** +  
                         URLEncoder.*encode*(**"password"**, **"UTF-8"**) +
-**"="** + URLEncoder.*encode*(password, **"UTF-8"**);  
-  
+**"="** + URLEncoder.*encode*(password, **"UTF-8"**);
+
                 bufferedWriter.write(data\_string);  
                 bufferedWriter.flush();  
                 bufferedWriter.close();  
-                outputStream.close();  
-  
+                outputStream.close();
+
                 InputStream inputStream = httpURLConnection.getInputStream();  
                 BufferedReader bufferedReader = **new** BufferedReader(**new**
-InputStreamReader(inputStream, **"UTF-8"**));  
-  
+InputStreamReader(inputStream, **"UTF-8"**));
+
                 String response = **""**;  
-                String line = **""**;  
-  
+                String line = **""**;
+
                 **while**((line = bufferedReader.readLine()) != **null**)  
                 {  
                     response += line;  
-                }  
-  
+                }
+
                 bufferedReader.close();  
                 inputStream.close();  
                 httpURLConnection.disconnect();  
-                **return** response;  
-  
+                **return** response;
+
             }  
             **catch**(MalformedURLException e){  
                 e.printStackTrace();  
             }  
             **catch**(IOException e){  
                 e.printStackTrace();  
-            }  
-  
+            }
+
             **return null**;  
-        }  
-  
+        }
+
         \@Override  
         **protected void** onPostExecute(String result)  
         {  
@@ -2642,8 +2638,8 @@ InputStreamReader(inputStream, **"UTF-8"**));
 Success"**))  
             {  
                 Intent intent = **new** Intent(RegisterActivity.**this**,
-LoginActivity.**class**);  
-  
+LoginActivity.**class**);
+
                 Toast.*makeText*(RegisterActivity.**this**,
 R.string.**RegistrationSuccessful**, Toast.**LENGTH\_SHORT**)  
                         .show();  
@@ -2664,11 +2660,11 @@ DialogInterface.OnClickListener()
                            }  
                        })  
                        .show();  
-           }  
-  
+           }
+
         }  
-    }  
-  
+    }
+
     \@Override  
     **public boolean** onCreateOptionsMenu(Menu menu) {  
         getMenuInflater().inflate(R.menu.**main**, menu);  
@@ -2682,32 +2678,32 @@ DialogInterface.OnClickListener()
                 intent = **new** Intent(Intent.**ACTION\_VIEW**,
 Uri.*parse*(**"http://www.google.ca/"**));  
                 startActivity(intent);  
-                **break**;  
-  
+                **break**;
+
             **case** R.id.**scd**:  
                 intent = **new** Intent(Intent.**ACTION\_VIEW**,
 Uri.*parse*(**"http://www.litehawk.ca/highroller/"**));  
                 startActivity(intent);  
-                **break**;  
-  
+                **break**;
+
             **case** R.id.**drone**:  
                 intent = **new** Intent(Intent.**ACTION\_VIEW**,
 Uri.*parse*(**"https://www.dronestoronto.com/"**));  
                 startActivity(intent);  
-                **break**;  
-  
+                **break**;
+
         }  
         **return super**.onOptionsItemSelected(item);  
-    }  
-  
+    }
+
 }
 
  
 
 ### **4.2.3 MenuActivity.java**
 
-**package** com.example.softwarecontrolleddrone;  
-  
+**package** com.example.softwarecontrolleddrone;
+
 **import** android.content.Context;  
 **import** android.content.Intent;  
 **import** android.content.SharedPreferences;  
@@ -2721,63 +2717,61 @@ Uri.*parse*(**"https://www.dronestoronto.com/"**));
 **import** android.view.View;  
 **import** android.widget.Button;  
 **import** android.widget.ImageView;  
-**import** android.widget.Toast;  
-  
-**public class** MenuActivity **extends** AppCompatActivity {  
-  
-  
+**import** android.widget.Toast;
+
+**public class** MenuActivity **extends** AppCompatActivity {
+
     Button **controllerButton**, **databaseButton**;  
     ImageView **image**;  
     */\*SharedPreferences for accessing FlightActivity\*/*  
 *   * SharedPreferences **accessPreference**;  
     SharedPreferences.Editor **editor**;  
-    **boolean check**;  
-  
+    **boolean check**;
+
     */\*SharedPreferences for passing/receiving the username\*/*  
 *   * SharedPreferences **uNamePreferences**;  
     SharedPreferences.Editor **uNameEditor**;  
-    String **recvUsername1**;  
-  
-  
-    **final** Context **context** = **this**;  
-  
+    String **recvUsername1**;
+
+    **final** Context **context** = **this**;
+
     \@Override  
     **protected void** onCreate(Bundle savedInstanceState) {  
         **super**.onCreate(savedInstanceState);  
-        setContentView(R.layout.**activity\_menu**);  
-  
+        setContentView(R.layout.**activity\_menu**);
+
         */\*SharedPreferences for passing the username\*/*  
 *       * **uNamePreferences** = getSharedPreferences(**"uNamePrefs"**,
 **MODE\_PRIVATE**);  
-        **uNameEditor** = **uNamePreferences**.edit();  
-  
+        **uNameEditor** = **uNamePreferences**.edit();
+
         **recvUsername1** =
-**uNamePreferences**.getString(**"usernamePassed1"**, **""**);  
-  
+**uNamePreferences**.getString(**"usernamePassed1"**, **""**);
+
         */\*SharedPreferences for accessing the flightActivity\*/*  
 *       * **accessPreference** = getSharedPreferences(**"accessPrefs"**,
 **MODE\_PRIVATE**);  
-        **editor** = **accessPreference**.edit();  
-  
-        **check** = **accessPreference**.getBoolean(**"check"**, **false**);  
-  
+        **editor** = **accessPreference**.edit();
+
+        **check** = **accessPreference**.getBoolean(**"check"**, **false**);
+
         **if**(getResources().getBoolean(R.bool.**portrait\_only**)){  
             setContentView(R.layout.**activity\_controller**);  
            
 setRequestedOrientation(ActivityInfo.**SCREEN\_ORIENTATION\_LANDSCAPE**);  
-        }  
-  
-        **image** = (ImageView) findViewById(R.id.**dronePicture1**);  
-  
+        }
+
+        **image** = (ImageView) findViewById(R.id.**dronePicture1**);
+
         **final int**[] imageArray = { R.drawable.**drone**,
 R.drawable.**drone\_90**,  
                 R.drawable.**drone\_180**, R.drawable.**drone\_270**,  
-               };  
-  
+               };
+
         **final** Handler handler = **new** Handler();  
         Runnable runnable = **new** Runnable() {  
-            **int i** = 0;  
-  
+            **int i** = 0;
+
             **public void** run() {  
                 **image**.setImageResource(imageArray[**i**]);  
                 **i**++;  
@@ -2787,51 +2781,51 @@ R.drawable.**drone\_90**,
                 handler.postDelayed(**this**, 50);  
             }  
         };  
-        handler.postDelayed(runnable, 50);  
-  
+        handler.postDelayed(runnable, 50);
+
         *//image.startAnimation(*  
 *              //  AnimationUtils.loadAnimation(MenuActivity.this,
-R.anim.drone\_rotation\_anim) );*  
-  
+R.anim.drone\_rotation\_anim) );*
+
 *       * **controllerButton** =
 (Button)findViewById(R.id.**controllerButton**);  
-        **controllerButton**.setOnClickListener(**new** View.OnClickListener(){  
-  
+        **controllerButton**.setOnClickListener(**new** View.OnClickListener(){
+
             \@Override  
-            **public void** onClick(View v){  
-  
+            **public void** onClick(View v){
+
                 Intent intent = **new** Intent(MenuActivity.**this**,
-ControllerActivity.**class**);  
-  
+ControllerActivity.**class**);
+
                 *//Passing username to ControllerActivity*  
-*               * intent.putExtra(**"usernamePassedContr"**, **recvUsername1**);  
-  
-                startActivity(intent);  
-  
+*               * intent.putExtra(**"usernamePassedContr"**, **recvUsername1**);
+
+                startActivity(intent);
+
             }  
-        });  
-  
+        });
+
         **databaseButton** = (Button)findViewById(R.id.**databaseButton**);  
         **databaseButton**.setOnClickListener(**new** View.OnClickListener() {  
             \@Override  
-            **public void** onClick(View v) {  
-  
+            **public void** onClick(View v) {
+
                 **if**(**check** == **false**){  
                     Toast.*makeText*(MenuActivity.**this**,
 R.string.**emptyFlightActivity**, Toast.**LENGTH\_SHORT**)  
                     .show();  
-                }**else** {  
-  
+                }**else** {
+
                     Intent intent = **new** Intent(MenuActivity.**this**,
 FlightsActivity.**class**);  
                     *//intent.putExtra("usernamePassedFlights", recvUsername1);*  
 *                   * **uNameEditor**.putString(**"namePassToFlights"**,
 **recvUsername1**);  
-                    **uNameEditor**.commit();  
-  
+                    **uNameEditor**.commit();
+
                     startActivity(intent);  
-                }  
-  
+                }
+
             }  
         });  
     }  
@@ -2848,22 +2842,22 @@ FlightsActivity.**class**);
                 intent = **new** Intent(Intent.**ACTION\_VIEW**,
 Uri.*parse*(**"http://www.google.ca/"**));  
                 startActivity(intent);  
-                **break**;  
-  
+                **break**;
+
             **case** R.id.**scd**:  
                 intent = **new** Intent(Intent.**ACTION\_VIEW**,
 Uri.*parse*(**"http://www.litehawk.ca/highroller/"**));  
                 startActivity(intent);  
-                **break**;  
-  
+                **break**;
+
             **case** R.id.**drone**:  
                 intent = **new** Intent(Intent.**ACTION\_VIEW**,
 Uri.*parse*(**"https://www.dronestoronto.com/"**));  
                 startActivity(intent);  
-                **break**;  
-  
-        }  
-  
+                **break**;
+
+        }
+
         **return super**.onOptionsItemSelected(item);  
     }  
 }
@@ -2874,8 +2868,8 @@ Uri.*parse*(**"https://www.dronestoronto.com/"**));
 
 ### **4.2.4 ControllerActivity.java**
 
-**package** com.example.softwarecontrolleddrone;  
-  
+**package** com.example.softwarecontrolleddrone;
+
 **import** android.Manifest;  
 **import** android.app.PendingIntent;  
 **import** android.content.BroadcastReceiver;  
@@ -2924,14 +2918,14 @@ Uri.*parse*(**"https://www.dronestoronto.com/"**));
 **import** android.widget.RelativeLayout;  
 **import** android.widget.Switch;  
 **import** android.widget.TextView;  
-**import** android.widget.Toast;  
-  
+**import** android.widget.Toast;
+
 **import** com.felhr.usbserial.UsbSerialDevice;  
 **import** com.felhr.usbserial.UsbSerialInterface;  
-**import** com.google.android.gms.fitness.data.MapValue;  
-  
-**import** org.w3c.dom.Text;  
-  
+**import** com.google.android.gms.fitness.data.MapValue;
+
+**import** org.w3c.dom.Text;
+
 **import** java.io.BufferedReader;  
 **import** java.io.BufferedWriter;  
 **import** java.io.IOException;  
@@ -2947,98 +2941,97 @@ Uri.*parse*(**"https://www.dronestoronto.com/"**));
 **import** java.util.HashMap;  
 **import** java.util.List;  
 **import** java.util.Locale;  
-**import** java.util.Map;  
-  
-**public class** ControllerActivity **extends** AppCompatActivity {  
-  
+**import** java.util.Map;
+
+**public class** ControllerActivity **extends** AppCompatActivity {
+
     */\*Variables for internal DB\*/*  
 *   * MySQLiteHelper **mySQLiteHelper**;  
     SQLiteDatabase **sqLiteDatabase**;  
-    Context **context** = **this**;  
-  
+    Context **context** = **this**;
+
     */\*Variables for LED button\*/*  
 *   * **public static final** String **PREFS** = **"sharedPreferences"**;  
     **public static final** String **BRIGHTNESS** = **"brightness"**;  
     **public static** Button *b*;  
-    **boolean switch1**;  
-  
+    **boolean switch1**;
+
     Chronometer **chronometer**;  
     TextView **timeText**;  
     String **putFlightDuration**;  
     String **formattedDate**;  
-    **private long timeWhenStopped** = 0;  
-  
+    **private long timeWhenStopped** = 0;
+
     */\*SharedPreferences for accessing Flight Activity\*/*  
 *   * SharedPreferences **accessPreference**;  
     SharedPreferences.Editor **editor**;  
-    **boolean check2**;  
-  
-    String **recvUsername**;  
-  
+    **boolean check2**;
+
+    String **recvUsername**;
+
     */\*Variables for joysticks\*/*  
 *   * TextView **txtX1**, **txtY1**, **txtX2**, **txtY2**, **textView**;  
     Button **startButton**, **stopButton**;  
     DualJoystickView **joystick**;  
-    **byte input**[] = {23, 0, 0x7f, 0x7f, 0x7f};*//default input*  
-  
+    **byte input**[] = {23, 0, 0x7f, 0x7f, 0x7f};*//default input*
+
 *   * **public final** String **ACTION\_USB\_PERMISSION** =
 **"com.example.softwarecontrolleddrone.USB\_PERMISSION"**;  
     UsbManager **usbManager**;  
     UsbDevice **device**;  
     UsbSerialDevice **serialPort**;  
-    UsbDeviceConnection **connection**;  
-  
-  
+    UsbDeviceConnection **connection**;
+
     \@Override  
     **protected void** onCreate(Bundle savedInstanceState) {  
         **super**.onCreate(savedInstanceState);  
-        setContentView(R.layout.**activity\_controller**);  
-  
+        setContentView(R.layout.**activity\_controller**);
+
         **txtX1** = (TextView)findViewById(R.id.**TextViewX1**);  
-        **txtY1** = (TextView)findViewById(R.id.**TextViewY1**);  
-  
+        **txtY1** = (TextView)findViewById(R.id.**TextViewY1**);
+
         **txtX2** = (TextView)findViewById(R.id.**TextViewX2**);  
-        **txtY2** = (TextView)findViewById(R.id.**TextViewY2**);  
-  
-        **textView** = (TextView)findViewById(R.id.**textView**);  
-  
+        **txtY2** = (TextView)findViewById(R.id.**TextViewY2**);
+
+        **textView** = (TextView)findViewById(R.id.**textView**);
+
         **joystick** =
 (DualJoystickView)findViewById(R.id.**dualjoystickView**);  
         **joystick**.setOnJostickMovedListener(**\_listenerLeft**,
-**\_listenerRight**);  
-  
+**\_listenerRight**);
+
         **usbManager** = (UsbManager)
 getSystemService(**this**.**USB\_SERVICE**);  
         **startButton** = (Button) findViewById(R.id.**buttonStart**);  
-        **stopButton** = (Button) findViewById(R.id.**buttonStop**);  
-  
+        **stopButton** = (Button) findViewById(R.id.**buttonStop**);
+
         setUiEnabled(**false**);  
         IntentFilter filter = **new** IntentFilter();  
         filter.addAction(**ACTION\_USB\_PERMISSION**);  
         filter.addAction(UsbManager.**ACTION\_USB\_DEVICE\_ATTACHED**);  
         filter.addAction(UsbManager.**ACTION\_USB\_DEVICE\_DETACHED**);  
-        registerReceiver(**broadcastReceiver**, filter);  
-  
+        registerReceiver(**broadcastReceiver**, filter);
+
         */\*Retreiving the username that will be put into the database\*/*  
 *       * **recvUsername** =
-getIntent().getStringExtra(**"usernamePassedContr"**);  
-  
+getIntent().getStringExtra(**"usernamePassedContr"**);
+
         */\*SharedPreferences for accessing the flight activity\*/*  
 *       * **accessPreference** = getSharedPreferences(**"accessPrefs"**,
 **MODE\_PRIVATE**);  
-        **editor** = **accessPreference**.edit();  
-  
+        **editor** = **accessPreference**.edit();
+
         **if**(getResources().getBoolean(R.bool.**portrait\_only**)){  
             setContentView(R.layout.**activity\_controller**);  
       
      setRequestedOrientation(ActivityInfo.**SCREEN\_ORIENTATION\_LANDSCAPE**);  
-        }  
-  
+        }
+
         */\*Retreiving the current date\*/*  
 *       * java.util.Calendar c = java.util.Calendar.*getInstance*();  
         SimpleDateFormat df = **new** SimpleDateFormat(**"dd-MMM-yyyy"**);  
-        **formattedDate** = df.format(c.getTime());  
-  
+        **formattedDate** = df.format(c.getTime());
+
         *//LED Button*  
 *        b* = (Button) findViewById(R.id.**button**);  
         *b*.setOnClickListener(**new** View.OnClickListener() {  
@@ -3047,15 +3040,15 @@ getIntent().getStringExtra(**"usernamePassedContr"**);
                 startActivity(**new** Intent(ControllerActivity.**this**,
 PopActivity.**class**));  
             }  
-        });  
-  
+        });
+
         */\*Chronometer and the TextView to display the time\*/*  
 *       * **chronometer** = (Chronometer) findViewById(R.id.**chronometer**);  
         **timeText** = (TextView) findViewById(R.id.**timeDisplayed**);  
-        **chronometer**.setVisibility(View.**INVISIBLE**);  
-  
-    }  
-  
+        **chronometer**.setVisibility(View.**INVISIBLE**);
+
+    }
+
     UsbSerialInterface.UsbReadCallback **mCallback** = **new**
 UsbSerialInterface.UsbReadCallback() { *//Defining a Callback which triggers
 whenever data is read.*  
@@ -3063,8 +3056,8 @@ whenever data is read.*
         **public void** onReceivedData(**byte**[] arg0)  
         {  
         }  
-    };  
-  
+    };
+
     **private final** BroadcastReceiver **broadcastReceiver** = **new**
 BroadcastReceiver() { *//Broadcast Receiver to automatically start and stop the
 Serial connection.*  
@@ -3092,13 +3085,13 @@ Connection Parameters.*
 **serialPort**.setParity(UsbSerialInterface.**PARITY\_NONE**);  
                         
        **serialPort**.setFlowControl(UsbSerialInterface.**FLOW\_CONTROL\_OFF**);  
-                                **serialPort**.read(**mCallback**);  
-  
-                                **chronometer**.setVisibility(View.**VISIBLE**);  
-  
+                                **serialPort**.read(**mCallback**);
+
+                                **chronometer**.setVisibility(View.**VISIBLE**);
+
                                 tvAppend(**textView**, **"Serial Connection
-Opened!\\n"**);  
-  
+Opened!\\n"**);
+
                             } **else** {  
                                 Log.*d*(**"SERIAL"**, **"PORT NOT OPEN"**);  
                             }  
@@ -3117,22 +3110,22 @@ Opened!\\n"**);
                 }  
             }**catch**(Exception e){}  
         };  
-    };  
-  
+    };
+
     **public void** onClickStart(View view)  
     {  
         *//byte a[] = {1};*  
-*        //serialPort.write(a);*  
-  
+*        //serialPort.write(a);*
+
 *       * **editor**.putBoolean(**"check"**, **true**);  
-        **editor**.commit();  
-  
+        **editor**.commit();
+
         *//chronometer.setVisibility(View.VISIBLE);*  
 *       * **chronometer**.setBase(SystemClock.*elapsedRealtime*());  
         **timeText**.setVisibility(View.**INVISIBLE**);  
         **timeText**.setText(R.string.**zeroseconds**);  
-        **chronometer**.start();  
-  
+        **chronometer**.start();
+
         **try** {  
             HashMap\<String, UsbDevice\> usbDevices =
 **usbManager**.getDeviceList();  
@@ -3152,8 +3145,8 @@ Intent(**ACTION\_USB\_PERMISSION**), 0);
                     } **else** {  
                         **connection** = **null**;  
                         **device** = **null**;  
-                    }  
-  
+                    }
+
                     **if** (!keep)  
                         **break**;  
                 }  
@@ -3162,67 +3155,67 @@ Intent(**ACTION\_USB\_PERMISSION**), 0);
             *//Toast.makeText(MainActivity.this, "The Arduino Is Not Connected",
 Toast.LENGTH\_SHORT).show();*  
 *       * }  
-    }  
-  
+    }
+
     **public void** onClickStop(View view)  
     {  
         **byte** input[] = {23, 0, 0x7f, 0x7f, 0x7f};  
         **serialPort**.write(input);  
         setUiEnabled(**false**);  
         **serialPort**.close();  
-        tvAppend(**textView**, **"\\nSerial Connection Closed! \\n"**);  
-  
+        tvAppend(**textView**, **"\\nSerial Connection Closed! \\n"**);
+
         **timeWhenStopped** = **chronometer**.getBase() -
 SystemClock.*elapsedRealtime*();  
         **int** seconds = (**int**) **timeWhenStopped** / 1000;  
         **timeText**.setVisibility(View.**VISIBLE**);  
         **chronometer**.setVisibility(View.**INVISIBLE**);  
         *//math.abs returns the absolute value of seconds*  
-*       * **timeText**.setText(Math.*abs*(seconds) + **" Second(s)"**);  
-  
-        **chronometer**.stop();  
-  
-        **putFlightDuration** = **timeText**.getText().toString();  
-  
+*       * **timeText**.setText(Math.*abs*(seconds) + **" Second(s)"**);
+
+        **chronometer**.stop();
+
+        **putFlightDuration** = **timeText**.getText().toString();
+
         **mySQLiteHelper** = **new** MySQLiteHelper(**context**);  
         **sqLiteDatabase** = **mySQLiteHelper**.getWritableDatabase();  
         **mySQLiteHelper**.putInformation(**sqLiteDatabase**, **formattedDate**,
 **putFlightDuration**);  
-        **mySQLiteHelper**.close();  
-  
+        **mySQLiteHelper**.close();
+
         BackgroundTask backgroundTask = **new** BackgroundTask();  
         backgroundTask.execute(**formattedDate**, **putFlightDuration**,
 **recvUsername**);  
-    }  
-  
+    }
+
     **public void** setUiEnabled(**boolean** bool)  
     {  
         **startButton**.setEnabled(!bool);  
         **stopButton**.setEnabled(bool);  
         **textView**.setEnabled(bool);  
-    }  
-  
+    }
+
     **private void** tvAppend(TextView tv, CharSequence text) {  
         **final** TextView ftv = tv;  
-        **final** CharSequence ftext = text;  
-  
+        **final** CharSequence ftext = text;
+
         runOnUiThread(**new** Runnable() {  
             \@Override  
             **public void** run() {  
                 ftv.setText(ftext);  
             }  
         });  
-    }  
-  
+    }
+
     \@Override  
     **protected void** onStop() {  
         **super**.onStop();  
-    }  
-  
+    }
+
     */\*Joystick Listener for the left joystick\*/*  
 *   * **private** JoystickMovedListener **\_listenerLeft** = **new**
-JoystickMovedListener() {  
-  
+JoystickMovedListener() {
+
         \@Override  
         **public void** OnMoved(**int** yaw, **int** throttle) {  
             **try** {  
@@ -3233,42 +3226,42 @@ JoystickMovedListener() {
                 **if**(yaw \>= 256)  
                     yaw = 255;  
                 **if**(yaw \>= 108 && yaw \<= 148)  
-                    yaw = 127;  
-  
+                    yaw = 127;
+
                 **txtX1**.setText(Integer.*toString*(yaw));  
                 **txtY1**.setText(Integer.*toString*(throttle));  
                 **input**[1] = (**byte**) throttle;  
                 **input**[2] = (**byte**) yaw;  
-                **serialPort**.write(**input**);  
-  
+                **serialPort**.write(**input**);
+
                 **byte** b[] = {0};  
                 **serialPort**.write(b);  
             }**catch**(Exception e){  
                 *//Toast.makeText(FlightController.this, "The Arduino Is Not
 Connected", Toast.LENGTH\_SHORT).show();*  
 *           * }  
-        }  
-  
+        }
+
         \@Override  
         **public void** OnReleased() {  
-            **try**{  
-  
+            **try**{
+
             }**catch**(Exception e){  
             }  
-        }  
-  
+        }
+
         **public void** OnReturnedToCenter() {  
-            **try**{  
-  
+            **try**{
+
             }**catch**(Exception e){  
             }  
         };  
-    };  
-  
+    };
+
     */\*Joystick listener for the right joystick\*/*  
 *   * **private** JoystickMovedListener **\_listenerRight** = **new**
-JoystickMovedListener() {  
-  
+JoystickMovedListener() {
+
         \@Override  
         **public void** OnMoved(**int** roll, **int** pitch) {  
             **try**{  
@@ -3281,11 +3274,11 @@ JoystickMovedListener() {
                 **if**(roll \>= 256)  
                     roll = 255;  
                 **if**(roll == 128)  
-                    roll = 127;  
-  
+                    roll = 127;
+
                 **txtX2**.setText(Integer.*toString*(roll));  
-                **txtY2**.setText(Integer.*toString*(pitch));  
-  
+                **txtY2**.setText(Integer.*toString*(pitch));
+
                 **input**[3] = (**byte**) pitch;*//left or right*  
 *               * **input**[4] = (**byte**) roll;*//forward or backward*  
 *               * **serialPort**.write(**input**);  
@@ -3293,84 +3286,84 @@ JoystickMovedListener() {
                 *//Toast.makeText(FlightController.this, "The Arduino Is Not
 Connected", Toast.LENGTH\_SHORT).show();*  
 *           * }  
-        }  
-  
+        }
+
         \@Override  
         **public void** OnReleased() {  
-            **try**{  
-  
+            **try**{
+
             }**catch**(Exception e){  
             }  
-        }  
-  
+        }
+
         **public void** OnReturnedToCenter() {  
-            **try**{  
-  
+            **try**{
+
             }**catch**(Exception e){  
             }  
         };  
-    };  
-  
+    };
+
     **class** BackgroundTask **extends** AsyncTask\<String, Void, String\>  
     {  
-        String **link**;  
-  
+        String **link**;
+
         \@Override  
         **protected void** onPreExecute() {  
             **super**.onPreExecute();  
-        }  
-  
+        }
+
         \@Override  
         **protected** String doInBackground(String... args)  
         {  
             **link** =
-**"http://softwarecontrolleddrone.esy.es/FlightInfo2.php"**;  
-  
-            String date, flightduration, username;  
-  
+**"http://softwarecontrolleddrone.esy.es/FlightInfo2.php"**;
+
+            String date, flightduration, username;
+
             date = args[0];  
             flightduration = args[1];  
-            username = args[2];  
-  
-            **try**{  
-  
-                URL url = **new** URL(**link**);  
-  
+            username = args[2];
+
+            **try**{
+
+                URL url = **new** URL(**link**);
+
                 *//Opens connection to url*  
 *               * HttpURLConnection httpURLConnection =
 (HttpURLConnection)url.openConnection();  
                 httpURLConnection.setRequestMethod(**"POST"**);  
-                httpURLConnection.setDoOutput(**true**);  
-  
+                httpURLConnection.setDoOutput(**true**);
+
                 OutputStream outputStream = httpURLConnection.getOutputStream();  
                 BufferedWriter bufferedWriter = **new** BufferedWriter(**new**
-OutputStreamWriter(outputStream, **"UTF-8"**));  
-  
+OutputStreamWriter(outputStream, **"UTF-8"**));
+
                 *//Encoded data to be written to the URL*  
 *               * String data\_string = URLEncoder.*encode*(**"date"**,
 **"UTF-8"**) + **"="** + URLEncoder.*encode*(date, **"UTF-8"**) + **"&"** +  
                         URLEncoder.*encode*(**"flightduration"**, **"UTF-8"**) +
 **"="** + URLEncoder.*encode*(flightduration, **"UTF-8"**) + **"&"** +  
                         URLEncoder.*encode*(**"username"**, **"UTF-8"**) +
-**"="** + URLEncoder.*encode*(username, **"UTF-8"**);  
-  
+**"="** + URLEncoder.*encode*(username, **"UTF-8"**);
+
                 bufferedWriter.write(data\_string);  
                 bufferedWriter.flush();  
                 bufferedWriter.close();  
-                outputStream.close();  
-  
+                outputStream.close();
+
                 InputStream inputStream = httpURLConnection.getInputStream();  
                 BufferedReader bufferedReader = **new** BufferedReader(**new**
-InputStreamReader(inputStream, **"UTF-8"**));  
-  
+InputStreamReader(inputStream, **"UTF-8"**));
+
                 String response = **""**;  
-                String line = **""**;  
-  
+                String line = **""**;
+
                 **while**((line = bufferedReader.readLine()) != **null**)  
                 {  
                     response += line;  
-                }  
-  
+                }
+
                 bufferedReader.close();  
                 inputStream.close();  
                 httpURLConnection.disconnect();  
@@ -3385,20 +3378,20 @@ InputStreamReader(inputStream, **"UTF-8"**));
                 e.printStackTrace();  
             }  
             **return null**;  
-        }  
-  
+        }
+
         \@Override  
         **protected void** onPostExecute(String s) {  
             **super**.onPostExecute(s);  
         }  
-    }  
-  
+    }
+
     \@Override  
     **public boolean** onCreateOptionsMenu(Menu menu) {  
         getMenuInflater().inflate(R.menu.**main**, menu);  
         **return true**;  
-    }  
-  
+    }
+
     \@Override  
     **public boolean** onOptionsItemSelected(MenuItem item) {  
         Intent intent = **null**;  
@@ -3407,14 +3400,14 @@ InputStreamReader(inputStream, **"UTF-8"**));
                 intent = **new** Intent(Intent.**ACTION\_VIEW**,
 Uri.*parse*(**"http://www.google.ca/"**));  
                 startActivity(intent);  
-                **break**;  
-  
+                **break**;
+
             **case** R.id.**scd**:  
                 intent = **new** Intent(Intent.**ACTION\_VIEW**,
 Uri.*parse*(**"http://www.litehawk.ca/highroller/"**));  
                 startActivity(intent);  
-                **break**;  
-  
+                **break**;
+
             **case** R.id.**drone**:  
                 intent = **new** Intent(Intent.**ACTION\_VIEW**,
 Uri.*parse*(**"https://www.dronestoronto.com/"**));  
@@ -3429,8 +3422,8 @@ Uri.*parse*(**"https://www.dronestoronto.com/"**));
 
 ### **4.2.5 FlightActivity.java**
 
-**package** com.example.softwarecontrolleddrone;  
-  
+**package** com.example.softwarecontrolleddrone;
+
 **import** android.content.Context;  
 **import** android.content.DialogInterface;  
 **import** android.content.Intent;  
@@ -3450,8 +3443,8 @@ Uri.*parse*(**"https://www.dronestoronto.com/"**));
 **import** android.widget.Button;  
 **import** android.widget.ListView;  
 **import** android.widget.TextView;  
-**import** android.widget.Toast;  
-  
+**import** android.widget.Toast;
+
 **import** java.io.BufferedReader;  
 **import** java.io.BufferedWriter;  
 **import** java.io.IOException;  
@@ -3463,84 +3456,82 @@ Uri.*parse*(**"https://www.dronestoronto.com/"**));
 **import** java.net.MalformedURLException;  
 **import** java.net.URL;  
 **import** java.net.URLEncoder;  
-**import** java.util.List;  
-  
-**public class** FlightsActivity **extends** AppCompatActivity {  
-  
+**import** java.util.List;
+
+**public class** FlightsActivity **extends** AppCompatActivity {
+
     MySQLiteHelper **mySQLiteHelper**;  
     SQLiteDatabase **sqLiteDatabase**;  
     Context **context** = **this**;  
     ListDataAdapter **listDataAdapter**;  
     ListView **listView**;  
     Button **deleteInformationButton**;  
-    String **date**, **flightduration**;  
-  
+    String **date**, **flightduration**;
+
     */\*SharedPreferences for accessing the FlightsActivity\*/*  
 *   * SharedPreferences **accessPreference**;  
-    SharedPreferences.Editor **editor**;  
-  
+    SharedPreferences.Editor **editor**;
+
     */\*SharedPreferences for receiving the username\*/*  
 *   * SharedPreferences **uNamePreferences**;  
-    SharedPreferences.Editor **uNameEditor**;  
-  
-    String **recvUsername**;  
-  
-  
-    Cursor **cursor**;  
-  
+    SharedPreferences.Editor **uNameEditor**;
+
+    String **recvUsername**;
+
+    Cursor **cursor**;
+
     \@Override  
     **protected void** onCreate(Bundle savedInstanceState) {  
         **super**.onCreate(savedInstanceState);  
-        setContentView(R.layout.**activity\_flights**);  
-  
+        setContentView(R.layout.**activity\_flights**);
+
         */\*SharedPreferences for receiving the username passed from the
 MenuActivity\*/*  
 *       * **uNamePreferences** = getSharedPreferences(**"uNamePrefs"**,
 **MODE\_PRIVATE**);  
-        **uNameEditor** = **uNamePreferences**.edit();  
-  
+        **uNameEditor** = **uNamePreferences**.edit();
+
         **recvUsername** =
-**uNamePreferences**.getString(**"namePassToFlights"**, **null**);  
-  
-        *//recvUsername = getIntent().getStringExtra("usernamePassedFlights");*  
-  
-  
+**uNamePreferences**.getString(**"namePassToFlights"**, **null**);
+
+        *//recvUsername = getIntent().getStringExtra("usernamePassedFlights");*
+
 *        /\*SharedPreferences for accessing the flightActivity\*/*  
 *       * **accessPreference** = getSharedPreferences(**"accessPrefs"**,
 **MODE\_PRIVATE**);  
-        **editor** = **accessPreference**.edit();  
-  
+        **editor** = **accessPreference**.edit();
+
         **if**(getResources().getBoolean(R.bool.**portrait\_only**)){  
             setContentView(R.layout.**activity\_controller**);  
            
 setRequestedOrientation(ActivityInfo.**SCREEN\_ORIENTATION\_LANDSCAPE**);  
-        }  
-  
+        }
+
         **listDataAdapter** = **new** ListDataAdapter(**context**,
 R.layout.**list\_view\_layout**);  
         **listView** = (ListView)findViewById(R.id.**FlightInformationList**);  
         *//set the listView to the adapter(listDataAdapter)*  
-*       * **listView**.setAdapter(**listDataAdapter**);  
-  
+*       * **listView**.setAdapter(**listDataAdapter**);
+
         **mySQLiteHelper** = **new** MySQLiteHelper(**context**);  
-        **sqLiteDatabase** = **mySQLiteHelper**.getReadableDatabase();  
-  
-        **cursor** = **mySQLiteHelper**.getInformation(**sqLiteDatabase**);  
-  
+        **sqLiteDatabase** = **mySQLiteHelper**.getReadableDatabase();
+
+        **cursor** = **mySQLiteHelper**.getInformation(**sqLiteDatabase**);
+
         **if**(**cursor**.moveToFirst())  
         {  
             **do**{  
                 **date** = **cursor**.getString(0);  
-                **flightduration** = **cursor**.getString(1);  
-  
+                **flightduration** = **cursor**.getString(1);
+
                 DataProvider dataProvider = **new** DataProvider(**date**,
-**flightduration**);  
-  
-                **listDataAdapter**.add(dataProvider);  
-  
+**flightduration**);
+
+                **listDataAdapter**.add(dataProvider);
+
             }**while**(**cursor**.moveToNext());  
-        }  
-  
+        }
+
         **deleteInformationButton** =
 (Button)findViewById(R.id.**deleteInfoButton**);  
         **deleteInformationButton**.setOnClickListener(**new**
@@ -3549,73 +3540,73 @@ View.OnClickListener() {
             **public void** onClick(View v)  
             {  
                 Intent intent = **new** Intent(FlightsActivity.**this**,
-MenuActivity.**class**);  
-  
+MenuActivity.**class**);
+
                 BackgroundTask backgroundTask = **new** BackgroundTask();  
-                backgroundTask.execute(**recvUsername**);  
-  
+                backgroundTask.execute(**recvUsername**);
+
                 **editor**.putBoolean(**"check"**, **false**);  
-                **editor**.commit();  
-  
+                **editor**.commit();
+
                 startActivity(intent);  
             }  
         });  
-    }  
-  
+    }
+
     **class** BackgroundTask **extends** AsyncTask\<String, Void, String\>  
     {  
-        String **link**;  
-  
+        String **link**;
+
         \@Override  
         **protected void** onPreExecute()  
         {  
-        }  
-  
+        }
+
         \@Override  
         **protected** String doInBackground(String... args)  
         {  
             **link** =
-**"http://softwarecontrolleddrone.esy.es/DeleteFlightInfo.php"**;  
-  
-            String username;  
-  
-            username = args[0];  
-  
+**"http://softwarecontrolleddrone.esy.es/DeleteFlightInfo.php"**;
+
+            String username;
+
+            username = args[0];
+
             **try**  
 **           ** {  
-                URL url = **new** URL(**link**);  
-  
+                URL url = **new** URL(**link**);
+
                 *//Opens connection to the URL*  
 *               * HttpURLConnection httpURLConnection = (HttpURLConnection)
 url.openConnection();  
                 httpURLConnection.setRequestMethod(**"POST"**);  
-                httpURLConnection.setDoOutput(**true**);  
-  
+                httpURLConnection.setDoOutput(**true**);
+
                 OutputStream outputStream = httpURLConnection.getOutputStream();  
                 BufferedWriter bufferedWriter = **new** BufferedWriter(**new**
-OutputStreamWriter(outputStream, **"UTF-8"**));  
-  
+OutputStreamWriter(outputStream, **"UTF-8"**));
+
                 *//Encoded data to be written to the url*  
 *               * String data\_string = URLEncoder.*encode*(**"username"**,
-**"UTF-8"**) + **"="** + URLEncoder.*encode*(username, **"UTF-8"**);  
-  
+**"UTF-8"**) + **"="** + URLEncoder.*encode*(username, **"UTF-8"**);
+
                 bufferedWriter.write(data\_string);  
                 bufferedWriter.flush();  
                 bufferedWriter.close();  
-                outputStream.close();  
-  
+                outputStream.close();
+
                 InputStream inputStream = httpURLConnection.getInputStream();  
                 BufferedReader bufferedReader = **new** BufferedReader(**new**
-InputStreamReader(inputStream, **"UTF-8"**));  
-  
+InputStreamReader(inputStream, **"UTF-8"**));
+
                 String response = **""**;  
-                String line = **""**;  
-  
+                String line = **""**;
+
                 **while**((line = bufferedReader.readLine()) != **null**)  
                 {  
                     response += line;  
-                }  
-  
+                }
+
                 bufferedReader.close();  
                 inputStream.close();  
                 httpURLConnection.disconnect();  
@@ -3630,8 +3621,8 @@ InputStreamReader(inputStream, **"UTF-8"**));
                 e.printStackTrace();  
             }  
             **return null**;  
-        }  
-  
+        }
+
         \@Override  
         **protected void** onPostExecute(String result)  
         {  
@@ -3639,11 +3630,11 @@ InputStreamReader(inputStream, **"UTF-8"**));
 Deleted Successfully"**))  
             {  
                 **mySQLiteHelper** = **new** MySQLiteHelper(**context**);  
-                **sqLiteDatabase** = **mySQLiteHelper**.getWritableDatabase();  
-  
+                **sqLiteDatabase** = **mySQLiteHelper**.getWritableDatabase();
+
                 **mySQLiteHelper**.deleteInformation(**sqLiteDatabase**);  
-                **mySQLiteHelper**.close();  
-  
+                **mySQLiteHelper**.close();
+
                 Toast.*makeText*(FlightsActivity.**this**, result,
 Toast.**LENGTH\_SHORT**)  
                         .show();  
@@ -3655,8 +3646,8 @@ Toast.**LENGTH\_SHORT**)
                         .show();  
             }  
         }  
-    }  
-  
+    }
+
     \@Override  
     **public boolean** onCreateOptionsMenu(Menu menu) {  
         getMenuInflater().inflate(R.menu.**main**, menu);  
@@ -3670,20 +3661,20 @@ Toast.**LENGTH\_SHORT**)
                 intent = **new** Intent(Intent.**ACTION\_VIEW**,
 Uri.*parse*(**"http://www.google.ca/"**));  
                 startActivity(intent);  
-                **break**;  
-  
+                **break**;
+
             **case** R.id.**scd**:  
                 intent = **new** Intent(Intent.**ACTION\_VIEW**,
 Uri.*parse*(**"http://www.litehawk.ca/highroller/"**));  
                 startActivity(intent);  
-                **break**;  
-  
+                **break**;
+
             **case** R.id.**drone**:  
                 intent = **new** Intent(Intent.**ACTION\_VIEW**,
 Uri.*parse*(**"https://www.dronestoronto.com/"**));  
                 startActivity(intent);  
-                **break**;  
-  
+                **break**;
+
         }  
         **return super**.onOptionsItemSelected(item);  
     }  
@@ -3693,9 +3684,8 @@ Uri.*parse*(**"https://www.dronestoronto.com/"**));
 
 ### **4.2.6 PopActivity.java**
 
-  
-**package** com.example.softwarecontrolleddrone;  
-  
+**package** com.example.softwarecontrolleddrone;
+
 **import** android.app.Activity;  
 **import** android.content.Intent;  
 **import** android.content.SharedPreferences;  
@@ -3712,11 +3702,10 @@ Uri.*parse*(**"https://www.dronestoronto.com/"**));
 **import** android.widget.SeekBar;  
 **import** android.widget.Switch;  
 **import** android.widget.TextView;  
-**import** android.widget.Toast;  
-  
-**import** java.util.prefs.Preferences;  
-  
-  
+**import** android.widget.Toast;
+
+**import** java.util.prefs.Preferences;
+
 **public class** PopActivity **extends** Activity {  
     **public static final** String **PREFS** = **"sharedPreferences"**;  
     **private** Button **save\_button**;  
@@ -3726,62 +3715,59 @@ Uri.*parse*(**"https://www.dronestoronto.com/"**));
     **private** RadioButton **rb2**;  
     **private** RadioButton **rb3**;  
     **private static final** String **KEY\_TEXT\_VALUE** = **"button"**;  
-    String **background**;  
-  
+    String **background**;
+
     \@Override  
     **protected void** onCreate(Bundle savedInstanceState) {  
-        **super**.onCreate(savedInstanceState);  
-  
+        **super**.onCreate(savedInstanceState);
+
         **if** (savedInstanceState != **null**) {  
             CharSequence savedText =
 savedInstanceState.getCharSequence(**KEY\_TEXT\_VALUE**);  
             *//ControllerActivity.b.*  
-*       * }  
-  
+*       * }
+
         *//window layout management*  
 *       * DisplayMetrics dm = **new** DisplayMetrics();  
-        getWindowManager().getDefaultDisplay().getMetrics(dm);  
-  
+        getWindowManager().getDefaultDisplay().getMetrics(dm);
+
         **int** width = dm.**widthPixels**;  
-        **int** height = dm.**heightPixels**;  
-  
+        **int** height = dm.**heightPixels**;
+
         getWindow().setLayout((**int**) (width \* .4), (**int**) (height \*
-.5));  
-  
+.5));
+
         *//initializers*  
 *       * setContentView(R.layout.**activity\_pop**);  
         **switch1** = (Switch) findViewById(R.id.**switch1**);  
         **radioGroup** = (RadioGroup) findViewById(R.id.**radioGroup**);  
         **rb1** = (RadioButton) findViewById(R.id.**radio1**);  
         **rb2** = (RadioButton) findViewById(R.id.**radio2**);  
-        **rb3** = (RadioButton) findViewById(R.id.**radio3**);  
-  
+        **rb3** = (RadioButton) findViewById(R.id.**radio3**);
+
         *//Final values decalred above to simplify the code*  
 *       * **final** SharedPreferences sharedPreferences =
 getSharedPreferences(**PREFS**,0);  
-        **final** SharedPreferences.Editor editor = sharedPreferences.edit();  
-  
-  
+        **final** SharedPreferences.Editor editor = sharedPreferences.edit();
+
         *//loading sets*  
 *       *
 **switch1**.setChecked(sharedPreferences.getBoolean(**"Switch"**,**false**));  
         **rb1**.setChecked(sharedPreferences.getBoolean(**"rb1"**,**false**));  
         **rb2**.setChecked(sharedPreferences.getBoolean(**"rb2"**,**false**));  
-        **rb3**.setChecked(sharedPreferences.getBoolean(**"rb3"**,**false**));  
-  
-  
+        **rb3**.setChecked(sharedPreferences.getBoolean(**"rb3"**,**false**));
+
         **save\_button** = (Button) findViewById(R.id.**save**);  
-        **save\_button**.setOnClickListener(**new** View.OnClickListener() {  
-  
+        **save\_button**.setOnClickListener(**new** View.OnClickListener() {
+
             \@Override  
             **public void** onClick(View v) {  
                 editor.putBoolean(**"Switch"**, **switch1**.isChecked());  
                 editor.putBoolean(**"rb1"**, **rb1**.isChecked());  
                 editor.putBoolean(**"rb2"**, **rb2**.isChecked());  
                 editor.putBoolean(**"rb3"**, **rb3**.isChecked());  
-                editor.commit();  
-  
-  
+                editor.commit();
+
                 SharedPreferences sharedPreferences =
 getSharedPreferences(**PREFS**, 0);  
                 Boolean switch1 = sharedPreferences.getBoolean(**"Switch"**,
@@ -3791,8 +3777,8 @@ getSharedPreferences(**PREFS**, 0);
                 Boolean rb2 = sharedPreferences.getBoolean(**"rb2"**,
 **false**);  
                 Boolean rb3 = sharedPreferences.getBoolean(**"rb3"**,
-**false**);  
-  
+**false**);
+
                 **if**(switch1) {  
                     **if**(rb1){  
                        
@@ -3815,30 +3801,29 @@ R.string.**no\_choice**, Toast.**LENGTH\_SHORT**)
                     ControllerActivity.*b*.setText(R.string.**led\_off**);  
                    
 ControllerActivity.*b*.setBackgroundResource(R.drawable.**buttonshape\_led**);  
-                }  
-  
-  
+                }
+
                 finish();  
             }  
         });  
-    }  
-  
+    }
+
 }
 
  
 
 ### **4.2.7 TableData.java**
 
-package com.example.softwarecontrolleddrone;  
-  
+package com.example.softwarecontrolleddrone;
+
 public class TableData{  
     public static abstract class DroneInfo  
     {  
         public static final String *CURRENT\_DATE* = "current\_date";  
         public static final String *FLIGHT\_DURATION* = "flight\_duration";  
         public static final String *TABLE\_NAME* = "DroneInfo";  
-    }  
-  
+    }
+
 }
 
  
@@ -3851,68 +3836,67 @@ public class TableData{
 **import** android.database.sqlite.SQLiteDatabase;  
 **import** android.database.sqlite.SQLiteOpenHelper;  
 **import** android.support.design.widget.TabLayout;  
-**import** android.util.Log;  
-  
+**import** android.util.Log;
+
 **import** java.text.SimpleDateFormat;  
 **import** java.util.Date;  
-**import** java.util.Locale;  
-  
-**public class** MySQLiteHelper **extends** SQLiteOpenHelper {  
-  
+**import** java.util.Locale;
+
+**public class** MySQLiteHelper **extends** SQLiteOpenHelper {
+
     **private static final** String **DATABASE\_NAME** = **"DroneDB"**;  
-    **private static final int DATABASE\_VERSION** = 1;  
-  
+    **private static final int DATABASE\_VERSION** = 1;
+
     **public static final** String **DATABASE\_CREATE** =  
             **"CREATE TABLE "** + TableData.DroneInfo.**TABLE\_NAME** + **"("**
 + TableData.DroneInfo.**CURRENT\_DATE**  
 **                   ** + **" TEXT,"** +
-TableData.DroneInfo.**FLIGHT\_DURATION** + **" TEXT);"**;  
-  
-  
+TableData.DroneInfo.**FLIGHT\_DURATION** + **" TEXT);"**;
+
     **public** MySQLiteHelper(Context context) {  
         **super**(context, **DATABASE\_NAME**, **null**, **DATABASE\_VERSION**);  
         Log.*d*(**"MySQLiteHelper"**, **"Database Created"**);  
-    }  
-  
+    }
+
     \@Override  
     **public void** onCreate(SQLiteDatabase db) {  
         db.execSQL(**DATABASE\_CREATE**);  
         Log.*d*(**"MySQLiteHelper"**, **"Table Created"**);  
-    }  
-  
+    }
+
     \@Override  
     **public void** onUpgrade(SQLiteDatabase db, **int** oldVersion, **int**
-newVersion) {  
-  
-    }  
-  
+newVersion) {
+
+    }
+
     **public void** putInformation(SQLiteDatabase db, String date, String
-flightDuration){  
-  
-        ContentValues contentValues = **new** ContentValues();  
-  
+flightDuration){
+
+        ContentValues contentValues = **new** ContentValues();
+
         contentValues.put(TableData.DroneInfo.**CURRENT\_DATE**, date);  
         contentValues.put(TableData.DroneInfo.**FLIGHT\_DURATION**,
-flightDuration);  
-  
+flightDuration);
+
         db.insert(TableData.DroneInfo.**TABLE\_NAME**, **null**, contentValues);  
-        Log.*d*(**"MySQLiteHelper"**, **"one row inserted"**);  
-  
-    }  
-  
+        Log.*d*(**"MySQLiteHelper"**, **"one row inserted"**);
+
+    }
+
     **public** Cursor getInformation(SQLiteDatabase db)  
     {  
-        Cursor cursor;  
-  
+        Cursor cursor;
+
         String[] columnNames = {TableData.DroneInfo.**CURRENT\_DATE**,
-TableData.DroneInfo.**FLIGHT\_DURATION**};  
-  
+TableData.DroneInfo.**FLIGHT\_DURATION**};
+
         cursor = db.query(TableData.DroneInfo.**TABLE\_NAME**, columnNames,
-**null**, **null**, **null**, **null**, **null**);  
-  
+**null**, **null**, **null**, **null**, **null**);
+
         **return** cursor;  
-    }  
-  
+    }
+
     **public void** deleteInformation(SQLiteDatabase db)  
     {  
         db.delete(TableData.DroneInfo.**TABLE\_NAME**, **null**, **null**);  
@@ -3923,29 +3907,29 @@ TableData.DroneInfo.**FLIGHT\_DURATION**};
 
 ### **4.2.9 DataProvider.java**
 
-**package** com.example.softwarecontrolleddrone;  
-  
-**public class** DataProvider {  
-  
-    **private** String **date**, **flightDuration**;  
-  
+**package** com.example.softwarecontrolleddrone;
+
+**public class** DataProvider {
+
+    **private** String **date**, **flightDuration**;
+
     **public** String getFlightDuration() {  
         **return flightDuration**;  
-    }  
-  
+    }
+
     **public void** setFlightDuration(String flightDuration) {  
         **this**.**flightDuration** = flightDuration;  
-    }  
-  
+    }
+
     **public** String getDate() {  
         **return date**;  
-    }  
-  
-    **public void** setDate(String date) {  
-  
+    }
+
+    **public void** setDate(String date) {
+
         **this**.**date** = date;  
-    }  
-  
+    }
+
     **public** DataProvider(String date, String flightDuration)  
     {  
         **this**.**date** = date;  
@@ -3957,66 +3941,66 @@ TableData.DroneInfo.**FLIGHT\_DURATION**};
 
 ### **4.2.10 ListDataAdapter.java**
 
-**package** com.example.softwarecontrolleddrone;  
-  
+**package** com.example.softwarecontrolleddrone;
+
 **import** android.content.Context;  
 **import** android.view.LayoutInflater;  
 **import** android.view.View;  
 **import** android.view.ViewGroup;  
 **import** android.widget.ArrayAdapter;  
-**import** android.widget.TextView;  
-  
+**import** android.widget.TextView;
+
 **import** java.util.ArrayList;  
-**import** java.util.List;  
-  
-**public class** ListDataAdapter **extends** ArrayAdapter {  
-  
-    List **list** = **new** ArrayList\<\>();  
-  
+**import** java.util.List;
+
+**public class** ListDataAdapter **extends** ArrayAdapter {
+
+    List **list** = **new** ArrayList\<\>();
+
     **public** ListDataAdapter(Context context, **int** resource) {  
-        **super**(context, resource);  
-  
-    }  
-  
+        **super**(context, resource);
+
+    }
+
     **static class** LayoutHandler  
     {  
         TextView **DATE**, **FLIGHTDURATION**;  
-    }  
-  
+    }
+
     \@Override  
     **public void** add(Object object)  
     {  
-        **super**.add(object);  
-  
+        **super**.add(object);
+
         **list**.add(object);  
-    }  
-  
+    }
+
     \@Override  
     **public int** getCount()  
     {  
         **return list**.size();  
-    }  
-  
+    }
+
     \@Override  
     **public** Object getItem(**int** position)  
     {  
         **return list**.get(position);  
-    }  
-  
+    }
+
     \@Override  
     **public** View getView(**int** position, View convertView, ViewGroup
 parent)  
     {  
         View row = convertView;  
-        LayoutHandler layoutHandler;  
-  
+        LayoutHandler layoutHandler;
+
         **if**(row == **null**)  
         {  
             LayoutInflater layoutInflater =
 (LayoutInflater)**this**.getContext().getSystemService(Context.**LAYOUT\_INFLATER\_SERVICE**);  
             row = layoutInflater.inflate(R.layout.**list\_view\_layout**,
-parent, **false**);  
-  
+parent, **false**);
+
             layoutHandler = **new** LayoutHandler();  
             layoutHandler.**DATE** = (TextView)
 row.findViewById(R.id.**displayDate**);  
@@ -4031,8 +4015,8 @@ row.findViewById(R.id.**displayFlightDuration**);
         DataProvider dataProvider = (DataProvider)**this**.getItem(position);  
         layoutHandler.**DATE**.setText(dataProvider.getDate());  
        
-layoutHandler.**FLIGHTDURATION**.setText(dataProvider.getFlightDuration());  
-  
+layoutHandler.**FLIGHTDURATION**.setText(dataProvider.getFlightDuration());
+
         **return** row;  
     }  
 }
@@ -4041,8 +4025,8 @@ layoutHandler.**FLIGHTDURATION**.setText(dataProvider.getFlightDuration());
 
 ### **4.2.11 JoystickView.java**
 
-**package** com.example.softwarecontrolleddrone;  
-  
+**package** com.example.softwarecontrolleddrone;
+
 **import** android.content.Context;  
 **import** android.graphics.Canvas;  
 **import** android.graphics.Color;  
@@ -4051,189 +4035,189 @@ layoutHandler.**FLIGHTDURATION**.setText(dataProvider.getFlightDuration());
 **import** android.util.Log;  
 **import** android.view.HapticFeedbackConstants;  
 **import** android.view.MotionEvent;  
-**import** android.view.View;  
-  
+**import** android.view.View;
+
 **public class** JoystickView **extends** View{  
-    **public static final int INVALID\_POINTER\_ID** = -1;  
-  
+    **public static final int INVALID\_POINTER\_ID** = -1;
+
     *// =========================================*  
 *    // Private Members*  
 *    // =========================================*  
 *   * **private final boolean D** = **false**;  
-    String **TAG** = **"JoystickView"**;  
-  
+    String **TAG** = **"JoystickView"**;
+
     **private** Paint **dbgPaint1**;  
-    **private** Paint **dbgPaint2**;  
-  
+    **private** Paint **dbgPaint2**;
+
     **private** Paint **bgPaint**;  
-    **private** Paint **handlePaint**;  
-  
+    **private** Paint **handlePaint**;
+
     **private int innerPadding**;  
     **private int bgRadius**;  
     **private int handleRadius**;  
     **private int movementRadius**;  
-    **private int handleInnerBoundaries**;  
-  
+    **private int handleInnerBoundaries**;
+
     **private** JoystickMovedListener **moveListener**;  
-    **private** JoystickClickedListener **clickListener**;  
-  
+    **private** JoystickClickedListener **clickListener**;
+
     *//\# of pixels movement required between reporting to the listener*  
-*   * **private float moveResolution**;  
-  
+*   * **private float moveResolution**;
+
     **private boolean yAxisInverted**;  
-    **private boolean autoReturnToCenter**;  
-  
+    **private boolean autoReturnToCenter**;
+
     *//Max range of movement in user coordinate system*  
 *   * **public final static int CONSTRAIN\_BOX** = 0;  
     **public final static int CONSTRAIN\_CIRCLE** = 1;  
     **private int movementConstraint**;  
-    **private float movementRange**;  
-  
+    **private float movementRange**;
+
     **public final static int COORDINATE\_CARTESIAN** = 0;     *//Regular
 cartesian coordinates*  
 *   * **public final static int COORDINATE\_DIFFERENTIAL** = 1;   *//Uses polar
 rotation of 45 degrees to calc differential drive paramaters*  
-*   * **private int userCoordinateSystem**;  
-  
+*   * **private int userCoordinateSystem**;
+
     *//Records touch pressure for click handling*  
 *   * **private float touchPressure**;  
     **private boolean clicked**;  
-    **private float clickThreshold**;  
-  
+    **private float clickThreshold**;
+
     *//Last touch point in view coordinates*  
 *   * **private int pointerId** = **INVALID\_POINTER\_ID**;  
-    **private float touchX**, **touchY**;  
-  
+    **private float touchX**, **touchY**;
+
     *//Last reported position in view coordinates (allows different reporting
 sensitivities)*  
-*   * **private float reportX**, **reportY**;  
-  
+*   * **private float reportX**, **reportY**;
+
     *//Handle center in view coordinates*  
-*   * **private float handleX**, **handleY**;  
-  
+*   * **private float handleX**, **handleY**;
+
     *//Center of the view in view coordinates*  
-*   * **private int cX**, **cY**;  
-  
+*   * **private int cX**, **cY**;
+
     *//Size of the view in view coordinates*  
-*   * **private int dimX**, **dimY**;  
-  
+*   * **private int dimX**, **dimY**;
+
     *//Cartesian coordinates of last touch point - joystick center is (0,0)*  
-*   * **private int cartX**, **cartY**;  
-  
+*   * **private int cartX**, **cartY**;
+
     *//Polar coordinates of the touch point from joystick center*  
 *   * **private double radial**;  
-    **private double angle**;  
-  
+    **private double angle**;
+
     *//User coordinates of last touch point*  
-*   * **private int userX**, **userY**;  
-  
+*   * **private int userX**, **userY**;
+
     *//Offset co-ordinates (used when touch events are received from parent's
 coordinate origin)*  
 *   * **private int offsetX**;  
-    **private int offsetY**;  
-  
-    **private boolean LJoystick**;  
-  
+    **private int offsetY**;
+
+    **private boolean LJoystick**;
+
     *// =========================================*  
 *    // Constructors*  
-*    // =========================================*  
-  
+*    // =========================================*
+
 *   * **public** JoystickView(Context context, **boolean** which) {  
         **super**(context);  
         **LJoystick** = which;  
         initJoystickView();  
-    }  
-  
+    }
+
     **public** JoystickView(Context context, AttributeSet attrs, **boolean**
 which) {  
         **super**(context, attrs);  
         **LJoystick** = which;  
         initJoystickView();  
-    }  
-  
+    }
+
     **public** JoystickView(Context context, AttributeSet attrs, **int**
 defStyle) {  
         **super**(context, attrs, defStyle);  
         initJoystickView();  
-    }  
-  
+    }
+
     *// =========================================*  
 *    // Initialization*  
-*    // =========================================*  
-  
+*    // =========================================*
+
 *   * **private void** initJoystickView() {  
-        setFocusable(**true**);  
-  
+        setFocusable(**true**);
+
         **dbgPaint1** = **new** Paint(Paint.**ANTI\_ALIAS\_FLAG**);  
         **dbgPaint1**.setColor(Color.**RED**);  
         **dbgPaint1**.setStrokeWidth(1);  
-        **dbgPaint1**.setStyle(Paint.Style.**STROKE**);  
-  
+        **dbgPaint1**.setStyle(Paint.Style.**STROKE**);
+
         **dbgPaint2** = **new** Paint(Paint.**ANTI\_ALIAS\_FLAG**);  
         **dbgPaint2**.setColor(Color.**GREEN**);  
         **dbgPaint2**.setStrokeWidth(1);  
-        **dbgPaint2**.setStyle(Paint.Style.**STROKE**);  
-  
+        **dbgPaint2**.setStyle(Paint.Style.**STROKE**);
+
         **bgPaint** = **new** Paint(Paint.**ANTI\_ALIAS\_FLAG**);  
         **bgPaint**.setColor(Color.**WHITE**);  
         **bgPaint**.setStrokeWidth(1);  
-        **bgPaint**.setStyle(Paint.Style.**FILL\_AND\_STROKE**);  
-  
+        **bgPaint**.setStyle(Paint.Style.**FILL\_AND\_STROKE**);
+
         **handlePaint** = **new** Paint(Paint.**ANTI\_ALIAS\_FLAG**);  
         **handlePaint**.setColor(Color.**GRAY**);  
         **handlePaint**.setStrokeWidth(1);  
-        **handlePaint**.setStyle(Paint.Style.**FILL\_AND\_STROKE**);  
-  
-        **innerPadding** = 10;  
-  
+        **handlePaint**.setStyle(Paint.Style.**FILL\_AND\_STROKE**);
+
+        **innerPadding** = 10;
+
         setMovementRange(128);  
         setMoveResolution(1.0f);  
         setClickThreshold(0.4f);  
         setYAxisInverted(**false**);  
         setUserCoordinateSystem(**COORDINATE\_CARTESIAN**);  
         setAutoReturnToCenter(**true**);  
-    }  
-  
+    }
+
     **public void** setAutoReturnToCenter(**boolean** autoReturnToCenter) {  
         **this**.**autoReturnToCenter** = autoReturnToCenter;  
-    }  
-  
+    }
+
     **public boolean** isAutoReturnToCenter() {  
         **return autoReturnToCenter**;  
-    }  
-  
+    }
+
     **public void** setUserCoordinateSystem(**int** userCoordinateSystem) {  
         **if** (userCoordinateSystem \< **COORDINATE\_CARTESIAN** \|\|
 **movementConstraint** \> **COORDINATE\_DIFFERENTIAL**)  
             Log.*e*(**TAG**, **"invalid value for userCoordinateSystem"**);  
         **else**  
 **            this**.**userCoordinateSystem** = userCoordinateSystem;  
-    }  
-  
+    }
+
     **public int** getUserCoordinateSystem() {  
         **return userCoordinateSystem**;  
-    }  
-  
+    }
+
     **public void** setMovementConstraint(**int** movementConstraint) {  
         **if** (movementConstraint \< **CONSTRAIN\_BOX** \|\| movementConstraint
 \> **CONSTRAIN\_CIRCLE**)  
             Log.*e*(**TAG**, **"invalid value for movementConstraint"**);  
         **else**  
 **            this**.**movementConstraint** = movementConstraint;  
-    }  
-  
+    }
+
     **public int** getMovementConstraint() {  
         **return movementConstraint**;  
-    }  
-  
+    }
+
     **public boolean** isYAxisInverted() {  
         **return yAxisInverted**;  
-    }  
-  
+    }
+
     **public void** setYAxisInverted(**boolean** yAxisInverted) {  
         **this**.**yAxisInverted** = yAxisInverted;  
-    }  
-  
+    }
+
     */\*\**  
 *     \* Set the pressure sensitivity for registering a click*  
 *     \* \@param clickThreshold threshold 0...1.0f inclusive. 0 will cause
@@ -4245,46 +4229,46 @@ clicks to never be reported, 1.0 is a very hard click*
 inclusive"**);  
         **else**  
 **            this**.**clickThreshold** = clickThreshold;  
-    }  
-  
+    }
+
     **public float** getClickThreshold() {  
         **return clickThreshold**;  
-    }  
-  
+    }
+
     **public void** setMovementRange(**float** movementRange) {  
         **this**.**movementRange** = movementRange;  
-    }  
-  
+    }
+
     **public float** getMovementRange() {  
         **return movementRange**;  
-    }  
-  
+    }
+
     **public void** setMoveResolution(**float** moveResolution) {  
         **this**.**moveResolution** = moveResolution;  
-    }  
-  
+    }
+
     **public float** getMoveResolution() {  
         **return moveResolution**;  
-    }  
-  
+    }
+
     *// =========================================*  
 *    // Public Methods*  
-*    // =========================================*  
-  
+*    // =========================================*
+
 *   * **public void** setOnJostickMovedListener(JoystickMovedListener listener)
 {  
         **this**.**moveListener** = listener;  
-    }  
-  
+    }
+
     **public void** setOnJostickClickedListener(JoystickClickedListener
 listener) {  
         **this**.**clickListener** = listener;  
-    }  
-  
+    }
+
     *// =========================================*  
 *    // Drawing Functionality*  
-*    // =========================================*  
-  
+*    // =========================================*
+
 *   * \@Override  
     **protected void** onMeasure(**int** widthMeasureSpec, **int**
 heightMeasureSpec) {  
@@ -4292,28 +4276,28 @@ heightMeasureSpec) {
 *       * **int** measuredWidth = measure(widthMeasureSpec);  
         **int** measuredHeight = measure(heightMeasureSpec);  
         setMeasuredDimension(measuredWidth, measuredHeight);  
-    }  
-  
+    }
+
     \@Override  
     **protected void** onLayout(**boolean** changed, **int** left, **int** top,
 **int** right, **int** bottom) {  
-        **super**.onLayout(changed, left, top, right, bottom);  
-  
-        **int** d = Math.*min*(getMeasuredWidth(), getMeasuredHeight());  
-  
+        **super**.onLayout(changed, left, top, right, bottom);
+
+        **int** d = Math.*min*(getMeasuredWidth(), getMeasuredHeight());
+
         **dimX** = d;  
-        **dimY** = d;  
-  
+        **dimY** = d;
+
         **cX** = d / 2;  
-        **cY** = d / 2;  
-  
+        **cY** = d / 2;
+
         **bgRadius** = **dimX**/2 - **innerPadding**;  
         **handleRadius** = (**int**)(d \* 0.25);  
         **handleInnerBoundaries** = **handleRadius**;  
         **movementRadius** = Math.*min*(**cX**, **cY**) -
 **handleInnerBoundaries**;  
-    }  
-  
+    }
+
     **private int** measure(**int** measureSpec) {  
         **int** result = 0;  
         *// Decode the measurement specifications.*  
@@ -4328,26 +4312,26 @@ heightMeasureSpec) {
 *           * result = specSize;  
         }  
         **return** result;  
-    }  
-  
+    }
+
     \@Override  
     **protected void** onDraw(Canvas canvas) {  
         canvas.save();  
         *// Draw the background*  
-*       * canvas.drawCircle(**cX**, **cY**, **bgRadius**, **bgPaint**);  
-  
+*       * canvas.drawCircle(**cX**, **cY**, **bgRadius**, **bgPaint**);
+
         *// Draw the handle*  
 *       * **handleX** = **touchX** + **cX**;  
         **handleY** = **touchY** + **cY**;  
         canvas.drawCircle(**handleX**, **handleY**, **handleRadius**,
-**handlePaint**);  
-  
+**handlePaint**);
+
         **if** (**D**) {  
             canvas.drawRect(1, 1, getMeasuredWidth()-1, getMeasuredHeight()-1,
-**dbgPaint1**);  
-  
-            canvas.drawCircle(**handleX**, **handleY**, 3, **dbgPaint1**);  
-  
+**dbgPaint1**);
+
+            canvas.drawCircle(**handleX**, **handleY**, 3, **dbgPaint1**);
+
             **if** ( **movementConstraint** == **CONSTRAIN\_CIRCLE** ) {  
                 canvas.drawCircle(**cX**, **cY**, **this**.**movementRadius**,
 **dbgPaint1**);  
@@ -4356,12 +4340,12 @@ heightMeasureSpec) {
                 canvas.drawRect(**cX**-**movementRadius**,
 **cY**-**movementRadius**, **cX**+**movementRadius**, **cY**+**movementRadius**,
 **dbgPaint1**);  
-            }  
-  
+            }
+
             *//Origin to touch point*  
 *           * canvas.drawLine(**cX**, **cY**, **handleX**, **handleY**,
-**dbgPaint2**);  
-  
+**dbgPaint2**);
+
             **int** baseY = (**int**) (**touchY** \< 0 ? **cY** +
 **handleRadius** : **cY** - **handleRadius**);  
             canvas.drawText(String.*format*(**"%s (%.0f,%.0f)"**, **TAG**,
@@ -4369,21 +4353,21 @@ heightMeasureSpec) {
             canvas.drawText(**"("**+ String.*format*(**"%.0f, %.1f"**,
 **radial**, **angle** \* 57.2957795) + (**char**) 0x00B0 + **")"**,
 **handleX**-20, baseY+15, **dbgPaint2**);  
-        }  
-  
+        }
+
 *//    Log.d(TAG, String.format("touch(%f,%f)", touchX, touchY));*  
 *//    Log.d(TAG, String.format("onDraw(%.1f,%.1f)\\n\\n", handleX, handleY));*  
 *       * canvas.restore();  
-    }  
-  
+    }
+
     *// Constrain touch within a box*  
 *   * **private void** constrainBox() {  
         **touchX** = Math.*max*(Math.*min*(**touchX**, **movementRadius**),
 -**movementRadius**);  
         **touchY** = Math.*max*(Math.*min*(**touchY**, **movementRadius**),
 -**movementRadius**);  
-    }  
-  
+    }
+
     *// Constrain touch within a circle*  
 *   * **private void** constrainCircle() {  
         **float** diffX = **touchX**;  
@@ -4393,16 +4377,16 @@ heightMeasureSpec) {
             **touchX** = (**int**)((diffX / radial) \* **movementRadius**);  
             **touchY** = (**int**)((diffY / radial) \* **movementRadius**);  
         }  
-    }  
-  
+    }
+
     **public void** setPointerId(**int** id) {  
         **this**.**pointerId** = id;  
-    }  
-  
+    }
+
     **public int** getPointerId() {  
         **return pointerId**;  
-    }  
-  
+    }
+
     \@Override  
     **public boolean** onTouchEvent(MotionEvent ev) {  
         **final int** action = ev.getAction();  
@@ -4474,40 +4458,40 @@ MotionEvent.**ACTION\_POINTER\_INDEX\_SHIFT**;
             }  
         }  
         **return false**;  
-    }  
-  
+    }
+
     **private boolean** processMoveEvent(MotionEvent ev) {  
         **if** ( **pointerId** != **INVALID\_POINTER\_ID** ) {  
-            **final int** pointerIndex = ev.findPointerIndex(**pointerId**);  
-  
+            **final int** pointerIndex = ev.findPointerIndex(**pointerId**);
+
             *// Translate touch position to center of view*  
 *           * **float** x = ev.getX(pointerIndex);  
             **touchX** = x - **cX** - **offsetX**;  
             **float** y = ev.getY(pointerIndex);  
-            **touchY** = y - **cY** - **offsetY**;  
-  
+            **touchY** = y - **cY** - **offsetY**;
+
 *//         Log.d(TAG, String.format("ACTION\_MOVE: (%03.0f, %03.0f) =\>
-(%03.0f, %03.0f)", x, y, touchX, touchY));*  
-  
+(%03.0f, %03.0f)", x, y, touchX, touchY));*
+
 *           * reportOnMoved();  
-            invalidate();  
-  
+            invalidate();
+
             **touchPressure** = ev.getPressure(pointerIndex);  
-            reportOnPressure();  
-  
+            reportOnPressure();
+
             **return true**;  
         }  
         **return false**;  
-    }  
-  
+    }
+
     **private void** reportOnMoved() {  
         **if** ( **movementConstraint** == **CONSTRAIN\_CIRCLE** )  
             constrainCircle();  
         **else**  
-**           ** constrainBox();  
-  
-        calcUserCoordinates();  
-  
+**           ** constrainBox();
+
+        calcUserCoordinates();
+
         **if** (**moveListener** != **null**) {  
             **boolean** rx = Math.*abs*(**touchX** - **reportX**) \>=
 **moveResolution**;  
@@ -4515,32 +4499,32 @@ MotionEvent.**ACTION\_POINTER\_INDEX\_SHIFT**;
 **moveResolution**;  
             **if** (rx \|\| ry) {  
                 **this**.**reportX** = **touchX**;  
-                **this**.**reportY** = **touchY**;  
-  
+                **this**.**reportY** = **touchY**;
+
 *//          Log.d(TAG, String.format("moveListener.OnMoved(%d,%d)", (int)userX,
 (int)userY));*  
 *               * **moveListener**.OnMoved(**userX**, **userY**);  
             }  
         }  
-    }  
-  
+    }
+
     **private void** calcUserCoordinates() {  
         *//First convert to cartesian coordinates*  
 *       * **cartX** = (**int**)(**touchX** / **movementRadius** \*
 **movementRange**);  
         **cartY** = (**int**)(**touchY** / **movementRadius** \*
-**movementRange**);  
-  
+**movementRange**);
+
         **radial** = Math.*sqrt*((**cartX**\***cartX**) +
 (**cartY**\***cartY**));  
-        **angle** = Math.*atan2*(**cartY**, **cartX**);  
-  
+        **angle** = Math.*atan2*(**cartY**, **cartX**);
+
         *//Invert Y axis if requested*  
 *       * **if** ( !**yAxisInverted** )  
-            **cartY ** \*= -1;  
-  
-        **cartX** \*= -1;  
-  
+            **cartY ** \*= -1;
+
+        **cartX** \*= -1;
+
         **if** ( **userCoordinateSystem** == **COORDINATE\_CARTESIAN** ) {  
             **userX** = **cartX**;  
             **userY** = **cartY**;  
@@ -4548,21 +4532,21 @@ MotionEvent.**ACTION\_POINTER\_INDEX\_SHIFT**;
         **else if** ( **userCoordinateSystem** == **COORDINATE\_DIFFERENTIAL** )
 {  
             **userX** = **cartY** + **cartX** / 4;  
-            **userY** = **cartY** - **cartX** / 4;  
-  
+            **userY** = **cartY** - **cartX** / 4;
+
             **if** ( **userX** \< -**movementRange** )  
                 **userX** = (**int**)-**movementRange**;  
             **if** ( **userX** \> **movementRange** )  
-                **userX** = (**int**)**movementRange**;  
-  
+                **userX** = (**int**)**movementRange**;
+
             **if** ( **userY** \< -**movementRange** )  
                 **userY** = (**int**)-**movementRange**;  
             **if** ( **userY** \> **movementRange** )  
                 **userY** = (**int**)**movementRange**;  
-        }  
-  
-    }  
-  
+        }
+
+    }
+
     *//Simple pressure click*  
 *   * **private void** reportOnPressure() {  
 *//    Log.d(TAG, String.format("touchPressure=%.2f", this.touchPressure));*  
@@ -4582,45 +4566,45 @@ MotionEvent.**ACTION\_POINTER\_INDEX\_SHIFT**;
                 performHapticFeedback(HapticFeedbackConstants.**VIRTUAL\_KEY**);  
             }  
         }  
-    }  
-  
+    }
+
     **private void** returnHandleToCenter() {  
         **if** ( **autoReturnToCenter** ) {  
             **final int** numberOfFrames = 5;  
             **final double** intervalsX = (0 - **touchX**) / numberOfFrames;  
-            **final double** intervalsY = (0 - **touchY**) / numberOfFrames;  
-  
+            **final double** intervalsY = (0 - **touchY**) / numberOfFrames;
+
             **for** (**int** i = 0; i \< numberOfFrames; i++) {  
                 **final int** j = i;  
                 postDelayed(**new** Runnable() {  
                     \@Override  
                     **public void** run() {  
                         **touchX** += intervalsX;  
-                        **touchY** += intervalsY;  
-  
+                        **touchY** += intervalsY;
+
                         reportOnMoved();  
-                        invalidate();  
-  
+                        invalidate();
+
                         **if** (**moveListener** != **null** && j ==
 numberOfFrames - 1) {  
                             **moveListener**.OnReturnedToCenter();  
                         }  
                     }  
                 }, i \* 40);  
-            }  
-  
+            }
+
             **if** (**moveListener** != **null**) {  
                 **moveListener**.OnReleased();  
             }  
         }  
-    }  
-  
+    }
+
     **private void** lReturnHandleToCenter() {  
         **if** ( **autoReturnToCenter** ) {  
             **final int** numberOfFrames = 5;  
             **final double** intervalsX = (0 - **touchX**) / numberOfFrames;  
-            **final double** intervalsY = (0 );  
-  
+            **final double** intervalsY = (0 );
+
             **for** (**int** i = 0; i \< numberOfFrames; i++) {  
                 **final int** j = i;  
                 postDelayed(**new** Runnable() {  
@@ -4629,25 +4613,25 @@ numberOfFrames - 1) {
                         **touchX** += intervalsX;  
                         **touchY** = **movementRadius** + **movementRadius** +
 **movementRadius**;  
-                        *//131;*  
-  
+                        *//131;*
+
 *                        *reportOnMoved();  
-                        invalidate();  
-  
+                        invalidate();
+
                         **if** (**moveListener** != **null** && j ==
 numberOfFrames - 1) {  
                             **moveListener**.OnReturnedToCenter();  
                         }  
                     }  
                 }, i \* 40);  
-            }  
-  
+            }
+
             **if** (**moveListener** != **null**) {  
                 **moveListener**.OnReleased();  
             }  
         }  
-    }  
-  
+    }
+
     **public void** setTouchOffset(**int** x, **int** y) {  
         **offsetX** = x;  
         **offsetY** = y;  
@@ -4660,8 +4644,8 @@ numberOfFrames - 1) {
 
 ### **4.2.12 JoystickMovedListener.java**
 
-**package** com.example.softwarecontrolleddrone;  
-  
+**package** com.example.softwarecontrolleddrone;
+
 **public interface** JoystickMovedListener {  
     **public void** OnMoved(**int** pan, **int** tilt);  
     **public void** OnReleased();  
@@ -4672,8 +4656,8 @@ numberOfFrames - 1) {
 
 ### **4.2.13 JoystickClickedListener.java**
 
-**package** com.example.softwarecontrolleddrone;  
-  
+**package** com.example.softwarecontrolleddrone;
+
 **public interface** JoystickClickedListener {  
     **public void** OnClicked();  
     **public void** OnReleased();  
@@ -4683,8 +4667,8 @@ numberOfFrames - 1) {
 
 ### **4.2.14 DualJoystickView.java**
 
-**package** com.example.softwarecontrolleddrone;  
-  
+**package** com.example.softwarecontrolleddrone;
+
 **import** android.content.Context;  
 **import** android.graphics.Canvas;  
 **import** android.graphics.Color;  
@@ -4693,132 +4677,132 @@ numberOfFrames - 1) {
 **import** android.view.MotionEvent;  
 **import** android.view.View;  
 **import** android.view.ViewGroup;  
-**import** android.widget.LinearLayout;  
-  
+**import** android.widget.LinearLayout;
+
 **public class** DualJoystickView **extends** LinearLayout{  
     \@SuppressWarnings(**"unused"**)  
     **private static final** String **TAG** =
-DualJoystickView.**class**.getSimpleName();  
-  
+DualJoystickView.**class**.getSimpleName();
+
     **private final boolean D** = **false**;  
-    **private** Paint **dbgPaint1**;  
-  
+    **private** Paint **dbgPaint1**;
+
     **private** JoystickView **stickL**;  
-    **private** JoystickView **stickR**;  
-  
-    **private** View **pad**;  
-  
+    **private** JoystickView **stickR**;
+
+    **private** View **pad**;
+
     **public** DualJoystickView(Context context) {  
         **super**(context);  
         **stickL** = **new** JoystickView(context, **true**);  
         **stickR** = **new** JoystickView(context, **false**);  
         initDualJoystickView();  
-    }  
-  
+    }
+
     **public** DualJoystickView(Context context, AttributeSet attrs) {  
         **super**(context, attrs);  
         **stickL** = **new** JoystickView(context, attrs, **true**);  
         **stickR** = **new** JoystickView(context, attrs, **false**);  
         initDualJoystickView();  
-    }  
-  
+    }
+
     **private void** initDualJoystickView() {  
-        setOrientation(LinearLayout.**HORIZONTAL**);  
-  
+        setOrientation(LinearLayout.**HORIZONTAL**);
+
         **if** ( **D** ) {  
             **dbgPaint1** = **new** Paint(Paint.**ANTI\_ALIAS\_FLAG**);  
             **dbgPaint1**.setColor(Color.**CYAN**);  
             **dbgPaint1**.setStrokeWidth(1);  
             **dbgPaint1**.setStyle(Paint.Style.**STROKE**);  
-        }  
-  
+        }
+
         **pad** = **new** View(getContext());  
-    }  
-  
+    }
+
     \@Override  
     **protected void** onMeasure(**int** widthMeasureSpec, **int**
 heightMeasureSpec) {  
         **super**.onMeasure(widthMeasureSpec, heightMeasureSpec);  
         removeView(**stickL**);  
-        removeView(**stickR**);  
-  
+        removeView(**stickR**);
+
         **float** padW = getMeasuredWidth()-(getMeasuredHeight()\*2);  
         **int** joyWidth = (**int**) ((getMeasuredWidth()-padW)/2);  
         LayoutParams joyLParams = **new**
-LayoutParams(joyWidth,getMeasuredHeight());  
-  
+LayoutParams(joyWidth,getMeasuredHeight());
+
         **stickL**.setLayoutParams(joyLParams);  
-        **stickR**.setLayoutParams(joyLParams);  
-  
+        **stickR**.setLayoutParams(joyLParams);
+
         **stickL**.**TAG** = **"L"**;  
         **stickR**.**TAG** = **"R"**;  
         **stickL**.setPointerId(JoystickView.**INVALID\_POINTER\_ID**);  
-        **stickR**.setPointerId(JoystickView.**INVALID\_POINTER\_ID**);  
-  
-        addView(**stickL**);  
-  
+        **stickR**.setPointerId(JoystickView.**INVALID\_POINTER\_ID**);
+
+        addView(**stickL**);
+
         ViewGroup.LayoutParams padLParams = **new**
 ViewGroup.LayoutParams((**int**) padW,getMeasuredHeight());  
         removeView(**pad**);  
         **pad**.setLayoutParams(padLParams);  
-        addView(**pad**);  
-  
+        addView(**pad**);
+
         addView(**stickR**);  
-    }  
-  
+    }
+
     \@Override  
     **protected void** onLayout(**boolean** changed, **int** l, **int** t,
 **int** r, **int** b) {  
         **super**.onLayout(changed, l, t, r, b);  
         **stickR**.setTouchOffset(**stickR**.getLeft(), **stickR**.getTop());  
-    }  
-  
+    }
+
     **public void** setAutoReturnToCenter(**boolean** left, **boolean** right) {  
         **stickL**.setAutoReturnToCenter(left);  
         **stickR**.setAutoReturnToCenter(right);  
-    }  
-  
+    }
+
     **public void** setOnJostickMovedListener(JoystickMovedListener left,
 JoystickMovedListener right) {  
         **stickL**.setOnJostickMovedListener(left);  
         **stickR**.setOnJostickMovedListener(right);  
-    }  
-  
+    }
+
     **public void** setOnJostickClickedListener(JoystickClickedListener left,
 JoystickClickedListener right) {  
         **stickL**.setOnJostickClickedListener(left);  
         **stickR**.setOnJostickClickedListener(right);  
-    }  
-  
+    }
+
     **public void** setYAxisInverted(**boolean** leftYAxisInverted, **boolean**
 rightYAxisInverted) {  
         **stickL**.setYAxisInverted(leftYAxisInverted);  
         **stickL**.setYAxisInverted(rightYAxisInverted);  
-    }  
-  
+    }
+
     **public void** setMovementConstraint(**int** movementConstraint) {  
         **stickL**.setMovementConstraint(movementConstraint);  
         **stickR**.setMovementConstraint(movementConstraint);  
-    }  
-  
+    }
+
     **public void** setMovementRange(**float** movementRangeLeft, **float**
 movementRangeRight) {  
         **stickL**.setMovementRange(movementRangeLeft);  
         **stickR**.setMovementRange(movementRangeRight);  
-    }  
-  
+    }
+
     **public void** setMoveResolution(**float** leftMoveResolution, **float**
 rightMoveResolution) {  
         **stickL**.setMoveResolution(leftMoveResolution);  
         **stickR**.setMoveResolution(rightMoveResolution);  
-    }  
-  
+    }
+
     **public void** setUserCoordinateSystem(**int** leftCoordinateSystem,
 **int** rightCoordinateSystem) {  
         **stickL**.setUserCoordinateSystem(leftCoordinateSystem);  
         **stickR**.setUserCoordinateSystem(rightCoordinateSystem);  
-    }  
-  
+    }
+
     \@Override  
     **protected void** dispatchDraw(Canvas canvas) {  
         **super**.dispatchDraw(canvas);  
@@ -4826,15 +4810,15 @@ rightMoveResolution) {
             canvas.drawRect(1, 1, getMeasuredWidth()-1, getMeasuredHeight()-1,
 **dbgPaint1**);  
         }  
-    }  
-  
+    }
+
     \@Override  
     **public boolean** dispatchTouchEvent(MotionEvent ev) {  
         **boolean** l = **stickL**.dispatchTouchEvent(ev);  
         **boolean** r = **stickR**.dispatchTouchEvent(ev);  
         **return** l \|\| r;  
-    }  
-  
+    }
+
     \@Override  
     **public boolean** onTouchEvent(MotionEvent ev) {  
         **boolean** l = **stickL**.onTouchEvent(ev);  
@@ -4853,83 +4837,89 @@ rightMoveResolution) {
 
  
 
-	\$host = "mysql.hostinger.co.uk";
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\$host = "mysql.hostinger.co.uk";
 
-	\$user = "u940148205\_root";
+\$user = "u940148205\_root";
 
-	\$pass = "Drone123";
+\$pass = "Drone123";
 
-	\$db = "u940148205\_drone";
+\$db = "u940148205\_drone";
 
-	
 
-	\$con = mysqli\_connect(\$host, \$user, \$pass, \$db);
 
-	
+\$con = mysqli\_connect(\$host, \$user, \$pass, \$db);
 
-	if(!\$con)
 
-	{
 
-		die("Error in connection " . mysqli\_connect\_error());
+if(!\$con)
 
-	}
+{
 
-	
+    die("Error in connection " . mysqli\_connect\_error());
 
-	\$firstName = \$\_POST["firstName"];
+}
 
-	\$lastName = \$\_POST["lastName"];
 
-	\$username = \$\_POST["username"];
 
-	\$password = \$\_POST["password"];
+\$firstName = \$\_POST["firstName"];
 
-	
+\$lastName = \$\_POST["lastName"];
 
-	
+\$username = \$\_POST["username"];
 
-	 \$checkUser = "SELECT username FROM DroneMembers WHERE username
+\$password = \$\_POST["password"];
+
+
+
+
+
+ \$checkUser = "SELECT username FROM DroneMembers WHERE username
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 ='\$username';";
 
-	 \$result = mysqli\_query(\$con, \$checkUser);
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ \$result = mysqli\_query(\$con, \$checkUser);
 
-	
 
-	 if(mysqli\_num\_rows(\$result) \>= 1)
 
-	 {
+ if(mysqli\_num\_rows(\$result) \>= 1)
 
-		 echo "User already exists";
+ {
 
-	 }
+     echo "User already exists";
 
-	 else
+ }
 
-	 {
+ else
 
-		\$sql = "INSERT INTO DroneMembers VALUES('\$firstName', '\$lastName',
+ {
+
+    \$sql = "INSERT INTO DroneMembers VALUES('\$firstName', '\$lastName',
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 '\$username', '\$password');";
 
-	
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    if(mysqli\_query(\$con, \$sql))
 
-		if(mysqli\_query(\$con, \$sql))
+    {
 
-		{
+        echo "Registration Success";
 
-			echo "Registration Success";
+    }
 
-		}
+    else
 
-		else
+    {
 
-		{
+        echo "Error in insertion" . mysqli\_error(\$con);
 
-			echo "Error in insertion" . mysqli\_error(\$con);
+    }
 
-		}
-
-	}
+}
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
  
 
