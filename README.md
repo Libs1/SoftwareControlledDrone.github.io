@@ -239,7 +239,7 @@ to fly it. The major components of our hardware are an Arduino Uno R3, an
 NRF24l01 wireless transceiver, and two analog joysticks. Developing the
 application, database, and web interface allowed us to utilize with our
 hardware.
-
+ 
  
 
 \pagebreak
@@ -267,7 +267,7 @@ Table of Contents
 
 2.  [Project Description](#2-project-description)
 
-    [2.1 External Interface Requirements](#21-external-interface-requirements)
+      -[2.1 External Interface Requirements](#21-external-interface-requirements)
 
     [2.1.1 Database](#211-database)
 
