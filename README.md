@@ -304,8 +304,12 @@ Table of Contents
 
     -   [2.3.3 Hardware Interface](#233-hardware-interface)
 
+<<<<<<< HEAD
     -   [2.3.4 Software Interface](#234-software-interface)
 
+=======
+    [2.3.4 Software Interface](#234-software-interface)
+>>>>>>> origin/master
     [2.4 Project Schedule/Progress Report](#24-project-scheduleprogress-report)
 
     -   [2.4.1 Project Schedule](#241-project-schedule)
