@@ -266,9 +266,9 @@ Table of Contents
 
 2.  [Project Description](#2-project-description)
 
-       [2.1 External Interface Requirements](#21-external-interface-requirements)
+    [2.1 External Interface Requirements](#21-external-interface-requirements)
 
-       [2.1.1 Database](#211-database)
+    [2.1.1 Database](#211-database)
 
     [2.1.2 Web Interface](#212-web-interface)
 
