@@ -310,7 +310,7 @@ Table of Contents
 
     [2.4.1 Project Schedule](#241-project-schedule)
 
-    [2.4.2.1 Progress Report](#2421-progress-report)
+F    [2.4.2.1 Progress Report](#2421-progress-report)
 
     [2.4.2.2 Progress Report](#2422-progress-report)
 
@@ -320,7 +320,7 @@ Table of Contents
 
 3.  [Conclusion](#3-conclusion)
 
-4.  [Appendices](#4-appendices)
+R4.  [Appendices](#4-appendices)
 
 5.  [Bibliography](#5-bibliography)
 
@@ -330,12 +330,12 @@ Table of Contents
 
  
 
-**Illustrations or Diagrams**
+N**Illustrations or Diagrams**
 -----------------------------
 
 **NRF24L01 Solder Diagram**
 
-![](https://github.com/Libs1/SoftwareControlledDrone.github.io/blob/master/Images/nrf24l01%20solder.png)
+![NRF24L01 Hookup](https://github.com/Libs1/SoftwareControlledDrone.github.io/blob/master/Images/nrf24l01%20solder.png)
 
  
 
