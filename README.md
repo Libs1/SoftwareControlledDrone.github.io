@@ -310,7 +310,7 @@ Table of Contents
 
     [2.4.1 Project Schedule](#241-project-schedule)
 
-F    [2.4.2.1 Progress Report](#2421-progress-report)
+    [2.4.2.1 Progress Report](#2421-progress-report)
 
     [2.4.2.2 Progress Report](#2422-progress-report)
 
@@ -320,7 +320,7 @@ F    [2.4.2.1 Progress Report](#2421-progress-report)
 
 3.  [Conclusion](#3-conclusion)
 
-R4.  [Appendices](#4-appendices)
+4.  [Appendices](#4-appendices)
 
 5.  [Bibliography](#5-bibliography)
 
