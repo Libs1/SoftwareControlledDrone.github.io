@@ -200,8 +200,10 @@ important to start tasks as soon as possible to be able to meet deadlines.
 | Eachine H8 Mini Quadcopter                                                                | \>\$28.99      | (EachineDirect) Amazon                                                                                                         |
 | Lithium AA Batteries                                                                      | \>\$5.64       | CanadianTire (1 pack comes with 4 AA batteries)                                                                                |
 | Analog Joysticks                                                                          | \>\$32.02      | Brainy-Bits (2 analog sticks)                                                                                                  |
-|                                                                                           |                |                                                                                                                                |
-| **Phase 1 Total**                                                                         | **\>\$115.33** |                                                                                                                                |
+| Breadboard                                                                                | \>\$8.90       | (Elenco) Amazon or Parts kit                                                                                                   |
+| Pin Header (8-pin) Male                                                                   | \>\$0.50       | Sparkfun                                                                                                                       |
+| Jumper wires                                                                              | \>\$3.13       | (Sodial) Amazon                                                                                                                |
+| **Phase 1 Total**                                                                         | **\>\$139.50** |                                                                                                                                |
 | **Phase 2**                                                                               |                |                                                                                                                                |
 | Materials to improve functionality, fit, and finish of project.                           |                |                                                                                                                                |
 | **Phase 2 Total**                                                                         | **TBD**        |                                                                                                                                |
@@ -311,9 +313,15 @@ Table of Contents
 
     [2.4.2.2 Progress Report](#2422-progress-report)
 
+    [2.4.2.3 Progress Report](#2423-progress-report)
+
+    [2.4.2.4 Progress Report](#2424-progress-report)
+
 3.  [Conclusion](#3-conclusion)
 
-4.  [Bibliography](#4-bibliography)
+4.  [Appendices](#4-appendices)
+
+5.  [Bibliography](#5-bibliography)
 
  
 
@@ -323,6 +331,46 @@ Table of Contents
 
 **Illustrations or Diagrams**
 -----------------------------
+
+**NRF24L01 Solder Diagram**
+
+![](https://github.com/Libs1/SoftwareControlledDrone.github.io/blob/master/Images/nrf24l01%20solder.png)
+
+ 
+
+This diagram is a representation of where to solder the pin header (8-pin) into
+the NRF24L01 transceiver.
+
+Further instructions to do so can be found at [2.2.4 Mechanical
+Assembly](#224-mechanical-assembly)
+
+ 
+
+**NRF24L01 To Arduino Hookup**
+
+![](nrf24l01 hookup.png)
+
+This diagram displays the wiring between the Arduino Uno R3 and the NRF24L01
+transceiver.
+
+Further instructions to do so can be found at [2.2.4 Mechanical
+Assembly](#224-mechanical-assembly)
+
+ 
+
+**Joysticks To Arduino Hookup**
+
+![](joystick hookup.png)
+
+This diagram displays the wiring between the Arduino Uno R3 and the two analog
+joysticks.
+
+Further instructions to do so can be found at [2.2.4 Mechanical
+Assembly](#224-mechanical-assembly)
+
+ 
+
+ 
 
 \pagebreak
 
@@ -478,11 +526,10 @@ with the drone.
 | SparkFun Transceiver Breakout - nRF24L01 | 1                              | \$29.37                              |
 | Eachine H8 Mini Quadcopter               | 1                              | \$28.99                              |
 | AA Batteries                             | 1 pack(containing 4 batteries) | \$5.64                               |
-| BreadBoard                               | 1                              | \$12.99                              |
+| BreadBoard                               | 1                              | \$8.90                               |
 | Pin Header (8-pin) Male                  | 1                              | \$0.50                               |
-| Jumper Wires                             | 40 pack                        | \$9.03                               |
+| Jumper Wires                             | 40 pack                        | \$3.13                               |
 | Analog Joysticks                         | 2                              | \$36.02                              |
-| HC-05 Bluetooth Module                   | 1                              | \$18.65                              |
 
  
 
@@ -719,73 +766,49 @@ register and view their drone’s flight information.
 
 Wednesday (9/7/16) – Thursday (9/8/16)
 
- 
-
 ·         Creating Budget
 
 Wednesday (9/14/16) – Thursday (9/15/16)
-
- 
 
 ·         Acquiring components, Progress Report
 
 Wednesday (9/21/16) – Thursday (9/22/16)
 
- 
-
 ·         Mechanical Assembly, Second Progress Report
 
 Wednesday (9/28/16) – Thursday (9/29/16)
-
- 
 
 ·         PCB Fabrication
 
 Wednesday (10/5/16) – Thursday (10/6/16)
 
- 
-
 ·         Interface wiring, Placard design
 
 Wednesday (10/12/16) – Thursday (10/13/16)
-
- 
 
 ·         Preparing demonstration
 
 Wednesday (10/19/16) – Thursday (10/20/16)
 
- 
-
 ·         Writing progress report/demo project
 
 Wednesday (10/26/16) – Thursday (10/27/16)
-
- 
 
 ·         Edit build video
 
 Wednesday (11/2/16) – Thursday (11/3/16)
 
- 
-
 ·         Writing progress report/status meeting
 
 Wednesday (11/9/16) – (11/10/16)
-
- 
 
 ·         Practice presentations
 
 Wednesday (11/16/16) – Thursday (11/17/16)
 
- 
-
 ·         Conduct Presentations
 
 Wednesday (11/23/16) – Thursday (11/24/16)
-
- 
 
 ·         Build instructions
 
@@ -803,99 +826,61 @@ Wednesday (12/7/16) – Thursday (12/8/16)
 
 Monday (1/9/17) – Tuesday (1/10/17)
 
- 
-
 ·         Initial integration
 
 Monday (1/16/17) – Tuesday (1/17/17)
-
- 
 
 ·         Software Requirement Specifications(SRS)
 
 Monday (1/23/17) – Tuesday (1/24/17)
 
- 
-
 ·         Progress report
 
 Monday (1/30/17) – Tuesday (1/31/17)
-
- 
 
 ·         Project status
 
 Monday (2/6/17) – Tuesday (2/7/17)
 
- 
-
 ·         Progress report of independent progress
 
 Monday (2/13/17) – Tuesday (2/14/17)
-
- 
 
 ·         Project status
 
 Monday (2/20/17) – Tuesday (2/21/17)
 
- 
-
 ·         Progress report/project integration
 
 Monday (2/27/17) – Tuesday (2/28/17)
-
- 
 
 ·         Testing
 
 Monday (3/6/17) – Tuesday (3/7/17)
 
- 
-
 ·         Project status
 
 Monday (3/13/17) – Tuesday (3/14/17)
-
- 
 
 ·         Prepare for demonstration
 
 Monday (3/20/17) – Tuesday (3/21/17)
 
- 
-
- 
-
 ·         Complete presentation
 
 Monday (3/27/17) – Tuesday (3/28/17)
-
- 
 
 ·         Complete final report
 
 Monday (4/3/17) – Tuesday (4/4/17)
 
- 
-
 ·         Write video script
 
 Monday (4/10/17) – Tuesday (4/11/17)
 
- 
-
 ·         Project videos
 
 Monday (4/17/17) – Tuesday (4/18/17)
-
- 
-
- 
-
- 
-
- 
 
  
 
@@ -1181,5 +1166,16 @@ interference.
 
  
 
-**4. Bibliography**
+**4. Appendices**
+-----------------
+
+ 
+
+ 
+
+\pagebreak
+
+ 
+
+**5. Bibliography**
 -------------------
