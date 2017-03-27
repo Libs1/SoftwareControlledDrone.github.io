@@ -232,8 +232,7 @@ Abstract
 This project is aimed to manipulate the same binding signal that the drone used
 with the stock controller and then being able to control the drone remotely with
 an application built for android devices. The android application would also
-allow users to register if they do not have an account, sign in and view their
-drone’s flight information. We started this project by building a piece of
+allow users to register if they do not have an account, sign in and view theirdrone’s flight information. We started this project by building a piece of
 hardware that would allow us to communicate with the drone and also being able
 to fly it. The major components of our hardware are an Arduino Uno R3, an
 NRF24l01 wireless transceiver, and two analog joysticks. Developing the
@@ -267,9 +266,9 @@ Table of Contents
 
 2.  [Project Description](#2-project-description)
 
-      -[2.1 External Interface Requirements](#21-external-interface-requirements)
+        [2.1 External Interface Requirements](#21-external-interface-requirements)
 
-    [2.1.1 Database](#211-database)
+        [2.1.1 Database](#211-database)
 
     [2.1.2 Web Interface](#212-web-interface)
 
