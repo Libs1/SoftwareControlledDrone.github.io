@@ -654,12 +654,14 @@ Figure 2.1
 
 Make the following connections to hook up both analog sticks to the Arduino.
 Figure 3.1 shows the connections made between the two analog joysticks and the
-Arduino. Whichever joystick you set up to A2 and A3 on the Arduino will be your
-left joystick as it will control the throttle (up and down movement of the
-drone) and rudder (left rotate and right rotate of the drone). The other
-joystick, which will be your right joystick, will control the Aileron (leftward
-and rightward movement of the drone) and elevator (forward and backward movement
-of the drone).
+Arduino. The connection between the Arduino and the joysticks can also be seen
+[here](https://brainy-bits.com/blogs/tutorials/arduino-joystick-tutorial)[@3].
+Whichever joystick you set up to A2 and A3 on the Arduino will be your left
+joystick as it will control the throttle (up and down movement of the drone) and
+rudder (left rotate and right rotate of the drone). The other joystick, which
+will be your right joystick, will control the Aileron (leftward and rightward
+movement of the drone) and elevator (forward and backward movement of the
+drone).
 
 **Left Joystick to Arduino:**
 
@@ -700,7 +702,7 @@ and the LED lights should be blinking in a steady pace. Now that we have the
 drone powered on, you can download the zip file which contains the Arduino code
 that will communicate with the drone. You can download it from
 [here](https://github.com/Libs1/SoftwareControlledDrone.github.io/tree/master/Arduino%20Code).
-The original code can be found on Goebish’s github which is found
+The original code can be found on Goebish’s github[@1] which is found
 [here](https://github.com/goebish/nrf24_multipro). Our code has been modified to
 be compatible with our two analog joysticks. Go back to your Arduino IDE and
 open up the “nrf24l01\_multipro.ino” file and then upload the sketch to the
@@ -995,7 +997,7 @@ establish the connection between quadcopter and Android Application.
 
 <https://www.makehardware.com/2016/07/04/how-to-control-your-drone-from-a-computer/https://www.makehardware.com/2016/07/04/how-to-control-your-drone-from-a-computer/>
 
-<https://brainy-bits.com/tutorials/arduino-joystick-tutorial/https://brainy-bits.com/tutorials/arduino-joystick-tutorial/>
+<https://brainy-bits.com/blogs/tutorials/arduino-joystick-tutorial>
 
  
 
@@ -1124,8 +1126,8 @@ modifying our controller in our android app to establish a connection with our
 Arduino whenever the two devices are connected with the OTG cable, as well as
 sending data to the microcontroller whenever the joysticks are moved. With some
 help from online resources and past projects
-(https://github.com/rmahenthiran/Micro-Drone-Flight-Control), we were able to
-control our drone with our android application.
+(https://github.com/rmahenthiran/Micro-Drone-Flight-Control)[@2], we were able
+to control our drone with our android application.
 
  
 
