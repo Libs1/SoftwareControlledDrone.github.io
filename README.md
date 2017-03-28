@@ -365,7 +365,6 @@ Table of Contents
     -   [4.3.2 DeleteFlightInfo.php](#432-deleteflightinfophp)
 
     -   [4.3.3 FlightInfo2.php](#433-flightinfo2php)
-
     -   [4.3.4 Login.php](#434-loginphp)
 
 5.  [Bibliography](#5-bibliography)
@@ -381,8 +380,7 @@ Table of Contents
 
 **NRF24L01 Solder Diagram**
 
-![](nrf24l01solder.png)
-
+![](https://github.com/Libs1/SoftwareControlledDrone.github.io/blob/master/Images/nrf24l01solder.png)
  
 
 This diagram is a representation of where to solder the pin header (8-pin) into
@@ -397,7 +395,7 @@ Assembly](#224-mechanical-assembly)
 
 **NRF24L01 To Arduino Hookup**
 
-![](nrf24l01hookup.png)
+![](https://github.com/Libs1/SoftwareControlledDrone.github.io/blob/master/Images/nrf24l01hookup.png)
 
  
 
@@ -415,7 +413,7 @@ Assembly](#224-mechanical-assembly)
 
 **Joysticks To Arduino Hookup**
 
-![](joystickhookup.png)
+![](https://github.com/Libs1/SoftwareControlledDrone.github.io/blob/master/Images/joystickhookup.png)
 
  
 
@@ -618,7 +616,7 @@ for individuals who are unexperienced in soldering.
 
 Figure 1.1
 
-![](nrf24l01solder.png)
+![](https://github.com/Libs1/SoftwareControlledDrone.github.io/blob/master/Images/nrf24l01solder.png)
 
  
 
@@ -648,7 +646,7 @@ CSN -\> A1
 
 Figure 2.1
 
-![](nrf24l01hookup.png)
+![](https://github.com/Libs1/SoftwareControlledDrone.github.io/blob/master/Images/nrf24l01hookup.png)
 
  
 
@@ -685,7 +683,7 @@ GND -\> GND
 
 Figure 3.1
 
-![](joystickhookup.png)
+![](https://github.com/Libs1/SoftwareControlledDrone.github.io/blob/master/Images/joystickhookup.png)
 
  
 
