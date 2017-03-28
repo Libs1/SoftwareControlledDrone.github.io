@@ -1,22 +1,26 @@
 ---
 csl: apa.csl
 bibliography: SCDCitations.bib
+title: Software Controlled Drone
+author: "Kevin Libdan, Denis Stepanov"
 ---
-
-Software Controlled Drone Project
-=================================
-
-Team Members: Kevin Libdan & Denis Stepanov
-
-Project’s website: https://github.com/Libs1/SoftwareControlledDrone.github.io
-
-Discipline: Computer Engineering Technology
 
 Date of Submission: March 28, 2017
 
  
 
 \pagebreak
+
+\linespread{2}
+
+\selectfont
+
+Software Controlled Drone Project
+=================================
+
+Project’s website: https://github.com/Libs1/SoftwareControlledDrone.github.io
+
+ 
 
 Declaration of Joint Authorship
 ===============================
@@ -377,7 +381,7 @@ Table of Contents
 
 **NRF24L01 Solder Diagram**
 
-![](https://github.com/Libs1/SoftwareControlledDrone.github.io/blob/master/Images/nrf24l01solder.png)
+![](nrf24l01solder.png)
 
  
 
@@ -393,7 +397,7 @@ Assembly](#224-mechanical-assembly)
 
 **NRF24L01 To Arduino Hookup**
 
-![](https://github.com/Libs1/SoftwareControlledDrone.github.io/blob/master/Images/nrf24l01hookup.png)
+![](nrf24l01hookup.png)
 
  
 
@@ -411,7 +415,7 @@ Assembly](#224-mechanical-assembly)
 
 **Joysticks To Arduino Hookup**
 
-![](https://github.com/Libs1/SoftwareControlledDrone.github.io/blob/master/Images/joystickhookup.png)
+![](joystickhookup.png)
 
  
 
@@ -614,7 +618,7 @@ for individuals who are unexperienced in soldering.
 
 Figure 1.1
 
-![](https://github.com/Libs1/SoftwareControlledDrone.github.io/blob/master/Images/nrf24l01solder.png)
+![](nrf24l01solder.png)
 
  
 
@@ -642,11 +646,9 @@ MISO -\> A0
 
 CSN -\> A1
 
-\pagebreak
-
 Figure 2.1
 
-![](https://github.com/Libs1/SoftwareControlledDrone.github.io/blob/master/Images/nrf24l01hookup.png)
+![](nrf24l01hookup.png)
 
  
 
@@ -681,11 +683,9 @@ VCC -\> 5v
 
 GND -\> GND
 
-\pagebreak
-
 Figure 3.1
 
-![](https://github.com/Libs1/SoftwareControlledDrone.github.io/blob/master/Images/joystickhookup.png)
+![](joystickhookup.png)
 
  
 
@@ -1112,6 +1112,10 @@ Denis
 
  
 
+\pagebreak
+
+ 
+
 ### **2.4.2.4 Progress Report**
 
 **Recent Project Activities:**
@@ -1180,17 +1184,17 @@ We have purchased a total of 3 new adapters for OnePlus Two smartphone, but none
 of them would be included in the project except of the last one acquired(only if
 test will be successful). Here are links for the adapters we have purchased:
 
-https://www.newegg.ca/Product/Product.aspx?Item=9SIAA0D4C44428&nm\_mc=KNC-GoogleAdwordsCA&cm\_mmc=KNC-GoogleAdwordsCA-\_-DSA-\_-CategoryPages-\_-NA&gclid=Cj0KEQjw-73GBRCC7KODl9zToJMBEiQAj1JgfxBICDaeKatT\_RlX7lp3FU\_tIiWmOS6Njc37fO9AIzoaAt9k8P8HAQ
+<https://www.newegg.ca/Product/Product.aspx?Item=9SIAA0D4C44428&nm_mc=KNC-GoogleAdwordsCA&cm_mmc=KNC-GoogleAdwordsCA-_-DSA-_-CategoryPages-_-NA&gclid=Cj0KEQjw-73GBRCC7KODl9zToJMBEiQAj1JgfxBICDaeKatT_RlX7lp3FU_tIiWmOS6Njc37fO9AIzoaAt9k8P8HAQ>
 
-https://www.amazon.ca/Type-Adapter-EZOPower-Micro-Female/dp/B013IZMZ3I
+<https://www.amazon.ca/Type-Adapter-EZOPower-Micro-Female/dp/B013IZMZ3I>
 
-https://oneplus.net/ca\_en/oneplus-otg-cable
+<https://oneplus.net/ca_en/oneplus-otg-cable>
 
  
 
 **Additional Links**
 
-https://www.allaboutcircuits.com/projects/communicate-with-your-arduino-through-android/
+<https://www.allaboutcircuits.com/projects/communicate-with-your-arduino-through-android/>
 
 \pagebreak
 
