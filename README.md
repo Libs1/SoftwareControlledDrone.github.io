@@ -1344,23 +1344,15 @@ to access the database.
 Project progress:
 
 The Beta app developed is capable of accessing remote and internal database. It
-can store real time flight data in a database for statistical purpose and can
-access predefined flight patterns from both remote and local database. The
-predefined flight pattern part still has some bug issue due to which it is not
-working properly till now.
+can store real time flight data in a database for statistical purpose. 
 
 Contribution:
 
-Denis developed the overall UI and drone controller functions with associated
+I developed the overall UI and drone controller functions with associated
 animations.
 
 Kevin developed user database which verifies user information as well as stores
-along with database storing real time flight information.
-
-I was responsible for developing remote and local databases for predefined
-flight pattern along with associated UI and animations.
-
- 
+along with database storing real time flight information. 
 
 ### **2.5.2.2 Individual Beta Submission (Kevin Libdan)**
 
