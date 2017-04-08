@@ -325,7 +325,7 @@ Table of Contents
 
     -   [2.4.2.6 Progress Report [2/13/2017]](#2426-progress-report-2132017)
 
-    -   [2.4.2.7 Progress Report [03/06/2017](#2427-progress-report-03062017)
+    -   [2.4.2.7 Progress Report [03/06/2017]](#2427-progress-report-03062017)
 
     -   [2.4.2.8 Progress Report [03/20/2017]](#2428-progress-report-03202017)
 
