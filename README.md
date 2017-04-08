@@ -405,7 +405,7 @@ Table of Contents
 
 **NRF24L01 Solder Diagram**
 
-![](nrf24l01solder.png)
+![](https://github.com/Libs1/SoftwareControlledDrone.github.io/blob/master/Images/nrf24l01solder.png)
 
  
 
@@ -421,7 +421,7 @@ Assembly](#224-mechanical-assembly)
 
 **NRF24L01 To Arduino Hookup**
 
-![](nrf24l01hookup.png)
+![](https://github.com/Libs1/SoftwareControlledDrone.github.io/blob/master/Images/nrf24l01hookup.png)
 
  
 
@@ -439,7 +439,7 @@ Assembly](#224-mechanical-assembly)
 
 **Joysticks To Arduino Hookup**
 
-![](joystickhookup.png)
+![](https://github.com/Libs1/SoftwareControlledDrone.github.io/blob/master/Images/joystickhookup.png)
 
  
 
@@ -631,7 +631,6 @@ using Android Asset. There is also a support for 4 different languages (English,
 French, Spanish, and Russian). (Developed by Denis Stepanov)
 
  
-
 ### **2.3 Build Instructions**
 
 ### 2.3.1 Introduction
@@ -690,7 +689,7 @@ for individuals who are unexperienced in soldering.
 
 Figure 1.1
 
-![](nrf24l01solder.png)
+![](https://github.com/Libs1/SoftwareControlledDrone.github.io/blob/master/Images/nrf24l01solder.png)
 
  
 
@@ -720,7 +719,7 @@ CSN -\> A1
 
 Figure 2.1
 
-![](nrf24l01hookup.png)
+![](https://github.com/Libs1/SoftwareControlledDrone.github.io/blob/master/Images/nrf24l01hookup.png)
 
  
 
@@ -759,7 +758,7 @@ GND -\> GND
 
 Figure 3.1
 
-![](joystickhookup.png)
+![](https://github.com/Libs1/SoftwareControlledDrone.github.io/blob/master/Images/joystickhookup.png)
 
  
 
