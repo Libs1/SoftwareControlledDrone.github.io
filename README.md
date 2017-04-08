@@ -5,7 +5,7 @@ title: Software Controlled Drone
 author: "Kevin Libdan, Denis Stepanov"
 ---
 
-Date of Submission: March 28, 2017
+\vfill Date of Submission: March 28, 2017
 
  
 
@@ -273,54 +273,78 @@ Table of Contents
 
 2.  [Project Description](#2-project-description)
 
-    [2.1 External Interface Requirements](#21-external-interface-requirements)
+    [2.1 Project Specifications](#21-project-specifications)
 
-    -   [2.1.1 Database](#211-database)
+    -   [2.1.1 System Interface](#211-system-interface)
 
-    -   [2.1.2 Web Interface](#212-web-interface)
+    -   [2.1.2 User Interface](#212-user-interface)
 
-    -   [2.1.3 Hardware](#213-hardware)
+    -   [2.1.3 Hardware Interface](#213-hardware-interface)
 
-    -   [2.1.4 Application](#214-application)
+    -   [2.1.4 Software Interface](#214-software-interface)
 
-    [2.2 Build Instructions](#22-build-instructions)
+    [2.2 External Interface Requirements](#22-external-interface-requirements)
 
-    -   [2.2.1 Introduction](#221-introduction)
+    -   [2.2.1 Database](#221-database)
 
-    -   [2.2.2 Build of Materials/Budget](#222-build-of-materialsbudget)
+    -   [2.2.2 Web Interface](#222-web-interface)
 
-    -   [2.2.3 Time Commitment](#223-time-commitment)
+    -   [2.2.3 Hardware](#223-hardware)
 
-    -   [2.2.4 Mechanical Assembly](#224-mechanical-assembly)
+    -   [2.2.4 Application](#224-application)
 
-    -   [2.2.5 Power Up](#225-power-up)
+    [2.3 Build Instructions](#23-build-instructions)
 
-    -   [2.2.6 Unit Testing](#226-unit-testing)
+    -   [2.3.1 Introduction](#231-introduction)
 
-    -   [2.2.7 Production Testing](#227-production-testing)
+    -   [2.3.2 Build of Materials/Budget](#232-build-of-materialsbudget)
 
-    [2.3 Project
-    Specifications](#23-project-specifications#231-project-perspective)
+    -   [2.3.3 Time Commitment](#233-time-commitment)
 
-    -   [2.3.1 System Interface](#231-system-interface)
+    -   [2.3.4 Mechanical Assembly](#234-mechanical-assembly)
 
-    -   [2.3.2 User Interface](#232-user-interface)
+    -   [2.3.5 Power Up](#235-power-up)
 
-    -   [2.3.3 Hardware Interface](#233-hardware-interface)
+    -   [2.3.6 Unit Testing](#236-unit-testing)
 
-    -   [2.3.4 Software Interface](#234-software-interface)
+    -   [2.3.7 Production Testing](#237-production-testing)
 
     [2.4 Project Schedule/Progress Report](#24-project-scheduleprogress-report)
 
     -   [2.4.1 Project Schedule](#241-project-schedule)
 
-    -   [2.4.2.1 Progress Report](#2421-progress-report)
+    -   [2.4.2.1 Progress Report [11/09/2016]](#2421-progress-report-11092016)
 
-    -   [2.4.2.2 Progress Report](#2422-progress-report)
+    -   [2.4.2.2 Progress Report [11/16/2016]](#2422-progress-report-11162016)
 
-    -   [2.4.2.3 Progress Report](#2423-progress-report)
+    -   [2.4.2.3 Progress Report [11/23/2016]](#2423-progress-report-11232016)
 
-    -   [2.4.2.4 Progress Report](#2424-progress-report)
+    -   [2.4.2.4 Progress Report [11/30/2016]](#2424-progress-report-11302016)
+
+    -   [2.4.2.5 Progress Report [01/30/2017]](#2424-progress-report-01302017)
+
+    -   [2.4.2.6 Progress Report [2/13/2017]](#2426-progress-report-2132017)
+
+    -   [2.4.2.7 Progress Report [03/06/2017](#2427-progress-report-03062017)
+
+    -   [2.4.2.8 Progress Report [03/20/2017]](#2428-progress-report-03202017)
+
+    [2.5 Software Project Reports](#25-software-project-reports)
+
+    -   [2.5.1 Distribution, Progress and Remaining Work After The First
+        Milestone](#251-distribution-progress-and-remaining-work-after-the-first-milestone)
+
+    -   [2.5.2 Individual Beta/Final
+        Submissions](#252-individual-betafinal-submissions)
+
+    -   [2.5.2.1 Individual Beta Submission (Denis
+        Stepanov)](#2521-individual-beta-submission-denis-stepanov)
+
+    -   [2.5.2.2 Individual Beta Submission (Kevin
+        Libdan)](#2522-individual-beta-submission-kevin-libdan)
+
+    -   [2.5.2.3 Individual Final Submission (Kevin
+        Libdan)](#2523-individual-final-submission-kevin-libdan)
 
 3.  [Conclusion](#3-conclusion)
 
@@ -365,6 +389,7 @@ Table of Contents
     -   [4.3.2 DeleteFlightInfo.php](#432-deleteflightinfophp)
 
     -   [4.3.3 FlightInfo2.php](#433-flightinfo2php)
+
     -   [4.3.4 Login.php](#434-loginphp)
 
 5.  [Bibliography](#5-bibliography)
@@ -380,7 +405,8 @@ Table of Contents
 
 **NRF24L01 Solder Diagram**
 
-![](https://github.com/Libs1/SoftwareControlledDrone.github.io/blob/master/Images/nrf24l01solder.png)
+![](nrf24l01solder.png)
+
  
 
 This diagram is a representation of where to solder the pin header (8-pin) into
@@ -395,7 +421,7 @@ Assembly](#224-mechanical-assembly)
 
 **NRF24L01 To Arduino Hookup**
 
-![](https://github.com/Libs1/SoftwareControlledDrone.github.io/blob/master/Images/nrf24l01hookup.png)
+![](nrf24l01hookup.png)
 
  
 
@@ -413,7 +439,7 @@ Assembly](#224-mechanical-assembly)
 
 **Joysticks To Arduino Hookup**
 
-![](https://github.com/Libs1/SoftwareControlledDrone.github.io/blob/master/Images/joystickhookup.png)
+![](joystickhookup.png)
 
  
 
@@ -481,9 +507,57 @@ information.
 **2. Project Description**
 --------------------------
 
-### **2.1 External Interface Requirements**
+### **2.1 Project Specifications**
 
-### 2.1.1 Database
+### 2.1.1 System Interface
+
+The hardware that is built by using the Arduino Uno R3, nRF24L01 transceiver and
+joysticks are capable of functioning independently without the need of the
+android application. Although the hardware does not depend on the application,
+the application would only be used to register, sign in and view the drone’s
+flight information when it is used without the hardware. The web interface can
+also operate without the need of the hardware; however, the purpose of the web
+interface is to register or view the drone’s flight information.
+
+ 
+
+### 2.1.2 User Interface
+
+The user interface of the android application is user friendly. When launching
+the application, the main page will consist of two fields for both username and
+password to be entered and as well as the option to register or login. If the
+user has successfully entered their username and password they will be brought
+to the menu page which will consist of two options, one being the controller and
+the other being the flight activity. When choosing the controller option, the
+user will be confronted with two virtual joysticks which are capable of
+controlling the drone. The flight activity option will allow the user to view
+their drone’s flight information such as flight duration and the current date
+the drone has been flown.
+
+ 
+
+### 2.1.3 Hardware Interface
+
+The project consists of an Arduino Uno R3, an nRF24 transceiver and two
+joysticks. The transceiver is used for communicating with the drone and the two
+analog joysticks are used to control the drone’s throttle, rudder, aileron and
+elevator.
+
+ 
+
+### 2.1.4 Software Interface
+
+The android application is the software we have designed in order to control the
+Eachine H8 drone. Both the application and the Arduino sketch are used
+hand-in-hand, however, the Arduino sketch is capable of functioning without the
+android application. The web interface was designed to allow users to simply
+register and view their drone’s flight information.
+
+ 
+
+### **2.2 External Interface Requirements**
+
+### 2.2.1 Database
 
 The MYSQL database is responsible for storing the users account information and
 as well as the drone’s activity information. The database uses PHP in order for
@@ -503,7 +577,7 @@ Libdan)
 
  
 
-### 2.1.2 Web Interface
+### 2.2.2 Web Interface
 
 Depending the how long the binding process takes we will develop the web
 interface. The web interface will be developed to allow users to register an
@@ -518,7 +592,7 @@ information. (Developed by Denis Stepanov and Kevin Libdan)
 
  
 
-### 2.1.3 Hardware
+### 2.2.3 Hardware
 
 The hardware built is used to control the Eachine H8 drone. The hardware to
 control the Eachine H8 drone is an Arduino, a NRF24L01+ transceiver and two
@@ -534,7 +608,7 @@ Stepanov and Kevin Libdan) 
 
  
 
-### 2.1.4 Application
+### 2.2.4 Application
 
 Software Drone Android Application is the software used to bind with the
 quadcopter, maneuver it and save data in MYSQL database using the readings from
@@ -558,9 +632,9 @@ French, Spanish, and Russian). (Developed by Denis Stepanov)
 
  
 
-### **2.2 Build Instructions**
+### **2.3 Build Instructions**
 
-### 2.2.1 Introduction
+### 2.3.1 Introduction
 
 In this section of the technical report, there will be information on how to
 recreate the hardware to control the Eachine H8 Mini Quadcopter with an Arduino
@@ -569,7 +643,7 @@ with the drone.
 
  
 
-### 2.2.2 Build of Materials/Budget
+### 2.3.2 Build of Materials/Budget
 
 | **Item**                                 | **Quantity**                   | **Total Price(With Tax + Shipping)** |
 |------------------------------------------|--------------------------------|--------------------------------------|
@@ -584,7 +658,7 @@ with the drone.
 
  
 
-### 2.2.3 Time Commitment
+### 2.3.3 Time Commitment
 
 | **Task**                                                | **Time To Complete The Task**                 |
 |---------------------------------------------------------|-----------------------------------------------|
@@ -600,7 +674,7 @@ with the drone.
 
 \pagebreak
 
-### 2.2.4 Mechanical Assembly
+### 2.3.4 Mechanical Assembly
 
 **Step 1: Purchase the required parts**
 
@@ -616,7 +690,7 @@ for individuals who are unexperienced in soldering.
 
 Figure 1.1
 
-![](https://github.com/Libs1/SoftwareControlledDrone.github.io/blob/master/Images/nrf24l01solder.png)
+![](nrf24l01solder.png)
 
  
 
@@ -646,7 +720,7 @@ CSN -\> A1
 
 Figure 2.1
 
-![](https://github.com/Libs1/SoftwareControlledDrone.github.io/blob/master/Images/nrf24l01hookup.png)
+![](nrf24l01hookup.png)
 
  
 
@@ -685,7 +759,7 @@ GND -\> GND
 
 Figure 3.1
 
-![](https://github.com/Libs1/SoftwareControlledDrone.github.io/blob/master/Images/joystickhookup.png)
+![](joystickhookup.png)
 
  
 
@@ -693,7 +767,7 @@ Figure 3.1
 
  
 
-### 2.2.5 Power Up
+### 2.3.5 Power Up
 
 Make sure that all connections are in the appropriate pins and that there are
 not any loose connections. Once the circuit has been built, plug in the Arduino
@@ -729,7 +803,7 @@ on start
 
  
 
-### 2.2.6 Unit Testing
+### 2.3.6 Unit Testing
 
 Ensure that the drone’s LEDs would be solid as it would indicate a successful
 binding sequence when the left joystick is moved. If the binding sequence was
@@ -752,7 +826,7 @@ right virtual joystick would control the aileron and elevator movements.
 
  
 
-### 2.2.7 Production Testing
+### 2.3.7 Production Testing
 
 At this final stage of testing, the hardware is capable of controlling the drone
 independently with the two physical joysticks or with the Android application.
@@ -768,54 +842,6 @@ is functioning as it should be.
     what was mentioned in *2.2.6 Unit Testing*. The drone’s flight information
     is sent to database and displayed on both the “flights” option on the app
     and on the web interface correctly.
-
- 
-
-### **2.3 Project Specifications**
-
-### 2.3.1 System Interface
-
-The hardware that is built by using the Arduino Uno R3, nRF24L01 transceiver and
-joysticks are capable of functioning independently without the need of the
-android application. Although the hardware does not depend on the application,
-the application would only be used to register, sign in and view the drone’s
-flight information when it is used without the hardware. The web interface can
-also operate without the need of the hardware; however, the purpose of the web
-interface is to register or view the drone’s flight information.
-
- 
-
-### 2.3.2 User Interface
-
-The user interface of the android application is user friendly. When launching
-the application, the main page will consist of two fields for both username and
-password to be entered and as well as the option to register or login. If the
-user has successfully entered their username and password they will be brought
-to the menu page which will consist of two options, one being the controller and
-the other being the flight activity. When choosing the controller option, the
-user will be confronted with two virtual joysticks which are capable of
-controlling the drone. The flight activity option will allow the user to view
-their drone’s flight information such as flight duration and the current date
-the drone has been flown.
-
- 
-
-### 2.3.3 Hardware Interface
-
-The project consists of an Arduino Uno R3, an nRF24 transceiver and two
-joysticks. The transceiver is used for communicating with the drone and the two
-analog joysticks are used to control the drone’s throttle, rudder, aileron and
-elevator.
-
- 
-
-### 2.3.4 Software Interface
-
-The android application is the software we have designed in order to control the
-Eachine H8 drone. Both the application and the Arduino sketch are used
-hand-in-hand, however, the Arduino sketch is capable of functioning without the
-android application. The web interface was designed to allow users to simply
-register and view their drone’s flight information.
 
  
 
@@ -947,7 +973,59 @@ Monday (4/17/17) – Tuesday (4/18/17)
 
  
 
-### **2.4.2.1 Progress report**
+### **2.4.2.1 Progress report [11/09/2016]**
+
+As of today we are on schedule with the project schedule. The current objective
+is PCB fabrication (according to the project schedule) which we have already
+completed soldering. As for financial status, the budget amount has been met and
+we have met the deadline for gathering the required hardware needed for our
+project. All of the components have been purchased and have been received in the
+mail. We haven’t exceeded the budget amount as there weren’t any extra
+components that have been purchased. Moving forward, I will now have to test my
+PCB to make sure there aren’t any malfunctions.
+
+ 
+
+### **2.4.2.2 Progress report [11/16/2016]**
+
+As of today we are on schedule with the project schedule. We had successfully
+made a connection between two Arduinos using the nrf24L01 transceivers which
+sent data to one Arduino to another. Our next step is to find the drone’s
+controller signal so that we can send data to it. As for the budget, there have
+not been any changes since the last report as we have not made any new purchases
+for the project. Moving forward, we are trying to get ready as much as we can
+for the demonstration.
+
+ 
+
+### **2.4.2.3 Progress report [11/23/2016]**
+
+We are now in our 11th week for our hardware project. Last week was the open
+house where we have demonstrated our project to the guest and the class. We had
+successfully made communication between two NRF24L01 transceiver boards, where
+one transceiver board is transmitting data and the other transceiver board is
+receiving data. We had also implemented an LED which would turn green if one
+transceiver board is sending data or receiving data and another LED which would
+turn red if the transceiver board has timed out. As for the budget there have
+not been any changes as we have not made any new purchases. Moving forward, we
+now have to figure out what signal the controller is giving out.
+
+ 
+
+### **2.4.2.4 Progress report [11/30/2016]**
+
+As of this week, we have used an oscilloscope to capture the image of the signal
+which is used to send data from one NRF24L01 transceiver board to another. We
+are trying to figure out the signal the controller uses for communication. This
+is a bit of a challenge for us because finding a datasheet for the specific IC
+that is built in the controller is difficult to find. We have been using the
+oscilloscope on the IC which resulted to different type of wave forms from each
+specific pin from the IC. As for the budget, there have not been any changes as
+we have not purchased anything new.
+
+ 
+
+### **2.4.2.5 Progress report [01/30/2017]**
 
 **Recent project activities:**
 
@@ -1001,7 +1079,7 @@ establish the connection between quadcopter and Android Application.
 
  
 
-### **2.4.2.2 Progress Report**
+### **2.4.2.6 Progress Report [02/13/2017]**
 
 **Recent Project Activities:**
 
@@ -1060,7 +1138,7 @@ HC-05 Bluetooth Module: \$18.65 with shipping + Tax (CanadaRobotix)
 
  
 
-### **2.4.2.3 Progress Report**
+### **2.4.2.7 Progress Report [03/06/2017]**
 
 Dear Kristian,
 
@@ -1116,7 +1194,7 @@ Denis
 
  
 
-### **2.4.2.4 Progress Report**
+### **2.4.2.8 Progress Report [03/20/2017]**
 
 **Recent Project Activities:**
 
@@ -1196,6 +1274,132 @@ test will be successful). Here are links for the adapters we have purchased:
 
 <https://www.allaboutcircuits.com/projects/communicate-with-your-arduino-through-android/>
 
+ 
+
+### **2.5 Software Project Reports**
+
+### **2.5.1 Distribution, Progress and Remaining Work After The First Milestone**
+
+Team Members: Denis Stepanov, Kevin Libdan
+
+Project: Software controlled drone (SCD)
+
+Team: Skynet
+
+Work distribution: Denis Stepanov (Software UI, project database, debug), Kevin
+Libdan (Database, Software UI, debug)
+
+ 
+
+Requirement Analysis:
+
+The main objective of this software is to be able to control the drone from an
+android device and issue predefined flight paths from an existing database for
+the drone to follow. The required parts for this software are the following:
+
+1.     A database.
+
+2.     An intuitive UI(User Interface)
+
+3.     Code for drone control
+
+The database needs to be online for the controlling device to be able to access
+and it has to contain the predefined flightpaths.
+
+The UI has to be similar to the drone controller for manual control of the
+drone.
+
+The control code should be able send proper information to the drone for manual
+flight control similar to the signal sent by the drone controller.
+
+Tool definition:
+
+1.     Android Studio: Main software used to create and simulate the
+application.
+
+ 
+
+Design document (SDD):
+
+The software consists of the following parts:
+
+1.     Database: Contains all information on predefined flight paths for the
+drone. Will be available online and accessible by the software.
+
+2.     UI: Intuitive interface for manual drone control similar to the drone
+controller. It will contain touch controllable left and right sticks like the
+controller for vertical and horizontal motion.
+
+3.     Control code: Code for manual control of the drone. Will be able to send
+similar radio signals as the controller to the drone for flight control.
+
+4.     Additional features: The software will be able to connect online in order
+to access the database.
+
+ 
+
+### **2.5.2 Individual Beta/Final Submissions**
+
+### **2.5.2.1 Individual Beta Submission (Denis Stepanov)**
+
+Project progress:
+
+The Beta app developed is capable of accessing remote and internal database. It
+can store real time flight data in a database for statistical purpose and can
+access predefined flight patterns from both remote and local database. The
+predefined flight pattern part still has some bug issue due to which it is not
+working properly till now.
+
+Contribution:
+
+Denis developed the overall UI and drone controller functions with associated
+animations.
+
+Kevin developed user database which verifies user information as well as stores
+along with database storing real time flight information.
+
+I was responsible for developing remote and local databases for predefined
+flight pattern along with associated UI and animations.
+
+ 
+
+### **2.5.2.2 Individual Beta Submission (Kevin Libdan)**
+
+The contribution I had put into this beta is to create a database which stores
+the flight duration and as well as the current date. This information is shown
+when the user clicks on the ‘flights’ button. The database for this information
+is stored locally. I had also created another database which connects through a
+free hosting site called hostinger.co.uk. This allows me to have an online
+database using some PHP scripts. I’ve created this database for the login
+activity where the user can register for an account and the information upon the
+registration activity will be stored within the server.
+
+Denis has been doing the design aspect of the app, creating different layouts
+for the buttons clicked, images, and layouts for portrait and landscape mode and
+as well for tablets. He had also worked on the LED button which is in the
+controller activity where users get to pick what colour the LED would be. Denis
+also worked on converting the strings to support different languages such as
+French, Spanish and Russian.
+
+ 
+
+### **2.5.2.3 Individual Final Submission (Kevin Libdan)**
+
+As stated in my previous document, the contribution I had put into this project
+since the beta is to create a database which stores the flight duration and
+date. This information is shown when the user clicks on the ‘flights’ button.
+The database for this information is stored locally. I had also created another
+database which connects through a free hosting site called hostinger.co.uk. This
+allows me to have an online database using some PHP scripts. I’ve created this
+database for the login activity where the user can register for an account and
+the information upon the registration activity will be stored within the server.
+The drone’s flight information such as flight duration and date is also stored
+in the local and online database. I have also tried to implement current
+location into the app but it was giving me problems in which the app would
+crash.
+
+ 
+
 \pagebreak
 
  
@@ -1213,9 +1417,9 @@ sign up for an account if they do not have one and allow users to control the
 Eachine H8 drone. The android application is also capable of updating the
 database with the user’s personal runtime information and giving the option to
 users where they will be able to view their flight information within the app.
-The web interface is capable of allowing users to sign up and sign in to their
-account and view their drone’s flight information which is stored in the
-database.
+As what was stated in 2.2.2 Web Interface, the web interface had been developed
+and is capable of allowing users to sign up and sign in to their account and
+view their drone’s flight information which is stored in the database.
 
  
 
