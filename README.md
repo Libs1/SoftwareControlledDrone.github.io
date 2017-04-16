@@ -203,11 +203,11 @@ important to start tasks as soon as possible to be able to meet deadlines.
 | SparkFun Transceiver Breakout - nRF24L01                                                  | \>\$29.37      | CanadaRobotix                                                                                                                  |
 | Eachine H8 Mini Quadcopter                                                                | \>\$28.99      | (EachineDirect) Amazon                                                                                                         |
 | Lithium AA Batteries                                                                      | \>\$5.64       | CanadianTire (1 pack comes with 4 AA batteries)                                                                                |
-| Analog Joysticks                                                                          | \>\$32.02      | Brainy-Bits (2 analog sticks)                                                                                                  |
+| Analog Joysticks                                                                          | \>\$36.02      | Brainy-Bits (2 analog sticks)                                                                                                  |
 | Breadboard                                                                                | \>\$8.90       | (Elenco) Amazon or Parts kit                                                                                                   |
 | Pin Header (8-pin) Male                                                                   | \>\$0.50       | Sparkfun                                                                                                                       |
-| Jumper wires                                                                              | \>\$3.13       | (Sodial) Amazon                                                                                                                |
-| **Phase 1 Total**                                                                         | **\>\$139.50** |                                                                                                                                |
+| Jumper wires                                                                              | \>\$11.99      | (Elegoo) Amazon (120 pcs - Male to Male, Female to Female, Male to Female)                                                     |
+| **Phase 1 Total**                                                                         | **\>\$152.36** |                                                                                                                                |
 | **Phase 2**                                                                               |                |                                                                                                                                |
 | Materials to improve functionality, fit, and finish of project.                           |                |                                                                                                                                |
 | **Phase 2 Total**                                                                         | **TBD**        |                                                                                                                                |
@@ -405,7 +405,7 @@ Table of Contents
 
 **NRF24L01 Solder Diagram**
 
-![](https://github.com/Libs1/SoftwareControlledDrone.github.io/blob/master/Images/nrf24l01solder.png)
+![](nrf24l01solder.png)
 
  
 
@@ -421,7 +421,7 @@ Assembly](#224-mechanical-assembly)
 
 **NRF24L01 To Arduino Hookup**
 
-![](https://github.com/Libs1/SoftwareControlledDrone.github.io/blob/master/Images/nrf24l01hookup.png)
+![](nrf24l01hookup.png)
 
  
 
@@ -439,7 +439,7 @@ Assembly](#224-mechanical-assembly)
 
 **Joysticks To Arduino Hookup**
 
-![](https://github.com/Libs1/SoftwareControlledDrone.github.io/blob/master/Images/joystickhookup.png)
+![](joystickhookup.png)
 
  
 
@@ -631,6 +631,7 @@ using Android Asset. There is also a support for 4 different languages (English,
 French, Spanish, and Russian). (Developed by Denis Stepanov)
 
  
+
 ### **2.3 Build Instructions**
 
 ### 2.3.1 Introduction
@@ -652,7 +653,7 @@ with the drone.
 | AA Batteries                             | 1 pack(containing 4 batteries) | \$5.64                               |
 | BreadBoard                               | 1                              | \$8.90                               |
 | Pin Header (8-pin) Male                  | 1                              | \$0.50                               |
-| Jumper Wires                             | 40 pack                        | \$3.13                               |
+| Jumper Wires                             | 120 pack                       | \$11.99                              |
 | Analog Joysticks                         | 2                              | \$36.02                              |
 
  
@@ -689,7 +690,7 @@ for individuals who are unexperienced in soldering.
 
 Figure 1.1
 
-![](https://github.com/Libs1/SoftwareControlledDrone.github.io/blob/master/Images/nrf24l01solder.png)
+![](nrf24l01solder.png)
 
  
 
@@ -719,7 +720,7 @@ CSN -\> A1
 
 Figure 2.1
 
-![](https://github.com/Libs1/SoftwareControlledDrone.github.io/blob/master/Images/nrf24l01hookup.png)
+![](nrf24l01hookup.png)
 
  
 
@@ -758,7 +759,7 @@ GND -\> GND
 
 Figure 3.1
 
-![](https://github.com/Libs1/SoftwareControlledDrone.github.io/blob/master/Images/joystickhookup.png)
+![](joystickhookup.png)
 
  
 
@@ -1344,7 +1345,10 @@ to access the database.
 Project progress:
 
 The Beta app developed is capable of accessing remote and internal database. It
-can store real time flight data in a database for statistical purpose. 
+can store real time flight data in a database for statistical purpose and can
+access predefined flight patterns from both remote and local database. The
+predefined flight pattern part still has some bug issue due to which it is not
+working properly till now.
 
 Contribution:
 
@@ -1352,7 +1356,9 @@ I developed the overall UI and drone controller functions with associated
 animations.
 
 Kevin developed user database which verifies user information as well as stores
-along with database storing real time flight information. 
+along with database storing real time flight information.
+
+ 
 
 ### **2.5.2.2 Individual Beta Submission (Kevin Libdan)**
 
