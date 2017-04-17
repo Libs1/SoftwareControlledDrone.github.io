@@ -12,142 +12,6 @@
     android:background="@color/dark"
     tools:context="com.example.softwarecontrolleddrone.ControllerActivity">
 
-    <!--Joystick Layout -->
-    <RelativeLayout
-        android:id="@+id/layout_joystick1"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_marginRight="36dp"
-        android:background="@drawable/image_button_bg"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="50dp"/>
-
-    <RelativeLayout
-        android:id="@+id/layout_joystick2"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_marginRight="36dp"
-        android:background="@drawable/image_button_bg"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="51dp"/>
-
-    <TextView
-        android:id="@+id/leftAnalogLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Left Stick"
-        android:textColor="@color/white"
-        android:layout_alignTop="@+id/layout_joystick1"
-        android:layout_toEndOf="@+id/layout_joystick1"
-        android:layout_marginTop="52dp" />
-
-    <TextView
-        android:id="@+id/xValueLeft"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="X:"
-        android:textColor="@color/white"
-        android:layout_below="@id/leftAnalogLabel"
-        android:layout_toEndOf="@+id/layout_joystick1"/>
-
-    <TextView
-        android:id="@+id/yValueLeft"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Y:"
-        android:textColor="@color/white"
-        android:layout_below="@id/xValueLeft"
-        android:layout_toEndOf="@+id/layout_joystick1"/>
-
-    <TextView
-        android:id="@+id/rightAnalogLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Right Stick"
-        android:textColor="@color/white"
-        android:layout_alignTop="@+id/layout_joystick2"
-        android:layout_toStartOf="@+id/layout_joystick2"
-        android:layout_marginTop="52dp"/>
-
-    <TextView
-        android:id="@+id/xValueRight"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="X:"
-        android:textColor="@color/white"
-        android:layout_below="@+id/rightAnalogLabel"
-        android:layout_alignStart="@+id/rightAnalogLabel"/>
-
-    <TextView
-        android:id="@+id/yValueRight"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Y:"
-        android:textColor="@color/white"
-        android:layout_below="@id/xValueRight"
-        android:layout_alignStart="@+id/rightAnalogLabel"/>
-
-    <!--
-    <ImageView
-        android:id="@+id/upArrow"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:background="@drawable/arrow_up_clicked_function"
-        android:layout_above="@+id/leftArrow"
-        android:layout_toEndOf="@+id/leftArrow" />
-
-    <ImageView
-        android:id="@+id/dronePicture2"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:src="@drawable/drone"
-        android:layout_below="@+id/chronometer"
-        android:layout_toEndOf="@+id/rotateLeft" />
-
-
-    <ImageView
-        android:id="@+id/downArrow"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:background="@drawable/arrow_down_clicked_function"
-        android:layout_alignBottom="@+id/rotateRight"
-        android:layout_toStartOf="@+id/rightArrow" />
-
-    <ImageView
-        android:id="@+id/leftArrow"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:background="@drawable/arrow_left_clicked_function"
-        android:layout_above="@+id/rotateRight"
-        android:layout_toStartOf="@+id/downArrow" />
-
-
-    <ImageView
-        android:id="@+id/rightArrow"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:background="@drawable/arrow_right_clicked_function"
-        android:layout_above="@+id/rotateRight"
-        android:layout_alignParentEnd="true" />
-
-    <ImageView
-        android:id="@+id/rotateLeft"
-        android:layout_width="75dp"
-        android:layout_height="75dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:background="@drawable/rotate_left_clicked_function"/>
-
-    <ImageView
-        android:id="@+id/rotateRight"
-        android:layout_width="75dp"
-        android:layout_height="75dp"
-        android:background="@drawable/rotate_right_clicked_function"
-        android:layout_alignParentBottom="true"
-        android:layout_toEndOf="@+id/dronePicture2" />
-    -->
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -156,32 +20,48 @@
         android:text="@string/led"
         android:textColor="@color/white"
         android:id="@+id/button"
-        android:background="@drawable/buttonshape_led"
         android:layout_alignParentTop="true"
-        android:layout_alignEnd="@+id/rightArrow" />
+        android:background="@drawable/buttonshape_led"/>
+
+
+    <Button
+        android:id="@+id/buttonStart"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="Start"
+        android:textColor="@color/white"
+        android:onClick="onClickStart"
+        android:layout_marginStart="147dp"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/button"
+        android:background="@drawable/buttonshape"/>
+
+    <Button
+        android:id="@+id/buttonStop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Stop"
+        android:textColor="@color/white"
+        android:layout_toRightOf="@id/buttonStart"
+        android:onClick="onClickStop"
+        android:background="@drawable/buttonshape"/>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_alignParentRight="true"
+        android:textColor="@color/white"/>
 
     <Chronometer
         android:id="@+id/chronometer"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_width="150dp"
         android:text="00:00:00"
         android:textSize="30dp"
         android:textColor="@color/green"
-        android:layout_below="@+id/textStart"
-        android:layout_alignEnd="@+id/textStart"/>
-
-
-    <Switch
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:switchMinWidth="80dp"
-        android:id="@+id/timeSwitch"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:theme="@style/SCBSwitch"/>
-        <!--android:textOn="Start"
-        android:textOff="Stop"-->
-
+        android:layout_below="@+id/buttonStart"
+        android:layout_alignStart="@+id/buttonStart"/>
 
     <TextView
         android:id="@+id/timeDisplayed"
@@ -190,29 +70,81 @@
         android:text="time"
         android:textColor="@color/white"
         android:visibility="gone"
-        android:layout_below="@+id/chronometer"
-        android:layout_alignStart="@+id/chronometer"/>
+        android:layout_toRightOf="@+id/chronometer"
+        android:layout_below="@+id/buttonStop"/>
 
-    <TextView
+    <com.example.softwarecontrolleddrone.DualJoystickView
+        android:id="@+id/dualjoystickView"
+        android:layout_height="120dp"
+        android:layout_width="600dp"
+        android:layout_below="@+id/chronometer"/>
+
+    <TableLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/textStop"
-        android:layout_marginRight="10dp"
-        android:textColor="@color/white"
-        android:text="@string/textStop"
-        android:layout_below="@+id/timeSwitch"
-        android:layout_alignStart="@+id/timeSwitch" />
+        android:layout_below="@+id/dualjoystickView"
+        android:layout_centerHorizontal="true">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textStart"
-        android:textColor="@color/white"
-        android:text="@string/textStart"
-        android:layout_below="@+id/timeSwitch"
-        android:layout_alignEnd="@+id/timeSwitch" />
+        <TableRow>
 
+            <TextView
+                android:id="@+id/LeftXLabel"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="X:"
+                android:textColor="@color/white"/>
 
+            <TextView
+                android:id="@+id/TextViewX1"
+                android:layout_height="wrap_content"
+                android:layout_width="150dp"
+                android:textColor="@color/white"/>
 
+            <TextView
+                android:id="@+id/RightXLabel"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="X:"
+                android:textColor="@color/white"/>
+
+            <TextView
+                android:id="@+id/TextViewX2"
+                android:layout_height="wrap_content"
+                android:layout_width="150dp"
+                android:textColor="@color/white"/>
+
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/LeftYLabel"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="Y:"
+                android:textColor="@color/white"/>
+
+            <TextView
+                android:id="@+id/TextViewY1"
+                android:layout_height="wrap_content"
+                android:layout_width="150dp"
+                android:textColor="@color/white"/>
+
+            <TextView
+                android:id="@+id/RightYLabel"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="Y:"
+                android:textColor="@color/white"/>
+
+            <TextView
+                android:id="@+id/TextViewY2"
+                android:layout_height="wrap_content"
+                android:layout_width="150dp"
+                android:textColor="@color/white"/>
+
+        </TableRow>
+
+    </TableLayout>
 
 </RelativeLayout>

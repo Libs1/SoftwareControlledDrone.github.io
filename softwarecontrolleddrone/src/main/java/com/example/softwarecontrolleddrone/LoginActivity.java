@@ -28,7 +28,6 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -46,7 +45,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     AlertDialog alertDialog;
     Context context = this;
 
-
     EditText editText1;
     EditText editText2;
     Button loginButton;
@@ -54,10 +52,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     String username, password;
 
+    /*SharedPreferences for remember me checkbox*/
     private SharedPreferences loginPreferences;
     SharedPreferences.Editor editor;
     private CheckBox checkBox;
     boolean saveLogin;
+
+    /*SharedPreferences for passing the username*/
+    private SharedPreferences uNamePreferences;
+    SharedPreferences.Editor uNameEditor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,9 +74,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         }
 
-
-
-
         editText1 = (EditText) findViewById(R.id.usernameField);
         editText2 = (EditText) findViewById(R.id.passwordField);
         checkBox = (CheckBox)findViewById(R.id.rememberMeCheckBox);
@@ -83,6 +83,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         registerButton = (Button)findViewById(R.id.registerButton);
 
+        /*Preferences for passing the username*/
+        uNamePreferences = getSharedPreferences("uNamePrefs", MODE_PRIVATE);
+        uNameEditor = uNamePreferences.edit();
+
+        /*Preferences for remember me checkbox*/
         loginPreferences = getSharedPreferences("loginPrefs", MODE_PRIVATE);
         editor = loginPreferences.edit();
 
@@ -93,6 +98,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             editText1.setText(loginPreferences.getString("username", ""));
         }
     }
+
     public void onClick(View view)
     {
         username = editText1.getText().toString();
@@ -190,8 +196,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 }
 
                 //Passing the username to the MenuActivity
-                String passUsername = editText1.getText().toString();
-                intent.putExtra("usernamePassed", passUsername);
+                String passUsername1 = editText1.getText().toString();
+                uNameEditor.putString("usernamePassed1", passUsername1);
+                uNameEditor.commit();
 
                 startActivity(intent);
             }

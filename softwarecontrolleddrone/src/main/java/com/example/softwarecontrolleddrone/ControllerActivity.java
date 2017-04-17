@@ -6,13 +6,19 @@ Team name: Skynet
 package com.example.softwarecontrolleddrone;
 
 import android.Manifest;
+import android.app.PendingIntent;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.database.sqlite.SQLiteDatabase;
+import android.hardware.usb.UsbDevice;
+import android.hardware.usb.UsbDeviceConnection;
+import android.hardware.usb.UsbManager;
 import android.icu.util.Calendar;
 import android.icu.util.Output;
 import android.location.Address;
@@ -21,6 +27,7 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.net.Uri;
+import android.nfc.Tag;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Handler;
@@ -48,7 +55,10 @@ import android.widget.RelativeLayout;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
-
+import com.felhr.usbserial.UsbSerialDevice;
+import com.felhr.usbserial.UsbSerialInterface;
+import com.google.android.gms.fitness.data.MapValue;
+import org.w3c.dom.Text;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -61,41 +71,49 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 public class ControllerActivity extends AppCompatActivity {
 
+    /*Variables for internal DB*/
     MySQLiteHelper mySQLiteHelper;
     SQLiteDatabase sqLiteDatabase;
     Context context = this;
-    TextView textStart, textStop;
-    ImageView drone_pic;
-    Boolean running;
+
+    /*Variables for LED button*/
     public static final String PREFS = "sharedPreferences";
     public static final String BRIGHTNESS = "brightness";
     public static Button b;
     boolean switch1;
+
     Chronometer chronometer;
-    Switch timeSwitch;
     TextView timeText;
     String putFlightDuration;
     String formattedDate;
     private long timeWhenStopped = 0;
+
+    /*SharedPreferences for accessing Flight Activity*/
     SharedPreferences accessPreference;
     SharedPreferences.Editor editor;
     boolean check2;
 
-    /*Variables for the Joysticks*/
-    RelativeLayout layout_joystick1, layout_joystick2;
-    TextView xValueLeft, yValueLeft, xValueRight, yValueRight;
-    JoyStickClass leftJoystick, rightJoystick;
-    int xleftDefault = 0;
-    int yleftDefault = 0;
-    int xrightDefault = 0;
-    int yrightDefault = 0;
-
     String recvUsername;
+
+    /*Variables for joysticks*/
+    TextView txtX1, txtY1, txtX2, txtY2, textView;
+    Button startButton, stopButton;
+    DualJoystickView joystick;
+    byte input[] = {23, 0, 0x7f, 0x7f, 0x7f};//default input
+    //byte input[] = {23, 0, ((byte) 0x208), ((byte) 0x208), ((byte) 0x208)};
+
+    public final String ACTION_USB_PERMISSION = "com.example.softwarecontrolleddrone.USB_PERMISSION";
+    UsbManager usbManager;
+    UsbDevice device;
+    UsbSerialDevice serialPort;
+    UsbDeviceConnection connection;
 
 
     @Override
@@ -103,9 +121,32 @@ public class ControllerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_controller);
 
-        //
-        recvUsername = getIntent().getStringExtra("usernamePassed2");
+        txtX1 = (TextView)findViewById(R.id.TextViewX1);
+        txtY1 = (TextView)findViewById(R.id.TextViewY1);
 
+        txtX2 = (TextView)findViewById(R.id.TextViewX2);
+        txtY2 = (TextView)findViewById(R.id.TextViewY2);
+
+        textView = (TextView)findViewById(R.id.textView);
+
+        joystick = (DualJoystickView)findViewById(R.id.dualjoystickView);
+        joystick.setOnJostickMovedListener(_listenerLeft, _listenerRight);
+
+        usbManager = (UsbManager) getSystemService(this.USB_SERVICE);
+        startButton = (Button) findViewById(R.id.buttonStart);
+        stopButton = (Button) findViewById(R.id.buttonStop);
+
+        setUiEnabled(false);
+        IntentFilter filter = new IntentFilter();
+        filter.addAction(ACTION_USB_PERMISSION);
+        filter.addAction(UsbManager.ACTION_USB_DEVICE_ATTACHED);
+        filter.addAction(UsbManager.ACTION_USB_DEVICE_DETACHED);
+        registerReceiver(broadcastReceiver, filter);
+
+        /*Retreiving the username that will be put into the database*/
+        recvUsername = getIntent().getStringExtra("usernamePassedContr");
+
+        /*SharedPreferences for accessing the flight activity*/
         accessPreference = getSharedPreferences("accessPrefs", MODE_PRIVATE);
         editor = accessPreference.edit();
 
@@ -114,16 +155,10 @@ public class ControllerActivity extends AppCompatActivity {
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         }
 
-        //drone_pic = (ImageView) findViewById(R.id.dronePicture2);
-
+        /*Retreiving the current date*/
         java.util.Calendar c = java.util.Calendar.getInstance();
         SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy");
         formattedDate = df.format(c.getTime());
-
-        textStart = (TextView) findViewById(R.id.textStart);
-        textStop = (TextView) findViewById(R.id.textStop);
-        textStart.setVisibility(View.INVISIBLE);
-
 
         //LED Button
         b = (Button) findViewById(R.id.button);
@@ -134,217 +169,240 @@ public class ControllerActivity extends AppCompatActivity {
             }
         });
 
-
-        /*TextViews for the X and Y values for both joysticks*/
-        xValueLeft = (TextView)findViewById(R.id.xValueLeft);
-        yValueLeft = (TextView)findViewById(R.id.yValueLeft);
-        xValueRight = (TextView)findViewById(R.id.xValueRight);
-        yValueRight = (TextView)findViewById(R.id.yValueRight);
-
-        layout_joystick1 = (RelativeLayout)findViewById(R.id.layout_joystick1);
-        layout_joystick2 = (RelativeLayout)findViewById(R.id.layout_joystick2);
-
-        leftJoystick = new JoyStickClass(getApplicationContext(), layout_joystick1, R.drawable.image_button);
-        leftJoystick.setStickSize(80, 80);
-        leftJoystick.setLayoutAlpha(150);
-        leftJoystick.setStickAlpha(100);
-        leftJoystick.setOffset(90);
-        leftJoystick.setMinimumDistance(50);
-
-        layout_joystick1.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View arg0, MotionEvent arg1)
-            {
-                leftJoystick.drawStick(arg1);
-                if(arg1.getAction() == MotionEvent.ACTION_DOWN || arg1.getAction() == MotionEvent.ACTION_MOVE)
-                {
-                    xValueLeft.setText("X: " + String.valueOf(leftJoystick.getX()));
-                    yValueLeft.setText("Y: " + String.valueOf(leftJoystick.getY()));
-                }
-                else if(arg1.getAction() == MotionEvent.ACTION_UP)
-                {
-                    xValueLeft.setText("X: " + 0);
-                    yValueLeft.setText("Y: " + 0);
-                }
-                return true;
-            }
-        });
-
-
-        rightJoystick = new JoyStickClass(getApplicationContext(), layout_joystick2, R.drawable.image_button);
-        rightJoystick.setStickSize(80, 80);
-        rightJoystick.setLayoutAlpha(150);
-        rightJoystick.setStickAlpha(100);
-        rightJoystick.setOffset(90);
-        rightJoystick.setMinimumDistance(50);
-
-        layout_joystick2.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View arg0, MotionEvent arg1)
-            {
-                rightJoystick.drawStick(arg1);
-                if(arg1.getAction() == MotionEvent.ACTION_DOWN || arg1.getAction() == MotionEvent.ACTION_MOVE)
-                {
-                    xValueRight.setText("X:" + String.valueOf(rightJoystick.getX()));
-                    yValueRight.setText("Y:" + String.valueOf(rightJoystick.getY()));
-                }
-                else if(arg1.getAction() == MotionEvent.ACTION_UP)
-                {
-                    xValueRight.setText("X:" + 0);
-                    yValueLeft.setText("Y:" + 0);
-                }
-
-                return true;
-            }
-        });
-
-
-
-
-/*
-        ImageView upButton = (ImageView) findViewById(R.id.upArrow);
-        upButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ImageView bluedrone1 = (ImageView) findViewById(R.id.dronePicture2);
-
-                Animation jumpAnimation = AnimationUtils.loadAnimation(ControllerActivity.this, R.anim.drone_anim_up);
-                bluedrone1.startAnimation(jumpAnimation);
-            }
-        });
-
-        ImageView downButton = (ImageView) findViewById(R.id.downArrow);
-        downButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                ImageView bluedrone1 = (ImageView) findViewById(R.id.dronePicture2);
-
-                Animation jumpAnimation = AnimationUtils.loadAnimation(ControllerActivity.this, R.anim.drone_anim_down);
-                bluedrone1.startAnimation(jumpAnimation);
-            }
-        });
-
-        ImageView leftButton = (ImageView) findViewById(R.id.leftArrow);
-        leftButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ImageView bluedrone1 = (ImageView) findViewById(R.id.dronePicture2);
-
-                Animation jumpAnimation = AnimationUtils.loadAnimation(ControllerActivity.this, R.anim.drone_anim_left);
-                bluedrone1.startAnimation(jumpAnimation);
-            }
-        });
-
-        ImageView rightButton = (ImageView) findViewById(R.id.rightArrow);
-        rightButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ImageView bluedrone1 = (ImageView) findViewById(R.id.dronePicture2);
-
-                Animation jumpAnimation = AnimationUtils.loadAnimation(ControllerActivity.this, R.anim.drone_anim_right);
-                bluedrone1.startAnimation(jumpAnimation);
-            }
-        });
-
-        ImageView leftRotate = (ImageView) findViewById(R.id.rotateLeft);
-        leftRotate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ImageView bluedrone1 = (ImageView) findViewById(R.id.dronePicture2);
-
-                Animation jumpAnimation = AnimationUtils.loadAnimation(ControllerActivity.this, R.anim.drone_rotate_left);
-                bluedrone1.startAnimation(jumpAnimation);
-            }
-        });
-
-        ImageView rightRotate = (ImageView) findViewById(R.id.rotateRight);
-        rightRotate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ImageView bluedrone1 = (ImageView) findViewById(R.id.dronePicture2);
-
-                Animation jumpAnimation = AnimationUtils.loadAnimation(ControllerActivity.this, R.anim.drone_rotate_right);
-                bluedrone1.startAnimation(jumpAnimation);
-            }
-        });
-     */
-
+        /*Chronometer and the TextView to display the time*/
         chronometer = (Chronometer) findViewById(R.id.chronometer);
         timeText = (TextView) findViewById(R.id.timeDisplayed);
         chronometer.setVisibility(View.INVISIBLE);
 
-        timeSwitch = (Switch) findViewById(R.id.timeSwitch);
-        timeSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
+    }
 
-                    editor.putBoolean("check", true);
-                    editor.commit();
+    UsbSerialInterface.UsbReadCallback mCallback = new UsbSerialInterface.UsbReadCallback() { //Defining a Callback which triggers whenever data is read.
+        @Override
+        public void onReceivedData(byte[] arg0)
+        {
+        }
+    };
 
-                    running = true;
-                    chronometer.setVisibility(View.VISIBLE);
-                    chronometer.setBase(SystemClock.elapsedRealtime());
-                    timeText.setVisibility(View.INVISIBLE);
-                    timeText.setText(R.string.zeroseconds);
-                    chronometer.start();
-                    textStart.setVisibility(View.VISIBLE);
-                    textStop.setVisibility(View.INVISIBLE);
+    private final BroadcastReceiver broadcastReceiver = new BroadcastReceiver() { //Broadcast Receiver to automatically start and stop the Serial connection.
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            try {
+                if (intent.getAction().equals(ACTION_USB_PERMISSION)) {
+                    boolean granted = intent.getExtras().getBoolean(UsbManager.EXTRA_PERMISSION_GRANTED);
+                    if (granted) {
+                        connection = usbManager.openDevice(device);
+                        serialPort = UsbSerialDevice.createUsbSerialDevice(device, connection);
+                        if (serialPort != null) {
+                            if (serialPort.open()) { //Set Serial Connection Parameters.
+                                setUiEnabled(true);
+                                serialPort.setBaudRate(115200);
+                                serialPort.setDataBits(UsbSerialInterface.DATA_BITS_8);
+                                serialPort.setStopBits(UsbSerialInterface.STOP_BITS_1);
+                                serialPort.setParity(UsbSerialInterface.PARITY_NONE);
+                                serialPort.setFlowControl(UsbSerialInterface.FLOW_CONTROL_OFF);
+                                serialPort.read(mCallback);
 
-                    //Animation setup with handler
-                    final int[] imageArray = {R.drawable.drone, R.drawable.drone_90,
-                            R.drawable.drone_180, R.drawable.drone_270,
-                    };
+                                chronometer.setVisibility(View.VISIBLE);
 
-                    final Handler handler = new Handler();
-                    /*Runnable runnable = new Runnable() {
-                        int i = 0;
+                                tvAppend(textView, "Serial Connection Opened!\n");
 
-                        public void run() {
-                            if (running) {
-                                drone_pic.setImageResource(imageArray[i]);
-                                i++;
-                                if (i > imageArray.length - 1) {
-                                    i = 0;
-                                }
-                                handler.postDelayed(this, 50);
+                            } else {
+                                Log.d("SERIAL", "PORT NOT OPEN");
                             }
+                        } else {
+                            Log.d("SERIAL", "PORT IS NULL");
                         }
-                    };*/
-                    //handler.postDelayed(runnable, 50);
+                    } else {
+                        Log.d("SERIAL", "PERM NOT GRANTED");
+                    }
+                } else if (intent.getAction().equals(UsbManager.ACTION_USB_DEVICE_ATTACHED)) {
+                    onClickStart(startButton);
+                } else if (intent.getAction().equals(UsbManager.ACTION_USB_DEVICE_DETACHED)) {
+                    onClickStop(stopButton);
                 }
-                else
-                {
-                    running = false;
-                    //drone_pic.setImageResource(R.drawable.drone);
-                    //getbase returns the base time
-                    timeWhenStopped = chronometer.getBase() - SystemClock.elapsedRealtime();
-                    int seconds = (int) timeWhenStopped / 1000;
-                    timeText.setVisibility(View.VISIBLE);
-                    chronometer.setVisibility(View.INVISIBLE);
-                    //math.abs returns the absolute value of seconds
-                    timeText.setText(Math.abs(seconds) + " Second(s)");
+            }catch(Exception e){}
+        };
+    };
 
-                    chronometer.stop();
+    public void onClickStart(View view)
+    {
+        //byte a[] = {1};
+        //serialPort.write(a);
 
-                    putFlightDuration = timeText.getText().toString();
+        editor.putBoolean("check", true);
+        editor.commit();
 
-                    mySQLiteHelper = new MySQLiteHelper(context);
-                    sqLiteDatabase = mySQLiteHelper.getWritableDatabase();
-                    mySQLiteHelper.putInformation(sqLiteDatabase, formattedDate, putFlightDuration);
-                    mySQLiteHelper.close();
+        //chronometer.setVisibility(View.VISIBLE);
+        chronometer.setBase(SystemClock.elapsedRealtime());
+        timeText.setVisibility(View.INVISIBLE);
+        timeText.setText(R.string.zeroseconds);
+        chronometer.start();
 
-                    textStart.setVisibility(View.INVISIBLE);
-                    textStop.setVisibility(View.VISIBLE);
+        try {
+            HashMap<String, UsbDevice> usbDevices = usbManager.getDeviceList();
+            if (!usbDevices.isEmpty()) {
+                boolean keep = true;
+                for (Map.Entry<String, UsbDevice> entry : usbDevices.entrySet()) {
+                    device = entry.getValue();
+                    int deviceVID = device.getVendorId();
+                    if (deviceVID == 0x2A03)//Arduino Vendor ID
+                    {
+                        PendingIntent pi = PendingIntent.getBroadcast(this, 0, new Intent(ACTION_USB_PERMISSION), 0);
+                        usbManager.requestPermission(device, pi);
+                        keep = false;
+                    } else {
+                        connection = null;
+                        device = null;
+                    }
 
-                    BackgroundTask backgroundTask = new BackgroundTask();
-                    backgroundTask.execute(formattedDate, putFlightDuration, recvUsername);
-
+                    if (!keep)
+                        break;
                 }
+            }
+        }catch(Exception e){
+            //Toast.makeText(MainActivity.this, "The Arduino Is Not Connected", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public void onClickStop(View view)
+    {
+        byte input[] = {23, 0, 0x7f, 0x7f, 0x7f};
+        //byte input[] = {23, 0, ((byte) 0x208), ((byte) 0x208), ((byte) 0x208)};
+        serialPort.write(input);
+        setUiEnabled(false);
+        serialPort.close();
+        tvAppend(textView, "\nSerial Connection Closed! \n");
+
+        timeWhenStopped = chronometer.getBase() - SystemClock.elapsedRealtime();
+        int seconds = (int) timeWhenStopped / 1000;
+        timeText.setVisibility(View.VISIBLE);
+        chronometer.setVisibility(View.INVISIBLE);
+        //math.abs returns the absolute value of seconds
+        timeText.setText(Math.abs(seconds) + " Second(s)");
+
+        chronometer.stop();
+
+        putFlightDuration = timeText.getText().toString();
+
+        mySQLiteHelper = new MySQLiteHelper(context);
+        sqLiteDatabase = mySQLiteHelper.getWritableDatabase();
+        mySQLiteHelper.putInformation(sqLiteDatabase, formattedDate, putFlightDuration);
+        mySQLiteHelper.close();
+
+        BackgroundTask backgroundTask = new BackgroundTask();
+        backgroundTask.execute(formattedDate, putFlightDuration, recvUsername);
+    }
+
+    public void setUiEnabled(boolean bool)
+    {
+        startButton.setEnabled(!bool);
+        stopButton.setEnabled(bool);
+        textView.setEnabled(bool);
+    }
+
+    private void tvAppend(TextView tv, CharSequence text) {
+        final TextView ftv = tv;
+        final CharSequence ftext = text;
+
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                ftv.setText(ftext);
             }
         });
     }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+    }
+
+    /*Joystick Listener for the left joystick*/
+    private JoystickMovedListener _listenerLeft = new JoystickMovedListener() {
+
+        @Override
+        public void OnMoved(int yaw, int throttle) {
+            try {
+                throttle = throttle + 128;
+                yaw = yaw + 128;
+                if(throttle >= 256)
+                    throttle = 255;
+                if(yaw >= 256)
+                    yaw = 255;
+                if(yaw >= 108 && yaw <= 148)
+                    yaw = 127;
+
+                txtX1.setText(Integer.toString(yaw));//rudder
+                txtY1.setText(Integer.toString(throttle));//throttle
+                input[1] = (byte) throttle;//throttle
+                input[2] = (byte) yaw;//rudder
+                serialPort.write(input);
+
+            }catch(Exception e){
+                //Toast.makeText(FlightController.this, "The Arduino Is Not Connected", Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        @Override
+        public void OnReleased() {
+            try{
+
+            }catch(Exception e){
+            }
+        }
+
+        public void OnReturnedToCenter() {
+            try{
+
+            }catch(Exception e){
+            }
+        };
+    };
+
+    /*Joystick listener for the right joystick*/
+    private JoystickMovedListener _listenerRight = new JoystickMovedListener() {
+
+        @Override
+        public void OnMoved(int roll, int pitch) {
+            try{
+                pitch = pitch + 128;
+                roll = roll + 128;
+                if(pitch >= 256)
+                    pitch = 255;
+                if(pitch == 128)
+                    pitch = 127;
+                if(roll >= 256)
+                    roll = 255;
+                if(roll == 128)
+                    roll = 127;
+
+                txtX2.setText(Integer.toString(roll));//aileron
+                txtY2.setText(Integer.toString(pitch));//elevator
+
+                input[3] = (byte) pitch;//forward or backward
+                input[4] = (byte) roll;//left or right
+
+                serialPort.write(input);
+            }catch(Exception e){
+                //Toast.makeText(FlightController.this, "The Arduino Is Not Connected", Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        @Override
+        public void OnReleased() {
+            try{
+
+            }catch(Exception e){
+            }
+        }
+
+        public void OnReturnedToCenter() {
+            try{
+
+            }catch(Exception e){
+            }
+        };
+    };
 
     class BackgroundTask extends AsyncTask<String, Void, String>
     {

@@ -27,10 +27,16 @@ public class MenuActivity extends AppCompatActivity {
 
     Button controllerButton, databaseButton;
     ImageView image;
+    /*SharedPreferences for accessing FlightActivity*/
     SharedPreferences accessPreference;
     SharedPreferences.Editor editor;
-
     boolean check;
+
+    /*SharedPreferences for passing/receiving the username*/
+    SharedPreferences uNamePreferences;
+    SharedPreferences.Editor uNameEditor;
+    String recvUsername1;
+
 
     final Context context = this;
 
@@ -39,11 +45,17 @@ public class MenuActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
+        /*SharedPreferences for passing the username*/
+        uNamePreferences = getSharedPreferences("uNamePrefs", MODE_PRIVATE);
+        uNameEditor = uNamePreferences.edit();
+
+        recvUsername1 = uNamePreferences.getString("usernamePassed1", "");
+
+        /*SharedPreferences for accessing the flightActivity*/
         accessPreference = getSharedPreferences("accessPrefs", MODE_PRIVATE);
         editor = accessPreference.edit();
 
         check = accessPreference.getBoolean("check", false);
-
 
         if(getResources().getBoolean(R.bool.portrait_only)){
             setContentView(R.layout.activity_controller);
@@ -83,8 +95,7 @@ public class MenuActivity extends AppCompatActivity {
                 Intent intent = new Intent(MenuActivity.this, ControllerActivity.class);
 
                 //Passing username to ControllerActivity
-                String recvUsername = getIntent().getStringExtra("usernamePassed");
-                intent.putExtra("usernamePassed2", recvUsername);
+                intent.putExtra("usernamePassedContr", recvUsername1);
 
                 startActivity(intent);
 
@@ -102,6 +113,10 @@ public class MenuActivity extends AppCompatActivity {
                 }else {
 
                     Intent intent = new Intent(MenuActivity.this, FlightsActivity.class);
+                    //intent.putExtra("usernamePassedFlights", recvUsername1);
+                    uNameEditor.putString("namePassToFlights", recvUsername1);
+                    uNameEditor.commit();
+
                     startActivity(intent);
                 }
 
